@@ -7,16 +7,18 @@ node_modules
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
 
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 ## react-app
+
+# next.js
+react-app/.next/
+react-app/out/
 
 # testing
 react-app/coverage

@@ -24,9 +24,9 @@
             "cwd": "${workspaceFolder}/react-app",
             "runtimeExecutable": "${workspaceFolder}/react-app/node_modules/.bin/next",
             "runtimeArgs": ["-p", "3001"],
-            "port": 9229,
+            "port": 0,
             "env": {
-                "NODE_OPTIONS": "--inspect"
+                "NODE_OPTIONS": "--inspect=0"
             }
         }
     ],

@@ -1,15 +1,42 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach by Process ID",
+            "processId": "${command:PickProcess}",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}/react-app"
+            "name": "Next: Chrome",
+            "url": "http://localhost:3001",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Next: Node",
+            "cwd": "${workspaceFolder}/react-app",
+            "runtimeExecutable": "${workspaceFolder}/react-app/node_modules/.bin/next",
+            "runtimeArgs": ["-p", "3001"],
+            "port": 9229,
+            "env": {
+                "NODE_OPTIONS": "--inspect"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Next: Full",
+            "configurations": [
+                "Next: Node",
+                "Next: Chrome"
+            ]
         }
     ]
 }

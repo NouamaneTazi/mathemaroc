@@ -7,53 +7,45 @@ export default () => (
     <Layout>
         <div>
             <Banner />
-
             <div id="main">
                 <section id="one" className="tiles">
-                    <article style={{backgroundImage: `url('/static/images/pic01.jpg')`}}>
+
+                    <article style={{ backgroundImage: `url('/static/images/publications.jpg')` }}>
                         <header className="major">
-                            <h3>Aliquam</h3>
-                            <p>Ipsum dolor sit amet</p>
+                            <h3>Publications</h3>
+                            <p>Nos publications...</p>
                         </header>
-                        <Link href="/landing"><a className="link primary"></a></Link>
+                        <Link href="/publications"><a className="link primary"></a></Link>
                     </article>
-                    <article style={{backgroundImage: `url('/static/images/pic02.jpg')`}}>
+
+                    <article style={{ backgroundImage: `url('/static/images/IMO/IMO2019.jpg')` }}>
                         <header className="major">
-                            <h3>Tempus</h3>
-                            <p>feugiat amet tempus</p>
+                            <h3>Olympiades</h3>
+                            <p>IMOs...</p>
                         </header>
-                        <Link href="/landing"><a className="link primary"></a></Link>
+                        <Link href="/olympiades"><a className="link primary"></a></Link>
                     </article>
-                    <article style={{backgroundImage: `url('/static/images/pic03.jpg')`}}>
+
+                    <article style={{ backgroundImage: `url('/static/images/news.jpg')` }}>
                         <header className="major">
-                            <h3>Magna</h3>
-                            <p>Lorem etiam nullam</p>
+                            <h3>Actualités</h3>
+                            <p>Suivez nos actualités...</p>
                         </header>
-                        <Link href="/landing"><a className="link primary"></a></Link>
+                        <Link href="/actualites"><a className="link primary"></a></Link>
                     </article>
-                    <article style={{backgroundImage: `url('/static/images/pic04.jpg')`}}>
+
+
+                    <article style={{ backgroundImage: `url('/static/images/stages.jpg')` }}>
                         <header className="major">
-                            <h3>Ipsum</h3>
-                            <p>Nisl sed aliquam</p>
+                            <h3>Stages</h3>
+                            <p>Savoir plus sur nos stages...</p>
                         </header>
-                        <Link href="/landing"><a className="link primary"></a></Link>
+                        <Link href="/stages"><a className="link primary"></a></Link>
                     </article>
-                    <article style={{backgroundImage: `url('/static/images/pic05.jpg')`}}>
-                        <header className="major">
-                            <h3>Consequat</h3>
-                            <p>Ipsum dolor sit amet</p>
-                        </header>
-                        <Link href="/landing"><a className="link primary"></a></Link>
-                    </article>
-                    <article style={{backgroundImage: `url('/static/images/pic06.jpg')`}}>
-                        <header className="major">
-                            <h3>Etiam</h3>
-                            <p>Feugiat amet tempus</p>
-                        </header>
-                        <Link href="/landing"><a className="link primary"></a></Link>
-                    </article>
+
                 </section>
-                <section id="two">
+
+                {/* <section id="two">
                     <div className="inner">
                         <header className="major">
                             <h2>Massa libero</h2>
@@ -63,7 +55,7 @@ export default () => (
                             <li><Link href="/landing"><a className="button next">Get Started</a></Link></li>
                         </ul>
                     </div>
-                </section>
+                </section> */}
             </div>
 
         </div>

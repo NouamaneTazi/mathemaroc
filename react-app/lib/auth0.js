@@ -1,3 +1,4 @@
+// https://github.com/zeit/next.js/tree/canary/examples/auth0
 import { initAuth0 } from '@auth0/nextjs-auth0'
 import config from './config'
 

@@ -10,15 +10,8 @@ export default () => {
 
     return (
         <Layout user={user} loading={loading}>
+            {console.log("user",user)}
             <div>
-                {user && (
-                    <>
-                        <h4>Rendered user info on the client</h4>
-                        <img src={user.picture} alt="user picture" />
-                        <p>nickname: {user.nickname}</p>
-                        <p>name: {user.name}</p>
-                    </>
-                )}
                 <Banner />
                 <div id="main">
                     <section id="one" className="tiles">

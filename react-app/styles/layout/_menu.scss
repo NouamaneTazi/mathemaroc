@@ -45,6 +45,10 @@
 			visibility: hidden;
 			width: 18em;
 
+			.user-picture {
+				width: 100px;
+			}
+
 			> :first-child {
 				margin-top: _size(element-margin);
 			}

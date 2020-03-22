@@ -5,8 +5,8 @@ import Layout from '../components/Layout'
 export default () => (
     <Layout>
         <Head>
-            <title>Generic Page</title>
-            <meta name="description" content="Generic Page" />
+            <title>Profile</title>
+            <meta name="description" content="Profile Page" />
         </Head>
 
         <div id="main" className="alt">

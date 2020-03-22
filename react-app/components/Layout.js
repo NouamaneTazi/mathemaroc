@@ -36,7 +36,7 @@ class Layout extends React.Component {
 
     render() {
         return (
-            <div className={`body ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
+            <div className={`body ${this.props.loading ? 'is-loading' : this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
                 <Head>
                     <title>Math&Maroc</title>
                     <meta name="description" content="Le site de Math&Maroc" />
@@ -52,7 +52,7 @@ class Layout extends React.Component {
                     {/* <Contact /> */}
                     <Footer />
                 </div>
-                <Menu onToggleMenu={this.handleToggleMenu} />
+                <Menu onToggleMenu={this.handleToggleMenu} user={this.props.user} loading={this.props.loading}/>
 
             </div>
         )

@@ -2,50 +2,63 @@ import Link from 'next/link'
 
 import Layout from '../components/Layout'
 import Banner from '../components/Banner'
+import { useFetchUser } from '../lib/user'
 
-export default () => (
-    <Layout>
-        <div>
-            <Banner />
-            <div id="main">
-                <section id="one" className="tiles">
+export default () => {
 
-                    <article style={{ backgroundImage: `url('/static/images/publications.jpg')` }}>
-                        <header className="major">
-                            <h3>Publications</h3>
-                            <p>Nos publications...</p>
-                        </header>
-                        <Link href="/publications"><a className="link primary"></a></Link>
-                    </article>
+    const { user, loading } = useFetchUser()
 
-                    <article style={{ backgroundImage: `url('/static/images/IMO/IMO2019.jpg')` }}>
-                        <header className="major">
-                            <h3>Olympiades</h3>
-                            <p>IMOs...</p>
-                        </header>
-                        <Link href="/olympiades"><a className="link primary"></a></Link>
-                    </article>
+    return (
+        <Layout user={user} loading={loading}>
+            <div>
+                {user && (
+                    <>
+                        <h4>Rendered user info on the client</h4>
+                        <img src={user.picture} alt="user picture" />
+                        <p>nickname: {user.nickname}</p>
+                        <p>name: {user.name}</p>
+                    </>
+                )}
+                <Banner />
+                <div id="main">
+                    <section id="one" className="tiles">
 
-                    <article style={{ backgroundImage: `url('/static/images/news.jpg')` }}>
-                        <header className="major">
-                            <h3>Actualités</h3>
-                            <p>Suivez nos actualités...</p>
-                        </header>
-                        <Link href="/actualites"><a className="link primary"></a></Link>
-                    </article>
+                        <article style={{ backgroundImage: `url('/static/images/publications.jpg')` }}>
+                            <header className="major">
+                                <h3>Publications</h3>
+                                <p>Nos publications...</p>
+                            </header>
+                            <Link href="/publications"><a className="link primary"></a></Link>
+                        </article>
+
+                        <article style={{ backgroundImage: `url('/static/images/IMO/IMO2019.jpg')` }}>
+                            <header className="major">
+                                <h3>Olympiades</h3>
+                                <p>IMOs...</p>
+                            </header>
+                            <Link href="/olympiades"><a className="link primary"></a></Link>
+                        </article>
+
+                        <article style={{ backgroundImage: `url('/static/images/news.jpg')` }}>
+                            <header className="major">
+                                <h3>Actualités</h3>
+                                <p>Suivez nos actualités...</p>
+                            </header>
+                            <Link href="/actualites"><a className="link primary"></a></Link>
+                        </article>
 
 
-                    <article style={{ backgroundImage: `url('/static/images/stages.jpg')` }}>
-                        <header className="major">
-                            <h3>Stages</h3>
-                            <p>Savoir plus sur nos stages...</p>
-                        </header>
-                        <Link href="/stages"><a className="link primary"></a></Link>
-                    </article>
+                        <article style={{ backgroundImage: `url('/static/images/stages.jpg')` }}>
+                            <header className="major">
+                                <h3>Stages</h3>
+                                <p>Savoir plus sur nos stages...</p>
+                            </header>
+                            <Link href="/stages"><a className="link primary"></a></Link>
+                        </article>
 
-                </section>
+                    </section>
 
-                {/* <section id="two">
+                    {/* <section id="two">
                     <div className="inner">
                         <header className="major">
                             <h2>Massa libero</h2>
@@ -56,8 +69,9 @@ export default () => (
                         </ul>
                     </div>
                 </section> */}
-            </div>
+                </div>
 
-        </div>
-    </Layout>
-)
+            </div>
+        </Layout>
+    )
+}

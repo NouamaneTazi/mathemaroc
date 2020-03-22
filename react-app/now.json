@@ -1,0 +1,16 @@
+{
+    "env": {
+        "AUTH0_DOMAIN":"dev-gbgcj6fb.eu.auth0.com",
+        "AUTH0_CLIENT_ID":"MDva71UZbX6ywDlWPHnN23FkZXu51tWA",
+        "AUTH0_CLIENT_SECRET":"LXNEOmLOd6n5oNnGhWlMCoNf-YrMXPVs3l80paZwX23slfFYaCsDAl42wUK6Cjf5",
+        
+        "SESSION_COOKIE_SECRET":"s%3Al3ozSdvQ83TtC5RvJ.CibaQoHtaY0H3QOB1kZjfizldfhsdjfhzoefu",
+        
+        "REDIRECT_URI":"/api/callback",
+        "POST_LOGOUT_REDIRECT_URI":"/",
+        
+        "ATLAS_URI":"@mongodb+srv://mathemaroc:mathemaroc@mathemaroc-ob4jb.gcp.mongodb.net/test?retryWrites=true&w=majority"
+        
+        
+    }
+  }

@@ -9,7 +9,7 @@
         "REDIRECT_URI":"/api/callback",
         "POST_LOGOUT_REDIRECT_URI":"/",
         
-        "ATLAS_URI":"@mongodb+srv://mathemaroc:mathemaroc@mathemaroc-ob4jb.gcp.mongodb.net/test?retryWrites=true&w=majority"
+        "ATLAS_URI":"mongodb+srv://mathemaroc:mathemaroc@mathemaroc-ob4jb.gcp.mongodb.net/test?retryWrites=true&w=majority"
         
         
     }

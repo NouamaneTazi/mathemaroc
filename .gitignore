@@ -14,7 +14,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-## react-app
+# python files
+python/
+
+### react-app
 
 # next.js
 react-app/.next/

@@ -3,10 +3,10 @@
         "env": {
             "AUTH0_DOMAIN": "dev-gbgcj6fb.eu.auth0.com",
             "AUTH0_CLIENT_ID": "MDva71UZbX6ywDlWPHnN23FkZXu51tWA",
-            "AUTH0_CLIENT_SECRET": "@auth0_client_secret",
+            "AUTH0_CLIENT_SECRET": "@auth0-client-secret",
             "REDIRECT_URI": "https://mathemaroc.now.sh/api/callback",
             "POST_LOGOUT_REDIRECT_URI": "https://mathemaroc.now.sh",
-            "SESSION_COOKIE_SECRET": "@session_cookie_secret",
+            "SESSION_COOKIE_SECRET": "@session-cookie-secret",
             "ATLAS_URI": "mongodb+srv://mathemaroc:mathemaroc@mathemaroc-ob4jb.gcp.mongodb.net/test?retryWrites=true&w=majority"
         }
     }

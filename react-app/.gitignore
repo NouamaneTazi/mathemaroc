@@ -1,5 +1,5 @@
 .DS_Store
-.next
+# .next
 .vscode
 out/
 node_modules

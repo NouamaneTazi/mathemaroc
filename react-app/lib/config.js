@@ -10,7 +10,7 @@ if (typeof window === 'undefined') {
     REDIRECT_URI: process.env.REDIRECT_URI,
     POST_LOGOUT_REDIRECT_URI: process.env.POST_LOGOUT_REDIRECT_URI,
     SESSION_COOKIE_SECRET: process.env.SESSION_COOKIE_SECRET,
-    SESSION_COOKIE_LIFETIME: process.env.SESSION_COOKIE_LIFETIME,
+    SESSION_COOKIE_LIFETIME: process.env.SESSION_COOKIE_LIFETIME
   }
 } else {
   /**

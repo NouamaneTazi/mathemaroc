@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SearchInput, { createFilter } from 'react-search-input'
+import Tooltip from '@material-ui/core/Tooltip';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 
 const Profile = () => {
@@ -24,7 +26,6 @@ const Profile = () => {
             res = await fetch('/api/mongodb?groupId=' + json.groupId)
             json.students = await res.json()
             json.students = json.students.filter(student => student.role == "student")
-            console.log("json", json)
             Object.assign(user, json);
             user.isSetup = true
             setUserData(user)
@@ -36,7 +37,6 @@ const Profile = () => {
         delete user.needsSetup
         user.auth0id = user.sub
         delete user.sub
-        console.log("associateTutor", user)
         const res = await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, user })
@@ -59,7 +59,16 @@ const Profile = () => {
 
     let selectedTutor = ""
     const filteredTutors = tutors.filter(createFilter(searchTerm, ['firstname', 'lastname']))
-    console.log("filteredTutors", filteredTutors)
+    const CustomizedTooltip = withStyles(theme => ({
+        tooltip: {
+            backgroundColor: theme.palette.common.white,
+            color: '#3e467f',
+            boxShadow: theme.shadows[1],
+            fontSize: 16,
+        },
+    }))(Tooltip)
+
+
     return (
         <>
             {!loading && <Layout user={user} loading={loading}>
@@ -142,7 +151,7 @@ const Profile = () => {
                                                 </div>
                                             ))} */}
                                             <SearchInput className="search-input" onChange={(term) => { setSearchTerm(term) }} />
-                                            <br/>
+                                            <br />
                                             {tutors.length !== filteredTutors.length ? filteredTutors.map(tutor => (
                                                 <div className="12u 12u(small)" key={tutor._id}>
                                                     <input type="radio" id={`${tutor.firstname}-${tutor.lastname}`} name="demo-priority" onChange={() => { selectedTutor = tutor }} />
@@ -153,7 +162,9 @@ const Profile = () => {
                                         <div className="12u">
                                             <ul className="actions">
                                                 <div className="button special" onClick={() => selectedTutor ? associateTutor(selectedTutor) : null}>Submit</div>
-                                                <div style={{display:"inline", marginLeft:"10px"}}>Je ne vois pas mon nom</div>
+                                                <CustomizedTooltip placement="right" title="On a pas encore terminé l'attribution de tous les élèves. Veuillez revenir plus tard !">
+                                                    <div style={{ display: "inline", marginLeft: "10px" }}>Je ne trouve pas mon nom !</div>
+                                                </CustomizedTooltip>
                                             </ul>
                                         </div>
                                     </div>

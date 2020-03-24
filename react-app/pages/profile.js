@@ -55,8 +55,8 @@ const Profile = () => {
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
             getUserData(user)
-            setQueryReady(true)
         }
+        setQueryReady(true)
     }, [user, loading])
 
     let selectedTutor = ""
@@ -76,15 +76,15 @@ const Profile = () => {
             {!loading && <Layout user={user} loading={loading}>
                 {console.log("user", user)}
                 <Head>
-                    <title>Profile Page</title>
-                    <meta name="description" content="Profile Page" />
+                    <title>Profil</title>
+                    <meta name="description" content="Profil" />
                 </Head>
 
                 {user && user.isSetup ? <div id="main" className="alt">
                     <section id="one">
                         <div className="inner">
                             <header className="major">
-                                <h1>Profile</h1>
+                                <h1>Profil</h1>
                             </header>
 
                             <div className="row 200%">
@@ -138,7 +138,7 @@ const Profile = () => {
                         <section id="one">
                             <div className="inner">
                                 <header className="major">
-                                    <h1>Profile</h1>
+                                    <h1>Profil</h1>
                                 </header>
 
                                 <div className="row 200%">
@@ -152,7 +152,7 @@ const Profile = () => {
                                                     <label htmlFor={`${tutor.firstname}-${tutor.lastname}`}>{tutor.lastname} {tutor.firstname}</label>
                                                 </div>
                                             ))} */}
-                                            <SearchInput className="search-input" onChange={(term) => { setSearchTerm(term) }} />
+                                            <SearchInput className="search-input" placeholder="Tapez votre nom..." onChange={(term) => { setSearchTerm(term) }} />
                                             <br />
                                             {tutors.length !== filteredTutors.length ? filteredTutors.map(tutor => (
                                                 <div className="12u 12u(small)" key={tutor._id}>
@@ -180,7 +180,7 @@ const Profile = () => {
                             <section id="one">
                                 <div className="inner">
                                     <header className="major">
-                                        <h1>Profile</h1>
+                                        <h1>Profil</h1>
                                     </header>
                                     <a href="/api/login" className="button special">Se connecter</a>
                                 </div>

@@ -75,7 +75,7 @@ const Profile = () => {
 
                             <div className="row 200%">
                                 <div className="6u 12u(medium)">
-                                    <h2 id="content">Nouamane Tazi</h2>
+                                    <h2 id="content">{user.firstname} {user.lastname}</h2>
                                     {/* <ul className="alt">
                                         <li><strong>Email :</strong> {user.email}</li>
                                         <li><strong>Phone :</strong> {user.phone}</li>

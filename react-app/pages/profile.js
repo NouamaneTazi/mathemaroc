@@ -49,11 +49,13 @@ const Profile = () => {
     const [tutors, setTutors] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
     const [error, setError] = useState()
+    const [queryReady, setQueryReady] = useState(false)
 
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
             getUserData(user)
+            setQueryReady(true)
         }
     }, [user, loading])
 
@@ -174,7 +176,7 @@ const Profile = () => {
                         </section>
                     </div>
                         // Not yet connected
-                        : <div id="main" className="alt">
+                        : queryReady ? <div id="main" className="alt">
                             <section id="one">
                                 <div className="inner">
                                     <header className="major">
@@ -184,6 +186,7 @@ const Profile = () => {
                                 </div>
                             </section>
                         </div>
+                            : null
                 }
 
 

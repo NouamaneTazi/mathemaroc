@@ -1,8 +1,9 @@
 // https://www.youtube.com/watch?v=zY4w4_W30aQ
 import { MongoClient } from 'mongodb';
 import nextConnect from 'next-connect';
+import config from './config'
 
-const client = new MongoClient(process.env.ATLAS_URI, {
+const client = new MongoClient(config.ATLAS_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

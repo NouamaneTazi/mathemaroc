@@ -1,31 +1,52 @@
 import nextConnect from 'next-connect';
 import middleware from '../../lib/database';
+var ObjectID = require('mongodb').ObjectID;
 
 const handler = nextConnect();
 
 handler.use(middleware);
 
 handler.get(async (req, res) => {
-    console.log(req.query)
-    let { groupId, id } = req.query
+    console.log("query", req.query)
+    let { groupId, auth0id, role } = req.query
     if (groupId) {
         req.db.collection('users').find({ groupId: parseInt(groupId) }).toArray(function (err, result) {
-            if (err || !result) res.json({ err });
+            if (err) res.json({ err: true })
             else {
                 console.log(result);
                 res.json(result);
             }
         });
-    } else {
-        req.db.collection('users').findOne({ id }, function (err, result) {
-            if (err || !result) res.json({ err:true });
+    } else if (auth0id) {
+        req.db.collection('users').findOne({ auth0id }, function (err, result) {
+            if (err) res.json({ err: true })
+            else if (!result) {
+                console.log("Not Yet Setup")
+                res.json({ notYetSetUp: true })
+            }
             else {
                 console.log(result);
                 res.json(result);
             }
-
+        });
+    } else if (role) {
+        req.db.collection('users').find({ role }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                console.log(result);
+                res.json(result);
+            }
         });
     }
 });
+
+handler.post(async (req, res) => {
+    let data = req.body;
+    data = JSON.parse(data);
+    console.log(data)
+    let doc = await req.db.collection('users').updateOne({ _id: ObjectID(data._id) }, { $set: { auth0id: data.auth0id } })
+    console.log("UPDATED", doc)
+    res.json({ message: 'ok' });
+})
 
 export default handler;

@@ -76,10 +76,10 @@ const Profile = () => {
                             <div className="row 200%">
                                 <div className="6u 12u(medium)">
                                     <h2 id="content">Nouamane Tazi</h2>
-                                    <ul className="alt">
-                                        <li><strong>Email :</strong> {userData.email}</li>
-                                        <li><strong>Phone :</strong> {userData.phone}</li>
-                                    </ul>
+                                    {/* <ul className="alt">
+                                        <li><strong>Email :</strong> {user.email}</li>
+                                        <li><strong>Phone :</strong> {user.phone}</li>
+                                    </ul> */}
 
                                 </div>
                             </div>
@@ -101,7 +101,7 @@ const Profile = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {userData.students.map(student => (<tr key={student._id}>
+                                            {user.students.map(student => (<tr key={student._id}>
                                                 <td>{student.firstname} {student.lastname}</td>
                                                 <td>{student.lycee}</td>
                                                 <td>{student.ville}</td>
@@ -157,7 +157,6 @@ const Profile = () => {
                                     <header className="major">
                                         <h1>Profile</h1>
                                     </header>
-                                    <h2 id="content">Vous n'êtes pas encore connectés</h2>
                                     <a href="/api/login" className="button special">Se connecter</a>
                                 </div>
                             </section>

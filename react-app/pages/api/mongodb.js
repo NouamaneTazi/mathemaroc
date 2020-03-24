@@ -44,7 +44,8 @@ handler.post(async (req, res) => {
     let data = req.body;
     data = JSON.parse(data);
     console.log(data)
-    let doc = await req.db.collection('users').updateOne({ _id: ObjectID(data._id) }, { $set: { auth0id: data.auth0id } })
+    delete data.user._id
+    let doc = await req.db.collection('users').updateOne({ _id: ObjectID(data._id) }, { $set: data.user})
     console.log("UPDATED", doc)
     res.json({ message: 'ok' });
 })

@@ -30,10 +30,15 @@ const Profile = () => {
         }
     }
 
-    const associateTutor = async (mongodbId) => {
+    const associateTutor = async (tutor) => {
+        Object.assign(user, tutor);
+        delete user.needsSetup
+        user.auth0id = user.id
+        delete user.id
+        console.log("associateTutor",user)
         const res = await fetch('/api/mongodb', {
             method: 'post',
-            body: JSON.stringify({ _id: mongodbId, auth0id: user.sub })
+            body: JSON.stringify({ _id: tutor._id, user})
         })
         window.location.reload(false);
     }
@@ -50,7 +55,7 @@ const Profile = () => {
         }
     }, [user, loading])
 
-    let mongodbId = ""
+    let selectedTutor = ""
 
     return (
         <>
@@ -123,14 +128,14 @@ const Profile = () => {
                                         <ul className="actions">
                                             {tutors.map(tutor => (
                                                 <div className="4u 12u(small)" key={tutor._id}>
-                                                    <input type="radio" id={`${tutor.firstname}-${tutor.lastname}`} name="demo-priority" onChange={() => { mongodbId = tutor._id }} />
+                                                    <input type="radio" id={`${tutor.firstname}-${tutor.lastname}`} name="demo-priority" onChange={() => { selectedTutor = tutor }} />
                                                     <label htmlFor={`${tutor.firstname}-${tutor.lastname}`}>{tutor.firstname} {tutor.lastname}</label>
                                                 </div>
                                             ))}
                                         </ul>
                                         <div className="12u">
                                             <ul className="actions">
-                                                <div className="button special" onClick={() => mongodbId ? associateTutor(mongodbId) : null}>Submit</div>
+                                                <div className="button special" onClick={() => selectedTutor ? associateTutor(selectedTutor) : null}>Submit</div>
                                             </ul>
                                         </div>
                                     </div>

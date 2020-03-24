@@ -20,7 +20,7 @@ python/
 ### react-app
 
 # next.js
-# react-app/.next/
+react-app/.next/
 react-app/out/
 
 # testing

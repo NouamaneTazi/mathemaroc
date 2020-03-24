@@ -30,10 +30,10 @@ handler.get(async (req, res) => {
             }
         });
     } else if (role) {
-        req.db.collection('users').find({ role }).toArray(function (err, result) {
+        req.db.collection('users').find({ role }).sort( { lastname: 1 } ).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
-                console.log(result);
+                // console.log(result);
                 res.json(result);
             }
         });
@@ -43,10 +43,10 @@ handler.get(async (req, res) => {
 handler.post(async (req, res) => {
     let data = req.body;
     data = JSON.parse(data);
-    console.log(data)
+    // console.log(data)
     delete data.user._id
     let doc = await req.db.collection('users').updateOne({ _id: ObjectID(data._id) }, { $set: data.user})
-    console.log("UPDATED", doc)
+    // console.log("UPDATED", doc)
     res.json({ message: 'ok' });
 })
 

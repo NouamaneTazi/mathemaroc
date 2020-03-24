@@ -19,12 +19,12 @@ const Profile = () => {
             user.needsSetup = true
             setTutors(json)
         }
-        else if (json.role=="tutor") {
+        else if (json.role == "tutor") {
             res = await fetch('/api/mongodb?groupId=' + json.groupId)
             json.students = await res.json()
-            json.students = json.students.filter(student => student.role=="student")
+            json.students = json.students.filter(student => student.role == "student")
             console.log("json", json)
-            Object.assign(user, json); 
+            Object.assign(user, json);
             user.isSetup = true
             setUserData(user)
         }
@@ -33,12 +33,12 @@ const Profile = () => {
     const associateTutor = async (tutor) => {
         Object.assign(user, tutor);
         delete user.needsSetup
-        user.auth0id = user.id
-        delete user.id
-        console.log("associateTutor",user)
+        user.auth0id = user.sub
+        delete user.sub
+        console.log("associateTutor", user)
         const res = await fetch('/api/mongodb', {
             method: 'post',
-            body: JSON.stringify({ _id: tutor._id, user})
+            body: JSON.stringify({ _id: tutor._id, user })
         })
         window.location.reload(false);
     }
@@ -91,19 +91,25 @@ const Profile = () => {
                                         <thead>
                                             <tr>
                                                 <th>Nom</th>
-                                                <th>Demandes</th>
+                                                <th>Lycée</th>
+                                                <th>Ville</th>
                                                 <th>Filière</th>
-                                                <th>Téléphone</th>
-                                                <th>Email</th>
+                                                <th>Matières</th>
+                                                <th>Demandes</th>
+                                                <th>Whatsapp</th>
+                                                <th>Facebook</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {userData.students.map(student => (<tr key={student._id}>
-                                                <td>{student.name}</td>
-                                                <td>{student.wishes}</td>
+                                                <td>{student.firstname} {student.lastname}</td>
+                                                <td>{student.lycee}</td>
+                                                <td>{student.ville}</td>
                                                 <td>{student.filiere}</td>
-                                                <td>{student.phone}</td>
-                                                <td>{student.email}</td>
+                                                <td>{student.matiere}</td>
+                                                <td>{student.wishes}</td>
+                                                <td>{student.whatsapp}</td>
+                                                <td>{student.facebook}</td>
                                             </tr>))}
                                         </tbody>
                                     </table>
@@ -122,14 +128,14 @@ const Profile = () => {
                                 </header>
 
                                 <div className="row 200%">
-                                    <div className="6u 12u(medium)">
+                                    <div className="12u 12u(medium)">
                                         <h2 id="content">Mettez à jour votre profil</h2>
                                         <h4>Selectionnez votre nom :</h4>
                                         <ul className="actions">
                                             {tutors.map(tutor => (
                                                 <div className="4u 12u(small)" key={tutor._id}>
                                                     <input type="radio" id={`${tutor.firstname}-${tutor.lastname}`} name="demo-priority" onChange={() => { selectedTutor = tutor }} />
-                                                    <label htmlFor={`${tutor.firstname}-${tutor.lastname}`}>{tutor.firstname} {tutor.lastname}</label>
+                                                    <label htmlFor={`${tutor.firstname}-${tutor.lastname}`}>{tutor.lastname} {tutor.firstname}</label>
                                                 </div>
                                             ))}
                                         </ul>
@@ -152,7 +158,7 @@ const Profile = () => {
                                         <h1>Profile</h1>
                                     </header>
                                     <h2 id="content">Vous n'êtes pas encore connectés</h2>
-                                    <a href="/api/login" className="button special">Connectez-vous !</a>
+                                    <a href="/api/login" className="button special">Se connecter</a>
                                 </div>
                             </section>
                         </div>

@@ -9,7 +9,7 @@ const Banner = (props) => (
             <div className="content">
                 <p>School closed? We’re here for you with free resources to keep everyone learning..</p>
                 <ul className="actions">
-                    <li><Link href="/covid"><a className="button next">More</a></Link></li>
+                    <li><Link href="/profile"><a className="button next">More</a></Link></li>
                 </ul>
             </div>
         </div>

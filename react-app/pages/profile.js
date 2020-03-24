@@ -2,9 +2,10 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
+import SearchInput, { createFilter } from 'react-search-input'
+
 
 const Profile = () => {
-
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
@@ -45,7 +46,8 @@ const Profile = () => {
 
     let { user, loading } = useFetchUser()
     const [userData, setUserData] = useState()
-    const [tutors, setTutors] = useState()
+    const [tutors, setTutors] = useState([])
+    const [searchTerm, setSearchTerm] = useState("")
     const [error, setError] = useState()
 
     useEffect(() => {
@@ -56,7 +58,8 @@ const Profile = () => {
     }, [user, loading])
 
     let selectedTutor = ""
-
+    const filteredTutors = tutors.filter(createFilter(searchTerm, ['firstname', 'lastname']))
+    console.log("filteredTutors", filteredTutors)
     return (
         <>
             {!loading && <Layout user={user} loading={loading}>
@@ -132,16 +135,25 @@ const Profile = () => {
                                         <h2 id="content">Mettez à jour votre profil</h2>
                                         <h4>Selectionnez votre nom :</h4>
                                         <ul className="actions">
-                                            {tutors.map(tutor => (
+                                            {/* {tutors.map(tutor => (
                                                 <div className="4u 12u(small)" key={tutor._id}>
                                                     <input type="radio" id={`${tutor.firstname}-${tutor.lastname}`} name="demo-priority" onChange={() => { selectedTutor = tutor }} />
                                                     <label htmlFor={`${tutor.firstname}-${tutor.lastname}`}>{tutor.lastname} {tutor.firstname}</label>
                                                 </div>
-                                            ))}
+                                            ))} */}
+                                            <SearchInput className="search-input" onChange={(term) => { setSearchTerm(term) }} />
+                                            <br/>
+                                            {tutors.length !== filteredTutors.length ? filteredTutors.map(tutor => (
+                                                <div className="12u 12u(small)" key={tutor._id}>
+                                                    <input type="radio" id={`${tutor.firstname}-${tutor.lastname}`} name="demo-priority" onChange={() => { selectedTutor = tutor }} />
+                                                    <label htmlFor={`${tutor.firstname}-${tutor.lastname}`}>{tutor.lastname} {tutor.firstname}</label>
+                                                </div>
+                                            )) : null}
                                         </ul>
                                         <div className="12u">
                                             <ul className="actions">
                                                 <div className="button special" onClick={() => selectedTutor ? associateTutor(selectedTutor) : null}>Submit</div>
+                                                <div style={{display:"inline", marginLeft:"10px"}}>Je ne vois pas mon nom</div>
                                             </ul>
                                         </div>
                                     </div>

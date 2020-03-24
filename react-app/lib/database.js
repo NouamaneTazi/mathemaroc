@@ -9,6 +9,7 @@ const client = new MongoClient(config.ATLAS_URI, {
 });
 
 async function database(req, res, next) {
+  console.log(config.ATLAS_URI)
   if (!client.isConnected()) await client.connect();
   req.dbClient = client;
   req.db = client.db('tutorat');

@@ -28,7 +28,7 @@ const Profile = () => {
             Object.assign(user, json);
             user.isSetup = true
             if (user.seances) { setInputFields(user.seances) }
-            else setInputFields( [] )
+            else setInputFields([])
         }
     }
 
@@ -130,12 +130,12 @@ const Profile = () => {
                             </header>
 
                             <div className="row 200%">
-                                <div className="6u 12u(medium)">
+                                <div className="12u 12u(medium)">
                                     <h2 id="content">{user.firstname} {user.lastname}</h2>
-                                    {/* <ul className="alt">
-                                        <li><strong>Email :</strong> {user.email}</li>
-                                        <li><strong>Phone :</strong> {user.phone}</li>
-                                    </ul> */}
+                                    <p>Au nom de l'association Math&Maroc nous te remercions pour ton initiative, nous sommes très fiers et très content de voir qu'il y autant de personnes prêtes à aider un grand nombre d'élèves dans le besoin. Notre but est et sera toujours d'encourager l'entraide entre marocains.
+                                    <br/><br/>Dans le but de suivre les tuteurs et les élèves et de s'assurer que tout se passe bien, nous te prions de nous faire un compte rendu rapide de chaque séance à l'aide du tableau en dessous des information des élèves.
+                                    <br/><br/>Si tu as une quelconque question ou remarque (élève injoignable pr exemple) nous te prions de nous contacter à l'aide de l'adresse suivante: mathemaroc.contact@gmail.com
+</p>
 
                                 </div>
                             </div>

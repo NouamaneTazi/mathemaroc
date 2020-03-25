@@ -265,7 +265,7 @@ const Profile = () => {
                                             setEditMode(true)
                                         }}>Modifier</button>
                                     }
-                                    {savedSuccess && <div style={{ display: "inline", marginLeft: "10px" }}>Enregistrement réussi !</div>}
+                                    {savedSuccess && <div style={{ display: "inline", marginLeft: "10px" }}>Modification réussie !</div>}
                                 </div>
                             </div>
 

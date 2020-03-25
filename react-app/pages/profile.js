@@ -10,7 +10,7 @@ const Profile = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
-        console.log("json", json)
+        // console.log("json", json)
         if (json.err) {
             setError(true)
         }
@@ -59,13 +59,11 @@ const Profile = () => {
 
     const handleInputChange = (index, event) => {
         const values = [...inputFields];
-        console.log('event', event)
         values[index][event.target.name] = event.target.value
         setInputFields(values);
     };
 
     const handleAbsentsChange = (index, absentStudent) => {
-        console.log("abs",inputFields,index )
         if (absentStudent._id in inputFields[index].absents) delete inputFields[index].absents[absentStudent._id]
         else {
             let values = inputFields
@@ -76,7 +74,7 @@ const Profile = () => {
 
     const handleSubmitSeances = async () => {
         let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.absents || input.remarques) // Keep non empty seances
-        console.log("query", user._id, seances)
+        // console.log("query", user._id, seances)
         const res = await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: user._id, data: { seances: seances, last_updated: new Date(Date.now()).toLocaleString() } })
@@ -118,7 +116,7 @@ const Profile = () => {
     return (
         <>
             {!loading && <Layout user={user} loading={loading}>
-                {console.log("user", user)}
+                {/* {console.log("user", user)} */}
                 <Head>
                     <title>Profil</title>
                     <meta name="description" content="Profil" />
@@ -219,7 +217,6 @@ const Profile = () => {
                                                     </th>
 
                                                     <th>
-                                                        {console.log(inputFields)}
                                                         {user.students.map((student) => (
                                                             <div className="6u 12u(small)" key={student._id}>
                                                                 <input type="checkbox" id={`${index}-${student._id}`} onChange={() => handleAbsentsChange(index, student)} />

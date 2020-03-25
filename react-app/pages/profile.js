@@ -28,7 +28,7 @@ const Profile = () => {
             Object.assign(user, json);
             user.isSetup = true
             if (user.seances) { setInputFields(user.seances) }
-            else setInputFields([])
+            else setInputFields( [] )
         }
     }
 
@@ -47,7 +47,7 @@ const Profile = () => {
 
     const handleAddFields = () => {
         const values = [...inputFields];
-        values.push({ date: undefined, chapitres: '', absents: '' });
+        values.push({ date: undefined, chapitres: '', absents: {}, remarques: '', duree: '' });
         setInputFields(values);
     };
 
@@ -63,12 +63,23 @@ const Profile = () => {
         values[index][event.target.name] = event.target.value
         setInputFields(values);
     };
+
+    const handleAbsentsChange = (index, absentStudent) => {
+        console.log("abs",inputFields,index )
+        if (absentStudent._id in inputFields[index].absents) delete inputFields[index].absents[absentStudent._id]
+        else {
+            let values = inputFields
+            values[index].absents[absentStudent._id] = `${absentStudent.firstname} ${absentStudent.lastname}`
+            setInputFields(values);
+        }
+    }
+
     const handleSubmitSeances = async () => {
-        let seances = inputFields.filter(input => input.date || input.chapitres || input.absents) // Keep non empty seances
+        let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.absents || input.remarques) // Keep non empty seances
         console.log("query", user._id, seances)
         const res = await fetch('/api/mongodb', {
             method: 'post',
-            body: JSON.stringify({ _id: user._id, data: { seances: seances } })
+            body: JSON.stringify({ _id: user._id, data: { seances: seances, last_updated: new Date(Date.now()).toLocaleString() } })
         })
         setInputFields(seances)
         setEditMode(false)
@@ -169,8 +180,10 @@ const Profile = () => {
                                         <thead>
                                             <tr>
                                                 <th>Date</th>
+                                                <th>Durée</th>
                                                 <th>Chapitres traités</th>
-                                                <th>Absents</th>
+                                                <th>Elèves absents</th>
+                                                <th>Remarques</th>
                                             </tr>
                                         </thead>
                                         {editMode ? <tbody>
@@ -189,6 +202,15 @@ const Profile = () => {
                                                     <th>
                                                         <input
                                                             type="text"
+                                                            id="duree"
+                                                            name="duree"
+                                                            value={inputField.duree}
+                                                            onChange={event => handleInputChange(index, event)}
+                                                        />
+                                                    </th>
+                                                    <th>
+                                                        <input
+                                                            type="text"
                                                             id="chapitres-traites"
                                                             name="chapitres"
                                                             value={inputField.chapitres}
@@ -197,11 +219,22 @@ const Profile = () => {
                                                     </th>
 
                                                     <th>
+                                                        {console.log(inputFields)}
+                                                        {user.students.map((student) => (
+                                                            <div className="6u 12u(small)" key={student._id}>
+                                                                <input type="checkbox" id={`${index}-${student._id}`} onChange={() => handleAbsentsChange(index, student)} />
+                                                                <label htmlFor={`${index}-${student._id}`}>{student.firstname} {student.lastname}</label>
+                                                            </div>
+                                                        ))
+                                                        }
+                                                    </th>
+
+                                                    <th>
                                                         <input
                                                             type="text"
-                                                            id="absents"
-                                                            name="absents"
-                                                            value={inputField.absents}
+                                                            id="remarques"
+                                                            name="remarques"
+                                                            value={inputField.remarques}
                                                             onChange={event => handleInputChange(index, event)}
                                                         />
                                                     </th>
@@ -213,8 +246,10 @@ const Profile = () => {
                                                 {inputFields.map((inputField, index) => (
                                                     <tr key={`${inputField}~${index}`}>
                                                         <th>{inputField.date}</th>
+                                                        <th>{inputField.duree}</th>
                                                         <th>{inputField.chapitres}</th>
-                                                        <th>{inputField.absents}</th>
+                                                        <th>{Object.values(inputField.absents).join()}</th>
+                                                        <th>{inputField.remarques}</th>
                                                     </tr>
                                                 ))}
                                             </tbody>}

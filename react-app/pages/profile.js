@@ -6,19 +6,18 @@ import SearchInput, { createFilter } from 'react-search-input'
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
-
 const Profile = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
-        // console.log("json", json)
+        console.log("json", json)
         if (json.err) {
             setError(true)
         }
         else if (json.notYetSetUp) {
             let res = await fetch('/api/mongodb?role=tutor') // find all tutors
             const json = await res.json()
-            console.log("tutors", json)
+            // console.log("tutors", json)
             user.needsSetup = true
             setTutors(json)
         }
@@ -28,7 +27,8 @@ const Profile = () => {
             json.students = json.students.filter(student => student.role == "student")
             Object.assign(user, json);
             user.isSetup = true
-            setUserData(user)
+            if (user.seances) { setInputFields(user.seances) }
+            else setInputFields([])
         }
     }
 
@@ -37,19 +37,52 @@ const Profile = () => {
         delete user.needsSetup
         user.auth0id = user.sub
         delete user.sub
+        delete user._id
         const res = await fetch('/api/mongodb', {
             method: 'post',
-            body: JSON.stringify({ _id: tutor._id, user })
+            body: JSON.stringify({ _id: tutor._id, data: user })
         })
         window.location.reload(false);
     }
 
+    const handleAddFields = () => {
+        const values = [...inputFields];
+        values.push({ date: undefined, chapitres: '', absents: '' });
+        setInputFields(values);
+    };
+
+    const handleRemoveFields = index => {
+        const values = [...inputFields];
+        values.splice(index, 1);
+        setInputFields(values);
+    };
+
+    const handleInputChange = (index, event) => {
+        const values = [...inputFields];
+        console.log('event', event)
+        values[index][event.target.name] = event.target.value
+        setInputFields(values);
+    };
+    const handleSubmitSeances = async () => {
+        let seances = inputFields.filter(input => input.date || input.chapitres || input.absents) // Keep non empty seances
+        console.log("query", user._id, seances)
+        const res = await fetch('/api/mongodb', {
+            method: 'post',
+            body: JSON.stringify({ _id: user._id, data: { seances: seances } })
+        })
+        setInputFields(seances)
+        setEditMode(false)
+        setSavedSuccess(true)
+    }
+
     let { user, loading } = useFetchUser()
-    const [userData, setUserData] = useState()
     const [tutors, setTutors] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
     const [error, setError] = useState()
     const [queryReady, setQueryReady] = useState(false)
+    const [inputFields, setInputFields] = useState([]);
+    const [editMode, setEditMode] = useState(false)
+    const [savedSuccess, setSavedSuccess] = useState(false)
 
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
@@ -97,7 +130,6 @@ const Profile = () => {
 
                                 </div>
                             </div>
-
                             <div className="12u 12u(medium)">
                                 <h4>Liste des élèves</h4>
                                 <div className="table-wrapper">
@@ -129,6 +161,79 @@ const Profile = () => {
                                     </table>
                                 </div>
                             </div>
+
+                            <div className="12u 12u(medium)">
+                                <h4>Séances</h4>
+                                <div className="table-wrapper">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Chapitres traités</th>
+                                                <th>Absents</th>
+                                            </tr>
+                                        </thead>
+                                        {editMode ? <tbody>
+                                            {inputFields.map((inputField, index) => (
+                                                <tr key={`${inputField}~${index}`}>
+                                                    <th>
+                                                        <input
+                                                            type="date"
+                                                            id="date"
+                                                            name="date"
+                                                            value={inputField.date}
+                                                            onChange={event => handleInputChange(index, event)}
+                                                            style={{ backgroundColor: "#3e467f" }}
+                                                        />
+                                                    </th>
+                                                    <th>
+                                                        <input
+                                                            type="text"
+                                                            id="chapitres-traites"
+                                                            name="chapitres"
+                                                            value={inputField.chapitres}
+                                                            onChange={event => handleInputChange(index, event)}
+                                                        />
+                                                    </th>
+
+                                                    <th>
+                                                        <input
+                                                            type="text"
+                                                            id="absents"
+                                                            name="absents"
+                                                            value={inputField.absents}
+                                                            onChange={event => handleInputChange(index, event)}
+                                                        />
+                                                    </th>
+                                                    <button onClick={() => handleRemoveFields(index)}>-</button>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                            : <tbody>
+                                                {inputFields.map((inputField, index) => (
+                                                    <tr key={`${inputField}~${index}`}>
+                                                        <th>{inputField.date}</th>
+                                                        <th>{inputField.chapitres}</th>
+                                                        <th>{inputField.absents}</th>
+                                                    </tr>
+                                                ))}
+                                            </tbody>}
+                                    </table>
+                                </div>
+                                {editMode && <button onClick={() => handleAddFields()}>+</button>}
+                                <div>
+                                    {editMode ?
+                                        <button className="button" onClick={() => handleSubmitSeances()}>Enregistrer</button>
+
+                                        : <button className="button" onClick={() => {
+                                            setSavedSuccess(false)
+                                            setEditMode(true)
+                                        }}>Modifier</button>
+                                    }
+                                    {savedSuccess && <div style={{ display: "inline", marginLeft: "10px" }}>Enregistrement réussi !</div>}
+                                </div>
+                            </div>
+
 
                         </div>
                     </section>

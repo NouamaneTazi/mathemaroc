@@ -77,7 +77,7 @@ const Profile = () => {
         // console.log("query", user._id, seances)
         const res = await fetch('/api/mongodb', {
             method: 'post',
-            body: JSON.stringify({ _id: user._id, data: { seances: seances, last_updated: new Date(Date.now()).toLocaleString() } })
+            body: JSON.stringify({ _id: user._id, data: { seances: seances, last_updated: new Date(Date.now()).toLocaleString("en-US") } })
         })
         setInputFields(seances)
         setEditMode(false)

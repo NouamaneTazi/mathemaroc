@@ -41,7 +41,7 @@ const Seances = ({user}) => {
         setSavedSuccess(true)
     }
 
-    const [inputFields, setInputFields] = useState(user.seances);
+    const [inputFields, setInputFields] = useState(user.seances ? user.seances : []);
     const [editMode, setEditMode] = useState(false)
     const [savedSuccess, setSavedSuccess] = useState(false)
 

@@ -5,8 +5,9 @@ import { useFetchUser } from '../lib/user'
 import SearchInput, { createFilter } from 'react-search-input'
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import WarningIcon from '@material-ui/icons/Warning';
+import Icon from '@material-ui/core/Icon';
 import Seances from '../components/Seances'
+import ReportStudentDialog from '../components/ReportStudentDialog'
 
 const Profile = () => {
     const getUserData = async (user) => {
@@ -48,6 +49,7 @@ const Profile = () => {
     const [searchTerm, setSearchTerm] = useState("")
     const [refresh, setRefresh] = useState(true)
     const [queryReady, setQueryReady] = useState(false)
+    const [openReportDialog, setOpenReportDialog] = useState(false)
 
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
@@ -109,19 +111,32 @@ const Profile = () => {
                                                 <th>Demandes</th>
                                                 <th>Whatsapp</th>
                                                 <th>Facebook</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {user.students.map(student => (<tr key={student._id}>
-                                                <td>{student.firstname} {student.lastname}</td>
-                                                <td>{student.lycee}</td>
-                                                <td>{student.ville}</td>
-                                                <td>{student.filiere}</td>
-                                                <td>{student.matiere}</td>
-                                                <td>{student.wishes}</td>
-                                                <td>{student.whatsapp}</td>
-                                                <td>{student.facebook}</td>
-                                            </tr>))}
+                                            {user.students.map(student => (
+
+                                                    <tr key={student._id} onMouseEnter={() => null}>
+                                                        <td>{student.firstname} {student.lastname}</td>
+                                                        <td>{student.lycee}</td>
+                                                        <td>{student.ville}</td>
+                                                        <td>{student.filiere}</td>
+                                                        <td>{student.matiere}</td>
+                                                        <td>{student.wishes}</td>
+                                                        <td>{student.whatsapp}</td>
+                                                        <td>{student.facebook}</td>
+                                                        <td> {student.reported ?
+                                                        <CustomizedTooltip title="Elève signalé" placement="left">
+                                                        <Icon style={{ fontSize: 30, verticalAlign: "text-top", color:"red" }} onClick={() => setOpenReportDialog(student)}>warning</Icon>
+                                                    </CustomizedTooltip>:
+                                                            <CustomizedTooltip title="Signaler élève injoignable ou comportement inapproprié" placement="left">
+                                                            <Icon style={{ fontSize: 30, verticalAlign: "text-top" }} onClick={() => setOpenReportDialog(student)}>warning</Icon>
+                                                        </CustomizedTooltip>}</td>
+                                                        <ReportStudentDialog student={openReportDialog} setOpen={setOpenReportDialog} tutor={user}/>
+                                                    </tr>
+
+                                            ))}
                                         </tbody>
                                     </table>
                                 </div>

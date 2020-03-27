@@ -50,7 +50,7 @@ handler.get(async (req, res) => {
 handler.post(async (req, res) => {
     let data = req.body;
     const user = JSON.parse(data);
-    console.log("post", user)
+    // console.log("post", user)
 
     let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data })
     // console.log("UPDATED", doc)

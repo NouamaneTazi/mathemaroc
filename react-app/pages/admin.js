@@ -46,7 +46,7 @@ const Admin = () => {
 
     return (
         <>
-            {console.log(user)}
+            {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
                     <title>Admin Page</title>

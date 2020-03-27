@@ -64,7 +64,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                 </DialogContent>
                 <DialogActions>
                     <div className="12u">
-                        <textarea name="report-text" id={`dialog-${student._id}`} placeholder="Veuillez nous donner plus de détails.." rows="6" value={reportText} onChange={e=>handleChange(e)}></textarea>
+                        <textarea name="report-text" id={`dialog-${student._id}`} style={{backgroundColor:"#0f111f", color:"white"}} placeholder="Décrivez ce qui s'est passé.." rows="6" value={reportText} onChange={e=>handleChange(e)}></textarea>
                     </div>
                 </DialogActions>
                 <DialogActions>

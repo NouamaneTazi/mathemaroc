@@ -1,11 +1,4 @@
-import Head from "next/head"
 import { useState, useEffect } from "react"
-import Layout from '../components/Layout'
-import { useFetchUser } from '../lib/user'
-import SearchInput, { createFilter } from 'react-search-input'
-import Tooltip from '@material-ui/core/Tooltip';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import WarningIcon from '@material-ui/icons/Warning';
 
 const Seances = ({user}) => {
 

@@ -5,16 +5,15 @@ import { useFetchUser } from '../lib/user'
 import SearchInput, { createFilter } from 'react-search-input'
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
+import WarningIcon from '@material-ui/icons/Warning';
+import Seances from '../components/Seances'
 
 const Profile = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         // console.log("json", json)
-        if (json.err) {
-            setError(true)
-        }
-        else if (json.notYetSetUp) {
+        if (json.notYetSetUp) {
             let res = await fetch('/api/mongodb?role=tutor') // find all tutors
             const json = await res.json()
             // console.log("tutors", json)
@@ -27,8 +26,7 @@ const Profile = () => {
             json.students = json.students.filter(student => student.role == "student")
             Object.assign(user, json);
             user.isSetup = true
-            if (user.seances) { setInputFields(user.seances) }
-            else setInputFields([])
+            setRefresh(!refresh)
         }
     }
 
@@ -45,53 +43,11 @@ const Profile = () => {
         window.location.reload(false);
     }
 
-    const handleAddFields = () => {
-        const values = [...inputFields];
-        values.push({ date: undefined, chapitres: '', absents: {}, remarques: '', duree: '' });
-        setInputFields(values);
-    };
-
-    const handleRemoveFields = index => {
-        const values = [...inputFields];
-        values.splice(index, 1);
-        setInputFields(values);
-    };
-
-    const handleInputChange = (index, event) => {
-        const values = [...inputFields];
-        values[index][event.target.name] = event.target.value
-        setInputFields(values);
-    };
-
-    const handleAbsentsChange = (index, absentStudent) => {
-        if (absentStudent._id in inputFields[index].absents) delete inputFields[index].absents[absentStudent._id]
-        else {
-            let values = inputFields
-            values[index].absents[absentStudent._id] = `${absentStudent.firstname} ${absentStudent.lastname}`
-            setInputFields(values);
-        }
-    }
-
-    const handleSubmitSeances = async () => {
-        let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.absents || input.remarques) // Keep non empty seances
-        // console.log("query", user._id, seances)
-        const res = await fetch('/api/mongodb', {
-            method: 'post',
-            body: JSON.stringify({ _id: user._id, data: { seances: seances, last_updated: new Date(Date.now()).toLocaleString("en-US") } })
-        })
-        setInputFields(seances)
-        setEditMode(false)
-        setSavedSuccess(true)
-    }
-
     let { user, loading } = useFetchUser()
     const [tutors, setTutors] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
-    const [error, setError] = useState()
+    const [refresh, setRefresh] = useState(true)
     const [queryReady, setQueryReady] = useState(false)
-    const [inputFields, setInputFields] = useState([]);
-    const [editMode, setEditMode] = useState(false)
-    const [savedSuccess, setSavedSuccess] = useState(false)
 
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
@@ -134,7 +90,7 @@ const Profile = () => {
                                     <h2 id="content">{user.firstname} {user.lastname}</h2>
                                     <p>Au nom de l'association Math&Maroc nous te remercions pour ton initiative, nous sommes très fiers et très content de voir qu'il y a autant de personnes prêtes à aider un grand nombre d'élèves dans le besoin. Notre but est et sera toujours d'encourager l'entraide entre marocains.
                                     <br /><br />Dans le but de suivre les tuteurs et les élèves et de s'assurer que tout se passe bien, nous te prions de <strong><u>nous faire un compte rendu rapide de chaque séance à l'aide du tableau en dessous des information des élèves.</u></strong>
-                                    <br /><br />Si tu as une quelconque question ou remarque (élève injoignable pr exemple) nous te prions de nous contacter à l'aide de l'adresse suivante: mathemaroc.contact@gmail.com (Un screen)
+                                        <br /><br />Si tu as une quelconque question ou remarque (élève injoignable pr exemple) nous te prions de nous contacter à l'aide de l'adresse suivante: mathemaroc.contact@gmail.com (Un screen)
 </p>
 
                                 </div>
@@ -171,101 +127,7 @@ const Profile = () => {
                                 </div>
                             </div>
 
-                            <div className="12u 12u(medium)">
-                                <h4>Séances</h4>
-                                <div className="table-wrapper">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Durée</th>
-                                                <th>Chapitres traités</th>
-                                                <th>Elèves absents</th>
-                                                <th>Remarques</th>
-                                            </tr>
-                                        </thead>
-                                        {editMode ? <tbody>
-                                            {inputFields.map((inputField, index) => (
-                                                <tr key={`${inputField}~${index}`}>
-                                                    <th>
-                                                        <input
-                                                            type="date"
-                                                            id="date"
-                                                            name="date"
-                                                            value={inputField.date}
-                                                            onChange={event => handleInputChange(index, event)}
-                                                            style={{ backgroundColor: "#3e467f" }}
-                                                        />
-                                                    </th>
-                                                    <th>
-                                                        <input
-                                                            type="text"
-                                                            id="duree"
-                                                            name="duree"
-                                                            value={inputField.duree}
-                                                            onChange={event => handleInputChange(index, event)}
-                                                        />
-                                                    </th>
-                                                    <th>
-                                                        <input
-                                                            type="text"
-                                                            id="chapitres-traites"
-                                                            name="chapitres"
-                                                            value={inputField.chapitres}
-                                                            onChange={event => handleInputChange(index, event)}
-                                                        />
-                                                    </th>
-
-                                                    <th>
-                                                        {user.students.map((student) => (
-                                                            <div className="6u 12u(small)" key={student._id}>
-                                                                <input type="checkbox" id={`${index}-${student._id}`} onChange={() => handleAbsentsChange(index, student)} />
-                                                                <label htmlFor={`${index}-${student._id}`}>{student.firstname} {student.lastname}</label>
-                                                            </div>
-                                                        ))
-                                                        }
-                                                    </th>
-
-                                                    <th>
-                                                        <input
-                                                            type="text"
-                                                            id="remarques"
-                                                            name="remarques"
-                                                            value={inputField.remarques}
-                                                            onChange={event => handleInputChange(index, event)}
-                                                        />
-                                                    </th>
-                                                    <button onClick={() => handleRemoveFields(index)}>-</button>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                            : <tbody>
-                                                {inputFields.map((inputField, index) => (
-                                                    <tr key={`${inputField}~${index}`}>
-                                                        <th>{inputField.date}</th>
-                                                        <th>{inputField.duree}</th>
-                                                        <th>{inputField.chapitres}</th>
-                                                        <th>{Object.values(inputField.absents).join(', ')}</th>
-                                                        <th>{inputField.remarques}</th>
-                                                    </tr>
-                                                ))}
-                                            </tbody>}
-                                    </table>
-                                </div>
-                                {editMode && <button onClick={() => handleAddFields()}>+</button>}
-                                <div>
-                                    {editMode ?
-                                        <button className="button" onClick={() => handleSubmitSeances()}>Enregistrer</button>
-
-                                        : <button className="button" onClick={() => {
-                                            setSavedSuccess(false)
-                                            setEditMode(true)
-                                        }}>Modifier</button>
-                                    }
-                                    {savedSuccess && <div style={{ display: "inline", marginLeft: "10px" }}>Modification réussie !</div>}
-                                </div>
-                            </div>
-
+                            <Seances user={user} />
 
                         </div>
                     </section>

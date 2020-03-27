@@ -49,10 +49,10 @@ handler.get(async (req, res) => {
 
 handler.post(async (req, res) => {
     let data = req.body;
-    data = JSON.parse(data);
-    console.log("post", data)
+    const user = JSON.parse(data);
+    console.log("post", user)
 
-    let doc = await req.db.collection('users').updateOne({ _id: ObjectID(data._id) }, { $set: data.data })
+    let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data })
     // console.log("UPDATED", doc)
     res.json({ message: 'ok' });
 })

@@ -245,7 +245,7 @@ const Profile = () => {
                                                         <th>{inputField.date}</th>
                                                         <th>{inputField.duree}</th>
                                                         <th>{inputField.chapitres}</th>
-                                                        <th>{Object.values(inputField.absents).join()}</th>
+                                                        <th>{Object.values(inputField.absents).join(', ')}</th>
                                                         <th>{inputField.remarques}</th>
                                                     </tr>
                                                 ))}

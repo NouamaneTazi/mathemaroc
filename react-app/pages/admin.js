@@ -91,15 +91,22 @@ const Admin = () => {
                                                     <td>{Object.values(seance.absents).join(', ')}</td>
                                                     <td>{seance.remarques}</td>
                                                     <td>
-                                                        {!seance.mod || seance.mod.id == user.sub ?
+                                                        {!seance.mod || !seance.mod.id?
                                                             <>
-                                                                <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" onClick={() => handleModClick(tutor, index)} />
-                                                                <label htmlFor={`${tutor._id}~${index}`}>{seance.mod ? seance.mod.name : ""}</label>
+                                                                <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, index)} />
+                                                                <label htmlFor={`${tutor._id}~${index}`}></label>
                                                             </>
-                                                            : <>
-                                                                <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked />
-                                                                <label htmlFor={`${tutor._id}~${index}`}>{seance.mod.name}</label>
-                                                            </>
+                                                            : seance.mod.id == user.sub ?
+                                                                <>
+                                                                    <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked onClick={() => handleModClick(tutor, index)} />
+                                                                    <label htmlFor={`${tutor._id}~${index}`}>{seance.mod.name}</label>
+                                                                </>
+                                                                : seance.mod.id !== user.sub ?
+                                                                <>
+                                                                    <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked />
+                                                                    <label htmlFor={`${tutor._id}~${index}`}>{seance.mod.name}</label>
+                                                                </>
+                                                                : null
                                                         }
                                                     </td>
                                                 </tr>

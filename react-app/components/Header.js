@@ -4,10 +4,14 @@ import Link from 'next/link'
 const Header = (props) => (
     <header id="header" className="alt">
         <Link href="/">
-            <img src="/logo.png" alt="logo" className="logo"/>
+            <img src="/logo.png" alt="logo" className="logo" />
         </Link>
         <nav>
-            <a className="menu-link" onClick={props.onToggleMenu} href="javascript:;">Menu</a>
+            <a className="menu-link" onClick={e => {
+                e.preventDefault();
+                props.onToggleMenu(e);
+                return false; // old browsers, may not be needed
+            }} href="javascript:;">Menu</a>
         </nav>
     </header>
 )

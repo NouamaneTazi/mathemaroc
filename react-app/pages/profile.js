@@ -36,7 +36,6 @@ const Profile = () => {
         delete user.needsSetup
         user.auth0id = user.sub
         delete user.sub
-        delete user._id
         const res = await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: user })
@@ -160,12 +159,6 @@ const Profile = () => {
                                         <h2 id="content">Mettez à jour votre profil</h2>
                                         <h4>Selectionnez votre nom :</h4>
                                         <ul className="actions">
-                                            {/* {tutors.map(tutor => (
-                                                <div className="4u 12u(small)" key={tutor._id}>
-                                                    <input type="radio" id={`${tutor.firstname}-${tutor.lastname}`} name="demo-priority" onChange={() => { selectedTutor = tutor }} />
-                                                    <label htmlFor={`${tutor.firstname}-${tutor.lastname}`}>{tutor.lastname} {tutor.firstname}</label>
-                                                </div>
-                                            ))} */}
                                             <SearchInput className="search-input" placeholder="Tapez votre nom..." onChange={(term) => { setSearchTerm(term) }} />
                                             <br />
                                             {tutors.length !== filteredTutors.length ? filteredTutors.map(tutor => (

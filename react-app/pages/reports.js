@@ -2,6 +2,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
+import SearchAwaitingStudents from '../components/SearchAwaitingStudents'
 
 const Reports = () => {
     const getUserData = async (user) => {
@@ -9,8 +10,13 @@ const Reports = () => {
         let json = await res.json()
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getAllReports=true')
-        const value = await res.json()
-        setTutors(value)
+        const new_tutors = await res.json()
+
+        res = await fetch('/api/mongodb?getAwaitingStudents=true')
+        const awaitingStudents = await res.json()
+
+        setTutors(new_tutors)
+        setAwaitingStudents(awaitingStudents)
     }
 
     const handleModClick = async (tutor, report_id) => {
@@ -29,6 +35,7 @@ const Reports = () => {
 
     let { user, loading } = useFetchUser()
     const [tutors, setTutors] = useState([])
+    const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)
 
     useEffect(() => {
@@ -62,36 +69,40 @@ const Reports = () => {
                                             <th>Date</th>
                                             <th>Détails</th>
                                             <th>Traité</th>
+                                            <th>Elève remplaçant</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         {tutors.map(tutor => {
-                                            return tutor.reports ? tutor.reports.map((report, index) => (
-                                                <tr key={`${tutor._id}~${index}`}>
+                                            return tutor.reports ? tutor.reports.map((report, report_index) => (
+                                                <tr key={`${tutor._id}~${report_index}`}>
                                                     <td>{tutor.firstname} {tutor.lastname}</td>
                                                     <td>{report.student.name}</td>
                                                     <td>{report.time}</td>
                                                     <td>{report.text}</td>
-                                                    <td>
+                                                    <td >
                                                         {!report.mod || !report.mod.id ?
                                                             <>
-                                                                <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, index)} />
-                                                                <label htmlFor={`${tutor._id}~${index}`}></label>
+                                                                <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, report_index)} />
+                                                                <label style={{verticalAlign:"text-top"}} htmlFor={`${tutor._id}~${report_index}`}></label>
                                                             </>
                                                             : report.mod.id == user.sub ?
                                                                 <>
-                                                                    <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked onClick={() => handleModClick(tutor, index)} />
-                                                                    <label htmlFor={`${tutor._id}~${index}`}>{report.mod.name}</label>
+                                                                    <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked onClick={() => handleModClick(tutor, report_index)} />
+                                                                    <label style={{verticalAlign:"text-top"}} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
                                                                 </>
                                                                 : report.mod.id !== user.sub ?
                                                                     <>
-                                                                        <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked />
-                                                                        <label htmlFor={`${tutor._id}~${index}`}>{report.mod.name}</label>
+                                                                        <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked />
+                                                                        <label style={{verticalAlign:"text-top"}} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
                                                                     </>
                                                                     : null
                                                         }
                                                     </td>
+                                                    <td>{report.replaced_by ? report.replaced_by.name
+                                                    :<SearchAwaitingStudents reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={()=>handleModClick(tutor, report_index)}/>
+                                                    }</td>
                                                 </tr>
                                             )) : null
                                         }

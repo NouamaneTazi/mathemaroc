@@ -8,7 +8,7 @@ handler.use(middleware);
 
 handler.get(async (req, res) => {
     console.log("query", req.query)
-    let { groupId, auth0id, role, getAllSeances, getAllReports } = req.query
+    let { groupId, auth0id, role, getAllSeances, getAllReports, getAwaitingStudents } = req.query
     if (groupId) {
         req.db.collection('users').find({ groupId: parseInt(groupId) }).toArray(function (err, result) {
             if (err) res.json({ err: true })
@@ -51,7 +51,14 @@ handler.get(async (req, res) => {
                 res.json(result);
             }
         });
-    }
+    } else if (getAwaitingStudents) {
+    req.db.collection('users').find({ role:"student", groupId: {$exists: false}}).sort({ lastname: 1 }).toArray(function (err, result) {
+        if (err) res.json({ err: true })
+        else {
+            res.json(result);
+        }
+    });
+}
 });
 
 handler.post(async (req, res) => {

@@ -57,70 +57,78 @@ const Admin = () => {
                         <header className="major">
                             <h1>Tuteurs</h1>
                         </header>
-                        {tutors.length > 0 ?
+                        {tutors.length > 0 &&
                             <div className="12u 12u(medium)">
                                 <h3>Compteur de séances données :</h3>
                                 <div className="box" style={{ textAlign: "center" }}>
                                     <h1>{getNumberSeances(tutors)}</h1>
                                 </div>
 
-                            </div> : null
+                            </div>
                         }
+                    </div>
+                    <div className="12u">
 
-                        <div className="12u 12u(medium)">
-                            {tutors.map(tutor => (
-                                <div key={tutor._id} className="table-wrapper">
-                                    <h4>{tutor.firstname} {tutor.lastname} <i>({tutor.last_updated})</i></h4>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Durée</th>
-                                                <th>Chapitres traités</th>
-                                                <th>Elèves absents</th>
-                                                <th>Remarques</th>
-                                                <th>Traité</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {tutor.seances ? tutor.seances.map((seance, index) => (
-                                                <tr key={`${tutor._id}~${index}`}>
-                                                    <td>{seance.date}</td>
-                                                    <td>{seance.duree}</td>
-                                                    <td>{seance.chapitres}</td>
-                                                    <td>{Object.values(seance.absents).join(', ')}</td>
-                                                    <td>{seance.remarques}</td>
-                                                    <td>
-                                                        {!seance.mod || !seance.mod.id?
-                                                            <>
-                                                                <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, index)} />
-                                                                <label htmlFor={`${tutor._id}~${index}`}></label>
-                                                            </>
-                                                            : seance.mod.id == user.sub ?
+                        <div className="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tuteur</th>
+                                        <th>Mis à jour</th>
+                                        <th>Date</th>
+                                        <th>Durée</th>
+                                        <th>Chapitres traités</th>
+                                        <th>Elèves absents</th>
+                                        <th>Remarques</th>
+                                        <th>Traité</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {tutors.map(tutor => {
+                                        return (
+                                            <>
+                                                {tutor.seances && tutor.seances.map((seance, index) => (
+                                                    <tr key={`${tutor._id}~${index}`}>
+                                                        {index == 0 && <td rowSpan={tutor.seances.length}>{tutor.firstname} {tutor.lastname}</td>}
+                                                        {index == 0 && <td rowSpan={tutor.seances.length}>{tutor.last_updated}</td>}
+                                                        <td>{seance.date}</td>
+                                                        <td>{seance.duree}</td>
+                                                        <td>{seance.chapitres}</td>
+                                                        <td>{Object.values(seance.absents).join(', ')}</td>
+                                                        <td>{seance.remarques}</td>
+                                                        <td>
+                                                            {!seance.mod || !seance.mod.id ?
                                                                 <>
-                                                                    <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked onClick={() => handleModClick(tutor, index)} />
-                                                                    <label htmlFor={`${tutor._id}~${index}`}>{seance.mod.name}</label>
+                                                                    <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, index)} />
+                                                                    <label htmlFor={`${tutor._id}~${index}`}></label>
                                                                 </>
-                                                                : seance.mod.id !== user.sub ?
-                                                                <>
-                                                                    <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked />
-                                                                    <label htmlFor={`${tutor._id}~${index}`}>{seance.mod.name}</label>
-                                                                </>
-                                                                : null
-                                                        }
-                                                    </td>
-                                                </tr>
-                                            )) : null}
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            ))}
+                                                                : seance.mod.id == user.sub ?
+                                                                    <>
+                                                                        <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked onClick={() => handleModClick(tutor, index)} />
+                                                                        <label htmlFor={`${tutor._id}~${index}`}>{seance.mod.name}</label>
+                                                                    </>
+                                                                    : seance.mod.id !== user.sub ?
+                                                                        <>
+                                                                            <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked />
+                                                                            <label htmlFor={`${tutor._id}~${index}`}>{seance.mod.name}</label>
+                                                                        </>
+                                                                        : null
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                                {tutor.seances &&<tr  style={{ height:"50px" }}></tr>}
+                                            </>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
                         </div>
 
+
                     </div>
-                </section>
-            </Layout>
+                </section >
+            </Layout >
             }
         </>
     )

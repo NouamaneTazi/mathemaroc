@@ -59,8 +59,8 @@ const Reports = () => {
                             {user ? <h1>Elèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
 
-                        <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("replaced_by" in report)).length, 0)} <br/>
-                        Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "replaced_by" in report).length, 0)}</p>
+                        <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br/>
+                        Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p>
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper">
                                 <table>

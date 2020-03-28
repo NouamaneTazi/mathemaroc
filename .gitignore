@@ -30,3 +30,4 @@ react-app/coverage
 react-app/build
 
 .vscode/
+react-app/package-lock.json

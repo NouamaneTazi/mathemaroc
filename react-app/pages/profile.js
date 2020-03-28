@@ -8,6 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import SeancesForm from '../components/SeancesForm'
 import ReportStudentDialog from '../components/ReportStudentDialog'
 import AssociateUser from '../components/AssociateUser'
+import ProfileSeancesTutors from "../components/ProfileSeancesTutors";
 
 
 const Profile = () => {
@@ -79,7 +80,7 @@ const Profile = () => {
                                 </div>
                             </div>
                             <div className="12u 12u(medium)">
-                                <h4>Liste des élèves</h4>
+                                <h3>Liste des élèves</h3>
                                 <div className="table-wrapper">
                                     <table>
                                         <thead>
@@ -124,42 +125,7 @@ const Profile = () => {
                             </div>
 
                             <SeancesForm user={user} />
-
-                            <div className="12u">
-                                <h4>Tu n'es pas seul !</h4>
-                                <div className="table-wrapper">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Tuteur</th>
-                                                <th>Mis à jour</th>
-                                                <th>Date</th>
-                                                <th>Durée</th>
-                                                <th>Chapitres traités</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {seancestutors.map(tutor => {
-                                                return (
-                                                    <>
-                                                        {tutor.seances && tutor.seances.map((seance, index) => (
-                                                            <tr key={`${tutor._id}~${index}`}>
-                                                                {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{tutor.firstname} {tutor.lastname}</th>}
-                                                                {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{tutor.last_updated}</th>}
-                                                                <td>{seance.date}</td>
-                                                                <td>{seance.duree}</td>
-                                                                <td>{seance.chapitres}</td>
-                                                            </tr>
-                                                        ))}
-                                                        {tutor.seances && <tr style={{ height: "50px" }}></tr>}
-                                                    </>
-                                                )
-                                            })}
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                            </div>
+                            <ProfileSeancesTutors />
 
                         </div>
                     </section>

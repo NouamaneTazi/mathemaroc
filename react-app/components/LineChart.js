@@ -90,14 +90,15 @@ const getData = (tutors) => {
     let dates = Object.keys(seances).sort()
     let startDate = new Date()
     startDate.setDate(new Date(dates[0]).getDate() - 2)
-    const endDate = new Date(dates.slice(-1)    )
-    console.log(dates.slice(-1))
+    const endDate = new Date(dates.slice(-1)[0])
     let date = startDate
     while (date <= endDate){
         console.log(moment(date).format('L'))
         !moment(date).format('L') in seances ? seances[moment(date).format('L')] = [] : null
         date.setDate(date.getDate() + 1)
     }
+
+    console.log("seances",seances)
 
     Object.keys(seances).sort().forEach(date => {
         let arr = seances[date]

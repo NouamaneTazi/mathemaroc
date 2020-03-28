@@ -42,7 +42,7 @@ const Reports = () => {
                 <section id="one">
                     <div className="inner">
                         <header className="major">
-                            {user ? <h1>Elèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Elèves signalés ({students.length})</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
 
                         <div className="12u 12u(medium)">

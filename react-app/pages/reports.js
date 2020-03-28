@@ -59,13 +59,15 @@ const Reports = () => {
                             {user ? <h1>Elèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
 
+                        <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("replaced_by" in report)).length, 0)} <br/>
+                        Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "replaced_by" in report).length, 0)}</p>
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper">
                                 <table>
                                     <thead>
                                         <tr>
-                                        <th>Groupe</th>
-                                        <th>Tuteur</th>
+                                            <th>Groupe</th>
+                                            <th>Tuteur</th>
                                             <th>Elève signalé</th>
                                             <th>Date</th>
                                             <th>Détails</th>
@@ -87,23 +89,23 @@ const Reports = () => {
                                                         {!report.mod || !report.mod.id ?
                                                             <>
                                                                 <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, report_index)} />
-                                                                <label style={{verticalAlign:"text-top"}} htmlFor={`${tutor._id}~${report_index}`}></label>
+                                                                <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}></label>
                                                             </>
                                                             : report.mod.id == user.sub ?
                                                                 <>
                                                                     <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked onClick={() => handleModClick(tutor, report_index)} />
-                                                                    <label style={{verticalAlign:"text-top"}} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
+                                                                    <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
                                                                 </>
                                                                 : report.mod.id !== user.sub ?
                                                                     <>
                                                                         <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked />
-                                                                        <label style={{verticalAlign:"text-top"}} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
+                                                                        <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
                                                                     </>
                                                                     : null
                                                         }
                                                     </td>
                                                     <td>{report.replaced_by ? report.replaced_by.name
-                                                    :<SearchAwaitingStudents reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={()=>handleModClick(tutor, report_index)}/>
+                                                        : <SearchAwaitingStudents reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={() => handleModClick(tutor, report_index)} />
                                                     }</td>
                                                 </tr>
                                             )) : null

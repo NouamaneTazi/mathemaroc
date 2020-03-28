@@ -55,7 +55,7 @@ const Admin = () => {
                 <section id="one">
                     <div className="inner">
                         <header className="major">
-                            <h1>Tuteurs</h1>
+                            {user ? <h1>Tuteurs</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
                         {tutors.length > 0 &&
                             <div className="12u 12u(medium)">

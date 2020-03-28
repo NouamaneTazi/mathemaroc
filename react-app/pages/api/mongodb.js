@@ -8,7 +8,7 @@ handler.use(middleware);
 
 handler.get(async (req, res) => {
     console.log("query", req.query)
-    let { groupId, auth0id, role, getAllSeances, getAllReports, getAwaitingStudents } = req.query
+    let { groupId, auth0id, role, getAllSeances, getAllReports, getAwaitingStudents, getAllReportsFromStudents } = req.query
     if (groupId) {
         req.db.collection('users').find({ groupId: parseInt(groupId) }).toArray(function (err, result) {
             if (err) res.json({ err: true })
@@ -38,27 +38,34 @@ handler.get(async (req, res) => {
             }
         });
     } else if (getAllSeances) {
-        req.db.collection('users').find({ role:"tutor", seances:{$exists:true} }).sort({ last_updated: -1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ role: "tutor", seances: { $exists: true } }).sort({ last_updated: -1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
             }
         });
     } else if (getAllReports) {
-        req.db.collection('users').find({ role:"tutor", reports:{$exists:true} }).sort({ last_updated: -1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ role: "tutor", reports: { $exists: true } }).sort({ last_updated: -1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
             }
         });
     } else if (getAwaitingStudents) {
-    req.db.collection('users').find({ role:"student", groupId: {$exists: false}}).sort({ lastname: 1 }).toArray(function (err, result) {
-        if (err) res.json({ err: true })
-        else {
-            res.json(result);
-        }
-    });
-}
+        req.db.collection('users').find({ role: "student", groupId: { $exists: false } }).sort({ lastname: 1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (getAllReportsFromStudents) {
+        req.db.collection('users').find({reported: true, groupId: {$ne:-1}}).sort({"report.tutor.name": 1}).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        })
+    }
 });
 
 handler.post(async (req, res) => {

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, StrictMode } from "react"
+import moment from 'moment'
 
 const Seances = ({ user }) => {
 
@@ -19,6 +20,16 @@ const Seances = ({ user }) => {
         values[index][event.target.name] = event.target.value
         setInputFields(values);
     };
+
+    const handleDateChange = (index, event) => {
+        let date = event.target.value
+        if (moment(date, ["DD-MM-YYYY","DD/MM/YYYY"], true).isValid()){
+            date = moment(date, ["DD-MM-YYYY","DD/MM/YYYY"], true).format('YYYY-MM-DD')
+        }
+        const values = [...inputFields];
+        values[index][event.target.name] = date
+        setInputFields(values)
+    }
 
     const handleAbsentsChange = (index, absentStudent) => {
         if (absentStudent._id in inputFields[index].absents) delete inputFields[index].absents[absentStudent._id]
@@ -49,6 +60,7 @@ const Seances = ({ user }) => {
     return (
         <div className="12u 12u(medium)">
             <h4>Séances</h4>
+
             <div className="table-wrapper">
                 <table>
                     <thead>
@@ -69,7 +81,7 @@ const Seances = ({ user }) => {
                                         id="date"
                                         name="date"
                                         value={inputField.date}
-                                        onChange={event => handleInputChange(index, event)}
+                                        onChange={event => handleDateChange(index, event)}
                                         style={{ backgroundColor: "#3e467f" }}
                                     />
                                 </th>
@@ -99,13 +111,6 @@ const Seances = ({ user }) => {
                                 </th>
 
                                 <th>
-                                    {/* <input
-                                        type="text"
-                                        id="remarques"
-                                        name="remarques"
-                                        value={inputField.remarques}
-                                        onChange={event => handleInputChange(index, event)}
-                                    /> */}
                                     <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea>
 
                                 </th>

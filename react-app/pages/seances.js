@@ -2,6 +2,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
+import LineChart from '../components/LineChart'
 
 const Admin = () => {
     const getUserData = async (user) => {
@@ -57,6 +58,7 @@ const Admin = () => {
                         <header className="major">
                             {user ? <h1>Tuteurs</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
+                        <LineChart tutors={tutors}/>
                         {tutors.length > 0 &&
                             <div className="12u 12u(medium)">
                                 <h3>Compteur de séances données :</h3>

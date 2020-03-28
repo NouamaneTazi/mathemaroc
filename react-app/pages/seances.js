@@ -56,7 +56,7 @@ const Admin = () => {
                 <section id="one">
                     <div className="inner">
                         <header className="major">
-                            {user ? <h1>Tuteurs</h1> : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Séances données</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
                         <LineChart tutors={tutors}/>
                         {tutors.length > 0 &&
@@ -72,7 +72,7 @@ const Admin = () => {
                     <div className="12u">
 
                         <div className="table-wrapper">
-                            <table>
+                            <table className="alt">
                                 <thead>
                                     <tr>
                                         <th>Tuteur</th>
@@ -119,7 +119,7 @@ const Admin = () => {
                                                         </td>
                                                     </tr>
                                                 ))}
-                                                {tutor.seances &&<tr  style={{ height:"50px" }}></tr>}
+                                                {tutor.seances.length>0 &&<tr  style={{ height:"50px" }}></tr>}
                                             </>
                                         )
                                     })}

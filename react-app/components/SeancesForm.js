@@ -58,8 +58,8 @@ const Seances = ({ user }) => {
 
 
     return (
-        <div className="12u 12u(medium)">
-            <h4>Séances</h4>
+        <div className="12u">
+            <h3>Séances</h3>
 
             <div className="table-wrapper">
                 <table>

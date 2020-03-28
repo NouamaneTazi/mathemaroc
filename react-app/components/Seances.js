@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const Seances = ({user}) => {
+const Seances = ({ user }) => {
 
     const handleAddFields = () => {
         const values = [...inputFields];
@@ -83,20 +83,15 @@ const Seances = ({user}) => {
                                     />
                                 </th>
                                 <th>
-                                    <input
-                                        type="text"
-                                        id="chapitres-traites"
-                                        name="chapitres"
-                                        value={inputField.chapitres}
-                                        onChange={event => handleInputChange(index, event)}
-                                    />
+                                    <textarea name="chapitres" id="chapitres-traites" placeholder="Enter your message" rows="7" value={inputField.chapitres} onChange={event => handleInputChange(index, event)}></textarea>
+
                                 </th>
 
                                 <th>
                                     {user.students.map((student) => (
-                                        <div className="6u 12u(small)" key={student._id}>
+                                        <div className="12u 12u(small)" key={student._id}>
                                             {/* TODO: handle checked for absent students */}
-                                            <input type="checkbox" id={`${index}-${student._id}`} onChange={() => handleAbsentsChange(index, student)} /> 
+                                            <input type="checkbox" id={`${index}-${student._id}`} onChange={() => handleAbsentsChange(index, student)} />
                                             <label htmlFor={`${index}-${student._id}`}>{student.firstname} {student.lastname}</label>
                                         </div>
                                     ))
@@ -104,13 +99,15 @@ const Seances = ({user}) => {
                                 </th>
 
                                 <th>
-                                    <input
+                                    {/* <input
                                         type="text"
                                         id="remarques"
                                         name="remarques"
                                         value={inputField.remarques}
                                         onChange={event => handleInputChange(index, event)}
-                                    />
+                                    /> */}
+                                    <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea>
+
                                 </th>
                                 <button onClick={() => handleRemoveFields(index)}>-</button>
                             </tr>

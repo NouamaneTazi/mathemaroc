@@ -89,14 +89,14 @@ const Admin = () => {
                                             <>
                                                 {tutor.seances && tutor.seances.map((seance, index) => (
                                                     <tr key={`${tutor._id}~${index}`}>
-                                                        {index == 0 && <td rowSpan={tutor.seances.length}>{tutor.firstname} {tutor.lastname}</td>}
-                                                        {index == 0 && <td rowSpan={tutor.seances.length}>{tutor.last_updated}</td>}
+                                                        {index == 0 && <th rowSpan={tutor.seances.length} style={{verticalAlign:"middle"}}>{tutor.firstname} {tutor.lastname}</th>}
+                                                        {index == 0 && <th rowSpan={tutor.seances.length} style={{verticalAlign:"middle"}}>{tutor.last_updated}</th>}
                                                         <td>{seance.date}</td>
                                                         <td>{seance.duree}</td>
                                                         <td>{seance.chapitres}</td>
                                                         <td>{Object.values(seance.absents).join(', ')}</td>
                                                         <td>{seance.remarques}</td>
-                                                        <td>
+                                                        <td style={{verticalAlign:"middle"}}>
                                                             {!seance.mod || !seance.mod.id ?
                                                                 <>
                                                                     <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, index)} />

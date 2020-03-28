@@ -89,16 +89,14 @@ const getData = (tutors) => {
 
     let dates = Object.keys(seances).sort()
     let startDate = new Date()
-    startDate.setDate(new Date(dates[0]).getDate() - 2)
+    startDate.setDate(new Date(dates[0]).getDate() - 1)
     const endDate = new Date(dates.slice(-1)[0])
     let date = startDate
     while (date <= endDate){
-        console.log(moment(date).format('L'))
-        !moment(date).format('L') in seances ? seances[moment(date).format('L')] = [] : null
+        moment(date).format('L') in seances ? null : seances[moment(date).format('L')] = []
         date.setDate(date.getDate() + 1)
     }
 
-    console.log("seances",seances)
 
     Object.keys(seances).sort().forEach(date => {
         let arr = seances[date]
@@ -108,7 +106,6 @@ const getData = (tutors) => {
         })
     })
 
-    console.log("data",data)
     return data
 
 }
@@ -123,7 +120,6 @@ class Demo extends React.PureComponent {
 
         return (
             <Paper>
-                {console.log("tutors", tutors)}
                 <Chart
                     data={getData(tutors)}
                     className={classes.chart}

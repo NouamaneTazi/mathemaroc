@@ -77,9 +77,6 @@ const getData = (tutors) => {
 
     let seances = []
 
-    
-
-
 
     tutors.map(tutor => {
         tutor.seances.map(seance => {
@@ -118,14 +115,9 @@ const getData = (tutors) => {
 class Demo extends React.PureComponent {
     constructor(props) {
         super(props);
-
-        this.state = {
-            data,
-        };
     }
 
     render() {
-        const { data: chartData } = this.state;
         const { classes, tutors } = this.props;
 
         return (

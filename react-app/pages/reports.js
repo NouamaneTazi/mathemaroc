@@ -64,7 +64,8 @@ const Reports = () => {
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Tuteur</th>
+                                        <th>Groupe</th>
+                                        <th>Tuteur</th>
                                             <th>Elève signalé</th>
                                             <th>Date</th>
                                             <th>Détails</th>
@@ -77,6 +78,7 @@ const Reports = () => {
                                         {tutors.map(tutor => {
                                             return tutor.reports ? tutor.reports.map((report, report_index) => (
                                                 <tr key={`${tutor._id}~${report_index}`}>
+                                                    <td>{tutor.groupId}</td>
                                                     <td>{tutor.firstname} {tutor.lastname}</td>
                                                     <td>{report.student.name}</td>
                                                     <td>{report.time}</td>

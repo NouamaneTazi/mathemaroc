@@ -35,7 +35,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
             method: 'post',
             body: JSON.stringify({ _id: student._id, data: student })
         })
-        let reports = tutor.reports ? tutor.reports : []
+        let reports = "reports" in tutor ? tutor.reports : []
         reports.push({
             "student": {"_id":student._id, "name":`${student.firstname} ${student.lastname}`},
             "time": new Date(Date.now()).toLocaleString("en-US"),

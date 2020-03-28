@@ -7,10 +7,12 @@ const SearchAwaitingStudents = ({ reportedStudent, awaitingStudents, toggleTrait
             method: 'post',
             body: JSON.stringify({ _id: reportedStudent._id, data: {"groupId":-1} })
         })
-        await fetch('/api/mongodb', {
-            method: 'post',
-            body: JSON.stringify({ _id: selectedReplacement._id, data: {"groupId":groupId} })
-        })
+        if (selectedReplacement.firstname!=="--"){
+            await fetch('/api/mongodb', {
+                method: 'post',
+                body: JSON.stringify({ _id: selectedReplacement._id, data: {"groupId":groupId} })
+            })
+        } 
         report.replaced_by = {_id: selectedReplacement._id, name: `${selectedReplacement.firstname} ${selectedReplacement.lastname}`}
         await fetch('/api/mongodb', {
             method: 'post',

@@ -7,10 +7,12 @@ const SearchAwaitingStudents = ({ reportedStudent, awaitingStudents, groupId}) =
             method: 'post',
             body: JSON.stringify({ _id: reportedStudent._id, data: {"groupId":-1} })
         })
-        await fetch('/api/mongodb', {
-            method: 'post',
-            body: JSON.stringify({ _id: selectedReplacement._id, data: {"groupId":groupId} })
-        })
+        if (selectedReplacement.firstname!=="--"){
+            await fetch('/api/mongodb', {
+                method: 'post',
+                body: JSON.stringify({ _id: selectedReplacement._id, data: {"groupId":groupId} })
+            })
+        } 
         window.location.reload(false)
     }
     const [searchTerm, setSearchTerm] = useState("")

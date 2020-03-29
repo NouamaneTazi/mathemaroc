@@ -8,7 +8,7 @@ handler.use(middleware);
 
 handler.get(async (req, res) => {
     console.log("query", req.query)
-    let { groupId, auth0id, role, getAllSeances, getAllReports, getAwaitingStudents, getAllReportsFromStudents } = req.query
+    let { groupId, auth0id, role, getAllSeances, getAllReports, getAwaitingStudents, getAwaitingTutors, getAllReportsFromStudents } = req.query
     if (groupId) {
         req.db.collection('users').find({ groupId: parseInt(groupId) }).toArray(function (err, result) {
             if (err) res.json({ err: true })
@@ -52,7 +52,14 @@ handler.get(async (req, res) => {
             }
         });
     } else if (getAwaitingStudents) {
-        req.db.collection('users').find({ role: "student", groupId: { $exists: false } }).sort({ lastname: 1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ role: "student" }).sort({ lastname: 1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (getAwaitingTutors) {
+        req.db.collection('users').find({ role: "tutor", groupId: { $exists: false } }).sort({ lastname: 1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);

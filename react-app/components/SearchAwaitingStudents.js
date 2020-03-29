@@ -21,22 +21,23 @@ const SearchAwaitingStudents = ({ reportedStudent, awaitingStudents, toggleTrait
         toggleTraiteCase()
     }
     const [searchTerm, setSearchTerm] = useState("")
+    const [selectedReplacement, setSelectedReplacement] = useState("")
     const filteredAwaitingStudents = awaitingStudents.filter(createFilter(searchTerm, ['firstname', 'lastname', 'whatsapp']))
-    let selectedReplacement = ""
 
     return (<div className="12u 12u(small)" >
         <SearchInput className="search-input" placeholder="Tapez nom ou prénom ou numéro de l'élève..." onChange={(term) => { setSearchTerm(term) }} />
         <br />
         {
-            searchTerm !== "" ? <>
+            searchTerm !== "" && <>
                 {filteredAwaitingStudents.slice(0, 3).map(student => (
                     <>
-                        <input type="radio" id={`${student.firstname}-${student.lastname}`} name="demo-priority" onChange={() => { selectedReplacement = student }} />
+                        <input type="radio" id={`${student.firstname}-${student.lastname}`} name="demo-priority" onChange={() => { setSelectedReplacement(student) }} />
                         <label htmlFor={`${student.firstname}-${student.lastname}`}>{student.lastname} {student.firstname}</label>
                     </>
                 ))}
-                <div className="button special" onClick={() => replaceStudent(reportedStudent, selectedReplacement)}>Confimer</div>
-            </> : null
+                {selectedReplacement && <div className="button special" onClick={() => replaceStudent(reportedStudent, selectedReplacement)}>Confimer</div>}
+            </>
+            
         }
     </div>)
 }

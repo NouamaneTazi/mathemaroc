@@ -106,7 +106,7 @@ const Reports = () => {
                                                                     : null
                                                         }
                                                     </td>
-                                                    <td>{report.replaced_by && report.mod.id != user.sub ? report.replaced_by.name
+                                                    <td>{report.replaced_by && (!report.mod || report.mod.id != user.sub) ? report.replaced_by.name
                                                         : report.replaced_by && report.mod.id == user.sub ? <>
                                                             {report.replaced_by.name} <div className="button special" onClick={() => setReplacingStudent(report.replaced_by)}>Undo</div>
                                                             <UndoReplacedStudent replacingStudent={replacingStudent} setReplacingStudent={setReplacingStudent} tutor={tutor} report={report}/>

@@ -49,15 +49,7 @@ const legendItemBase = ({ classes, ...restProps }) => (
 const Root = withStyles(legendStyles, { name: 'LegendRoot' })(legendRootBase);
 const Label = withStyles(legendLabelStyles, { name: 'LegendLabel' })(legendLabelBase);
 const Item = withStyles(legendItemStyles, { name: 'LegendItem' })(legendItemBase);
-const demoStyles = () => ({
-    chart: {
-        paddingRight: '20px',
-        color: "#3e467f"
-    },
-    title: {
-        whiteSpace: 'pre',
-    },
-});
+
 
 const ValueLabel = (props) => {
     const { text } = props;
@@ -117,6 +109,25 @@ const TooltipContent = ({ targetItem }, data) => {
     return item.seances
 };
 
+const demoStyles = () => ({
+    chart: {
+        paddingRight: '20px',
+        color: "#3e467f"
+    },
+    title: {
+        whiteSpace: 'pre',
+    },
+    white: {
+        color: 'white'
+    },
+    paper: {
+        // backgroundColor: "transparent",
+        // width:"6u 12u(medium)",
+        // margin:"auto"
+        marginBottom : '1em'
+    }
+});
+
 class Demo extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -126,12 +137,13 @@ class Demo extends React.PureComponent {
         const { classes, tutors } = this.props;
 
         return (
-            <Paper>
+            <Paper className={classes.paper}>
                 <Chart
                     data={getData(tutors)}
                     className={classes.chart}
+                    height={400}
                 >
-                    <ArgumentAxis tickFormat={() => tick => tick} showGrid />
+                    <ArgumentAxis showGrid className={classes.white} />
                     <ValueAxis
                         labelComponent={ValueLabel}
                     />

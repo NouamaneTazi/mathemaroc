@@ -45,7 +45,7 @@ handler.get(async (req, res) => {
             }
         });
     } else if (getAllReports) {
-        req.db.collection('users').find({ role: "tutor", reports: { $exists: true } }).sort({ last_updated: -1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ role: "tutor", reports: { $exists: true } }).sort({ "reports.time": -1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);

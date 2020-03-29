@@ -108,7 +108,7 @@ const Profile = () => {
                                                     <td>{student.wishes}</td>
                                                     <td>{student.whatsapp}</td>
                                                     <td>{student.facebook}</td>
-                                                    <td> {student.reported ?
+                                                    <td style={{textAlign:"center"}}> {student.reported ?
                                                         <CustomizedTooltip title="Elève signalé" placement="left">
                                                             <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "red", cursor: "pointer" }} onClick={() => setOpenReportDialog(student)}>warning</Icon>
                                                         </CustomizedTooltip> :

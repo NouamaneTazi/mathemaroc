@@ -6,13 +6,18 @@ import {
     ValueAxis,
     LineSeries,
     Title,
-    Legend,
+    Legend, Tooltip
 } from '@devexpress/dx-react-chart-material-ui';
 import { withStyles } from '@material-ui/core/styles';
-import { Animation } from '@devexpress/dx-react-chart';
+import {
+    ArgumentScale,
+    ValueScale,
+    EventTracker,
+    HoverState,
+    Animation,
+} from '@devexpress/dx-react-chart';
 import moment from 'moment'
 
-const format = () => tick => tick;
 const legendStyles = () => ({
     root: {
         display: 'flex',
@@ -47,6 +52,7 @@ const Item = withStyles(legendItemStyles, { name: 'LegendItem' })(legendItemBase
 const demoStyles = () => ({
     chart: {
         paddingRight: '20px',
+        color: "#3e467f"
     },
     title: {
         whiteSpace: 'pre',
@@ -66,6 +72,7 @@ const ValueLabel = (props) => {
 const titleStyles = {
     title: {
         whiteSpace: 'pre',
+        color: "#3e467f"
     },
 };
 const TitleText = withStyles(titleStyles)(({ classes, ...props }) => (
@@ -74,10 +81,7 @@ const TitleText = withStyles(titleStyles)(({ classes, ...props }) => (
 
 const getData = (tutors) => {
     let data = []
-
     let seances = []
-
-
     tutors.map(tutor => {
         tutor.seances.map(seance => {
             if ("date" in seance) {
@@ -92,7 +96,7 @@ const getData = (tutors) => {
     startDate.setDate(new Date(dates[0]).getDate() - 1)
     const endDate = new Date(dates.slice(-1)[0])
     let date = startDate
-    while (date <= endDate){
+    while (date <= endDate) {
         moment(date).format('L') in seances ? null : seances[moment(date).format('L')] = []
         date.setDate(date.getDate() + 1)
     }
@@ -105,10 +109,13 @@ const getData = (tutors) => {
             "seances": arr.length
         })
     })
-
     return data
-
 }
+
+const TooltipContent = ({ targetItem }, data) => {
+    const item = data[targetItem.point];
+    return item.seances
+};
 
 class Demo extends React.PureComponent {
     constructor(props) {
@@ -124,7 +131,7 @@ class Demo extends React.PureComponent {
                     data={getData(tutors)}
                     className={classes.chart}
                 >
-                    <ArgumentAxis tickFormat={format} />
+                    <ArgumentAxis tickFormat={() => tick => tick} showGrid />
                     <ValueAxis
                         labelComponent={ValueLabel}
                     />
@@ -134,11 +141,15 @@ class Demo extends React.PureComponent {
                         valueField="seances"
                         argumentField="day"
                     />
-                    <Legend position="bottom" rootComponent={Root} itemComponent={Item} labelComponent={Label} />
+                    {/* <Legend position="right" rootComponent={Root} itemComponent={Item} labelComponent={Label} /> */}
                     <Title
-                        text={`Confidence in Institutions in American society ${'\n'}(Great deal)`}
                         textComponent={TitleText}
+                        text={`Nombre de séances données par jour`}
                     />
+
+                    <EventTracker />
+                    <HoverState />
+                    <Tooltip contentComponent={e => TooltipContent(e, getData(tutors))} />
                     {/* <Animation /> */}
                 </Chart>
             </Paper>

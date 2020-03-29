@@ -78,46 +78,46 @@ const Reports = () => {
                     <meta name="description" content="Tuteurs en attente" />
                 </Head>
                 <section id="one">
-                    <div className="inner">
+                    <div className="inner" style={{maxWidth:"75em"}}>
                         <header className="major">
-                            {user ? <h1>Tuteurs en attente</h1> : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>
+                                : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
-                    </div>
 
-                    {/* <p>Demandes en attente : {awaitingtutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br/>
-                        Demandes traités : {awaitingtutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}
-                    <div className="12u 12u(medium)">
-                        <div className="table-wrapper">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Tuteur</th>
-                                        <th>Statut</th>
-                                        <th>Matières</th>
-                                        <th>Whatsapp</th>
-                                        <th>Mail</th>
-                                        <th>Veut encadrer groupe ?</th>
-                                        <th>Groupe</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    {awaitingtutors.map(tutor => (
-                                        <tr key={`${tutor._id}`}>
-                                            <td>{tutor.firstname} {tutor.lastname}</td>
-                                            <td>{tutor.statut}</td>
-                                            <td>{tutor.matieres}</td>
-                                            <td>{tutor.whatsapp}</td>
-                                            <td>{tutor.mail}</td>
-                                            <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>
-                                            <td><InputGroupId tutor={tutor} /></td>
+                        <div className="12u 12u(medium)">
+                            <div className="table-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Tuteur</th>
+                                            <th>Statut</th>
+                                            <th>Matières</th>
+                                            <th>Whatsapp</th>
+                                            <th>Mail</th>
+                                            <th>Veut encadrer groupe ?</th>
+                                            <th>Groupe</th>
                                         </tr>
-                                    )
-                                    )}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+
+                                        {awaitingtutors.map(tutor => (
+                                            <tr key={`${tutor._id}`}>
+                                                <td>{tutor.firstname} {tutor.lastname}</td>
+                                                <td>{tutor.statut}</td>
+                                                <td>{tutor.matieres}</td>
+                                                <td>{tutor.whatsapp}</td>
+                                                <td>{tutor.mail}</td>
+                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>
+                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>
+                                            </tr>
+                                        )
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+
                 </section>
             </Layout>
             }

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SearchAwaitingStudents from '../components/SearchAwaitingStudents'
+import UndoReplacedStudent from '../components/UndoReplacedStudent'
 
 const Reports = () => {
     const getUserData = async (user) => {
@@ -37,7 +38,8 @@ const Reports = () => {
     const [tutors, setTutors] = useState([])
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)
-
+    const [replacingStudent, setReplacingStudent] = useState(false)
+    
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
@@ -59,7 +61,7 @@ const Reports = () => {
                             {user ? <h1>Elèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
 
-                        <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br/>
+                        <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
                         Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p>
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper">
@@ -104,8 +106,12 @@ const Reports = () => {
                                                                     : null
                                                         }
                                                     </td>
-                                                    <td>{report.replaced_by ? report.replaced_by.name
-                                                        : <SearchAwaitingStudents reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={() => handleModClick(tutor, report_index)} />
+                                                    <td>{report.replaced_by && report.mod.id != user.sub ? report.replaced_by.name
+                                                        : report.replaced_by && report.mod.id == user.sub ? <>
+                                                            {report.replaced_by.name} <div className="button special" onClick={() => setReplacingStudent(report.replaced_by)}>Undo</div>
+                                                            <UndoReplacedStudent replacingStudent={replacingStudent} setReplacingStudent={setReplacingStudent} tutor={tutor} report={report}/>
+                                                        </>
+                                                            : <SearchAwaitingStudents reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={() => handleModClick(tutor, report_index)} />
                                                     }</td>
                                                 </tr>
                                             )) : null

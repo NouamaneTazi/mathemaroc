@@ -66,7 +66,7 @@ handler.get(async (req, res) => {
             }
         });
     } else if (getAllReportsFromStudents) {
-        req.db.collection('users').find({reported: true, groupId: {$ne:-1}}).sort({"report.tutor.name": 1}).toArray(function (err, result) {
+        req.db.collection('users').find({ reported: true, groupId: { $ne: -1 } }).sort({ "report.tutor.name": 1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
@@ -78,12 +78,17 @@ handler.get(async (req, res) => {
 handler.post(async (req, res) => {
     let data = req.body;
     const user = JSON.parse(data);
-    // console.log("post", user)
     if ("_id" in user.data) delete user.data._id
 
-    let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data })
-    // console.log("UPDATED", doc)
+    let { deletingData } = req.query
+    if (deletingData) {
+        let doc = await req.db.collection('users').replaceOne({ _id: ObjectID(user._id) }, { $set: user.data })
+    } else {
+        let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data})
+    }
+
     res.json({ message: 'ok' });
+
 })
 
 export default handler;

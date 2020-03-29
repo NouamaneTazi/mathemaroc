@@ -56,7 +56,7 @@ const Reports = () => {
                     <meta name="description" content="Reports Page" />
                 </Head>
                 <section id="one">
-                    <div className="inner">
+                    <div className="inner" style={{maxWidth:"90%", width:"100%"}}>
                         <header className="major">
                             {user ? <h1>Elèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>

@@ -93,12 +93,12 @@ const Reports = () => {
                                                                 <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, report_index)} />
                                                                 <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}></label>
                                                             </>
-                                                            : report.mod.id == user.sub ?
+                                                            : report.mod.id == user.sub && !("replaced_by" in report) ?
                                                                 <>
                                                                     <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked onClick={() => handleModClick(tutor, report_index)} />
                                                                     <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
                                                                 </>
-                                                                : report.mod.id !== user.sub ?
+                                                                : report.mod.id !== user.sub || (report.mod.id == user.sub && ("replaced_by" in report))?
                                                                     <>
                                                                         <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked />
                                                                         <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
@@ -106,8 +106,8 @@ const Reports = () => {
                                                                     : null
                                                         }
                                                     </td>
-                                                    <td>{report.replaced_by && (!report.mod || report.mod.id != user.sub) ? report.replaced_by.name
-                                                        : report.replaced_by && report.mod.id == user.sub ? <>
+                                                    <td>{("replaced_by" in report) && (!report.mod || report.mod.id != user.sub) ? report.replaced_by.name
+                                                        : ("replaced_by" in report) && report.mod.id == user.sub ? <>
                                                             {report.replaced_by.name} <div className="button special" onClick={() => setReplacingStudent(report.replaced_by)}>Undo</div>
                                                             <UndoReplacedStudent replacingStudent={replacingStudent} setReplacingStudent={setReplacingStudent} tutor={tutor} report={report}/>
                                                         </>

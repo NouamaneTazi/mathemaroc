@@ -23,7 +23,7 @@ const DialogActions = withStyles(theme => ({
 const MoreSeances = ({ user }) => {
     const handleAskedMoreStudents = async () => {
         user.asked_more_students = {
-            date: new Date(Date.now()).toLocaleString("en-US"),
+            time: new Date(Date.now()).toLocaleString("en-US"),
             number: numberStudents
         }
         const res = await fetch('/api/mongodb', {

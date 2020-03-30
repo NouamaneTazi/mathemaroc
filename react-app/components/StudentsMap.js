@@ -9,7 +9,7 @@ const features = data.reduce((s, region) => {
     return s.concat(arr)
 }, [])
 
-console.log(data)
+// console.log(data)
 const geojson = {
     type: 'FeatureCollection',
     // crs: { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
@@ -32,7 +32,7 @@ class Map extends React.Component {
     _onViewportChange = viewport => this.setState({ viewport });
 
     _onClick = event => {
-        console.log(event)
+        // console.log(event)
         const feature = event.features[0];
         if (feature && 'properties' in feature) {
             const clusterId = feature.properties.cluster_id;
@@ -43,7 +43,7 @@ class Map extends React.Component {
                 if (err) {
                     return;
                 }
-                console.log("zoom", zoom)
+                // console.log("zoom", zoom)
                 this._onViewportChange({
                     ...this.state.viewport,
                     longitude: feature.geometry.coordinates[0],
@@ -127,7 +127,7 @@ class Map extends React.Component {
                     <div className="tooltip"
                     // style={{left: x, top: y}}
                     >
-                        {console.log(hoveredFeature)}
+                        {/* {console.log(hoveredFeature)} */}
                         <div>State: {hoveredFeature.properties.name}</div>
                     </div>
                 )}

@@ -21,7 +21,7 @@ class Map extends React.Component {
         viewport: {
             latitude: 28.8, // https://docs.mapbox.com/mapbox-gl-js/example/mouse-position/
             longitude: -10.20,
-            zoom: 4,
+            zoom: 4.7,
             // bearing: 0,
             // pitch: 0,
         },
@@ -59,8 +59,8 @@ class Map extends React.Component {
             srcEvent: { offsetX, offsetY }
         } = event;
         const hoveredFeature = features && features.find(f => f.layer.id === 'data');
-        
-        this.setState({hoveredFeature:hoveredFeature})
+
+        this.setState({ hoveredFeature: hoveredFeature })
     };
 
 
@@ -72,10 +72,10 @@ class Map extends React.Component {
                 mapStyle="mapbox://styles/mapbox/streets-v11"
                 onViewportChange={this._onViewportChange}
                 mapboxApiAccessToken={MAPBOX_TOKEN}
-                interactiveLayerIds={["cluster-count","clusters","data"]}
+                interactiveLayerIds={["cluster-count", "clusters", "data"]}
                 onClick={this._onClick}
                 style={{ margin: "auto", marginBottom: "1em" }}
-                height={500}
+                height={700}
                 width={"100%"}
                 onHover={this._onHover}
             >
@@ -83,15 +83,22 @@ class Map extends React.Component {
                     id="my-data" type="geojson" data={geojson}
                     cluster={true}
                     clusterMaxZoom={14}
-                    clusterRadius={50}
+                    clusterRadius={30}
                     ref={this._sourceRef}
                 >
-                    <Layer id='clusters'
+                    {/* <Layer id='clusters'
                         type='circle'
                         filter={['has', 'point_count']}
                         paint={{
                             'circle-color': ['step', ['get', 'point_count'], '#51bbd6', 100, '#f1f075', 750, '#f28cb1'],
                             'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40]
+                        }} /> */}
+                    <Layer id='clusters'
+                        type='circle'
+                        filter={['has', 'point_count']}
+                        paint={{
+                            'circle-color': '#51bbd6',
+                            'circle-radius': ['step', ['get', 'point_count'], 10, 100, 15, 200, 20, 300, 25, 400, 30, 500, 35]
                         }} />
                     <Layer id='cluster-count'
                         type='symbol'

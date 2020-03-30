@@ -9,7 +9,7 @@ import SeancesForm from '../components/SeancesForm'
 import ReportStudentDialog from '../components/ReportStudentDialog'
 import AssociateUser from '../components/AssociateUser'
 import ProfileSeancesTutors from "../components/ProfileSeancesTutors";
-
+import MoreStudents from '../components/profile/MoreStudents'
 
 const Profile = () => {
     const getUserData = async (user) => {
@@ -73,6 +73,7 @@ const Profile = () => {
 
                             <div className="row 200%">
                                 <div className="12u 12u(medium)">
+                                    <p><b>Nouveauté : </b> Pour les plus motivés d'entre vous, vous pouvez maintenant demander plus d'élèves !</p>
                                     <h2 id="content">{user.firstname} {user.lastname}</h2>
                                     <p>Au nom de l'association Math&Maroc nous te remercions pour ton initiative, nous sommes très fiers et très content de voir qu'il y a autant de personnes prêtes à aider un grand nombre d'élèves dans le besoin. Notre but est et sera toujours d'encourager l'entraide entre marocains.
                                     <br /><br />Dans le but de suivre les tuteurs et les élèves et de s'assurer que tout se passe bien, nous te prions de <strong><u>nous faire un compte rendu rapide de chaque séance à l'aide du tableau en dessous des informations des élèves.</u></strong>
@@ -124,6 +125,8 @@ const Profile = () => {
                                         </tbody>
                                     </table>
                                 </div>
+                                <MoreStudents user={user}/>
+
                             </div>
 
                             <SeancesForm user={user} />

@@ -33,7 +33,7 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
         })
         delete report.replaced_by
         delete report.mod
-        await fetch('/api/mongodb?deletingData', {
+        await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: tutor })
         })

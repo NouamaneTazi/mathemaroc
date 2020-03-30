@@ -13,7 +13,7 @@ handler.get(async (req, res) => {
         req.db.collection('users').find({ groupId: parseInt(groupId) }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
-                console.log(result);
+                // console.log(result);
                 res.json(result);
             }
         });
@@ -78,17 +78,16 @@ handler.get(async (req, res) => {
 handler.post(async (req, res) => {
     let data = req.body;
     const user = JSON.parse(data);
-    if ("_id" in user.data) delete user.data._id
-
-    let { deletingData } = req.query
-    if (deletingData) {
-        let doc = await req.db.collection('users').replaceOne({ _id: ObjectID(user._id) }, { $set: user.data })
+    ['_id', 'needsSetup', 'isSetup', 'sub'].map(key => key in user.data ? delete user.data.key : null)
+    console.log("query", req.query)
+    console.log("user", user)
+    let { unset } = req.query
+    if (unset) {
+        let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $unset: user.data})
     } else {
         let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data})
     }
-
     res.json({ message: 'ok' });
-
 })
 
 export default handler;

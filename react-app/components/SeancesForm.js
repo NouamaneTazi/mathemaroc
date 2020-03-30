@@ -1,5 +1,6 @@
 import { useState, useEffect, StrictMode } from "react"
 import moment from 'moment'
+import Icon from '@material-ui/core/Icon';
 
 const Seances = ({ user }) => {
 
@@ -23,8 +24,8 @@ const Seances = ({ user }) => {
 
     const handleDateChange = (index, event) => {
         let date = event.target.value
-        if (moment(date, ["DD-MM-YYYY","DD/MM/YYYY"], true).isValid()){
-            date = moment(date, ["DD-MM-YYYY","DD/MM/YYYY"], true).format('YYYY-MM-DD')
+        if (moment(date, ["DD-MM-YYYY", "DD/MM/YYYY"], true).isValid()) {
+            date = moment(date, ["DD-MM-YYYY", "DD/MM/YYYY"], true).format('YYYY-MM-DD')
         }
         const values = [...inputFields];
         values[index][event.target.name] = date
@@ -70,6 +71,7 @@ const Seances = ({ user }) => {
                             <th>Chapitres traités</th>
                             <th>Elèves absents</th>
                             <th>Remarques</th>
+                            <th></th>
                         </tr>
                     </thead>
                     {editMode ? <tbody>
@@ -114,9 +116,16 @@ const Seances = ({ user }) => {
                                     <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea>
 
                                 </th>
-                                <button onClick={() => handleRemoveFields(index)}>-</button>
+                                <th>
+                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleRemoveFields(index)}>remove_circle</Icon>
+                                </th>
                             </tr>
                         ))}
+                        <tr><th></th><th></th><th></th><th></th><th></th>
+                            <th>
+                                <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleAddFields()}>add_circle</Icon>
+                            </th>
+                        </tr>
                     </tbody>
                         : <tbody>
                             {inputFields.map((inputField, index) => (
@@ -131,7 +140,7 @@ const Seances = ({ user }) => {
                         </tbody>}
                 </table>
             </div>
-            {editMode && <button onClick={() => handleAddFields()}>+</button>}
+
             <div>
                 {editMode ?
                     <button className="button" onClick={() => handleSubmitSeances()}>Enregistrer</button>
@@ -143,7 +152,7 @@ const Seances = ({ user }) => {
                 }
                 {savedSuccess && <div style={{ display: "inline", marginLeft: "10px" }}>Modification réussie !</div>}
             </div>
-        </div>
+        </div >
     )
 }
 

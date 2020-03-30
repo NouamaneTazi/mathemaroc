@@ -1,14 +1,15 @@
 //https://uber.github.io/react-map-gl/examples/clusters
 import MapGL, { Source, Layer } from 'react-map-gl';
 const MAPBOX_TOKEN = 'pk.eyJ1Ijoibm91YW1hbmV0YXppIiwiYSI6ImNrOGN5bjJ6YzByZ3YzZnRxZWZjZ3Vibm4ifQ.V5jHsPdhkDZEjGhbB_jQpw'; // Set your mapbox token here
-import data from './counts.json'
+import data from './cities.json'
 
 const features = data.reduce((s, region) => {
-    const feature = { type: 'Feature', properties: { name: region.name_en }, geometry: { type: 'Point', coordinates: [Number(region.longitude), Number(region.latitude)] } }
+    const feature = { type: 'Feature', properties: { name: region.name }, geometry: { type: 'Point', coordinates: [Number(region.longitude), Number(region.latitude)] } }
     let arr = Array(parseInt(region.counts)).fill(feature)
     return s.concat(arr)
 }, [])
 
+console.log(data)
 const geojson = {
     type: 'FeatureCollection',
     // crs: { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },

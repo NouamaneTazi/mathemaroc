@@ -76,7 +76,7 @@ class Map extends React.Component {
                 interactiveLayerIds={["cluster-count", "clusters", "data"]}
                 onClick={this._onClick}
                 style={{ margin: "auto", marginBottom: "1em" }}
-                height={700}
+                height={1400}
                 width={"100%"}
                 onHover={this._onHover}
             >
@@ -84,7 +84,7 @@ class Map extends React.Component {
                     id="my-data" type="geojson" data={geojson}
                     cluster={true}
                     clusterMaxZoom={14}
-                    clusterRadius={30}
+                    clusterRadius={1}
                     ref={this._sourceRef}
                 >
                     {/* <Layer id='clusters'
@@ -99,7 +99,7 @@ class Map extends React.Component {
                         filter={['has', 'point_count']}
                         paint={{
                             'circle-color': '#51bbd6',
-                            'circle-radius': ['step', ['get', 'point_count'], 10, 100, 15, 200, 20, 300, 25, 400, 30, 500, 35]
+                            'circle-radius': ['step', ['get', 'point_count'], 10, 100, 15]
                         }} />
                     <Layer id='cluster-count'
                         type='symbol'

@@ -11,14 +11,8 @@ const Admin = () => {
                     <title>Map</title>
                     <meta name="description" content="Map" />
                 </Head>
-                <section id="one">
-                    <div className="inner">
-                        <header className="major">
-                            <h1>Map</h1>
-                        </header>
-                        <StudentsMap />
-                    </div>
-                </section >
+                <StudentsMap />
+
             </Layout>
         </>
     )

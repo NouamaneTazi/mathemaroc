@@ -100,24 +100,31 @@ const getData = (tutors) => {
         })
     })
 
-    let dates = Object.keys(seances).sort()
-    let startDate = new Date()
-    startDate.setDate(new Date(dates[0]).getDate() - 1)
-    const endDate = new Date(dates.slice(-1)[0])
-    let date = startDate
-    while (date <= endDate) {
-        moment(date).format('L') in seances ? null : seances[moment(date).format('L')] = []
-        date.setDate(date.getDate() + 1)
+    let dates = Object.keys(seances).map(date => moment(date).format('L')).sort((a, b) => moment(a) - moment(b))
+
+    if (dates.length > 0) {
+        // console.log(seances)
+        // console.log(moment(dates[0]))
+        let startDate = moment(dates[0]).subtract(1, 'd')
+        const endDate = new Date(dates.slice(-1)[0])
+        let date = startDate
+        while (date <= endDate) {
+            // console.log(date.format('L'), dates)
+            dates.includes(date.format('L')) ? null : seances[moment(date).format('L')] = []
+            date = date.add(1, 'd')
+        }
+        // console.log(seances)
+
+
+        Object.keys(seances).sort().forEach(date => {
+            let arr = seances[date]
+            data.push({
+                "day": moment(date).format('DD/MM/YYYY'),
+                "seances": arr.length
+            })
+        })
     }
 
-
-    Object.keys(seances).sort().forEach(date => {
-        let arr = seances[date]
-        data.push({
-            "day": date,
-            "seances": arr.length
-        })
-    })
     return data
 }
 
@@ -130,7 +137,7 @@ const demoStyles = () => ({
     chart: {
         paddingRight: '20px',
         color: "#3e467f",
-        
+
     },
     title: {
         whiteSpace: 'pre',
@@ -149,6 +156,16 @@ const demoStyles = () => ({
 class Demo extends PureComponent {
     constructor(props) {
         super(props);
+        this.state = {
+            data: []
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        // Typical usage (don't forget to compare props):
+        if (this.props.tutors !== prevProps.tutors) {
+            this.setState({ data: getData(this.props.tutors) })
+        }
     }
 
     render() {
@@ -157,11 +174,11 @@ class Demo extends PureComponent {
         return (
             <Paper className={classes.paper}>
                 <Chart
-                    data={getData(tutors)}
+                    data={this.state.data}
                     className={classes.chart}
                     height={400}
                 >
-                    <ArgumentAxis showGrid={false} showTicks={false} labelComponent={ArgumentLabel} />
+                    <ArgumentAxis showGrid={true} showTicks={false} labelComponent={ArgumentLabel} />
                     <ValueAxis
                         labelComponent={ValueLabel}
                     />

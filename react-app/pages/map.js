@@ -6,14 +6,11 @@ const Admin = () => {
 
     return (
         <>
-            <Layout >
-                <Head>
-                    <title>Map</title>
-                    <meta name="description" content="Map" />
-                </Head>
-                <StudentsMap />
-
-            </Layout>
+            <Head>
+                <title>Map</title>
+                <meta name="description" content="Map" />
+            </Head>
+            <StudentsMap />
         </>
     )
 }

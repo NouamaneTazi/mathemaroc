@@ -75,8 +75,8 @@ class Map extends React.Component {
                 mapboxApiAccessToken={MAPBOX_TOKEN}
                 interactiveLayerIds={["cluster-count", "clusters", "data"]}
                 onClick={this._onClick}
-                style={{ margin: "auto", marginBottom: "1em" }}
-                height={1400}
+                style={{ margin: "auto", marginBottom: "1em", position:"absolute" }}
+                height={"100%"}
                 width={"100%"}
                 onHover={this._onHover}
             >

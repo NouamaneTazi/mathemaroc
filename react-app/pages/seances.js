@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import LineChart from '../components/LineChart'
+import StudentsMap from "../components/StudentsMap"
 
 const Admin = () => {
     const getUserData = async (user) => {
@@ -58,7 +59,9 @@ const Admin = () => {
                         <header className="major">
                             {user ? <h1>Séances données</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
-                        <LineChart tutors={tutors}/>
+                        <StudentsMap />
+
+                        <LineChart tutors={tutors} />
                         {tutors.length > 0 &&
                             <div className="12u 12u(medium)">
                                 <h3>Compteur de séances données :</h3>
@@ -69,7 +72,7 @@ const Admin = () => {
                             </div>
                         }
                     </div>
-                    <div className="12u">
+                    <div className="inner" style={{maxWidth:"95%", width:"100%"}}>
 
                         <div className="table-wrapper">
                             <table className="alt">
@@ -91,14 +94,14 @@ const Admin = () => {
                                             <>
                                                 {tutor.seances && tutor.seances.map((seance, index) => (
                                                     <tr key={`${tutor._id}~${index}`}>
-                                                        {index == 0 && <th rowSpan={tutor.seances.length} style={{verticalAlign:"middle"}}>{tutor.firstname} {tutor.lastname}</th>}
-                                                        {index == 0 && <th rowSpan={tutor.seances.length} style={{verticalAlign:"middle"}}>{tutor.last_updated}</th>}
+                                                        {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{tutor.firstname} {tutor.lastname}</th>}
+                                                        {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{tutor.last_updated}</th>}
                                                         <td>{seance.date}</td>
                                                         <td>{seance.duree}</td>
                                                         <td>{seance.chapitres}</td>
                                                         <td>{Object.values(seance.absents).join(', ')}</td>
                                                         <td>{seance.remarques}</td>
-                                                        <td style={{verticalAlign:"middle"}}>
+                                                        <td style={{ verticalAlign: "middle" }}>
                                                             {!seance.mod || !seance.mod.id ?
                                                                 <>
                                                                     <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, index)} />
@@ -119,7 +122,7 @@ const Admin = () => {
                                                         </td>
                                                     </tr>
                                                 ))}
-                                                {tutor.seances.length>0 &&<tr  style={{ height:"50px" }}></tr>}
+                                                {tutor.seances.length > 0 && <tr style={{ height: "50px" }}></tr>}
                                             </>
                                         )
                                     })}

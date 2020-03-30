@@ -43,7 +43,11 @@ class Layout extends React.Component {
                     <link href="/static/css/skel.css" rel="stylesheet" />
                     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
                     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" />
-                    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />    
+                    <link
+                        href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
+                        rel="stylesheet"
+                    />
                 </Head>
                 <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
 
@@ -53,7 +57,7 @@ class Layout extends React.Component {
                     {/* <Contact /> */}
                     <Footer />
                 </div>
-                <Menu onToggleMenu={this.handleToggleMenu} user={this.props.user} loading={this.props.loading}/>
+                <Menu onToggleMenu={this.handleToggleMenu} user={this.props.user} loading={this.props.loading} />
 
             </div>
         )

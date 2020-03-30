@@ -112,7 +112,7 @@ const Profile = () => {
                                                         <CustomizedTooltip title="Elève signalé" placement="left">
                                                             <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "red", cursor: "pointer" }} onClick={() => setOpenReportDialog(student)}>warning</Icon>
                                                         </CustomizedTooltip> :
-                                                        <CustomizedTooltip title="Signaler élève injoignable ou comportement inapproprié" placement="left">
+                                                        <CustomizedTooltip title="Signaler doublon, élève injoignable ou comportement inapproprié" placement="left">
                                                             <Icon style={{ fontSize: 30, verticalAlign: "text-top", cursor: "pointer" }} onClick={() => setOpenReportDialog(student)}>warning</Icon>
                                                         </CustomizedTooltip>}</td>
                                                     <ReportStudentDialog student={openReportDialog} setOpen={setOpenReportDialog} tutor={user} />

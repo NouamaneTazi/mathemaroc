@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { PureComponent } from 'react';
 import Paper from '@material-ui/core/Paper';
 import {
     Chart,
@@ -57,6 +57,23 @@ const ValueLabel = (props) => {
         <ValueAxis.Label
             {...props}
             text={`${text}`}
+            style={{ fill: "white" }}
+        />
+    );
+};
+
+const ArgumentLabel = (props) => {
+    const { text } = props;
+    return (
+        <ArgumentAxis.Label
+            {...props}
+            text={`${text}`}
+            style={{
+                fill: "white",
+                transform: "rotate(45deg) translate(20px, -20px)",
+                transformBox: "fill-box"
+            }}
+
         />
     );
 };
@@ -112,7 +129,8 @@ const TooltipContent = ({ targetItem }, data) => {
 const demoStyles = () => ({
     chart: {
         paddingRight: '20px',
-        color: "#3e467f"
+        color: "#3e467f",
+        size:20
     },
     title: {
         whiteSpace: 'pre',
@@ -121,14 +139,14 @@ const demoStyles = () => ({
         color: 'white'
     },
     paper: {
-        // backgroundColor: "transparent",
+        backgroundColor: "transparent",
         // width:"6u 12u(medium)",
         // margin:"auto"
-        marginBottom : '1em'
+        marginBottom: '1em'
     }
 });
 
-class Demo extends React.PureComponent {
+class Demo extends PureComponent {
     constructor(props) {
         super(props);
     }
@@ -143,7 +161,7 @@ class Demo extends React.PureComponent {
                     className={classes.chart}
                     height={400}
                 >
-                    <ArgumentAxis showGrid className={classes.white} />
+                    <ArgumentAxis showGrid showTicks={false} labelComponent={ArgumentLabel} />
                     <ValueAxis
                         labelComponent={ValueLabel}
                     />

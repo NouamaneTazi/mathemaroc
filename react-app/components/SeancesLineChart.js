@@ -130,7 +130,7 @@ const demoStyles = () => ({
     chart: {
         paddingRight: '20px',
         color: "#3e467f",
-        size:20
+        
     },
     title: {
         whiteSpace: 'pre',
@@ -161,7 +161,7 @@ class Demo extends PureComponent {
                     className={classes.chart}
                     height={400}
                 >
-                    <ArgumentAxis showGrid showTicks={false} labelComponent={ArgumentLabel} />
+                    <ArgumentAxis showGrid={false} showTicks={false} labelComponent={ArgumentLabel} />
                     <ValueAxis
                         labelComponent={ValueLabel}
                     />

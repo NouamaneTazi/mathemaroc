@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
-import LineChart from '../components/LineChart'
+import SeancesLineChart from '../components/SeancesLineChart'
 import StudentsMap from "../components/StudentsMap"
 
 const Admin = () => {
@@ -59,9 +59,8 @@ const Admin = () => {
                         <header className="major">
                             {user ? <h1>Séances données</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
-                        <StudentsMap />
 
-                        <LineChart tutors={tutors} />
+                        <SeancesLineChart tutors={tutors} />
                         {tutors.length > 0 &&
                             <div className="12u 12u(medium)">
                                 <h3>Compteur de séances données :</h3>

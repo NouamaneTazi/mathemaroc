@@ -1,5 +1,4 @@
 import { useState, useEffect, Fragment } from "react"
-import LineChart from './LineChart'
 
 const ProfileSeancesTutors = () => {
     const [tutors, setTutors] = useState([])

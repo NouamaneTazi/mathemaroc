@@ -61,8 +61,8 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
                         Cancel
                     </Button>
 
-                    <Button autoFocus onClick={() => handleSubmit()} color="primary">
-                        Submit Report
+                    <Button autoFocus onClick={() => groupId ? handleSubmit() : null} color="primary">
+                        Submit
                     </Button>
                 </DialogActions>
             </Dialog>

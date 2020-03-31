@@ -56,7 +56,7 @@ const Reports = () => {
                     <title>Reports Page</title>
                     <meta name="description" content="Reports Page" />
                 </Head>
-                <MenuAdmin />
+                <MenuAdmin user={user}/>
                 <section id="one">
                     <div className="inner" style={{maxWidth:"90%", width:"100%"}}>
                         <header className="major">

@@ -54,7 +54,7 @@ const Admin = () => {
                     <title>Admin Page</title>
                     <meta name="description" content="Admin Page" />
                 </Head>
-                <MenuAdmin />
+                <MenuAdmin user={user}/>
                 <section id="one">
                     <div className="inner">
                         <header className="major">

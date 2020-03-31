@@ -33,9 +33,11 @@
     "postcss-loader": "^3.0.0",
     "raw-loader": "^0.5.1",
     "react": "^16.13.1",
+    "react-confetti": "^5.0.1",
     "react-dom": "^16.13.1",
     "react-map-gl": "^5.2.3",
     "react-search-input": "^0.11.3",
+    "react-use": "^13.27.1",
     "sass-loader": "^7.1.0"
   }
 }

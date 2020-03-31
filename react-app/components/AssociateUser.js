@@ -13,9 +13,7 @@ const AssociateUser = ({ user }) => {
     }
     const associateTutor = async (tutor) => {
         Object.assign(user, tutor);
-        delete user.needsSetup
         user.auth0id = user.sub
-        delete user.sub
         const res = await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: user })

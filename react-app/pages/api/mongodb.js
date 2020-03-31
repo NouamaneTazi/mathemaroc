@@ -85,7 +85,7 @@ handler.get(async (req, res) => {
 handler.post(async (req, res) => {
     let data = req.body;
     const user = JSON.parse(data);
-    ['_id', 'needsSetup', 'isSetup', 'sub'].map(key => key in user.data ? delete user.data.key : null)
+    ['_id', 'needsSetup', 'isSetup', 'sub'].map(key => key in user.data ? delete user.data[key] : null)
     console.log("query", req.query)
     console.log("user", user)
     let { unset } = req.query

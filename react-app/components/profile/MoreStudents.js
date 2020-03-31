@@ -28,10 +28,7 @@ const MoreSeances = ({ user }) => {
         }
         const res = await fetch('/api/mongodb', {
             method: 'post',
-            body: JSON.stringify({
-                _id: user._id,
-                data: { asked_more_students: user.asked_more_students }
-            })
+            body: JSON.stringify({ _id: user._id, data: { asked_more_students: user.asked_more_students }})
         })
         setAskedMoreStudents(true)
         handleClose()

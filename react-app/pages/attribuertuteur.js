@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
-
+import MenuAdmin from '../components/MenuAdmin'
 
 const InputGroupId = ({ tutor }) => {
     const setGroupId = async (tutor) => {
@@ -77,6 +77,7 @@ const Reports = () => {
                     <title>Tuteurs en attente</title>
                     <meta name="description" content="Tuteurs en attente" />
                 </Head>
+                <MenuAdmin />
                 <section id="one">
                     <div className="inner" style={{maxWidth:"75em"}}>
                         <header className="major">

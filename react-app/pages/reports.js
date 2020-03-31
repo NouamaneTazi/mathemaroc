@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SearchAwaitingStudents from '../components/SearchAwaitingStudents'
 import UndoReplacedStudent from '../components/UndoReplacedStudent'
+import MenuAdmin from '../components/MenuAdmin'
 
 const Reports = () => {
     const getUserData = async (user) => {
@@ -55,6 +56,7 @@ const Reports = () => {
                     <title>Reports Page</title>
                     <meta name="description" content="Reports Page" />
                 </Head>
+                <MenuAdmin />
                 <section id="one">
                     <div className="inner" style={{maxWidth:"90%", width:"100%"}}>
                         <header className="major">

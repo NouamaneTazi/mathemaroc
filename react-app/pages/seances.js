@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
-import StudentsMap from "../components/StudentsMap"
+import MenuAdmin from '../components/MenuAdmin'
 
 const Admin = () => {
     const getUserData = async (user) => {
@@ -54,6 +54,7 @@ const Admin = () => {
                     <title>Admin Page</title>
                     <meta name="description" content="Admin Page" />
                 </Head>
+                <MenuAdmin />
                 <section id="one">
                     <div className="inner">
                         <header className="major">

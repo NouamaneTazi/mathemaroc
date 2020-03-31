@@ -2,8 +2,8 @@ import Head from "next/head"
 import { useState, useEffect, Fragment } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
-import SearchInput, { createFilter } from 'react-search-input'
 import SearchAwaitingStudents from '../components/demandeseleves/SearchAwaitingStudents'
+import MenuAdmin from '../components/MenuAdmin'
 
 const Reports = () => {
     const getUserData = async (user) => {
@@ -53,6 +53,7 @@ const Reports = () => {
                     <title>Demandes élèves</title>
                     <meta name="description" content="Demandes élèves" />
                 </Head>
+                <MenuAdmin />
                 <section id="one">
                     <div className="inner" style={{ maxWidth: "90%", width: "100%" }}>
                         <header className="major">

@@ -145,7 +145,7 @@ const Seances = ({ user }) => {
                 {editMode ?
                     <button className="button" onClick={() => handleSubmitSeances()}>Enregistrer</button>
 
-                    : <button className="button" onClick={() => {
+                    : <button className="button icon fa-pencil" onClick={() => {
                         setSavedSuccess(false)
                         setEditMode(true)
                     }}>Modifier</button>

@@ -58,7 +58,7 @@ const MoreSeances = ({ user }) => {
                 <p style={{ display: "inline" }}>Vous avez demandé {user.asked_more_students.number} élèves de plus. </p>
                 <button className="button special" style={{ fontSize: "11px", marginBottom: "2em" }} onClick={() => cancelAskedMoreStudents()}>Annuler la demande</button>
             </>
-                : <button className="button" style={{ fontSize: "12px", marginBottom: "2em" }} onClick={() => setOpen(true)}>{"Demander plus d'élèves"}</button>
+                : <button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }} onClick={() => setOpen(true)}>{"Demander plus d'élèves"}</button>
             }
 
             <Dialog aria-labelledby="customized-dialog-title" open={open} fullWidth>

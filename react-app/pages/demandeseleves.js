@@ -1,9 +1,9 @@
 import Head from "next/head"
-import { useState, useEffect } from "react"
+import { useState, useEffect, Fragment } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
-import SearchAwaitingStudents from '../components/SearchAwaitingStudents'
-import UndoReplacedStudent from '../components/UndoReplacedStudent'
+import SearchInput, { createFilter } from 'react-search-input'
+import SearchAwaitingStudents from '../components/demandeseleves/SearchAwaitingStudents'
 
 const Reports = () => {
     const getUserData = async (user) => {
@@ -58,6 +58,7 @@ const Reports = () => {
                         <header className="major">
                             {user ? <h1>Demandes d'élèves</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
+                        <p><b>Attention : </b> Fach tkhtaru les élèves à attribuer wdiru confirmer cava actualiser la page automatiquement wmaghatbqawch tlqaw le prof fhad la page. Donc faites attention avant de cliquer confirmer.</p>
 
                         {/* <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
                         Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}
@@ -84,13 +85,9 @@ const Reports = () => {
                                                     <td>{tutor.groupId}</td>
                                                     <td>{asked_more_students.number}</td>
 
-                                                    {/* <td>{("replaced_by" in report) && (!report.mod || report.mod.id != user.sub) ? report.replaced_by.name
-                                                        : ("replaced_by" in report) && report.mod.id == user.sub ? <>
-                                                            {report.replaced_by.name} <div className="button special" onClick={() => setReplacingStudent(report.replaced_by)}>Undo</div>
-                                                            <UndoReplacedStudent replacingStudent={replacingStudent} setReplacingStudent={setReplacingStudent} tutor={tutor} report={report} />
-                                                        </>
-                                                            : <SearchAwaitingStudents reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={() => handleModClick(tutor, report_index)} />
-                                                    }</td> */}
+                                                    <td>
+                                                        <SearchAwaitingStudents tutor={tutor} awaitingStudents={awaitingStudents} />
+                                                    </td>
                                                 </tr>)
                                         }
                                         )}

@@ -44,6 +44,13 @@ handler.get(async (req, res) => {
                 res.json(result);
             }
         });
+    } else if (req.query.getCatalogueLogs) {
+        req.db.collection('users').find({catalogue_logs: { $exists: true } }).sort({ "catalogue_logs.time": -1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
     } else if (getAllReports) {
         req.db.collection('users').find({ role: "tutor", reports: { $exists: true } }).sort({ "reports.time": -1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })

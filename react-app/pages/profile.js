@@ -9,7 +9,7 @@ import SeancesForm from '../components/SeancesForm'
 import ReportStudentDialog from '../components/ReportStudentDialog'
 import AssociateUser from '../components/AssociateUser'
 import ProfileSeancesTutors from "../components/ProfileSeancesTutors";
-import MoreStudents from '../components/profile/MoreStudents'
+import Link from 'next/link'
 import Confetti from 'react-confetti'
 import useWindowSize from 'react-use/lib/useWindowSize'
 
@@ -130,7 +130,7 @@ const Profile = () => {
                                         </tbody>
                                     </table>
                                 </div>
-                                <MoreStudents user={user} />
+                                {/* <Link href={'/magasin'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Demander plus d'élèves"}</button></Link> */}
 
                             </div>
 

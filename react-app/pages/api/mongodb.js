@@ -58,8 +58,15 @@ handler.get(async (req, res) => {
                 res.json(result);
             }
         });
-    } else if (getAwaitingStudents) {
+    } else if (getAwaitingStudents && req.query.limit) {
         req.db.collection('users').find({ role: "student", groupId: { "$exists": false }, firstname: {"$ne": '--'} }).sort({ timestamp: 1, lastname: 1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (getAwaitingStudents) {
+        req.db.collection('users').find({ role: "student", groupId: { "$exists": false } }).sort({ lastname: 1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);

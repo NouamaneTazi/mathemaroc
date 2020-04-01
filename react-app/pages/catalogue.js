@@ -35,17 +35,16 @@ const Reports = () => {
                 body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } })
             })
         }
+        let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : []
+        catalogue_logs.push({
+            time: new Date(Date.now()).toLocaleString("en-US"),
+            students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname }))
+        })
         await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({
                 _id: user._id,
-                data: {
-                    "catalogue_logs":
-                    {
-                        time: new Date(Date.now()).toLocaleString("en-US"),
-                        students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname }))
-                    }
-                }
+                data: {"catalogue_logs": catalogue_logs}
             })
         })
         Router.push('/profile')

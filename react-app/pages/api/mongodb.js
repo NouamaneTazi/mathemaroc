@@ -8,7 +8,7 @@ handler.use(middleware);
 
 handler.get(async (req, res) => {
     console.log("query", req.query)
-    let { groupId, auth0id, role, getAllSeances, getAllReports, getDemandesDeleves,  getAwaitingStudents, getAwaitingTutors, getAllReportsFromStudents } = req.query
+    let { groupId, auth0id, role, getAllSeances, getAllReports, getDemandesDeleves, getAwaitingStudents, getAwaitingTutors, getAllReportsFromStudents } = req.query
     if (groupId) {
         req.db.collection('users').find({ groupId: parseInt(groupId) }).toArray(function (err, result) {
             if (err) res.json({ err: true })
@@ -59,7 +59,7 @@ handler.get(async (req, res) => {
             }
         });
     } else if (getAwaitingStudents) {
-        req.db.collection('users').find({ role: "student" }).sort({ lastname: 1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ role: "student", groupId: { "$exists": false }, firstname: {"$ne": '--'} }).sort({ timestamp: 1, lastname: 1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
@@ -90,9 +90,9 @@ handler.post(async (req, res) => {
     console.log("user", user)
     let { unset } = req.query
     if (unset) {
-        let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $unset: user.data})
+        let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $unset: user.data })
     } else {
-        let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data})
+        let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data })
     }
     res.json({ message: 'ok' });
 })

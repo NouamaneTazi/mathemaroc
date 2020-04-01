@@ -42,7 +42,7 @@ const Seances = ({ user }) => {
     }
 
     const handleSubmitSeances = async () => {
-        let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.absents || input.remarques) // Keep non empty seances
+        let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.remarques) // Keep non empty seances
         // console.log("query", user._id, seances)
         const res = await fetch('/api/mongodb', {
             method: 'post',

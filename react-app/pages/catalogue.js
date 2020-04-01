@@ -17,9 +17,15 @@ const Reports = () => {
 
     const getAwaitingStudentsData = async () => {
         console.log("GET DATA")
-        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true')
+        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits
         const awaitingStudents = await res.json()
         setAwaitingStudents(awaitingStudents)
+    }
+
+    const handleSelectStudent = (student) => {
+        let value = selectedStudents
+        value.push(student)
+        setSelectedStudents([...value])
     }
 
     const handleSubmit = async () => {
@@ -29,6 +35,19 @@ const Reports = () => {
                 body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } })
             })
         }
+        await fetch('/api/mongodb', {
+            method: 'post',
+            body: JSON.stringify({
+                _id: user._id,
+                data: {
+                    "catalogue_logs":
+                    {
+                        time: new Date(Date.now()).toLocaleString("en-US"),
+                        students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname }))
+                    }
+                }
+            })
+        })
         Router.push('/profile')
     }
 
@@ -66,19 +85,12 @@ const Reports = () => {
         return () => clearTimeout(timer);
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
 
-    const handleSelectStudent = (student) => {
-        let value = selectedStudents
-        value.push(student)
-        setSelectedStudents([...value])
-    }
-
-
     return (
         <>
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
-                    <title>Catalogue des élèves</title>
+                    <title>Catalogue à élèves</title>
                     <meta name="description" content="Catalogue des élèves" />
                 </Head>
                 <section id="one">
@@ -86,7 +98,7 @@ const Reports = () => {
                         <header className="major">
                             <h1>Catalogue des élèves</h1>
                         </header>
-                        <p>Vous pouvez prendre autant d'élèves que vous voulez mais à seule condition, que vous vous engagez à les enseigner ! Et pour nous permettre à assurer le suivi de tous les élèves, nous vous prions de nous remplir les séances que vous donnez sur votre profil.</p>
+                        <p>Vous pouvez prendre autant d'élèves que vous voulez mais à seule condition, que vous vous engagez à les enseigner ! Et pour nous permettre à assurer le suivi de tous les élèves, nous vous prions de remplir les séances que vous donnez sur votre profil.</p>
                     </div>
 
                     {selectedStudents.length > 0 && <>
@@ -136,7 +148,7 @@ const Reports = () => {
                                         <th>Date de demande</th>
                                         <th>Filière
                                             <div className="select-wrapper" >
-                                                <select style={{backgroundColor:"#434b84"}} onChange={(e)=>setFiliereTerm(e.target.value)}>
+                                                <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>
                                                     <option value="">- Filière -</option>
                                                     <option value="SCIENCES MATHÉMATIQUES A">SMaths A</option>
                                                     <option value="SCIENCES MATHÉMATIQUES B">SMaths B</option>

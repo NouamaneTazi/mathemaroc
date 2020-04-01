@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "react"
 
 const ProfileSeancesTutors = () => {
     const [tutors, setTutors] = useState([])
+    const [maxRows, setMaxRows] = useState(10)
     const getSeances = async () => {
         const res = await fetch('/api/mongodb?getAllSeances=true')
         const value = await res.json()
@@ -37,7 +38,7 @@ const ProfileSeancesTutors = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {tutors.map(tutor => {
+                        {tutors.slice(0, maxRows).map(tutor => {
                             return (
                                 <Fragment key={`${tutor._id}`}>
                                     {tutor.seances && tutor.seances.map((seance, index) => (
@@ -55,6 +56,7 @@ const ProfileSeancesTutors = () => {
                         })}
                     </tbody>
                 </table>
+                <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p>
             </div>
 
         </div>

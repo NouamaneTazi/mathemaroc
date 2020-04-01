@@ -72,7 +72,7 @@ const Admin = () => {
                             </div>
                         } */}
                     </div>
-                    <div className="inner" style={{ maxWidth: "95%", width: "100%" }}>
+                    <div className="inner" >
 
                         <div className="table-wrapper">
                             <table className="alt">
@@ -87,11 +87,11 @@ const Admin = () => {
                                 <tbody>
                                     {tutors.map((tutor) => {
                                         return (
-                                            <>{console.log("c", tutor.catalogue_logs)}
+                                            <>
                                                 {tutor.catalogue_logs.length > 0 && tutor.catalogue_logs.map((activity, index_activity) => {
                                                     return activity.students.map((student, index_student) => (
                                                         <tr key={`${tutor._id}~${student._id}`}>
-                                                            {(index_activity == 0 && index_student==0)  && <th rowSpan={tutor.catalogue_logs.length*activity.students.length} style={{ verticalAlign: "middle" }}>{tutor.fullname}</th>}
+                                                            {(index_activity == 0 && index_student == 0) && <th rowSpan={tutor.catalogue_logs.reduce((s, acti) => s + acti.students.length, 0)} style={{ verticalAlign: "middle" }}>{tutor.fullname}</th>}
                                                             {index_student == 0 && <td rowSpan={activity.students.length} style={{ verticalAlign: "middle" }}>{activity.time}</td>}
                                                             <td>{student.name}</td>
                                                             {/* <td style={{ verticalAlign: "middle" }}>

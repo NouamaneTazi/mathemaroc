@@ -45,6 +45,9 @@ const Reports = () => {
             getUserData(user)
             getAwaitingStudentsData()
         }
+        else if (!loading) {
+            Router.push('/profile')
+        }
     }, [user, loading])
 
     

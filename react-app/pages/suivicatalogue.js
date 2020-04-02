@@ -78,6 +78,7 @@ const Admin = () => {
                             <table className="alt">
                                 <thead>
                                     <tr>
+                                    <th>Groupe</th>
                                         <th>Tuteur</th>
                                         <th>Date</th>
                                         <th>Elève pris</th>
@@ -92,6 +93,7 @@ const Admin = () => {
                                                     return activity.students.map((student, index_student) => (
                                                         <tr key={`${tutor._id}~${student._id}`}>
                                                             {(index_activity == 0 && index_student == 0) && <th rowSpan={tutor.catalogue_logs.reduce((s, acti) => s + acti.students.length, 0)} style={{ verticalAlign: "middle" }}>{tutor.fullname}</th>}
+                                                            {(index_activity == 0 && index_student == 0) && <th rowSpan={tutor.catalogue_logs.reduce((s, acti) => s + acti.students.length, 0)} style={{ verticalAlign: "middle" }}>{tutor.groupId}</th>}
                                                             {index_student == 0 && <td rowSpan={activity.students.length} style={{ verticalAlign: "middle" }}>{activity.time}</td>}
                                                             <td>{student.name}</td>
                                                             {/* <td style={{ verticalAlign: "middle" }}>

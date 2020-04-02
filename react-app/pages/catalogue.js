@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import SearchInput, { createFilter } from 'react-search-input'
 import Router from 'next/router'
 
-const Reports = () => {
+const Reports = () => { //TODO: Add return profile
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()

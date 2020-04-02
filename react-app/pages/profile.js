@@ -140,7 +140,7 @@ const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
 
                         </div>
                     </section>
-                </div>
+                </div>// TODO: fix this
                     : user && user.notYetAttributed ? <div id="main" className="alt">
                         <section id="one">
                             <div className="inner">

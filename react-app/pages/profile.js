@@ -27,9 +27,6 @@ const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
             json.students = json.students.filter(student => student.role == "student")
             Object.assign(user, json);
             user.isSetup = true
-        } else if (json.role == "tutor" && !json.groupId) {
-            Object.assign(user, json);
-            user.notYetAttributed = true
         }
         setRefresh(!refresh)
     }
@@ -78,8 +75,8 @@ const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
 
                             <div className="row 200%">
                                 <div className="12u 12u(medium)">
-                                {/* <p><b>Nouveauté : </b> On a atteint <b style={{ fontSize: "30px" }}>100</b> séances grâce à tous vos efforts ! Toute l'équipe de Math&Maroc vous remercie pour votre contribution qui encourage la solidarité entre frères marocains et qui donne une aide précieuse à un très grand nombre d'élèves ! On compte sur vous pour continuer comme ça !</p> */}
-                                <p><b>Nouveauté : </b> Pour ceux qui veulent avoir plus d'élèves, vous pouvez à présent choisir vous mêmes les élèves dans le catalogue à élèves en cliquant sur le bouton "Demander plus d'élèves" !</p>
+                                    {/* <p><b>Nouveauté : </b> On a atteint <b style={{ fontSize: "30px" }}>100</b> séances grâce à tous vos efforts ! Toute l'équipe de Math&Maroc vous remercie pour votre contribution qui encourage la solidarité entre frères marocains et qui donne une aide précieuse à un très grand nombre d'élèves ! On compte sur vous pour continuer comme ça !</p> */}
+                                    <p><b>Nouveauté : </b> Pour ceux qui veulent avoir plus d'élèves, vous pouvez à présent choisir vous mêmes les élèves dans le catalogue à élèves en cliquant sur le bouton "Demander plus d'élèves" !</p>
                                     <h2 id="content">{user.firstname} {user.lastname}</h2>
                                     <p>Au nom de l'association Math&Maroc nous te remercions pour ton initiative, nous sommes très fiers et très content de voir qu'il y a autant de personnes prêtes à aider un grand nombre d'élèves dans le besoin. Notre but est et sera toujours d'encourager l'entraide entre marocains.
                                     <br /><br />Dans le but de suivre les tuteurs et les élèves et de s'assurer que tout se passe bien, nous te prions de <strong><u>nous faire un compte rendu rapide de chaque séance à l'aide du tableau en dessous des informations des élèves.</u></strong>
@@ -131,6 +128,7 @@ const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
                                         </tbody>
                                     </table>
                                 </div>
+                                {user.students.length===0 && <p style={{textAlign:'center'}}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" !</p>}
                                 <Link href={'/catalogue'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Demander plus d'élèves"}</button></Link>
 
                             </div>
@@ -140,42 +138,21 @@ const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
 
                         </div>
                     </section>
-                </div>// TODO: fix this
-                    : user && user.notYetAttributed ? <div id="main" className="alt">
-                        <section id="one">
-                            <div className="inner">
-                                <header className="major">
-                                    <h1>Profil</h1>
-                                </header>
-
-                                <div className="row 200%">
-                                    <div className="12u 12u(medium)">
-                                        <h2 id="content">{user.firstname} {user.lastname}</h2>
-                                        <p>Au nom de l'association Math&Maroc nous te remercions pour ton initiative, nous sommes très fiers et très content de voir qu'il y a autant de personnes prêtes à aider un grand nombre d'élèves dans le besoin. Notre but est et sera toujours d'encourager l'entraide entre marocains.
-                                    <br /><br />Dans le but de suivre les tuteurs et les élèves et de s'assurer que tout se passe bien, nous te prions de <strong><u>nous faire un compte rendu rapide de chaque séance à l'aide du tableau en dessous des informations des élèves.</u></strong>
-                                            <br /><br />Si tu rencontres un quelconque souci avec le site ou autre, nous te prions de nous contacter à l'aide de l'adresse suivante: mathemaroc.contact@gmail.com (Un screen expliquant la situation sera préférable)
-                                        </p>
-                                        <h3>Nous allons bientôt t'attribuer un ou plusieurs élèves, merci de revenir plus tard...</h3>
-
-                                    </div>
+                </div>
+                    // user not associated
+                    : user && user.needsSetup ? <AssociateUser user={user} />
+                        // Not yet connected
+                        : queryReady ? <div id="main" className="alt">
+                            <section id="one">
+                                <div className="inner">
+                                    <header className="major">
+                                        <h1>Profil</h1>
+                                    </header>
+                                    <a href="/api/login" className="button special">Se connecter</a>
                                 </div>
-                            </div>
-                        </section>
-                    </div>
-                        // user not associated
-                        : user && user.needsSetup ? <AssociateUser user={user} />
-                            // Not yet connected
-                            : queryReady ? <div id="main" className="alt">
-                                <section id="one">
-                                    <div className="inner">
-                                        <header className="major">
-                                            <h1>Profil</h1>
-                                        </header>
-                                        <a href="/api/login" className="button special">Se connecter</a>
-                                    </div>
-                                </section>
-                            </div>
-                                : null
+                            </section>
+                        </div>
+                            : null
                 }
 
 

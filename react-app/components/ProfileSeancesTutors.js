@@ -20,7 +20,7 @@ const ProfileSeancesTutors = () => {
 
     return (
         <div className="12u">
-            <h3 style={{ marginTop: "2em" }}>Tu n'es pas seul !</h3>
+            <h2 style={{ marginTop: "2em" }}>Tu n'es pas seul !</h2>
             <p>Voici toute une communauté qui travaille aussi pour aider une génération à étinceler. S’entre aider c’est réussir ensemble.<br/> Ensemble on va plus loin, on crée un vrai impact.</p>
             <h3>Compteur de séances données :</h3>
             <div className="box" style={{ textAlign: "center" }}>

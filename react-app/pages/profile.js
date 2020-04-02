@@ -12,8 +12,20 @@ import ProfileSeancesTutors from "../components/ProfileSeancesTutors";
 import Link from 'next/link'
 import Confetti from 'react-confetti'
 import useWindowSize from 'react-use/lib/useWindowSize'
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
+
+    const CustomizedTooltip = withStyles(theme => ({
+        tooltip: {
+            backgroundColor: theme.palette.common.white,
+            color: '#3e467f',
+            boxShadow: theme.shadows[1],
+            fontSize: 16,
+        },
+    }))(Tooltip)
+
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
@@ -28,34 +40,28 @@ const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
             Object.assign(user, json);
             user.isSetup = true
         }
-        setRefresh(!refresh)
+        setLoading(false)
     }
 
-    let { user, loading } = useFetchUser()
-    const [refresh, setRefresh] = useState(true)
-    const [queryReady, setQueryReady] = useState(false)
+    let { user, loading: userLoading } = useFetchUser()
+    const [loading, setLoading] = useState(false)
     const [openReportDialog, setOpenReportDialog] = useState(false)
 
     useEffect(() => {
-        // {console.log("useEffect", user, loading)}
-        if (user && !loading) {
+        // {console.log("useEffect", user, userLoading)}
+        if (user && !userLoading) {
+            setLoading(true)
             getUserData(user)
         }
-        setQueryReady(true)
-    }, [user, loading])
+    }, [user, userLoading])
 
-    const CustomizedTooltip = withStyles(theme => ({
-        tooltip: {
-            backgroundColor: theme.palette.common.white,
-            color: '#3e467f',
-            boxShadow: theme.shadows[1],
-            fontSize: 16,
-        },
-    }))(Tooltip)
     const { width, height } = useWindowSize()
     return (
         <>
-            {!loading && <Layout user={user} loading={loading}>
+            <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
+            {!userLoading && <Layout user={user} loading={userLoading}>
                 {/* {console.log("user", user)} */}
                 <Head>
                     <title>Profil</title>
@@ -86,7 +92,7 @@ const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
                                 </div>
                             </div>
                             <div className="12u 12u(medium)">
-                                <h3>Liste des élèves</h3>
+                                <h2>Liste des élèves</h2>
                                 <div className="table-wrapper">
                                     <table>
                                         <thead>
@@ -128,7 +134,7 @@ const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
                                         </tbody>
                                     </table>
                                 </div>
-                                {user.students.length===0 && <p style={{textAlign:'center'}}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" !</p>}
+                                {user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" !</p>}
                                 <Link href={'/catalogue'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Demander plus d'élèves"}</button></Link>
 
                             </div>
@@ -142,7 +148,7 @@ const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
                     // user not associated
                     : user && user.needsSetup ? <AssociateUser user={user} />
                         // Not yet connected
-                        : queryReady ? <div id="main" className="alt">
+                        : !loading ? <div id="main" className="alt">
                             <section id="one">
                                 <div className="inner">
                                     <header className="major">

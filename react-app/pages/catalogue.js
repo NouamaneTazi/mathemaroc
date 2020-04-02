@@ -7,8 +7,11 @@ import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
 import SearchInput, { createFilter } from 'react-search-input'
 import Router from 'next/router'
+import Link from 'next/link'
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const Reports = () => { //TODO: Add return profile
+const Reports = () => { 
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
@@ -20,6 +23,7 @@ const Reports = () => { //TODO: Add return profile
         let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits
         const awaitingStudents = await res.json()
         setAwaitingStudents(awaitingStudents)
+        setLoading(false)
     }
 
     const handleSelectStudent = (student) => {
@@ -44,13 +48,14 @@ const Reports = () => { //TODO: Add return profile
             method: 'post',
             body: JSON.stringify({
                 _id: user._id,
-                data: {"catalogue_logs": catalogue_logs}
+                data: { "catalogue_logs": catalogue_logs }
             })
         })
         Router.push('/profile')
     }
 
-    let { user, loading } = useFetchUser()
+    let { user, loading: userLoading } = useFetchUser()
+    const [loading, setLoading] = useState(false)
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [filiereTerm, setFiliereTerm] = useState("")
     const [matiereTerm, setMatiereTerm] = useState("")
@@ -62,21 +67,23 @@ const Reports = () => { //TODO: Add return profile
     const [maxRows, setMaxRows] = useState(10)
 
     useEffect(() => {
-        // {console.log("useEffect", user, loading)}
-        if (user && !loading) {
+        { console.log("useEffect", user, userLoading) }
+        if (user && !userLoading) {
+            setLoading(true)
             getUserData(user)
             getAwaitingStudentsData()
         }
-        else if (!loading) {
-            Router.push('/profile')
+        else if (!userLoading) {
+            console.log('REDIRECT')
+            // Router.push('/profile')
         }
-    }, [user, loading])
+    }, [user, userLoading])
 
 
     useEffect(() => {
-        // {console.log("useEffect", user, loading)}
+        // {console.log("useEffect", user, userLoading)}
         const timer = setTimeout(() => {
-            if (!loading && user) {
+            if (!userLoading && user) {
                 getAwaitingStudentsData()
             }
         }, 1000);
@@ -86,14 +93,21 @@ const Reports = () => { //TODO: Add return profile
 
     return (
         <>
+            <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
             {/* {console.log(user)} */}
-            {!loading && <Layout user={user} loading={loading}>
+            {!userLoading && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Catalogue à élèves</title>
                     <meta name="description" content="Catalogue des élèves" />
                 </Head>
+
                 <section id="one">
                     <div className="inner">
+                        <Link href="/profile">
+                            <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "20px" }}>Profil</span></a>
+                        </Link>
                         <header className="major">
                             <h1>Catalogue des élèves</h1>
                         </header>

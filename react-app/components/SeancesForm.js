@@ -60,7 +60,7 @@ const Seances = ({ user }) => {
 
     return (
         <div className="12u">
-            <h3>Séances</h3>
+            <h2>Séances</h2>
 
             <div className="table-wrapper">
                 <table>

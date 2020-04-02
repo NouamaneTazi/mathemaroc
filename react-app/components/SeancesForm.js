@@ -6,7 +6,7 @@ const Seances = ({ user }) => {
 
     const handleAddFields = () => {
         const values = [...inputFields];
-        values.push({ date: undefined, chapitres: '', absents: {}, remarques: '', duree: '' });
+        values.push({ chapitres: '', absents: {}, remarques: '', duree: '' });
         setInputFields(values);
     };
 
@@ -23,13 +23,14 @@ const Seances = ({ user }) => {
     };
 
     const handleDateChange = (index, event) => {
+        moment.locale('fr')
         let date = event.target.value
-        if (moment(date, ["DD-MM-YYYY", "DD/MM/YYYY"], true).isValid()) {
-            date = moment(date, ["DD-MM-YYYY", "DD/MM/YYYY"], true).format('YYYY-MM-DD')
+        if (moment(date, ["DD-MM-YYYY", "DD/MM/YYYY", 'YYYY-MM-DD', 'YYYY/MM/DD'], true).isValid()) {
+            date = moment(date, ["DD-MM-YYYY", "DD/MM/YYYY", 'YYYY-MM-DD', 'YYYY/MM/DD'], true).format('YYYY-MM-DD')
+            const values = [...inputFields];
+            values[index][event.target.name] = date
+            setInputFields(values)
         }
-        const values = [...inputFields];
-        values[index][event.target.name] = date
-        setInputFields(values)
     }
 
     const handleAbsentsChange = (index, absentStudent) => {
@@ -85,6 +86,7 @@ const Seances = ({ user }) => {
                                         value={inputField.date}
                                         onChange={event => handleDateChange(index, event)}
                                         style={{ backgroundColor: "#3e467f" }}
+                                        placeholder="dd/mm/yyyy"
                                     />
                                 </th>
                                 <th>
@@ -122,7 +124,7 @@ const Seances = ({ user }) => {
                             </tr>
                         ))}
                         <tr><th></th><th></th><th></th><th></th><th></th>
-                            <th>
+                            <th style={{paddingBottom:0}}>
                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleAddFields()}>add_circle</Icon>
                             </th>
                         </tr>
@@ -130,7 +132,7 @@ const Seances = ({ user }) => {
                         : <tbody>
                             {inputFields.map((inputField, index) => (
                                 <tr key={`${inputField}~${index}`}>
-                                    <td>{inputField.date}</td>
+                                    <td>{moment(inputField.date,['YYYY-MM-DD']).format('DD MMM YYYY')}</td>
                                     <td>{inputField.duree}</td>
                                     <td>{inputField.chapitres}</td>
                                     <td>{Object.values(inputField.absents).join(', ')}</td>

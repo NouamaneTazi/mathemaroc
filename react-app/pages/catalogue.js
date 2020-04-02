@@ -67,7 +67,7 @@ const Reports = () => {
     const [maxRows, setMaxRows] = useState(10)
 
     useEffect(() => {
-        { console.log("useEffect", user, userLoading) }
+        // { console.log("useEffect", user, userLoading) }
         if (user && !userLoading) {
             setLoading(true)
             getUserData(user)
@@ -96,7 +96,7 @@ const Reports = () => {
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
             </Backdrop>
-            {/* {console.log(user)} */}
+            {/* {console.log(user)} */} 
             {!userLoading && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Catalogue à élèves</title>

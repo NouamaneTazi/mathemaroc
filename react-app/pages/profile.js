@@ -15,7 +15,7 @@ import useWindowSize from 'react-use/lib/useWindowSize'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const Profile = () => { //TODO: Add https://material-ui.com/components/backdrop/
+const Profile = () => {
 
     const CustomizedTooltip = withStyles(theme => ({
         tooltip: {

@@ -78,10 +78,11 @@ const Admin = () => {
                             <table className="alt">
                                 <thead>
                                     <tr>
-                                    <th>Groupe</th>
+                                        <th>Groupe</th>
                                         <th>Tuteur</th>
                                         <th>Date</th>
                                         <th>Elève pris</th>
+                                        <th>Nombre d'élèves</th>
                                         {/* <th>Traité</th> */}
                                     </tr>
                                 </thead>
@@ -89,35 +90,15 @@ const Admin = () => {
                                     {tutors.map((tutor) => {
                                         return (
                                             <>
-                                                {tutor.catalogue_logs.length > 0 && tutor.catalogue_logs.map((activity, index_activity) => {
-                                                    return activity.students.map((student, index_student) => (
-                                                        <tr key={`${tutor._id}~${student._id}`}>
-                                                            {(index_activity == 0 && index_student == 0) && <th rowSpan={tutor.catalogue_logs.reduce((s, acti) => s + acti.students.length, 0)} style={{ verticalAlign: "middle" }}>{tutor.fullname}</th>}
-                                                            {(index_activity == 0 && index_student == 0) && <th rowSpan={tutor.catalogue_logs.reduce((s, acti) => s + acti.students.length, 0)} style={{ verticalAlign: "middle" }}>{tutor.groupId}</th>}
-                                                            {index_student == 0 && <td rowSpan={activity.students.length} style={{ verticalAlign: "middle" }}>{activity.time}</td>}
-                                                            <td>{student.name}</td>
-                                                            {/* <td style={{ verticalAlign: "middle" }}>
-                                                                {!seance.mod || !seance.mod.id ?
-                                                                    <>
-                                                                        <input type="checkbox" id={`${tutor._id}~${index_student}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, index_student)} />
-                                                                        <label htmlFor={`${tutor._id}~${index_student}`}></label>
-                                                                    </>
-                                                                    : seance.mod.id == user.sub ?
-                                                                        <>
-                                                                            <input type="checkbox" id={`${tutor._id}~${index_student}`} name="demo-human" checked onClick={() => handleModClick(tutor, index_student)} />
-                                                                            <label htmlFor={`${tutor._id}~${index_student}`}>{seance.mod.name}</label>
-                                                                        </>
-                                                                        : seance.mod.id !== user.sub ?
-                                                                            <>
-                                                                                <input type="checkbox" id={`${tutor._id}~${index_student}`} name="demo-human" checked />
-                                                                                <label htmlFor={`${tutor._id}~${index_student}`}>{seance.mod.name}</label>
-                                                                            </>
-                                                                            : null
-                                                                }
-                                                            </td> */}
-                                                        </tr>
-                                                    ))
-                                                })}
+                                                {tutor.catalogue_logs.length > 0 && tutor.catalogue_logs.map((activity, index_activity) => (
+                                                    <tr key={`${tutor._id}~${index_activity}`}>
+                                                        {(index_activity == 0) && <th rowSpan={tutor.catalogue_logs.length} style={{ verticalAlign: "middle" }}>{tutor.groupId}</th>}
+                                                        {(index_activity == 0) && <th rowSpan={tutor.catalogue_logs.length} style={{ verticalAlign: "middle" }}>{tutor.fullname}</th>}
+                                                        <td style={{ verticalAlign: "middle" }}>{activity.time}</td>
+                                                        <td>{activity.students.map(s=>s.name).join(" - ")}</td>
+                                                        <td>{activity.students.length}</td>
+                                                    </tr>
+                                                ))}
                                                 {tutor.catalogue_logs.length > 0 && <tr style={{ height: "50px" }}></tr>}
                                             </>
                                         )

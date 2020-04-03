@@ -73,9 +73,8 @@ const Reports = () => {
             getUserData(user)
             getAwaitingStudentsData()
         }
-        else if (!userLoading) {
-            console.log('REDIRECT')
-            // Router.push('/profile')
+        else if (!userLoading && !user) {
+            Router.push('/profile')
         }
     }, [user, userLoading])
 

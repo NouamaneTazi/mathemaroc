@@ -37,19 +37,22 @@ const Signup = () => {
     }
 
     const handleSubmit = async () => {
-        const requiredFields = role==="tutor" ? ['firstname', 'lastname', 'statut', 'mail'] : ['firstname', 'lastname', 'mail', 'lycee', 'ville', 'niveau', 'filiere', 'matieres', 'wishes']
+        const requiredFields = role === "tutor" ? ['firstname', 'lastname', 'statut', 'mail'] : ['firstname', 'lastname', 'mail', 'lycee', 'ville', 'niveau', 'filiere', 'matieres', 'wishes']
         if (requiredFields.every(x => (x in inputFields && inputFields[x] !== ''))) {
             if (!isEmail(inputFields.mail + '')) {
                 setError({ mail: true })
             } else {
                 setLoading(true)
+                if (role === "student") {
+                    inputFields.matiere = inputFields.matieres.join(', ')
+                }
+                delete inputFields.matieres
+                console.log('inputs', inputFields)
+                Object.entries(inputFields).map(([k, v]) => inputFields[k] = trim(v))
+                inputFields.mail = normalizeEmail(inputFields.mail)
+                Object.assign(user, inputFields)
                 user.role = role
                 user.auth0id = user.sub
-                Object.assign(user, inputFields)
-                user.mail = normalizeEmail(user.mail)
-                user.matiere = inputFields.matieres.join(', ')
-                delete user.matieres
-                Object.entries(user).map(([k,v])=> user[k]=trim(v))
                 await fetch('/api/mongodb?insert=true', {
                     method: 'post',
                     body: JSON.stringify({ data: user })
@@ -137,11 +140,11 @@ const Signup = () => {
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
-                                            <input className={error.firstname ? "invalid" : null} type="text"  style={{textTransform:'capitalize'}} value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
+                                            <input className={error.firstname ? "invalid" : null} type="text" style={{ textTransform: 'capitalize' }} value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
-                                            <input className={error.lastname ? "invalid" : null} type="text"  style={{textTransform:'capitalize'}} value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
+                                            <input className={error.lastname ? "invalid" : null} type="text" style={{ textTransform: 'capitalize' }} value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Statut (*) :</span>
@@ -168,11 +171,11 @@ const Signup = () => {
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
-                                                <input className={error.firstname ? "invalid" : null} style={{textTransform:'capitalize'}} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
+                                                <input className={error.firstname ? "invalid" : null} style={{ textTransform: 'capitalize' }} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
-                                                <input className={error.lastname ? "invalid" : null} style={{textTransform:'capitalize'}} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
+                                                <input className={error.lastname ? "invalid" : null} style={{ textTransform: 'capitalize' }} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Numéro Whatsapp :</span>
@@ -198,10 +201,10 @@ const Signup = () => {
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Niveau scolaire (*) :</span>
                                                 <div style={{ width: "100%", display: 'flex', justifyContent: 'space-evenly', paddingLeft: 0 }}>
                                                     <input type="radio" id="premiere-bac" checked={inputFields.niveau === 'bac-1'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac-1' })} />
-                                                    <label style={{margin:0}} htmlFor="premiere-bac">1ère bac</label>
+                                                    <label style={{ margin: 0 }} htmlFor="premiere-bac">1ère bac</label>
 
                                                     <input type="radio" id="deuxieme-bac" checked={inputFields.niveau === 'bac'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac' })} />
-                                                    <label style={{margin:0}} htmlFor="deuxieme-bac">2ème bac</label>
+                                                    <label style={{ margin: 0 }} htmlFor="deuxieme-bac">2ème bac</label>
                                                 </div>
                                             </div>
 
@@ -236,7 +239,7 @@ const Signup = () => {
 
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Chapitres (*) :</span>
-                                                <div style={{ width: "100%", padding:0}}>
+                                                <div style={{ width: "100%", padding: 0 }}>
                                                     <textarea className={error.wishes ? "invalid" : null} value={inputFields.wishes} onChange={e => setInputFields({ ...inputFields, wishes: e.target.value })} placeholder="Spécifiez les chapitres pour lesquels vous avez besoin d'aide" rows="6" />
                                                 </div>
                                             </div>

@@ -81,7 +81,7 @@ const Signup = () => {
     const [showError, setShowError] = useState(false)
     const [refresh, setRefresh] = useState(false)
     const [error, setError] = useState({})
-    const [role, setRole] = useState("student")
+    const [role, setRole] = useState()
 
     useEffect(() => {
         // {console.log("useEffect", user, userLoading)}

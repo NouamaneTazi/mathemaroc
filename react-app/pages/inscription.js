@@ -50,6 +50,9 @@ const Signup = () => {
                 }
                 delete inputFields.matieres
                 Object.entries(inputFields).map(([k, v]) => inputFields[k] = trim(v))
+                inputFields.firstname = capitalize(inputFields.firstname)
+                inputFields.lastname = capitalize(inputFields.lastname)
+                inputFields.fullname = inputFields.firstname + " " + inputFields.lastname
                 inputFields.mail = normalizeEmail(inputFields.mail)
                 Object.assign(user, inputFields)
                 user.role = role

@@ -103,8 +103,10 @@ handler.post(async (req, res) => {
     console.log("query", req.query)
     console.log("user", user)
     if (req.query.insert) {
-        const ret = await req.db.collection('counters').findOneAndUpdate({ _id: 'groupId' }, { $inc: { seq: 1 } })
-        user.data.groupId = ret.value.seq
+        if (user.data.role === "tutor") {
+            const ret = await req.db.collection('counters').findOneAndUpdate({ _id: 'groupId' }, { $inc: { seq: 1 } })
+            user.data.groupId = ret.value.seq
+        }
         await req.db.collection('users').insertOne(user.data)
     } else if (req.query.unset) {
         await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $unset: user.data })

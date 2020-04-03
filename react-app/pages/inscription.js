@@ -47,7 +47,6 @@ const Signup = () => {
                     inputFields.matiere = inputFields.matieres.join(', ')
                 }
                 delete inputFields.matieres
-                console.log('inputs', inputFields)
                 Object.entries(inputFields).map(([k, v]) => inputFields[k] = trim(v))
                 inputFields.mail = normalizeEmail(inputFields.mail)
                 Object.assign(user, inputFields)

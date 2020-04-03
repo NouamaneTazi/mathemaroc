@@ -8,7 +8,7 @@ const AssociateUser = ({ user }) => {
     const getTutorsSuggestions = async () => {
         let res = await fetch('/api/mongodb?role=tutor') // find all tutors
         const json = await res.json()
-        console.log("tutors", json)
+        // console.log("tutors", json)
         setTutors(json)
     }
     const associateTutor = async (tutor) => {

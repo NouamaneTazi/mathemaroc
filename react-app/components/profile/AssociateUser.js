@@ -62,9 +62,7 @@ const AssociateUser = ({ user }) => {
                         <div className="12u">
                             <ul className="actions">
                                 <div className="button special" onClick={() => selectedTutor ? associateTutor(selectedTutor) : null}>Submit</div>
-                                <CustomizedTooltip placement="right" title="On a pas encore terminé l'attribution de tous les élèves. Veuillez revenir plus tard !">
-                                    <div style={{ display: "inline", marginLeft: "10px" }}>Je ne trouve pas mon nom !</div>
-                                </CustomizedTooltip>
+                                    <div style={{ display: "inline", marginLeft: "10px" }}>Si tu as rempli notre formulaire de tuteurs, tu devrais pouvoir retrouver ton nom. Sinon <a on><span>inscris-toi</span></a> !</div>
                             </ul>
                         </div>
                     </div>

@@ -25,7 +25,7 @@ handler.get(async (req, res) => {
                 res.json({ notYetSetUp: true })
             }
             else {
-                console.log(result);
+                // console.log(result);
                 res.json(result);
             }
         });
@@ -45,7 +45,7 @@ handler.get(async (req, res) => {
             }
         });
     } else if (req.query.getCatalogueLogs) {
-        req.db.collection('users').find({catalogue_logs: { $exists: true } }).sort({ "catalogue_logs.time": -1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ catalogue_logs: { $exists: true } }).sort({ "catalogue_logs.time": -1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
@@ -66,7 +66,7 @@ handler.get(async (req, res) => {
             }
         });
     } else if (getAwaitingStudents && req.query.limit) {
-        req.db.collection('users').find({ role: "student", groupId: { "$exists": false }, firstname: {"$ne": '--'} }).sort({ timestamp: 1, lastname: 1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ role: "student", groupId: { "$exists": false }, firstname: { "$ne": '--' } }).sort({ timestamp: 1, lastname: 1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
@@ -102,11 +102,14 @@ handler.post(async (req, res) => {
     ['_id', 'needsSetup', 'isSetup', 'sub', 'notYetSetUp'].map(key => key in user.data ? delete user.data[key] : null)
     console.log("query", req.query)
     console.log("user", user)
-    let { unset } = req.query
-    if (unset) {
-        let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $unset: user.data })
+    if (req.query.insert) {
+        const ret = await req.db.collection('counters').findOneAndUpdate({ _id: 'groupId' }, { $inc: { seq: 1 } })
+        user.data.groupId = ret.value.seq
+        await req.db.collection('users').insertOne(user.data)
+    } else if (req.query.unset) {
+        await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $unset: user.data })
     } else {
-        let doc = await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data })
+        await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data })
     }
     res.json({ message: 'ok' });
 })

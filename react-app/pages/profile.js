@@ -7,7 +7,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import SeancesForm from '../components/SeancesForm'
 import ReportStudentDialog from '../components/ReportStudentDialog'
-import AssociateUser from '../components/AssociateUser'
+import AssociateUser from '../components/profile/AssociateUser'
 import ProfileSeancesTutors from "../components/ProfileSeancesTutors";
 import Link from 'next/link'
 import Confetti from 'react-confetti'
@@ -69,10 +69,7 @@ const Profile = () => {
                 </Head>
 
                 {user && user.isSetup ? <div id="main" className="alt">
-                    {/* <Confetti
-                        width={width}
-                        height={height}
-                    /> */}
+                    {/* <Confetti width={width} height={height}/> */}
                     <section id="one">
                         <div className="inner">
                             <header className="major">

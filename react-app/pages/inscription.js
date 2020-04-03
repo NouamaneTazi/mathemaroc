@@ -8,7 +8,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Router from 'next/router';
 import isEmail from 'validator/lib/isEmail';
-import isMobilePhone from 'validator/lib/isMobilePhone';
+import trim from 'validator/lib/trim';
+import normalizeEmail from 'validator/lib/normalizeEmail';
 
 const Signup = () => {
     const CustomizedTooltip = withStyles(theme => ({
@@ -44,13 +45,15 @@ const Signup = () => {
                 user.role = role
                 user.auth0id = user.sub
                 Object.assign(user, inputFields)
+                user.mail = normalizeEmail(user.mail)
                 user.matiere = inputFields.matieres.join(', ')
                 delete user.matieres
-                // await fetch('/api/mongodb?insert=true', {
-                //     method: 'post',
-                //     body: JSON.stringify({ data: user })
-                // })
-                console.log("res",user)
+                Object.entries(user).map(([k,v])=> user[k]=trim(v))
+                await fetch('/api/mongodb?insert=true', {
+                    method: 'post',
+                    body: JSON.stringify({ data: user })
+                })
+                // console.log("res",user)
             }
         }
         else {
@@ -96,7 +99,6 @@ const Signup = () => {
                 <CircularProgress color="inherit" />
             </Backdrop>
             {!userLoading && <Layout user={user} loading={userLoading}>
-                {console.log("inputs", inputFields)}
                 <Head>
                     <title>Incription</title>
                     <meta name="description" content="Incription" />
@@ -134,11 +136,11 @@ const Signup = () => {
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
-                                            <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
+                                            <input className={error.firstname ? "invalid" : null} type="text"  style={{textTransform:'capitalize'}} value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
-                                            <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
+                                            <input className={error.lastname ? "invalid" : null} type="text"  style={{textTransform:'capitalize'}} value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Statut (*) :</span>
@@ -165,11 +167,11 @@ const Signup = () => {
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
-                                                <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
+                                                <input className={error.firstname ? "invalid" : null} style={{textTransform:'capitalize'}} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
-                                                <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
+                                                <input className={error.lastname ? "invalid" : null} style={{textTransform:'capitalize'}} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Numéro Whatsapp :</span>

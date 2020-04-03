@@ -21,6 +21,8 @@ const Signup = () => {
         },
     }))(Tooltip)
 
+    const capitalize = s => s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase();
+
     const handleMatieresSelect = (val) => {
         if (inputFields.matieres.includes(val)) {
             setInputFields({ ...inputFields, matieres: inputFields.matieres.filter(mat => mat !== val) })
@@ -139,11 +141,11 @@ const Signup = () => {
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
-                                            <input className={error.firstname ? "invalid" : null} type="text" style={{ textTransform: 'capitalize' }} value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
+                                            <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: capitalize(e.target.value) })} placeholder="Prénom" />
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
-                                            <input className={error.lastname ? "invalid" : null} type="text" style={{ textTransform: 'capitalize' }} value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
+                                            <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: capitalize(e.target.value) })} placeholder="Nom" />
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Statut (*) :</span>
@@ -170,11 +172,11 @@ const Signup = () => {
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
-                                                <input className={error.firstname ? "invalid" : null} style={{ textTransform: 'capitalize' }} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: e.target.value })} placeholder="Prénom" />
+                                                <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname:capitalize(e.target.value) })} placeholder="Prénom" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
-                                                <input className={error.lastname ? "invalid" : null} style={{ textTransform: 'capitalize' }} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: e.target.value })} placeholder="Nom" />
+                                                <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: capitalize(e.target.value)})} placeholder="Nom" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Numéro Whatsapp :</span>

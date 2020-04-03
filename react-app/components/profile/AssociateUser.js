@@ -2,7 +2,7 @@ import SearchInput, { createFilter } from 'react-search-input'
 import { useState, useEffect } from "react"
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-
+import Link from 'next/link'
 
 const AssociateUser = ({ user }) => {
     const getTutorsSuggestions = async () => {
@@ -62,7 +62,7 @@ const AssociateUser = ({ user }) => {
                         <div className="12u">
                             <ul className="actions">
                                 <div className="button special" onClick={() => selectedTutor ? associateTutor(selectedTutor) : null}>Submit</div>
-                                    <div style={{ display: "inline", marginLeft: "10px" }}>Si tu as rempli notre formulaire de tuteurs, tu devrais pouvoir retrouver ton nom. Sinon <a on><span>inscris-toi</span></a> !</div>
+                                    <div style={{ display: "inline", marginLeft: "10px" }}>Si tu as rempli notre formulaire de tuteurs, tu devrais pouvoir retrouver ton nom. Sinon <Link href='/inscription'><a><span>inscris-toi</span></a></Link> !</div>
                             </ul>
                         </div>
                     </div>

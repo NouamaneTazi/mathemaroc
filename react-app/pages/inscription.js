@@ -42,6 +42,7 @@ const Signup = () => {
             if (!isEmail(inputFields.mail + '')) {
                 setError({ mail: true })
             } else {
+                setLoading(true)
                 user.role = role
                 user.auth0id = user.sub
                 Object.assign(user, inputFields)
@@ -53,6 +54,7 @@ const Signup = () => {
                     method: 'post',
                     body: JSON.stringify({ data: user })
                 })
+                Router.push('/profile')
                 // console.log("res",user)
             }
         }
@@ -92,7 +94,6 @@ const Signup = () => {
             Router.push('/profile')
         }
     }, [user, userLoading])
-    //TODO: strip
     return (
         <>
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>

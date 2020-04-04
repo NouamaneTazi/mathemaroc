@@ -33,14 +33,13 @@ const Profile = () => {
         let json = await res.json()
         // console.log("json", json)
         if (json.notYetSetUp) {
-            user.needsSetup = true
+            Router.push('/inscription')
         }
         else if (json.role == "tutor") {
             res = await fetch('/api/mongodb?groupId=' + json.groupId)
             json.students = await res.json()
             json.students = json.students.filter(student => student.role == "student")
             Object.assign(user, json);
-            user.isSetup = true
         } else if (json.role == "student") {
             Object.assign(user, json);
         }
@@ -56,24 +55,29 @@ const Profile = () => {
         if (user && !userLoading) {
             setLoading(true)
             getUserData(user)
+            console.log('usereffect',user)
+        } else if (!user && !userLoading) {
+            Router.push('/api/login')
         }
-    }, [user, userLoading])
+
+    }, [userLoading])
 
     const { width, height } = useWindowSize()
     return (
         <>
+            {console.log("user", user, userLoading)}
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
             </Backdrop>
             {!userLoading && <Layout user={user} loading={userLoading}>
-                {/* {console.log("user", user)} */}
+
                 <Head>
                     <title>Profil</title>
                     <meta name="description" content="Profil" />
                 </Head>
 
-                {user && user.role === "student" ? <StudentProfile user={user}/>
-                    : user && user.isSetup ? <div id="main" className="alt">
+                {user && user.role === "student" ? <StudentProfile user={user} />
+                    : user && user.role === "tutor" ? <div id="main" className="alt">
                         {/* <Confetti width={width} height={height}/> */}
                         <section id="one">
                             <div className="inner">
@@ -148,10 +152,10 @@ const Profile = () => {
                         </section>
                     </div>
                         // user not associated
-                        : user && user.needsSetup ? <AssociateUser user={user} />
-                            // Not yet connected
-                            : !user && !userLoading ? Router.push('/api/login')
-                                : null
+                        // : user && user.needsSetup && !loading ? 
+                        //     <AssociateUser user={user} />
+                        // Not yet connected
+                        : null
                 }
 
 

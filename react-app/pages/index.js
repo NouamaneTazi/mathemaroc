@@ -15,7 +15,7 @@ export default () => {
     
     return (
         <Layout user={user} loading={loading}>
-            {console.log("user", user)}
+            {/* {console.log("user", user)} */}
             <div>
                 <Banner />
                 <div id="main">

@@ -11,7 +11,7 @@ import Link from 'next/link'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const Reports = () => { 
+const Reports = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
@@ -95,7 +95,7 @@ const Reports = () => {
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
             </Backdrop>
-            {/* {console.log(user)} */} 
+            {/* {console.log(user)} */}
             {!userLoading && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Catalogue à élèves</title>
@@ -104,9 +104,11 @@ const Reports = () => {
 
                 <section id="one">
                     <div className="inner">
-                        <Link href="/profile">
-                            <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "20px" }}>Profil</span></a>
-                        </Link>
+                        <div style={{marginBottom:"2em"}}>
+                            <Link href="/profile">
+                                <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight:600 }}>Profil</span></a>
+                            </Link>
+                        </div>
                         <header className="major">
                             <h1>Catalogue des élèves</h1>
                         </header>

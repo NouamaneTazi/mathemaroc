@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
 import MenuAdmin from '../components/MenuAdmin'
+import moment from "moment"
 
 const Admin = () => {
     const getUserData = async (user) => {

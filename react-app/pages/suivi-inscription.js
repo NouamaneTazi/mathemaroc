@@ -13,7 +13,7 @@ const Admin = () => {
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getTutorsSignUps=true')
         const value = await res.json()
-        setGroupUsers(value.map(group => group.users))
+        setGroupUsers(value.map(group => group.users).sort((b,a)=>moment(a[0].updated_at)-moment(b[0].updated_at)))
     }
 
     const handleModClick = async (tutor, seance_id) => {

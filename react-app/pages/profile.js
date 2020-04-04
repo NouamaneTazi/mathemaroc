@@ -55,7 +55,6 @@ const Profile = () => {
         if (user && !userLoading) {
             setLoading(true)
             getUserData(user)
-            console.log('usereffect',user)
         } else if (!user && !userLoading) {
             Router.push('/api/login')
         }
@@ -65,7 +64,7 @@ const Profile = () => {
     const { width, height } = useWindowSize()
     return (
         <>
-            {console.log("user", user, userLoading)}
+            {/* {console.log("user", user, userLoading)} */}
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
             </Backdrop>

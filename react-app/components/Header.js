@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Header = (props) => (
     <header id="header" className="alt" style={{justifyContent:'center'}}>
         <Link href="/">
-            <img src="/logo-white.png" style={{boxSizing:'initial'}} alt="logo" className="logo" />
+            <img src="/logo-white-blue.png" style={{boxSizing:'initial'}} alt="logo" className="logo" />
         </Link>
         {/* <nav>
             <a className="menu-link" onClick={e => {

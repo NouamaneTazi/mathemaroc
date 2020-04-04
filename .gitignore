@@ -31,3 +31,5 @@ react-app/build
 
 .vscode/
 react-app/package-lock.json
+
+psd/

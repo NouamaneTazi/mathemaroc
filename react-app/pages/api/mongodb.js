@@ -55,7 +55,7 @@ handler.get(async (req, res) => {
         req.db.collection('users').aggregate([
             { $match: { groupId: { $gte: 4000, $lte: 5000 } } },
             { $sort: { updated_at: -1 } },
-            { $group: { _id: "$groupId", users:{ $push: "$$ROOT" } } }
+            { $group: { _id: "$groupId", users: { $push: "$$ROOT" } } }
         ]).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
@@ -105,7 +105,7 @@ handler.get(async (req, res) => {
             }
         })
     } else if (req.query.getUsersByGroupId) {
-        req.db.collection('users').find({ groupId: parseInt(req.query.getUsersByGroupId)}).toArray(function (err, result) {
+        req.db.collection('users').find({ groupId: parseInt(req.query.getUsersByGroupId) }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
@@ -124,10 +124,11 @@ handler.post(async (req, res) => {
         if (user.data.role === "tutor") {
             const ret = await req.db.collection('counters').findOneAndUpdate({ _id: 'groupId' }, { $inc: { seq: 1 } })
             user.data.groupId = ret.value.seq
+            await req.db.collection('users').insertOne(user.data)
         } else if (user.data.role === "student") {
-            user.data.timestamp = new Date(Date.now())
+            await req.db.collection('users').updateOne({ whatsapp: user.data.whatsapp }, { $set: user.data }, true)
         }
-        await req.db.collection('users').insertOne(user.data)
+
     } else if (req.query.unset) {
         await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $unset: user.data })
     } else {

@@ -126,7 +126,11 @@ handler.post(async (req, res) => {
             user.data.groupId = ret.value.seq
             await req.db.collection('users').insertOne(user.data)
         } else if (user.data.role === "student") {
-            await req.db.collection('users').updateOne({ whatsapp: user.data.whatsapp }, { $set: user.data }, true)
+            if (user.data.whatsapp){
+                await req.db.collection('users').updateOne({ whatsapp: user.data.whatsapp }, { $set: user.data }, true)
+            } else {
+                await req.db.collection('users').insertOne(user.data)
+            }
         }
 
     } else if (req.query.unset) {

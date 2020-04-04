@@ -115,7 +115,7 @@ const Profile = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {user.students.map(student => (
+                                                {user.students && user.students.map(student => (
 
                                                     <tr key={student._id} onMouseEnter={() => null}>
                                                         <td>{student.firstname} {student.lastname}</td>
@@ -140,7 +140,7 @@ const Profile = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    {user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" !</p>}
+                                    {!user.students || user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" !</p>}
                                     <Link href={'/catalogue'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Demander plus d'élèves"}</button></Link>
 
                                 </div>

@@ -104,6 +104,13 @@ handler.get(async (req, res) => {
                 res.json(result);
             }
         })
+    } else if (req.query.getUsersByGroupId) {
+        req.db.collection('users').find({ groupId: parseInt(req.query.getUsersByGroupId)}).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        })
     }
 });
 

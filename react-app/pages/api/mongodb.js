@@ -51,6 +51,17 @@ handler.get(async (req, res) => {
                 res.json(result);
             }
         });
+    } else if (req.query.getTutorsSignUps) {
+        req.db.collection('users').aggregate([
+            { $match: { groupId: { $gte: 4000, $lte: 5000 } } },
+            { $sort: { updated_at: -1 } },
+            { $group: { _id: "$groupId", users:{ $push: "$$ROOT" } } }
+        ]).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
     } else if (getAllReports) {
         req.db.collection('users').find({ role: "tutor", reports: { $exists: true } }).sort({ "reports.time": -1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
@@ -106,7 +117,7 @@ handler.post(async (req, res) => {
         if (user.data.role === "tutor") {
             const ret = await req.db.collection('counters').findOneAndUpdate({ _id: 'groupId' }, { $inc: { seq: 1 } })
             user.data.groupId = ret.value.seq
-        } else if (user.data.role === "student"){
+        } else if (user.data.role === "student") {
             user.data.timestamp = new Date(Date.now())
         }
         await req.db.collection('users').insertOne(user.data)

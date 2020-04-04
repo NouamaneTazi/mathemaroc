@@ -6,13 +6,13 @@ const Header = (props) => (
         <Link href="/">
             <img src="/logo.png" alt="logo" className="logo" />
         </Link>
-        <nav>
+        {/* <nav>
             <a className="menu-link" onClick={e => {
                 e.preventDefault();
                 props.onToggleMenu(e);
                 return false; // old browsers, may not be needed
             }} href="javascript:;">Menu</a>
-        </nav>
+        </nav> */}
     </header>
 )
 

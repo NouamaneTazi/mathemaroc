@@ -53,7 +53,7 @@ const Admin = () => {
                 <section id="one">
                     <div className="inner">
                         <header className="major">
-                            {user ? <h1>Suivi du catalogue</h1> : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Suivi des inscriptions</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
 
                         {/* {groupUsers.length > 0 &&

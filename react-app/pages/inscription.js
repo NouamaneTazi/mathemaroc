@@ -204,8 +204,8 @@ const Signup = () => {
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Niveau scolaire (*) :</span>
                                                 <div style={{ width: "100%", display: 'flex', justifyContent: 'space-evenly', paddingLeft: 0 }}>
-                                                    <input type="radio" id="premiere-bac" checked={inputFields.niveau === 'bac-1'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac-1' })} />
-                                                    <label style={{ margin: 0 }} htmlFor="premiere-bac">1ère bac</label>
+                                                    {/* <input type="radio" id="premiere-bac" checked={inputFields.niveau === 'bac-1'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac-1' })} />
+                                                    <label style={{ margin: 0 }} htmlFor="premiere-bac">1ère bac</label> */}
 
                                                     <input type="radio" id="deuxieme-bac" checked={inputFields.niveau === 'bac'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac' })} />
                                                     <label style={{ margin: 0 }} htmlFor="deuxieme-bac">2ème bac</label>

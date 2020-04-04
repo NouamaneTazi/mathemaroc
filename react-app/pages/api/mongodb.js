@@ -62,6 +62,13 @@ handler.get(async (req, res) => {
                 res.json(result);
             }
         });
+    } else if (req.query.getStudentsSignUps) {
+        req.db.collection('users').find({ role: "student", auth0id:{$exists:true} }).sort({ updated_at: -1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
     } else if (getAllReports) {
         req.db.collection('users').find({ role: "tutor", reports: { $exists: true } }).sort({ "reports.time": -1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
@@ -126,7 +133,7 @@ handler.post(async (req, res) => {
             user.data.groupId = ret.value.seq
             await req.db.collection('users').insertOne(user.data)
         } else if (user.data.role === "student") {
-            if (user.data.whatsapp){
+            if (user.data.whatsapp) {
                 await req.db.collection('users').updateOne({ whatsapp: user.data.whatsapp }, { $set: user.data }, true)
             } else {
                 await req.db.collection('users').insertOne(user.data)

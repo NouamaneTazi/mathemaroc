@@ -15,6 +15,7 @@ import useWindowSize from 'react-use/lib/useWindowSize'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import StudentProfile from '../components/profile/StudentProfile'
+import Router from 'next/router'
 
 const Profile = () => {
 
@@ -149,16 +150,7 @@ const Profile = () => {
                         // user not associated
                         : user && user.needsSetup ? <AssociateUser user={user} />
                             // Not yet connected
-                            : !loading ? <div id="main" className="alt">
-                                <section id="one">
-                                    <div className="inner">
-                                        <header className="major">
-                                            <h1>Profil</h1>
-                                        </header>
-                                        <a href="/api/login" className="button special">Se connecter</a>
-                                    </div>
-                                </section>
-                            </div>
+                            : !user && !userLoading ? Router.push('/api/login')
                                 : null
                 }
 

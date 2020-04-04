@@ -106,6 +106,8 @@ handler.post(async (req, res) => {
         if (user.data.role === "tutor") {
             const ret = await req.db.collection('counters').findOneAndUpdate({ _id: 'groupId' }, { $inc: { seq: 1 } })
             user.data.groupId = ret.value.seq
+        } else if (user.data.role === "student"){
+            user.data.timestamp = new Date(Date.now())
         }
         await req.db.collection('users').insertOne(user.data)
     } else if (req.query.unset) {

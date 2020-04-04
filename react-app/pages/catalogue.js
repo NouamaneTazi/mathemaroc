@@ -104,9 +104,9 @@ const Reports = () => {
 
                 <section id="one">
                     <div className="inner">
-                        <div style={{marginBottom:"2em"}}>
+                        <div style={{ marginBottom: "2em" }}>
                             <Link href="/profile">
-                                <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight:600 }}>Profil</span></a>
+                                <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
                             </Link>
                         </div>
                         <header className="major">
@@ -164,13 +164,15 @@ const Reports = () => {
                                             <div className="select-wrapper" >
                                                 <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>
                                                     <option value="">- Filière -</option>
-                                                    <option value="SCIENCES MATHÉMATIQUES A">SMaths A</option>
-                                                    <option value="SCIENCES MATHÉMATIQUES B">SMaths B</option>
-                                                    <option value="SCIENCES PHYSIQUES">Sc Physiques</option>
-                                                    <option value="SCIENCES DE LA VIE ET DE LA TERRE">SVT</option>
-                                                    <option value="ECONOMIE">Economie</option>
-                                                    <option value="STE">STE</option>
-                                                    <option value="Bac Pro">Bac Pro</option>
+                                                    <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>
+                                                    <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>
+                                                    <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option>
+                                                    <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
+                                                    <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>
+                                                    <option value="ECONOMIE">ECONOMIE</option>
+                                                    <option value="SCIENCES TECH">SCIENCES TECH</option>
+                                                    <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>
+                                                    <option value="Bac Pro">BAC PRO</option>
                                                 </select>
                                             </div>
                                         </th>

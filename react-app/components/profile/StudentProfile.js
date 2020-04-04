@@ -1,6 +1,6 @@
 
 
-const Profile = ({ user }) => {
+const Profile = ({ user }) => { //Afficher classement dans file d'attente
 
     return (<>
         <section id="one">

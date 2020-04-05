@@ -27,7 +27,7 @@ const ProfileSeancesTutors = () => {
                 <h1>{getNumberSeances(tutors)}</h1>
             </div>
             <div className="table-wrapper">
-                <table className="alt">
+                <table className="alt dense">
                     <thead>
                         <tr>
                             <th>Tuteur</th>
@@ -43,8 +43,8 @@ const ProfileSeancesTutors = () => {
                                 <Fragment key={`${tutor._id}`}>
                                     {tutor.seances && tutor.seances.map((seance, index) => (
                                         <tr key={`${tutor._id}~${index}`}>
-                                            {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{tutor.firstname} {tutor.lastname}</th>}
-                                            {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{tutor.last_updated}</th>}
+                                            {index == 0 && <td rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}><b>{tutor.firstname} {tutor.lastname}</b></td>}
+                                            {index == 0 && <td rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}><b>{tutor.last_updated}</b></td>}
                                             <td>{seance.date}</td>
                                             <td>{seance.duree}</td>
                                             <td>{seance.chapitres}</td>

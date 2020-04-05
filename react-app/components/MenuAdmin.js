@@ -8,7 +8,7 @@ export default function ({user}) {
             <li><Link href="/suivi-catalogue"><a >Suivi du catalogue</a></Link></li>
             <li><Link href="/suivi-inscription"><a>Inscriptions tuteurs</a></Link></li>
             <li><Link href="/suivi-inscription2"><a>Inscriptions élèves</a></Link></li>
-            <li><Link href="/reports"><a>Elèves signalés</a></Link></li>
+            <li><Link href="/reports"><a>Élèves signalés</a></Link></li>
             <li><Link href="/voir-groupe"><a>Voir groupe</a></Link></li>
             <li><Link href="/map"><a>Map</a></Link></li>
             {!user && <li><a href="/api/login">Se connecter</a></li>}

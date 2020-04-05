@@ -58,7 +58,7 @@ const Admin = () => {
                             <table className="alt">
                                 <thead>
                                     <tr>
-                                        <th>Elève</th>
+                                        <th>Élève</th>
                                         <th>Date</th>
                                         <th>Téléphone</th>
                                         <th>Facebook</th>

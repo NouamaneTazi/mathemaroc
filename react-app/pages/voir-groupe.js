@@ -137,7 +137,7 @@ const Admin = () => {
                                         <th>Date</th>
                                         <th>Durée</th>
                                         <th>Chapitres traités</th>
-                                        <th>Elèves absents</th>
+                                        <th>Élèves absents</th>
                                         <th>Remarques</th>
                                     </tr>
                                 </thead>

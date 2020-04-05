@@ -82,7 +82,7 @@ const Admin = () => {
                                         <th>Groupe</th>
                                         <th>Tuteur</th>
                                         <th>Date</th>
-                                        <th>Elève pris</th>
+                                        <th>Élève pris</th>
                                         <th>Nombre d'élèves</th>
                                         {/* <th>Traité</th> */}
                                     </tr>

@@ -60,7 +60,7 @@ const Reports = () => {
                 <section id="one">
                     <div className="inner" style={{maxWidth:"90%", width:"100%"}}>
                         <header className="major">
-                            {user ? <h1>Elèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Élèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
 
                         <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
@@ -72,11 +72,11 @@ const Reports = () => {
                                         <tr>
                                             <th>Groupe</th>
                                             <th>Tuteur</th>
-                                            <th>Elève signalé</th>
+                                            <th>Élève signalé</th>
                                             <th>Date</th>
                                             <th>Détails</th>
                                             <th>Traité</th>
-                                            <th>Elève remplaçant</th>
+                                            <th>Élève remplaçant</th>
                                         </tr>
                                     </thead>
                                     <tbody>

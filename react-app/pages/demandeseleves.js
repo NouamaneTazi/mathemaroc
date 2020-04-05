@@ -72,7 +72,7 @@ const Reports = () => {
                                             <th>Tuteur</th>
                                             <th>Groupe</th>
                                             <th>Nombre d'élèves demandés</th>
-                                            <th>Elèves donnés</th>
+                                            <th>Élèves donnés</th>
                                         </tr>
                                     </thead>
                                     <tbody>

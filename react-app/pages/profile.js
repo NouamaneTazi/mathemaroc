@@ -126,7 +126,7 @@ const Profile = () => {
                                                         <td>{student.whatsapp}</td>
                                                         <td>{student.facebook}</td>
                                                         <td style={{ textAlign: "center" }}> {student.reported ?
-                                                            <CustomizedTooltip title="Elève signalé" placement="left">
+                                                            <CustomizedTooltip title="Élève signalé" placement="left">
                                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "red", cursor: "pointer" }} onClick={() => setOpenReportDialog(student)}>warning</Icon>
                                                             </CustomizedTooltip> :
                                                             <CustomizedTooltip title="Signaler doublon, élève injoignable ou comportement inapproprié" placement="left">
@@ -139,7 +139,7 @@ const Profile = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    {!user.students || user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" !</p>}
+                                    {!user.students || user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" ! <br/> Il nous reste plus de 1000 élèves en attente, donc nous te prions de prendre 5 élèves au minimum !</p>}
                                     <Link href={'/catalogue'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Demander plus d'élèves"}</button></Link>
 
                                 </div>

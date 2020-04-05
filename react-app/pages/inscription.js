@@ -130,7 +130,7 @@ const Signup = () => {
                                     <div className="6u" style={{ textAlign: 'center' }}>
                                         <a style={{ borderBottom: "none", cursor: "pointer" }} onClick={() => setRole("student")}><span>
                                             <i style={{ fontSize: "9em" }} class="fas fa-book-reader"></i>
-                                            <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Elève</p>
+                                            <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Élève</p>
                                         </span></a>
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@ const Signup = () => {
                                         <div className="6u 12u(medium)" style={{ margin: 'auto' }}>
                                             <div className="6u" style={{ textAlign: 'center', margin: 'auto' }}>
                                                 <i style={{ fontSize: "5em" }} class="fas fa-book-reader"></i>
-                                                <p style={{ fontWeight: 600, fontSize: "2em", marginBottom: "1em" }}>Elève</p>
+                                                <p style={{ fontWeight: 600, fontSize: "2em", marginBottom: "1em" }}>Élève</p>
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>

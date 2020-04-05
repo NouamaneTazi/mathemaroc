@@ -42,7 +42,7 @@ const Reports = () => {
                 <section id="one">
                     <div className="inner">
                         <header className="major">
-                            {user ? <h1>Elèves signalés ({students.length})</h1> : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Élèves signalés ({students.length})</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
 
                         <div className="12u 12u(medium)">
@@ -52,9 +52,9 @@ const Reports = () => {
                                         <tr>
                                             <th>Groupe</th>
                                             <th>Tuteur</th>
-                                            <th>Elève signalé</th>
+                                            <th>Élève signalé</th>
                                             <th>Détails</th>
-                                            <th>Elève remplaçant</th>
+                                            <th>Élève remplaçant</th>
                                         </tr>
                                     </thead>
                                     <tbody>

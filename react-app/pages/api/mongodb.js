@@ -118,6 +118,11 @@ handler.get(async (req, res) => {
                 res.json(result);
             }
         })
+    } else if (req.query.count) {
+        let result = {}
+        result.supportedStudents = await req.db.collection('users').find({role:'student', groupId:{$exists:true}}).count()
+        result.students = await req.db.collection('users').find({role:'student'}).count()
+        res.json(result)
     }
 });
 

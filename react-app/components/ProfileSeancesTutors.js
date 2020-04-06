@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "react"
 
 const ProfileSeancesTutors = () => {
     const [tutors, setTutors] = useState([])
+    const [counts, setCounts] = useState({supportedStudents:'', students:''})
     const [maxRows, setMaxRows] = useState(10)
     const getSeances = async () => {
         const res = await fetch('/api/mongodb?getAllSeances=true')
@@ -13,18 +14,34 @@ const ProfileSeancesTutors = () => {
         // console.log("seances",seances)
         return seances.reduce((acc, seance) => acc + seance.length, 0)
     }
+    const getNumberStudents = async () => {
+        const res = await fetch('/api/mongodb?count=students')
+        const counts = await res.json()
+        setCounts(counts)
+    }
 
     useEffect(() => {
         getSeances()
+        getNumberStudents()
     }, [])
 
     return (
         <div className="12u">
             <h2 style={{ marginTop: "2em" }}>Tu n'es pas seul !</h2>
-            <p>Voici toute une communauté qui travaille aussi pour aider une génération à étinceler. S’entre aider c’est réussir ensemble.<br/> Ensemble on va plus loin, on crée un vrai impact.</p>
-            <h3>Compteur de séances données :</h3>
-            <div className="box" style={{ textAlign: "center" }}>
-                <h1>{getNumberSeances(tutors)}</h1>
+            <p>Voici toute une communauté qui travaille aussi pour aider une génération à étinceler. S’entre aider c’est réussir ensemble.<br /> Ensemble on va plus loin, on crée un vrai impact.</p>
+            <div className='row'>
+                <div className="6u 12u$(small)">
+                    <h3>Compteur de séances données :</h3>
+                    <div className="box" style={{ textAlign: "center" }}>
+                        <h1>{getNumberSeances(tutors)}</h1>
+                    </div>
+                </div>
+                <div className="6u 12u$(small)">
+                    <h3>Compteur d'élèves pris en charge :</h3>
+                    <div className="box" style={{ textAlign: "center" }}>
+                        <h1>{counts.supportedStudents} / {counts.students}</h1>
+                    </div>
+                </div>
             </div>
             <div className="table-wrapper">
                 <table className="alt dense">

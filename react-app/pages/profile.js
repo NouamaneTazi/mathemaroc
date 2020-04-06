@@ -139,15 +139,15 @@ const Profile = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    {!user.students || user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" ! <br/> Il nous reste plus de 1000 élèves en attente, donc nous te prions de prendre 5 élèves au minimum !</p>}
+                                    {!user.students || user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" ! <br /> Il nous reste plus de 1000 élèves en attente, donc nous te prions de prendre 5 élèves au minimum !</p>}
                                     <Link href={'/catalogue'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Demander plus d'élèves"}</button></Link>
 
                                 </div>
-
-                                <SeancesForm user={user} />
-                                <ProfileSeancesTutors />
-
                             </div>
+                            
+                            <SeancesForm user={user} />
+                            <ProfileSeancesTutors />
+
                         </section>
                     </div>
                         // user not associated

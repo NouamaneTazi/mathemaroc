@@ -62,8 +62,8 @@ const Seances = ({ user }) => {
 
     return (
         <>
-            {console.log('inputs', inputFields)}
-            <div className='inner'>
+            {/* {console.log('inputs', inputFields)} */}
+            <div className='inner' style={{padding:0}}>
                 <h2>Séances</h2>
                 <div className="table-wrapper">
                     <table>
@@ -162,6 +162,7 @@ const Seances = ({ user }) => {
                             </tbody>}
                     </table>
                 </div>
+                {(!inputFields || inputFields.length === 0) && <p style={{ textAlign: 'center' }}>Après avoir choisis et contacté tes élèves, nous te prions de nous faire un compte rendu de chaque séance que tu fais avec eux dans ce tableau pour qu'on sache que les élèves sont bien pris en charge</p>}
 
                 <div>
                     {editMode ?

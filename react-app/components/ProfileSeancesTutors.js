@@ -27,7 +27,7 @@ const ProfileSeancesTutors = () => {
 
     return (
         <div className="inner">
-            <h2 style={{ marginTop: "2em" }}>Tu n'es pas seul !</h2>
+            <h2>Tu n'es pas seul !</h2>
             <p>Voici toute une communauté qui travaille aussi pour aider une génération à étinceler. S’entre aider c’est réussir ensemble.<br /> Ensemble on va plus loin, on crée un vrai impact.</p>
             <div className='row'>
                 <div className="6u 12u$(small)">

@@ -81,7 +81,7 @@ const Seances = ({ user }) => {
                         {editMode ? <tbody>
                             {inputFields.map((inputField, index) => (
                                 <tr key={`${inputField}~${index}`}>
-                                    <th style={{ width: '10%' }}>
+                                    <td style={{ width: '10%' }}>
                                         <input
                                             type="date"
                                             id="date"
@@ -91,8 +91,8 @@ const Seances = ({ user }) => {
                                             style={{ backgroundColor: "#3e467f" }}
                                             placeholder="dd/mm/yyyy"
                                         />
-                                    </th>
-                                    <th style={{ width: '10%' }}>
+                                    </td>
+                                    <td style={{ width: '10%' }}>
                                         <input
                                             type="text"
                                             id="duree"
@@ -100,13 +100,13 @@ const Seances = ({ user }) => {
                                             value={inputField.duree}
                                             onChange={event => handleInputChange(index, event)}
                                         />
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td>
                                         <textarea name="chapitres" id="chapitres-traites" placeholder="Enter your message" rows="7" value={inputField.chapitres} onChange={event => handleInputChange(index, event)}></textarea>
 
-                                    </th>
+                                    </td>
 
-                                    <th>
+                                    <td>
                                         {user.students.map((student) => (
                                             <div className="12u 12u(small)" key={student._id}>
                                                 {/* TODO: handle checked for absent students */}
@@ -115,23 +115,23 @@ const Seances = ({ user }) => {
                                             </div>
                                         ))
                                         }
-                                    </th>
+                                    </td>
 
-                                    <th>
+                                    <td>
                                         <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea>
 
-                                    </th>
-                                    <th style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
+                                    </td>
+                                    <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
                                         <Rating
                                             initialRating={inputFields[index].rating}
                                             onChange={(val) => handleInputChange(index, { target: { name: 'rating', value: val } })}
                                             emptySymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30 }}>{x}</Icon>)}
                                             fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, color: "#2ea1d9" }}>{x}</Icon>)}
                                         />
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td>
                                         <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleRemoveFields(index)}>remove_circle</Icon>
-                                    </th>
+                                    </td>
                                 </tr>
                             ))}
                             <tr><th></th><th></th><th></th><th></th><th></th><th></th>

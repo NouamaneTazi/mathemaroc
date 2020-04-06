@@ -4,6 +4,8 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
 import MenuAdmin from '../components/MenuAdmin'
+import Icon from '@material-ui/core/Icon';
+import Rating from 'react-rating'
 
 const Admin = () => {
     const getUserData = async (user) => {
@@ -54,7 +56,7 @@ const Admin = () => {
                     <title>Admin Page</title>
                     <meta name="description" content="Admin Page" />
                 </Head>
-                <MenuAdmin user={user}/>
+                <MenuAdmin user={user} />
                 <section id="one">
                     <div className="inner">
                         <header className="major">
@@ -72,7 +74,7 @@ const Admin = () => {
                             </div>
                         }
                     </div>
-                    <div className="inner" style={{maxWidth:"95%", width:"100%"}}>
+                    <div className="inner" style={{ maxWidth: "95%", width: "100%" }}>
 
                         <div className="table-wrapper">
                             <table className="alt">
@@ -85,6 +87,7 @@ const Admin = () => {
                                         <th>Chapitres traités</th>
                                         <th>Élèves absents</th>
                                         <th>Remarques</th>
+                                        <th>Ressenti</th>
                                         <th>Traité</th>
                                     </tr>
                                 </thead>
@@ -101,6 +104,14 @@ const Admin = () => {
                                                         <td>{seance.chapitres}</td>
                                                         <td>{Object.values(seance.absents).join(', ')}</td>
                                                         <td>{seance.remarques}</td>
+                                                        <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
+                                                            <Rating
+                                                                readonly
+                                                                initialRating={seance.rating}
+                                                                emptySymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white" }}>{x}</Icon>)}
+                                                                fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "#2ea1d9" }}>{x}</Icon>)}
+                                                            />
+                                                        </td>
                                                         <td style={{ verticalAlign: "middle" }}>
                                                             {!seance.mod || !seance.mod.id ?
                                                                 <>

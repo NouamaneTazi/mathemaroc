@@ -16,7 +16,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import StudentProfile from '../components/profile/StudentProfile'
 import Router from 'next/router'
-import Joyride from 'react-joyride';
 
 const Profile = () => {
 

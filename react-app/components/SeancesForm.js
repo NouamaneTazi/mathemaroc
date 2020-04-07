@@ -162,7 +162,7 @@ const Seances = ({ user }) => {
                             </tbody>}
                     </table>
                 </div>
-                {(!inputFields || inputFields.length === 0) && <p style={{ textAlign: 'center' }}>Après avoir choisi et contacté tes élèves, nous te prions de nous faire un compte rendu de chaque séance que tu fais avec eux dans ce tableau pour qu'on sache que les élèves sont bien pris en charge</p>}
+                {(!inputFields || inputFields.length === 0) && <p style={{ textAlign: 'center' }}>Tu peux remplir ici les compte-rendus de chaque séance que tu fais avec tes élèves pour qu'on sache que les élèves sont bien pris en charge</p>}
 
                 <div>
                     {editMode ?

@@ -87,10 +87,8 @@ const Profile = () => {
                                 <div className="row 200%">
                                     <div className="12u 12u(medium)">
                                         {/* <p><b>Nouveauté : </b> On a atteint <b style={{ fontSize: "30px" }}>100</b> séances grâce à tous vos efforts ! Toute l'équipe de Math&Maroc vous remercie pour votre contribution qui encourage la solidarité entre frères marocains et qui donne une aide précieuse à un très grand nombre d'élèves ! On compte sur vous pour continuer comme ça !</p> */}
-                                        <p><b>Nouveauté : </b> Pour ceux qui veulent avoir plus d'élèves, vous pouvez à présent choisir vous mêmes les élèves dans le catalogue à élèves en cliquant sur le bouton "Demander plus d'élèves" !</p>
                                         <h2 id="content">{user.firstname} {user.lastname}</h2>
                                         <p>Au nom de l'association Math&Maroc nous te remercions pour ton initiative, nous sommes très fiers et très content de voir qu'il y a autant de personnes prêtes à aider un grand nombre d'élèves dans le besoin. Notre but est et sera toujours d'encourager l'entraide entre marocains.
-                                    <br /><br />Dans le but de suivre les tuteurs et les élèves et de s'assurer que tout se passe bien, nous te prions de <strong><u>nous faire un compte rendu rapide de chaque séance à l'aide du tableau en dessous des informations des élèves.</u></strong>
                                             <br /><br />Si tu rencontres un quelconque souci avec le site ou autre, nous te prions de nous contacter à l'aide de l'adresse suivante: <strong>mathemaroc.contact@gmail.com</strong> (Un screen expliquant la situation sera préférable)
 </p>
 
@@ -139,8 +137,8 @@ const Profile = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    {!user.students || user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Demander plus d'élèves" ! <br /> Il nous reste plus de 1000 élèves en attente, donc nous te prions de prendre 5 élèves au minimum !</p>}
-                                    <Link href={'/catalogue'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Demander plus d'élèves"}</button></Link>
+                                    {!user.students || user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Ajouter plus d'élèves" ! <br /> Il nous reste plus de 1000 élèves en attente, donc nous te prions de prendre 5 élèves au minimum !</p>}
+                                    <Link href={'/catalogue'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Ajouter plus d'élèves"}</button></Link>
 
                                 </div>
                             </div>

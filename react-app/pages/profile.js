@@ -16,6 +16,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import StudentProfile from '../components/profile/StudentProfile'
 import Router from 'next/router'
+import Joyride from 'react-joyride';
 
 const Profile = () => {
 
@@ -43,6 +44,9 @@ const Profile = () => {
         } else if (json.role == "student") {
             Object.assign(user, json);
         }
+        if (!user.students || user.students.length === 0) {
+            Router.push('/catalogue')
+        }
         setLoading(false)
     }
 
@@ -68,6 +72,7 @@ const Profile = () => {
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
             </Backdrop>
+
             {!userLoading && <Layout user={user} loading={userLoading}>
 
                 <Head>
@@ -142,7 +147,7 @@ const Profile = () => {
 
                                 </div>
                             </div>
-                            
+
                             <SeancesForm user={user} />
                             <ProfileSeancesTutors />
 

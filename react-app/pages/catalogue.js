@@ -10,12 +10,20 @@ import Router from 'next/router'
 import Link from 'next/link'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogActions from '@material-ui/core/DialogActions';
+import Typography from '@material-ui/core/Typography';
 
 const Reports = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         Object.assign(user, json)
+        if (!user.students || user.students.length === 0) {
+            setUserHasNoStudents(true)
+        }
     }
 
     const getAwaitingStudentsData = async () => {
@@ -65,6 +73,7 @@ const Reports = () => {
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes']))
     const [selectedStudents, setSelectedStudents] = useState([])
     const [maxRows, setMaxRows] = useState(10)
+    const [userHasNoStudents, setUserHasNoStudents] = useState(false)
 
     useEffect(() => {
         // { console.log("useEffect", user, userLoading) }
@@ -95,24 +104,46 @@ const Reports = () => {
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
             </Backdrop>
-            {/* {console.log(user)} */}
+
             {!userLoading && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Catalogue à élèves</title>
                     <meta name="description" content="Catalogue des élèves" />
                 </Head>
 
+                <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth>
+                    <MuiDialogContent dividers>
+                        <Typography variant="h5" color="primary" align="center">
+                            Bienvenue {user.fullname} !
+                        </Typography>
+                        <Typography align="center">
+                            <br />
+                            Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! <br />
+                        Il nous reste plus de 1000 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! <br />
+                        </Typography>
+
+                    </MuiDialogContent>
+
+                    <Button autoFocus onClick={() => setUserHasNoStudents(false)} color="primary">
+                        Fermer
+                        </Button>
+                </Dialog>
+
+
                 <section id="one">
                     <div className="inner">
-                        <div style={{ marginBottom: "2em" }}>
-                            <Link href="/profile">
-                                <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
-                            </Link>
-                        </div>
+                        {(user.students && user.students.length !== 0) &&
+                            <div style={{ marginBottom: "2em" }}>
+                                <Link href="/profile">
+                                    <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
+                                </Link>
+                            </div>
+                        }
                         <header className="major">
                             <h1>Catalogue des élèves</h1>
                         </header>
-                        <p>Vous pouvez prendre autant d'élèves que vous voulez mais à seule condition, que vous vous engagez à les enseigner ! Et pour nous permettre à assurer le suivi de tous les élèves, nous vous prions de remplir les séances que vous donnez sur votre profil.</p>
+                        <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />
+                            Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>
                     </div>
 
                     {selectedStudents.length > 0 && <>

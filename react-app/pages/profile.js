@@ -40,12 +40,14 @@ const Profile = () => {
             json.students = await res.json()
             json.students = json.students.filter(student => student.role == "student")
             Object.assign(user, json);
+            if (!user.students || user.students.length === 0) {
+                // console.log("uu",user)
+                Router.push('/catalogue')
+            }
         } else if (json.role == "student") {
             Object.assign(user, json);
         }
-        if (!user.students || user.students.length === 0) {
-            Router.push('/catalogue')
-        }
+        
         setLoading(false)
     }
 

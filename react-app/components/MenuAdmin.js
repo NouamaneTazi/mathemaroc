@@ -4,7 +4,7 @@ import Router from 'next/router'
 
 export default function ({ user }) {
     const router = useRouter()
-    if (router.pathname !== '/profile' && !user.is_admin) Router.push('/profile')
+    if (router.pathname !== '/profile' && (!user || !user.is_admin)) Router.push('/profile')
     if (user.is_admin) {
         return (
             <ul className="actions" style={{ display: "flex", justifyContent: 'space-evenly', width: "100%", margin: "2em 0 0 0" }}>

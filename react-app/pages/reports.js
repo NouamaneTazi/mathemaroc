@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
-import SearchAwaitingStudents from '../components/SearchAwaitingStudents'
+import SearchAndReplaceStudent from '../components/SearchAndReplaceStudent'
 import UndoReplacedStudent from '../components/UndoReplacedStudent'
 import MenuAdmin from '../components/MenuAdmin'
 
@@ -113,7 +113,7 @@ const Reports = () => {
                                                             {report.replaced_by.name} <div className="button special" onClick={() => setReplacingStudent(report.replaced_by)}>Undo</div>
                                                             <UndoReplacedStudent replacingStudent={replacingStudent} setReplacingStudent={setReplacingStudent} tutor={tutor} report={report}/>
                                                         </>
-                                                            : <SearchAwaitingStudents reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={() => handleModClick(tutor, report_index)} />
+                                                            : <SearchAndReplaceStudent reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={() => handleModClick(tutor, report_index)} />
                                                     }</td>
                                                 </tr>
                                             )) : null

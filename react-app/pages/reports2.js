@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
-import SearchAwaitingStudents2 from '../components/SearchAwaitingStudents2'
+import SearchAndReplaceStudent2 from '../components/SearchAndReplaceStudent2'
 
 const Reports = () => {
     const getUserData = async (user) => {
@@ -65,7 +65,7 @@ const Reports = () => {
                                                 <td>{student.report.tutor.name}</td>
                                                 <td>{student.fullname}</td>
                                                 <td>{student.report.text}</td>
-                                                <td><SearchAwaitingStudents2 reportedStudent={student} groupId={student.groupId} awaitingStudents={awaitingStudents} /></td>
+                                                <td><SearchAndReplaceStudent2 reportedStudent={student} groupId={student.groupId} awaitingStudents={awaitingStudents} /></td>
                                             </tr>
                                         ))
 

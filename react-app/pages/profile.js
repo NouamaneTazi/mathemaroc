@@ -64,7 +64,7 @@ const Profile = () => {
             Router.push('/api/login')
         }
 
-    }, [userLoading])
+    }, [userLoading, openReportDialog])
 
     const { width, height } = useWindowSize()
     return (
@@ -122,7 +122,7 @@ const Profile = () => {
                                                 {user.students && user.students.map(student => (
 
                                                     <tr key={student._id} onMouseEnter={() => null}>
-                                                        <td>{student.fullname}</td>
+                                                        <td>{student.firstname} {student.lastname}</td>
                                                         <td>{student.lycee}</td>
                                                         <td>{student.ville}</td>
                                                         <td>{student.filiere}</td>

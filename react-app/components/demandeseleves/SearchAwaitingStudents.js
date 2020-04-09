@@ -1,7 +1,7 @@
 import SearchInput, { createFilter } from 'react-search-input'
 import { useState, useEffect, Fragment } from "react"
 
-const SearchAwaitingStudents = ({ awaitingStudents, tutor }) => {
+const SearchAndReplaceStudent = ({ awaitingStudents, tutor }) => {
     const giveStudents = async () => {
         for (let student of selectedStudents) {
             await fetch('/api/mongodb', {
@@ -54,4 +54,4 @@ const SearchAwaitingStudents = ({ awaitingStudents, tutor }) => {
         }
     </div >)
 }
-export default SearchAwaitingStudents
+export default SearchAndReplaceStudent

@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useState, useEffect, Fragment } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
-import SearchAwaitingStudents from '../components/demandeseleves/SearchAwaitingStudents'
+import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
 import MenuAdmin from '../components/MenuAdmin'
 
 const Reports = () => {
@@ -87,7 +87,7 @@ const Reports = () => {
                                                     <td>{asked_more_students.number}</td>
 
                                                     <td>
-                                                        <SearchAwaitingStudents tutor={tutor} awaitingStudents={awaitingStudents} />
+                                                        <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />
                                                     </td>
                                                 </tr>)
                                         }

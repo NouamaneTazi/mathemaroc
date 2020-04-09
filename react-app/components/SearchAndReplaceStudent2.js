@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import SearchInput, { createFilter } from 'react-search-input'
 
-const SearchAwaitingStudents = ({ reportedStudent, awaitingStudents, groupId}) => {
+const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, groupId}) => {
     const replaceStudent = async (reportedStudent, selectedReplacement) => {
         await fetch('/api/mongodb', {
             method: 'post',
@@ -36,4 +36,4 @@ const SearchAwaitingStudents = ({ reportedStudent, awaitingStudents, groupId}) =
     </div>)
 }
 
-export default SearchAwaitingStudents
+export default SearchAndReplaceStudent

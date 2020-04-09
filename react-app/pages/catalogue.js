@@ -28,7 +28,6 @@ const Reports = () => {
     }
 
     const getAwaitingStudentsData = async () => {
-        console.log("GET DATA")
         let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits
         const awaitingStudents = await res.json()
         setAwaitingStudents(awaitingStudents)

@@ -22,15 +22,17 @@ const Seances = ({ user }) => {
         values[index][event.target.name] = event.target.value
         setInputFields(values);
     };
-
+    console.log()
     const handleDateChange = (index, event) => {
         moment.locale('fr')
         let date = event.target.value
         if (moment(date, ["DD-MM-YYYY", "DD/MM/YYYY", 'YYYY-MM-DD', 'YYYY/MM/DD'], true).isValid()) {
-            date = moment(date, ["DD-MM-YYYY", "DD/MM/YYYY", 'YYYY-MM-DD', 'YYYY/MM/DD'], true).format('YYYY-MM-DD')
-            const values = [...inputFields];
-            values[index][event.target.name] = date
-            setInputFields(values)
+            date = moment(date, ["DD-MM-YYYY", "DD/MM/YYYY", 'YYYY-MM-DD', 'YYYY/MM/DD'], true)
+            if (moment("2020-03-20") <= date && date < moment().add(1, 'M')) {
+                const values = [...inputFields];
+                values[index][event.target.name] = date.format('YYYY-MM-DD')
+                setInputFields(values)
+            }
         }
     }
 
@@ -63,7 +65,7 @@ const Seances = ({ user }) => {
     return (
         <>
             {/* {console.log('inputs', inputFields)} */}
-            <div className='inner' style={{padding:0}}>
+            <div className='inner' style={{ padding: 0 }}>
                 <h2>Séances</h2>
                 <div className="table-wrapper">
                     <table>
@@ -143,7 +145,7 @@ const Seances = ({ user }) => {
                             : <tbody>
                                 {inputFields.map((inputField, index) => (
                                     <tr key={`${inputField}~${index}`}>
-                                        <td>{moment(inputField.date, ['YYYY-MM-DD']).format('DD MMM YYYY')}</td>
+                                        <td>{inputField.date ? moment(inputField.date, ['YYYY-MM-DD']).format('DD MMM YYYY') : ""}</td>
                                         <td>{inputField.duree}</td>
                                         <td>{inputField.chapitres}</td>
                                         <td>{Object.values(inputField.absents).join(', ')}</td>

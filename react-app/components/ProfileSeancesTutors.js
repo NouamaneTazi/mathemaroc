@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from "react"
+import moment from 'moment'
 
 const ProfileSeancesTutors = () => {
     const [tutors, setTutors] = useState([])
@@ -55,7 +56,7 @@ const ProfileSeancesTutors = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {tutors.slice(0, maxRows).map(tutor => {
+                        {tutors.sort((b,a)=> moment(a.last_updated) - moment(b.last_updated)).slice(0, maxRows).map(tutor => {
                             return (
                                 <Fragment key={`${tutor._id}`}>
                                     {tutor.seances && tutor.seances.map((seance, index) => (

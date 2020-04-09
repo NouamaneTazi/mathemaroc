@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
-import MenuAdmin from '../components/MenuAdmin'
+
 import moment from 'moment'
 import useWindowSize from "react-use/lib/useWindowSize"
 
@@ -48,7 +48,7 @@ const Admin = () => {
                     <title>Suivi du catalogue</title>
                     <meta name="description" content="Suivi du catalogue" />
                 </Head>
-                <MenuAdmin user={user} />
+                
                 <section id="one">
                     <div className="inner">
                         <header className="major">
@@ -75,7 +75,7 @@ const Admin = () => {
 
                         <div className="table-wrapper">
                             <h2>Tuteur :</h2>
-                            <table className="alt">
+                            <table className="alt dense">
                                 <thead>
                                     <tr>
                                         <th>Groupe</th>
@@ -144,7 +144,7 @@ const Admin = () => {
 
                         <h2>Liste des séances</h2>
                         <div className="table-wrapper">
-                            <table className="alt">
+                            <table className="alt dense">
                                 <thead>
                                     <tr>
                                         <th>Date</th>

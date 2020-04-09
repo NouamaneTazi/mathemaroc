@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
-import MenuAdmin from '../components/MenuAdmin'
+
 import moment from 'moment'
 
 const Admin = () => {
@@ -35,7 +35,7 @@ const Admin = () => {
                     <title>Suivi inscriptions</title>
                     <meta name="description" content="Suivi inscriptions" />
                 </Head>
-                <MenuAdmin user={user} />
+                
                 <section id="one">
                     <div className="inner">
                         <header className="major">
@@ -55,7 +55,7 @@ const Admin = () => {
                     <div className="inner" style={{ maxWidth: "95%", width: "100%" }}>
 
                         <div className="table-wrapper">
-                            <table className="alt">
+                            <table className="alt dense">
                                 <thead>
                                     <tr>
                                         <th>Élève</th>

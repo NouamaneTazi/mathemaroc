@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
-import MenuAdmin from '../components/MenuAdmin'
 import Icon from '@material-ui/core/Icon';
 import Rating from 'react-rating'
 
@@ -56,7 +55,6 @@ const Admin = () => {
                     <title>Admin Page</title>
                     <meta name="description" content="Admin Page" />
                 </Head>
-                <MenuAdmin user={user} />
                 <section id="one">
                     <div className="inner">
                         <header className="major">

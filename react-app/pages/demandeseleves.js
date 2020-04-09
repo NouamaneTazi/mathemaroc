@@ -3,7 +3,7 @@ import { useState, useEffect, Fragment } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
-import MenuAdmin from '../components/MenuAdmin'
+
 
 const Reports = () => {
     const getUserData = async (user) => {

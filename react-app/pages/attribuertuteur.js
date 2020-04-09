@@ -2,6 +2,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
+import Router from "next/router"
 import MenuAdmin from '../components/MenuAdmin'
 
 const InputGroupId = ({ tutor }) => {
@@ -32,6 +33,7 @@ const Reports = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
+        if (!json.is_admin) Router.push('/profile')
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getAwaitingTutors=true')
         const new_awaitingtutors = await res.json()

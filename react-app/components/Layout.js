@@ -5,6 +5,8 @@ import Header from './Header'
 import Menu from './Menu'
 import Contact from './Contact'
 import Footer from './Footer'
+import Router from "next/router"
+import MenuAdmin from '../components/MenuAdmin'
 
 class Layout extends React.Component {
     constructor(props) {
@@ -17,6 +19,9 @@ class Layout extends React.Component {
     }
 
     componentDidMount() {
+        if (!this.props.loading && !this.props.user) {
+            Router.push('/profile')
+        }
         this.timeoutId = setTimeout(() => {
             this.setState({ loading: '' });
         }, 100);
@@ -35,6 +40,7 @@ class Layout extends React.Component {
     }
 
     render() {
+        const {user} = this.props
         return (
             <div className={`body ${this.props.loading ? 'is-loading' : this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
                 <Head>
@@ -56,6 +62,7 @@ class Layout extends React.Component {
 
                 <div id="wrapper">
                     <Header onToggleMenu={this.handleToggleMenu} />
+                   <MenuAdmin user={user} />
                     {this.props.children}
                     {/* <Contact /> */}
                     <Footer />

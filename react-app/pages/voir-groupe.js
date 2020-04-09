@@ -5,6 +5,7 @@ import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
 import MenuAdmin from '../components/MenuAdmin'
 import moment from 'moment'
+import useWindowSize from "react-use/lib/useWindowSize"
 
 const Admin = () => {
     const getGroupUsers = async () => {
@@ -20,6 +21,18 @@ const Admin = () => {
         setTutor(tutor)
         setStudents(students)
         setLoading(false)
+    }
+
+    const handeRetourListeAttente = async () => {
+        setLoading(true)
+        for (let student of students) {
+            await fetch('/api/mongodb?unset=true', {
+                method: 'post',
+                body: JSON.stringify({ _id: student._id, data: { groupId: "" } })
+            })
+        }
+        setLoading(false)
+        setStudents([])
     }
 
     let { user, loading: userLoading } = useFetchUser()
@@ -54,7 +67,7 @@ const Admin = () => {
                         } */}
                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                             <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Entrez le numéro du groupe :</span>
-                            <input type="text" value={groupId} onChange={e => setGroupId(e.target.value)} onKeyPress={(e) => e.key==='Enter' ? getGroupUsers() : null} />
+                            <input type="text" value={groupId} onChange={e => setGroupId(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? getGroupUsers() : null} />
                             <button className="button special" onClick={() => getGroupUsers()}>Confirmer</button>
                         </div>
 
@@ -93,7 +106,8 @@ const Admin = () => {
                             </table>
                         </div>
 
-                        <h2>Liste des élèves</h2>
+                        <h2 style={{display:"inline-block", marginBottom:"1em"}}>Liste des élèves : </h2>
+                        <button className="button special small" style={{verticalAlign:'super', float:"right"}} onClick={() => handeRetourListeAttente()}>retour élèves liste d'attente</button>
                         <div className="table-wrapper">
                             <table>
                                 <thead>

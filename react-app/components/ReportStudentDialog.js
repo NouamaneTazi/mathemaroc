@@ -29,11 +29,21 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
     };
 
     const handleSubmit = async () => {
+        let report = {
+            "student": { "_id": student._id, "name": `${student.firstname} ${student.lastname}` },
+            "time": new Date(Date.now()).toLocaleString("en-US"),
+            "text": reportText
+        }
+
         if (reportOption === "other" || reportOption.substring(0, 3) === "del") {
             student.reported = true
             student.report = { "tutor": { "_id": tutor._id, "name": `${tutor.fullname}` }, "text": reportText }
             student.prev_groupId = tutor.groupId
-            if (reportOption.substring(0, 3) === "del") {student.groupId = -1}
+            if (reportOption.substring(0, 3) === "del") {
+                student.groupId = -1
+                report.replaced_by = { name: "--" }
+                report.mod = { name: "Bot" }
+            }
             await fetch('/api/mongodb', {
                 method: 'post',
                 body: JSON.stringify({ _id: student._id, data: student })
@@ -43,14 +53,13 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                 method: 'post',
                 body: JSON.stringify({ _id: student._id, data: { groupId: "" } })
             })
+            report.replaced_by = { name: "retour liste d'attente" }
+            report.mod = { name: "Bot" }
         }
 
         let reports = "reports" in tutor ? tutor.reports : []
-        reports.push({
-            "student": { "_id": student._id, "name": `${student.firstname} ${student.lastname}` },
-            "time": new Date(Date.now()).toLocaleString("en-US"),
-            "text": reportText
-        })
+        reports.push(report)
+
         await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: reports } })
@@ -74,7 +83,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                 </DialogContent>
                 <DialogActions>
                     <div className="12u">
-                        <RadioGroup aria-label="gender" name="gender1" value={reportOption} onChange={(e) => {setReportOption(e.target.value); e.target.value!=='other' && setReportText(e.target.name)}}>
+                        <RadioGroup aria-label="gender" name="gender1" value={reportOption} onChange={(e) => { setReportOption(e.target.value); e.target.value !== 'other' && setReportText(e.target.name) }}>
                             <FormControlLabel value="delete-1" control={<Radio />} name="L'élève est injoignable." label="L'élève est injoignable." style={{ color: "black", textTransform: "none", margin: "0" }} />
                             <FormControlLabel value="delete-2" control={<Radio />} name="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." label="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." style={{ color: "black", textTransform: "none", margin: "0" }} />
                             <FormControlLabel value="returnQueue" control={<Radio />} name="L'élève doit revenir à la liste d'attente." label="L'élève doit revenir à la liste d'attente." style={{ color: "black", textTransform: "none", margin: "0" }} />

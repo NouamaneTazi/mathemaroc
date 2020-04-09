@@ -90,7 +90,7 @@ const Reports = () => {
                                                     <td>{report.time}</td>
                                                     <td>{report.text}</td>
                                                     <td >
-                                                        {!report.mod || !report.mod.id ?
+                                                        {!report.mod || !report.mod.name ?
                                                             <>
                                                                 <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, report_index)} />
                                                                 <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}></label>

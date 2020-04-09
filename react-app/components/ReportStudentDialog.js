@@ -56,7 +56,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
             <Dialog aria-labelledby="customized-dialog-title" open={student ? true : false} fullWidth>
                 <DialogContent dividers>
                     <Typography variant="h5" gutterBottom style={{color:"black"}}>
-                        Signaler {student.firstname} {student.lastname} :
+                        Signaler {student.fullname} :
           </Typography>
           <Typography>
           Veuillez nous donner plus de détails..

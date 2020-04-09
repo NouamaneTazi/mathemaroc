@@ -113,7 +113,7 @@ const Seances = ({ user }) => {
                                             <div className="12u 12u(small)" key={student._id}>
                                                 {/* TODO: handle checked for absent students */}
                                                 <input type="checkbox" id={`${index}-${student._id}`} onChange={() => handleAbsentsChange(index, student)} />
-                                                <label htmlFor={`${index}-${student._id}`}>{student.firstname} {student.lastname}</label>
+                                                <label htmlFor={`${index}-${student._id}`}>{student.fullname}</label>
                                             </div>
                                         ))
                                         }

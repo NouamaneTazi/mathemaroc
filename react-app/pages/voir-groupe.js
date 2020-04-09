@@ -126,7 +126,7 @@ const Admin = () => {
                                     {students.map(student => (
 
                                         <tr key={student._id} onMouseEnter={() => null}>
-                                            <td>{student.firstname} {student.lastname}</td>
+                                            <td>{student.fullname}</td>
                                             <td>{student.lycee}</td>
                                             <td>{student.ville}</td>
                                             <td>{student.filiere}</td>

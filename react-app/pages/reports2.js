@@ -63,7 +63,7 @@ const Reports = () => {
                                             <tr key={`${student._id}`}>
                                                 <td>{student.groupId}</td>
                                                 <td>{student.report.tutor.name}</td>
-                                                <td>{student.firstname} {student.lastname}</td>
+                                                <td>{student.fullname}</td>
                                                 <td>{student.report.text}</td>
                                                 <td><SearchAwaitingStudents2 reportedStudent={student} groupId={student.groupId} awaitingStudents={awaitingStudents} /></td>
                                             </tr>

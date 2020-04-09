@@ -14,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import Typography from '@material-ui/core/Typography';
+import Alert from '@material-ui/lab/Alert';
 
 const Reports = () => {
     const getUserData = async (user) => {
@@ -41,29 +42,36 @@ const Reports = () => {
     }
 
     const handleSubmit = async () => {
-        for (let student of selectedStudents) {
+        if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) {
+            setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' })
+        }
+        else {
+            for (let student of selectedStudents) {
+                await fetch('/api/mongodb', {
+                    method: 'post',
+                    body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } })
+                })
+            }
+            let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : []
+            catalogue_logs.push({
+                time: new Date(Date.now()).toLocaleString("en-US"),
+                students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname }))
+            })
             await fetch('/api/mongodb', {
                 method: 'post',
-                body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } })
+                body: JSON.stringify({
+                    _id: user._id,
+                    data: { "catalogue_logs": catalogue_logs }
+                })
             })
+            Router.push('/profile')
         }
-        let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : []
-        catalogue_logs.push({
-            time: new Date(Date.now()).toLocaleString("en-US"),
-            students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname }))
-        })
-        await fetch('/api/mongodb', {
-            method: 'post',
-            body: JSON.stringify({
-                _id: user._id,
-                data: { "catalogue_logs": catalogue_logs }
-            })
-        })
-        Router.push('/profile')
+        setLoading(false)
     }
 
     let { user, loading: userLoading } = useFetchUser()
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState()
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [filiereTerm, setFiliereTerm] = useState("")
     const [matiereTerm, setMatiereTerm] = useState("")
@@ -144,6 +152,7 @@ const Reports = () => {
                         </header>
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>
+
                     </div>
 
                     {selectedStudents.length > 0 && <>
@@ -167,7 +176,7 @@ const Reports = () => {
                                                 <td>{student.matiere}</td>
                                                 <td>{student.wishes}</td>
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?
-                                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => setSelectedStudents(selectedStudents.filter(s => s._id != student._id))}>check_box</Icon>
+                                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => {setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id))}}>check_box</Icon>
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                                 }</td>
                                             </tr>
@@ -177,8 +186,9 @@ const Reports = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            {error && <Alert severity="error">{error.message}</Alert>}
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p>
-                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => handleSubmit()}>Oui !</button>
+                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => {setLoading(true); handleSubmit()}}>Oui !</button>
                         </div>
                         <Divider style={{ marginBottom: "3em" }} />
                     </>}
@@ -220,7 +230,7 @@ const Reports = () => {
                                             <td style={{ width: "50%" }}>{student.matiere}</td>
                                             <td style={{ width: "40%" }}>{student.wishes}</td>
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?
-                                                <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => setSelectedStudents(selectedStudents.filter(s => s._id != student._id))}>check_box</Icon>
+                                                <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => {setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id))}}>check_box</Icon>
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
                                         </tr>

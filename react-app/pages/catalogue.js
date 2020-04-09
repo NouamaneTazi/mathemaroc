@@ -127,7 +127,9 @@ const Reports = () => {
                         <Typography align="center">
                             <br />
                             Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! <br />
-                        Il nous reste plus de 1000 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! <br />
+                            Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype/Whatsapp/Zoom, ou juste des exos corrigés sur Whatsapp !<br/>
+                        Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! <br />
+                        
                         </Typography>
 
                     </MuiDialogContent>

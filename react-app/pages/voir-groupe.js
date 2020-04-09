@@ -24,7 +24,6 @@ const Admin = () => {
     }
 
     const handeRetourListeAttente = async () => {
-        setLoading(true)
         for (let student of students) {
             await fetch('/api/mongodb?unset=true', {
                 method: 'post',
@@ -107,7 +106,7 @@ const Admin = () => {
                         </div>
 
                         <h2 style={{display:"inline-block", marginBottom:"1em"}}>Liste des élèves : </h2>
-                        <button className="button special small" style={{verticalAlign:'super', float:"right"}} onClick={() => handeRetourListeAttente()}>retour élèves liste d'attente</button>
+                        <button className="button special small" style={{verticalAlign:'super', float:"right"}} onClick={() => {setLoading(true); handeRetourListeAttente()}}>retour élèves liste d'attente</button>
                         <div className="table-wrapper">
                             <table>
                                 <thead>

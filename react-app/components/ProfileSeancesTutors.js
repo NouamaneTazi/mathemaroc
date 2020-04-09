@@ -1,7 +1,7 @@
 import { useState, useEffect, Fragment } from "react"
 import moment from 'moment'
 
-const ProfileSeancesTutors = () => {
+const ProfileSeancesTutors = ({setConfettis}) => {
     const [tutors, setTutors] = useState([])
     const [counts, setCounts] = useState({supportedStudents:'', students:''})
     const [maxRows, setMaxRows] = useState(10)
@@ -11,9 +11,11 @@ const ProfileSeancesTutors = () => {
         setTutors(value)
     }
     const getNumberSeances = tutors => {
-        let seances = tutors.map(tutor => tutor.seances).filter(seance => seance !== undefined && seance.length > 0)
+        const seances = tutors.map(tutor => tutor.seances).filter(seance => seance !== undefined && seance.length > 0)
         // console.log("seances",seances)
-        return seances.reduce((acc, seance) => acc + seance.length, 0)
+        const nb_seances = seances.reduce((acc, seance) => acc + seance.length, 0)
+        if (nb_seances >= 300) setConfettis(true)
+        return nb_seances
     }
     const getNumberStudents = async () => {
         const res = await fetch('/api/mongodb?count=students')

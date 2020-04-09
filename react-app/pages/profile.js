@@ -54,7 +54,8 @@ const Profile = () => {
     let { user, loading: userLoading } = useFetchUser()
     const [loading, setLoading] = useState(false)
     const [openReportDialog, setOpenReportDialog] = useState(false)
-
+    const [confettis, setConfettis] = useState(false)
+    
     useEffect(() => {
         // {console.log("useEffect", user, userLoading)}
         if (user && !userLoading) {
@@ -83,7 +84,7 @@ const Profile = () => {
 
                 {user && user.role === "student" ? <StudentProfile user={user} />
                     : user && user.role === "tutor" ? <div id="main" className="alt">
-                        {/* <Confetti width={width} height={height}/> */}
+                        {confettis && <Confetti width={width} height={height}/>}
                         <section id="one">
                             <div className="inner">
                                 <header className="major">
@@ -92,7 +93,7 @@ const Profile = () => {
 
                                 <div className="row 200%">
                                     <div className="12u 12u(medium)">
-                                        {/* <p><b>Nouveauté : </b> On a atteint <b style={{ fontSize: "30px" }}>100</b> séances grâce à tous vos efforts ! Toute l'équipe de Math&Maroc vous remercie pour votre contribution qui encourage la solidarité entre frères marocains et qui donne une aide précieuse à un très grand nombre d'élèves ! On compte sur vous pour continuer comme ça !</p> */}
+                                        {confettis && <p><b>Nouveauté : </b> On a atteint <b style={{ fontSize: "30px" }}>300</b> séances grâce à tous vos efforts ! Toute l'équipe de Math&Maroc vous remercie pour votre contribution qui encourage la solidarité entre frères marocains et qui donne une aide précieuse à un très grand nombre d'élèves ! On compte sur vous pour continuer comme ça !</p>}
                                         <h2 id="content">{user.firstname} {user.lastname}</h2>
                                         <p>Au nom de l'association Math&Maroc nous te remercions pour ton initiative, nous sommes très fiers et très content de voir qu'il y a autant de personnes prêtes à aider un grand nombre d'élèves dans le besoin. Notre but est et sera toujours d'encourager l'entraide entre marocains.
                                         <br /><br />C'est à toi de contacter les élèves par mail/whatsapp/facebook, et de discuter avec eux du format des séances (qui peuvent être des appels vidéos par Skype/Zoom ou juste de correction d'exos par Whatsapp). N'hésite pas à signaler les élèves qui ne sont pas interéssés ou qui sont injoignables et de prendre d'autres élèves puisqu'il y a plein d'autres en attente d'un tuteur. Finalement, nous te prions de nous faire des comptes rendus de chaque séance que tu fais avec tes élèves.
@@ -151,7 +152,7 @@ const Profile = () => {
                             </div>
 
                             <SeancesForm user={user} />
-                            <ProfileSeancesTutors />
+                            <ProfileSeancesTutors setConfettis={setConfettis}/>
 
                         </section>
                     </div>

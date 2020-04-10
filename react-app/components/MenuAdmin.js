@@ -5,9 +5,9 @@ import { useEffect } from 'react'
 
 export default function ({ user }) {
     const router = useRouter()
-    useEffect(() => {
-        if (router.pathname !== '/profile' && (!user || !user.is_admin)) Router.push('/profile')
-    }, [user])
+    // useEffect(() => {
+    //     if (router.pathname !== '/profile' && (!user || !user.is_admin)) Router.push('/profile')
+    // }, [user])
 
     if (user && user.is_admin) {
         return (

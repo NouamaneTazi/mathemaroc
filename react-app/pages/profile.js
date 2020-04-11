@@ -31,6 +31,10 @@ const Profile = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
+        await fetch('/api/mongodb', {
+            method: 'post',
+            body: JSON.stringify({ _id: json._id, data: {email:user.email} })
+        })
         // console.log("json", json)
         if (json.notYetSetUp) {
             Router.push('/inscription')
@@ -39,7 +43,7 @@ const Profile = () => {
             Router.push('/catalogue')
         }
         Object.assign(user, json);
-        // console.log("user", user)
+        console.log("user", user)
         setLoading(false)
     }
 

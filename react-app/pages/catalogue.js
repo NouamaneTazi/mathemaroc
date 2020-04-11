@@ -24,7 +24,7 @@ const Reports = () => {
         if (!user.students || user.students.length === 0) {
             setUserHasNoStudents(true)
         }
-        // console.log("u",user)
+        console.log("u",user)
     }
 
     const getAwaitingStudentsData = async () => {

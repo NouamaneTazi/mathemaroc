@@ -18,15 +18,23 @@ handler.get(async (req, res) => {
             }
         });
     } else if (auth0id) {
-        req.db.collection('users').findOne({ auth0id }, function (err, result) {
+        req.db.collection('users').findOne({ auth0id }, function (err, user) {
             if (err) res.json({ err: true })
-            else if (!result) {
+            else if (!user) {
                 console.log("Not Yet Setup")
                 res.json({ notYetSetUp: true })
             }
-            else {
-                // console.log(result);
-                res.json(result);
+            else if (user.role === "tutor") {
+                req.db.collection('users').find({ groupId: parseInt(user.groupId), role: "student"}).toArray(function (err, students) {
+                    if (err) res.json({ err: true })
+                    else {
+                        user.students = students ? students : []
+                        console.log("uu",user)
+                        res.json(user);
+                    }
+                });
+            } else {
+                res.json(user);
             }
         });
     } else if (role) {
@@ -63,7 +71,7 @@ handler.get(async (req, res) => {
             }
         });
     } else if (req.query.getStudentsSignUps) {
-        req.db.collection('users').find({ role: "student", auth0id:{$exists:true} }).sort({ updated_at: -1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ role: "student", auth0id: { $exists: true } }).sort({ updated_at: -1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
@@ -120,8 +128,8 @@ handler.get(async (req, res) => {
         })
     } else if (req.query.count) {
         let result = {}
-        result.supportedStudents = await req.db.collection('users').find({role:'student', groupId:{$exists:true}}).count()
-        result.students = await req.db.collection('users').find({role:'student'}).count()
+        result.supportedStudents = await req.db.collection('users').find({ role: 'student', groupId: { $exists: true } }).count()
+        result.students = await req.db.collection('users').find({ role: 'student' }).count()
         res.json(result)
     }
 });

@@ -31,23 +31,15 @@ const Profile = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
-        // console.log("json", json)
+        console.log("json", json)
         if (json.notYetSetUp) {
             Router.push('/inscription')
         }
-        else if (json.role == "tutor") {
-            res = await fetch('/api/mongodb?groupId=' + json.groupId)
-            json.students = await res.json()
-            json.students = json.students.filter(student => student.role == "student")
-            Object.assign(user, json);
-            if (!user.students || user.students.length === 0) {
-                // console.log("uu",user)
-                Router.push('/catalogue')
-            }
-        } else if (json.role == "student") {
-            Object.assign(user, json);
+        else if (json.role == "tutor" && !json.students || json.students.length === 0) {
+            Router.push('/catalogue')
         }
-        
+        Object.assign(user, json);
+        console.log("user", user)
         setLoading(false)
     }
 
@@ -55,7 +47,7 @@ const Profile = () => {
     const [loading, setLoading] = useState(false)
     const [openReportDialog, setOpenReportDialog] = useState(false)
     const [confettis, setConfettis] = useState(false)
-    
+
     useEffect(() => {
         // {console.log("useEffect", user, userLoading)}
         if (user && !userLoading) {
@@ -84,7 +76,7 @@ const Profile = () => {
 
                 {user && user.role === "student" ? <StudentProfile user={user} />
                     : user && user.role === "tutor" ? <div id="main" className="alt">
-                        {confettis && <Confetti width={width} height={height}/>}
+                        {confettis && <Confetti width={width} height={height} />}
                         <section id="one">
                             <div className="inner">
                                 <header className="major">
@@ -152,7 +144,7 @@ const Profile = () => {
                             </div>
 
                             <SeancesForm user={user} />
-                            <ProfileSeancesTutors setConfettis={setConfettis}/>
+                            <ProfileSeancesTutors setConfettis={setConfettis} />
 
                         </section>
                     </div>

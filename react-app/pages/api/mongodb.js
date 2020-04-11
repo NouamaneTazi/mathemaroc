@@ -29,7 +29,7 @@ handler.get(async (req, res) => {
                     if (err) res.json({ err: true })
                     else {
                         user.students = students ? students : []
-                        console.log("uu",user)
+                        // console.log("uu",user)
                         res.json(user);
                     }
                 });

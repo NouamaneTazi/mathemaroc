@@ -24,7 +24,7 @@ const Reports = () => {
         if (!user.students || user.students.length === 0) {
             setUserHasNoStudents(true)
         }
-        console.log("u",user)
+        // console.log("u",user)
     }
 
     const getAwaitingStudentsData = async () => {
@@ -123,12 +123,14 @@ const Reports = () => {
                         <Typography variant="h5" color="primary" align="center">
                             Bienvenue {user.fullname} !
                         </Typography>
-                        <Typography align="center">
+                        <Typography align="left">
                             <br />
-                            Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! <br />
-                            Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype/Whatsapp/Zoom, ou juste des exos corrigés sur Whatsapp !<br/>
-                        Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! <br />
-                        
+                            <ul>
+                                <li>
+                                    Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li>
+                                <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li>
+                                <li>Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! </li>
+                            </ul>
                         </Typography>
 
                     </MuiDialogContent>
@@ -177,7 +179,7 @@ const Reports = () => {
                                                 <td>{student.matiere}</td>
                                                 <td>{student.wishes}</td>
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?
-                                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => {setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id))}}>check_box</Icon>
+                                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                                 }</td>
                                             </tr>
@@ -189,7 +191,7 @@ const Reports = () => {
                             </div>
                             {error && <Alert severity="error">{error.message}</Alert>}
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p>
-                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => {setLoading(true); handleSubmit()}}>Oui !</button>
+                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
                         </div>
                         <Divider style={{ marginBottom: "3em" }} />
                     </>}
@@ -224,6 +226,7 @@ const Reports = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {console.log(filteredWishesStudents)}
                                     {filteredWishesStudents.slice(0, maxRows).map(student => (
                                         <tr key={`${student._id}`}>
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>
@@ -231,7 +234,7 @@ const Reports = () => {
                                             <td style={{ width: "50%" }}>{student.matiere}</td>
                                             <td style={{ width: "40%" }}>{student.wishes}</td>
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?
-                                                <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => {setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id))}}>check_box</Icon>
+                                                <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
                                         </tr>

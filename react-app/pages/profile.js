@@ -31,15 +31,15 @@ const Profile = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
-        console.log("json", json)
+        // console.log("json", json)
         if (json.notYetSetUp) {
             Router.push('/inscription')
         }
-        else if (json.role == "tutor" && !json.students || json.students.length === 0) {
+        else if (json.role == "tutor" && (!json.students || json.students.length === 0)) {
             Router.push('/catalogue')
         }
         Object.assign(user, json);
-        console.log("user", user)
+        // console.log("user", user)
         setLoading(false)
     }
 

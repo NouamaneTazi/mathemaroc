@@ -1,5 +1,6 @@
 import nextConnect from 'next-connect';
 import middleware from '../../lib/database';
+import moment from 'moment'
 var ObjectID = require('mongodb').ObjectID;
 var nodemailer = require('nodemailer');
 const handler = nextConnect();
@@ -64,16 +65,16 @@ const html_avec_eleves = `
 <div>
 <div><span style="color: #3e404f;"><span style="font-size: 36px;"><span style="font-family: Lora,Times,serif;"><strong style="font-weight: bold;">Bonjour,</strong></span></span></span></div>
 <div> </div>
-<div><span style="color: #3e404f;">J'espère que vous et votre famille vous portez bien en cette période de confinement. </span></div>
+<div><span style="color: #3e404f;">Nous espérons que vous et votre famille vous portez bien en cette période de confinement. </span></div>
 <div> </div>
-<div><span style="color: #3e404f;">Nous avons remarqué que vous vous êtes récemment connecté sur la plateforme de Math&amp;Maroc pour donner des cours en ligne en tant que bénévole. Tout d'abord je vous en remercie, cela fait toujours plaisir de voir des personnes donner de leur temps pour leur pays et leurs compatriotes en cette période particulièrement difficile.</span></div>
+<div><span style="color: #3e404f;">Nous avons remarqué que vous vous êtes récemment connectés sur la plateforme de Math&amp;Maroc pour donner des cours en ligne en tant que bénévole. Tout d'abord nous vous en remercions, cela fait toujours plaisir de voir des personnes donner de leur temps pour leur pays et leurs compatriotes en cette période particulièrement difficile.</span></div>
 <div> </div>
-<div><span style="color: #3e404f;">Cependant, même si vous avez choisi des élèves à encadrer dans la liste proposée, vous n'avez à cette date renseigné aucune séance sur la dite plateforme. Ainsi, pour garder le contact, nous voulions savoir si cela était par oubli; dans ce cas, nous vous prions d'aller remplir au moins une première séance de rencontre avec les élèves sur <a style="color: #3498db;" href="https://mathemaroc.now.sh/profile" rel="nofollow">votre profil</a>; ou parce que vos occupations ne vous permettent plus de vous engager avec nos futurs bacheliers.</span></div>
+<div><span style="color: #3e404f;">Cependant, même si vous avez choisi des élèves à encadrer dans la liste proposée, vous n'avez à cette date renseigné aucune séance sur la dite plateforme. Ainsi, pour garder le contact, nous voulions savoir si cela était par oubli; dans ce cas, nous vous prions d'aller remplir au moins une première séance de rencontre avec les élèves sur <a style="color: #3498db;" href="https://mathemaroc.now.sh/profile" rel="nofollow">votre profil</a>; ou parce que vos occupations ne vous permettent plus de vous engager avec nos futurs bacheliers. <span style="text-decoration: underline;"><strong><em>(Dans l'absence d'une réponse de votre part dans les 7 prochains jours, vos élèves seront remis automatiquement dans la liste d'attente)</em></strong></span></span></div>
 <div> </div>
 <div><span style="color: #3e404f;">Dans l'attente de votre réponse.</span></div>
 <div> </div>
 <div><span style="color: #3e404f;">Bien cordialement,</span><br />  </div>
-<div>- L'équipe Math&amp;Maroc</div>
+<div>- L'équipe Math&amp;Maroc.</div>
 </div>
 </div>
 </div>
@@ -113,18 +114,23 @@ var message = {
 
 handler.get(async (req, res) => {
     console.log("schedule", req.query)
-    req.db.collection('users').find({fullname:{$in:['Omar Bennouna', 'Nouamane Tazi', 'Meryem Jaaidan', 'Mohammed-younes Gueddari']}}).toArray(function (err, result) {
+    console.log(moment().subtract(1, 'weeks').format())
+    // req.db.collection('users').find({ is_admin:"true"}).toArray(function (err, result) {
+    req.db.collection('users').find({ role: "tutor", seances: { $exists: false },sent_mails : {$exists: false} ,updated_at: { $lte: moment().subtract(1, 'weeks').format() } }).toArray(function (err, result) {
         if (err) res.json({ err: true })
         else {
-            message.bcc = result.map(tutor=>tutor.mail ? tutor.mail : tutor.email ? tutor.email : !tutor.nickname.includes(' ') ? tutor.nickname + "@gmail.com" : null).filter(x=>x).join()
+            const contacted_tutors = result.map(tutor => ({_id : tutor._id , to : tutor.mail ? tutor.mail : tutor.email ? tutor.email : !tutor.nickname.includes(' ') ? tutor.nickname + "@gmail.com" : null})).filter(x => x.to)
+            message.bcc = contacted_tutors.map(t => t.to).join()
             console.log(message.bcc)
             transporter.sendMail(message, function (error, info) {
                 if (error) {
-                    console.log(error);
+                    res.json({ err: true })
                 } else {
                     console.log('Email sent: ' + info.response);
                     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-
+                    contacted_tutors.map(tutor => {
+                        req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $push: {sent_mails : {date : new Date(), to : tutor.to}}})
+                    })
                     res.send(message.bcc);
                 }
             });

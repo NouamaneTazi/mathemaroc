@@ -84,7 +84,7 @@ handler.get(async (req, res) => {
             }
         });
     } else if (getAwaitingStudents && req.query.limit) {
-        req.db.collection('users').find({ role: "student", groupId: { "$exists": false }, firstname: { "$ne": '--' } }).sort({ timestamp: 1, lastname: 1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ role: "student", groupId: { "$exists": false } }).sort({ timestamp: 1, lastname: 1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
@@ -138,6 +138,7 @@ handler.post(async (req, res) => {
             user.data.groupId = ret.value.seq
             await req.db.collection('users').insertOne(user.data)
         } else if (user.data.role === "student") {
+            user.data.timestamp = new Date(Date.now())
             if (user.data.whatsapp) {
                 await req.db.collection('users').updateOne({ whatsapp: user.data.whatsapp }, { $set: user.data }, true)
             } else {

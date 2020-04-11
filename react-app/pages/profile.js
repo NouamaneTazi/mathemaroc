@@ -39,7 +39,11 @@ const Profile = () => {
             Router.push('/catalogue')
         }
         Object.assign(user, json);
-        // console.log("user", user)
+        await fetch('/api/mongodb', {
+            method: 'post',
+            body: JSON.stringify({ _id: json._id, data: {email:user.email} })
+        })
+        console.log("user", user)
         setLoading(false)
     }
 

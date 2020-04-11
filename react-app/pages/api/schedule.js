@@ -116,18 +116,18 @@ handler.get(async (req, res) => {
     req.db.collection('users').find({fullname:{$in:['Omar Bennouna', 'Nouamane Tazi', 'Meryem Jaaidan', 'Mohammed-younes Gueddari']}}).toArray(function (err, result) {
         if (err) res.json({ err: true })
         else {
-            message.bcc = result.map(tutor=>tutor.mail).filter(x=>x).join()
+            message.bcc = result.map(tutor=>tutor.mail ? tutor.mail : tutor.email ? tutor.email : !tutor.nickname.includes(' ') ? tutor.nickname + "@gmail.com" : null).filter(x=>x).join()
             console.log(message.bcc)
-            // transporter.sendMail(message, function (error, info) {
-            //     if (error) {
-            //         console.log(error);
-            //     } else {
-            //         console.log('Email sent: ' + info.response);
-            //         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+            transporter.sendMail(message, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
-            //         res.send(nodemailer.getTestMessageUrl(info));
-            //     }
-            // });
+                    res.send(message.bcc);
+                }
+            });
         }
     })
 })

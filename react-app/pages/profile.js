@@ -47,7 +47,7 @@ const Profile = () => {
             method: 'post',
             body: JSON.stringify({ _id: json._id, data: {email:user.email} })
         })
-        console.log("user", user)
+        // console.log("user", user)
         setLoading(false)
     }
 

@@ -15,6 +15,8 @@ handler.use(middleware);
 //     }
 // });
 
+const MAX_RECIPIENTS = 5
+
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
@@ -194,8 +196,13 @@ var message = {
 };
 
 handler.get(async (req, res) => {
-    // req.db.collection('users').find({ fullname: "Nouamane Tazi" }).toArray(function (err, result) {
-    // req.db.collection('users').find({ role: "tutor", seances: { $exists: false }, sent_mails: { $exists: false }, updated_at: { $lte: moment().subtract(1, 'weeks').format() } }).toArray(function (err, result) {
+
+    // req.db.collection('users').find({ role: "tutor", seances: { $exists: false }, sent_mails: { $exists: true }, updated_at: { $lte: moment().subtract(1, 'weeks').format() } }).toArray(function (err, result) {
+    //     result.map(tutor => {
+    //         req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $unset: {sent_mails:""} })
+    //     })
+    // })
+
     req.db.collection('users').aggregate([
         {
             $group: {
@@ -223,19 +230,20 @@ handler.get(async (req, res) => {
     ]).toArray(function (err, result) {
         if (err) res.json({ err: true })
         else {
-            result = result.map(({ tutor, count_users}) => ({tutor : tutor[0], count_users}))
+            result = result.map(({ tutor, count_users }) => ({ tutor: tutor[0], count_users }))
             const contacted_tutors = result
-                .map(({tutor, count_users}) => ({ _id: tutor._id, hasStudents: Boolean(count_users > 1), to: tutor.mail ? tutor.mail : tutor.email ? tutor.email : !tutor.nickname.includes(' ') ? tutor.nickname + "@gmail.com" : null }))
+                .map(({ tutor, count_users }) => ({ _id: tutor._id, hasStudents: Boolean(count_users > 1), to: tutor.mail ? tutor.mail : tutor.email ? tutor.email : !tutor.nickname.includes(' ') ? tutor.nickname + "@gmail.com" : null }))
                 .filter(x => x.to)
-            const tutorsWithStudents = contacted_tutors.filter(t => t.hasStudents)
-            const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents)
+            const tutorsWithStudents = contacted_tutors.filter(t => t.hasStudents).slice(0, MAX_RECIPIENTS )
+            const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents).slice(0, MAX_RECIPIENTS )
             console.log(tutorsWithStudents.length, tutorsWithoutStudents.length)
-            
+
             // TUTORS WITH STUDENTS
             message.bcc = tutorsWithStudents.map(t => t.to).join(', ')
             message.html = html_tutorWithStudents
             console.log("Destinataires avec élèves : ", message.bcc)
-            let log = { "Destinataires avec élèves": message.bcc }
+            let log = {'Total': `${tutorsWithStudents.length} + ${tutorsWithStudents.length} = ${tutorsWithStudents.length + tutorsWithStudents.length}`}
+            log[ "Destinataires avec élèves"] =  "(" + String(tutorsWithStudents.length) + ") " + message.bcc 
             transporter.sendMail(message, function (error, info) {
                 if (error) {
                     console.log({ err: true })
@@ -251,7 +259,7 @@ handler.get(async (req, res) => {
                 message.bcc = tutorsWithoutStudents.map(t => t.to).join(', ')
                 message.html = html_tutorWithoutStudents
                 console.log("Destinataires sans élèves : ", message.bcc)
-                log['Destinataires sans élèves'] = message.bcc
+                log['Destinataires sans élèves'] = "(" + String(tutorsWithoutStudents.length) + ") " + message.bcc
                 transporter.sendMail(message, function (error, info) {
                     if (error) {
                         console.log({ err: true })

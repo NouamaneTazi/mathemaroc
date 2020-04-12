@@ -229,7 +229,7 @@ handler.get(async (req, res) => {
             const tutorsWithStudents = contacted_tutors.filter(t => t.hasStudents)
             const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents)
             console.log(tutorsWithStudents.length, tutorsWithoutStudents.length)
-
+            
             // TUTORS WITH STUDENTS
             message.bcc = tutorsWithStudents.map(t => t.to).join(', ')
             message.html = html_tutorWithStudents

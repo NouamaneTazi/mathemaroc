@@ -107,7 +107,7 @@ const html_avec_eleves = `
 `
 
 var message = {
-    from: 'mathemaroc.contact@gmail.com',
+    from: 'Math&Maroc <mathemaroc.contact@gmail.com>',
     subject: 'Relance tutorat Math&Maroc',
     html: html_avec_eleves
 };
@@ -116,10 +116,10 @@ handler.get(async (req, res) => {
     console.log("schedule", req.query)
     console.log(moment().subtract(1, 'weeks').format())
     // req.db.collection('users').find({ is_admin:"true"}).toArray(function (err, result) {
-    req.db.collection('users').find({ role: "tutor", seances: { $exists: false },sent_mails : {$exists: false} ,updated_at: { $lte: moment().subtract(1, 'weeks').format() } }).toArray(function (err, result) {
+    req.db.collection('users').find({ role: "tutor", seances: { $exists: false }, sent_mails: { $exists: false }, updated_at: { $lte: moment().subtract(1, 'weeks').format() } }).toArray(function (err, result) {
         if (err) res.json({ err: true })
         else {
-            const contacted_tutors = result.map(tutor => ({_id : tutor._id , to : tutor.mail ? tutor.mail : tutor.email ? tutor.email : !tutor.nickname.includes(' ') ? tutor.nickname + "@gmail.com" : null})).filter(x => x.to)
+            const contacted_tutors = result.map(tutor => ({ _id: tutor._id, to: tutor.mail ? tutor.mail : tutor.email ? tutor.email : !tutor.nickname.includes(' ') ? tutor.nickname + "@gmail.com" : null })).filter(x => x.to)
             message.bcc = contacted_tutors.map(t => t.to).join()
             console.log(message.bcc)
             transporter.sendMail(message, function (error, info) {
@@ -129,7 +129,7 @@ handler.get(async (req, res) => {
                     console.log('Email sent: ' + info.response);
                     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
                     contacted_tutors.map(tutor => {
-                        req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $push: {sent_mails : {date : new Date(), to : tutor.to}}})
+                        req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $push: { sent_mails: { date: new Date(), to: tutor.to } } })
                     })
                     res.send(message.bcc);
                 }

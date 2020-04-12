@@ -214,10 +214,10 @@ handler.get(async (req, res) => {
         },
         {
             $match: {
-                // "tutor.seances": { $exists: false },
-                // "tutor.sent_mails": { $exists: false },
-                // "tutor.updated_at": { $lte: moment().subtract(1, 'weeks').format() },
-                "tutor.fullname" : "Nouamane Tazi",
+                "tutor.seances": { $exists: false },
+                "tutor.sent_mails": { $exists: false },
+                "tutor.updated_at": { $lte: moment().subtract(1, 'weeks').format() },
+                // "tutor.fullname" : "Nouamane Tazi",
             }
         }
     ]).toArray(function (err, result) {

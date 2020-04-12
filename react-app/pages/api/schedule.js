@@ -214,9 +214,10 @@ handler.get(async (req, res) => {
         },
         {
             $match: {
-                "tutor.seances": { $exists: false },
-                "tutor.sent_mails": { $exists: false },
-                "tutor.updated_at": { $lte: moment().subtract(1, 'weeks').format() },
+                // "tutor.seances": { $exists: false },
+                // "tutor.sent_mails": { $exists: false },
+                // "tutor.updated_at": { $lte: moment().subtract(1, 'weeks').format() },
+                "tutor.fullname" : "Nouamane Tazi",
             }
         }
     ]).toArray(function (err, result) {
@@ -229,7 +230,7 @@ handler.get(async (req, res) => {
             const tutorsWithStudents = contacted_tutors.filter(t => t.hasStudents)
             const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents)
             console.log(tutorsWithStudents.length, tutorsWithoutStudents.length)
-
+            
             // TUTORS WITH STUDENTS
             message.bcc = tutorsWithStudents.map(t => t.to).join(', ')
             message.html = html_tutorWithStudents

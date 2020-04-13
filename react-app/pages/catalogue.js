@@ -111,8 +111,7 @@ const Reports = () => {
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
             </Backdrop>
-
-            {!userLoading && <Layout user={user} loading={userLoading}>
+            {!loading && user && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Catalogue à élèves</title>
                     <meta name="description" content="Catalogue des élèves" />
@@ -226,7 +225,6 @@ const Reports = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {console.log(filteredWishesStudents)}
                                     {filteredWishesStudents.slice(0, maxRows).map(student => (
                                         <tr key={`${student._id}`}>
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>

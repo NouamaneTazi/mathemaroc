@@ -6,10 +6,11 @@ var nodemailer = require('nodemailer');
 const handler = nextConnect();
 handler.use(middleware);
 const sgMail = require('@sendgrid/mail');
+import config from '../../lib/config'
 
 const MAX_RECIPIENTS = 100
 
-sgMail.setApiKey('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'); //https://www.twilio.com/blog/sending-bulk-emails-3-ways-sendgrid-nodejs
+sgMail.setApiKey(config.SENDGRID_API_KEY); //https://www.twilio.com/blog/sending-bulk-emails-3-ways-sendgrid-nodejs
 
 const html_tutorWithStudents = `
 <div class="aweber_message_body"><center>

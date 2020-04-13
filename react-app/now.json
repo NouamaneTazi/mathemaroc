@@ -7,10 +7,12 @@
             "REDIRECT_URI": "https://mathemaroc.now.sh/api/callback",
             "POST_LOGOUT_REDIRECT_URI": "https://mathemaroc.now.sh",
             "SESSION_COOKIE_SECRET": "@session-cookie-secret",
-            "ATLAS_URI": "@atlas-uri"
+            "ATLAS_URI": "@atlas-uri",
+            "SENDGRID_API_KEY": "@sendgrid-api-key"
         }
     },
     "env": {
-      "ATLAS_URI": "@atlas-uri"
+        "ATLAS_URI": "@atlas-uri",
+        "SENDGRID_API_KEY": "@sendgrid-api-key"
     }
 }

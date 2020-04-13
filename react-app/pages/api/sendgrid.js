@@ -214,7 +214,7 @@ handler.get(async (req, res) => {
                 "tutor.seances": { $exists: false },
                 "tutor.sent_mails": { $exists: false },
                 "tutor.updated_at": { $lte: moment().subtract(1, 'weeks').format() },
-                // "tutor.fullname" : "Nouamane Tazi",
+                // "tutor.fullname": "Nouamane Tazi",
             }
         }
     ]).toArray(function (err, result) {
@@ -229,14 +229,14 @@ handler.get(async (req, res) => {
             // console.log(contacted_tutors.filter(t => !t.hasStudents).map(t => t.to))
 
             const tutorsWithStudents = contacted_tutors.filter(t => t.hasStudents).slice(0, MAX_RECIPIENTS)
-            const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents).slice(0, MAX_RECIPIENTS)
+            const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents).slice(0, MAX_RECIPIENTS - tutorsWithStudents.length)
             console.log(tutorsWithStudents.length, tutorsWithoutStudents.length)
 
             // TUTORS WITH STUDENTS
-            message.to = tutorsWithStudents.map(t => t.to).join(', ')
+            message.to = tutorsWithStudents.map(t => t.to)
             message.html = html_tutorWithStudents
             console.log("Destinataires avec élèves : ", message.to)
-            let log = { 'Total': `${tutorsWithStudents.length} + ${tutorsWithStudents.length} = ${tutorsWithStudents.length + tutorsWithStudents.length}` }
+            let log = { 'Total': `${tutorsWithStudents.length} + ${tutorsWithoutStudents.length} = ${tutorsWithStudents.length + tutorsWithoutStudents.length}` }
 
             sgMail.sendMultiple(message).then(() => {
                 console.log('emails sent successfully!');
@@ -246,27 +246,26 @@ handler.get(async (req, res) => {
                 })
                 log["Destinataires avec élèves"] = "(" + String(tutorsWithStudents.length) + ") " + message.to
             }).catch(error => {
-                console.log(error);
+                console.log("avec élèves : ", error);
                 log["Destinataires avec élèves"] = error
-            });
-
-            // TUTORS WITHOUT STUDENTS
-            message.to = tutorsWithoutStudents.map(t => t.to).join(', ')
-            message.html = html_tutorWithoutStudents
-            console.log("Destinataires sans élèves : ", message.to)
-            sgMail.sendMultiple(message).then(() => {
-                console.log('emails sent successfully!')
-                tutorsWithoutStudents.map(tutor => {
-                    req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $push: { sent_mails: { date: new Date(), to: tutor.to } } })
+            }).then(() => {
+                // TUTORS WITHOUT STUDENTS
+                message.to = tutorsWithoutStudents.map(t => t.to)
+                message.html = html_tutorWithoutStudents
+                console.log("Destinataires sans élèves : ", message.to)
+                sgMail.sendMultiple(message).then(() => {
+                    console.log('emails sent successfully!')
+                    tutorsWithoutStudents.map(tutor => {
+                        req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $push: { sent_mails: { date: new Date(), to: tutor.to } } })
+                    })
+                    log['Destinataires sans élèves'] = "(" + String(tutorsWithoutStudents.length) + ") " + message.to
+                }).catch(error => {
+                    console.log("sans élèves : ", error);
+                    log['Destinataires sans élèves'] = error
+                }).then(() => {
+                    res.json(log);
                 })
-                log['Destinataires sans élèves'] = "(" + String(tutorsWithoutStudents.length) + ") " + message.to
-            }).catch(error => {
-                console.log({ err: error })
-                log['Destinataires sans élèves'] = error
-            });
-
-            res.json(log);
-
+            })
         }
     })
 })

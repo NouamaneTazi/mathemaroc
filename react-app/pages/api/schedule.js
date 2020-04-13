@@ -15,15 +15,27 @@ handler.use(middleware);
 //     }
 // });
 
-const MAX_RECIPIENTS = 5
+const MAX_RECIPIENTS = 100
 
 var transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, //true for 465, false for 587
     auth: {
         user: 'mathemaroc.contact@gmail.com',
         pass: 'Mathemaroc1'
     }
 });
+// var transporter = nodemailer.createTransport({
+//     service: 'Gmail',
+//     // host: 'smtp.gmail.com',
+//     auth: {
+//         user: 'nouamane98@gmail.com',
+//         pass: 'nouamane'
+//     },
+//     // pool: true,
+//     // maxConnections: 20,
+// });
 
 const html_tutorWithStudents = `
 <div class="aweber_message_body"><center>
@@ -191,92 +203,108 @@ const html_tutorWithoutStudents = `<div class="aweber_message_body"><center>
 `
 
 var message = {
-    from: 'Math&Maroc <mathemaroc.contact@gmail.com>',
+    from: 'Math&Maroc <mathemaroc.contact+relance@gmail.com>',
     subject: 'Relance tutorat Math&Maroc'
 };
 
 handler.get(async (req, res) => {
 
-    // req.db.collection('users').find({ role: "tutor", seances: { $exists: false }, sent_mails: { $exists: true }, updated_at: { $lte: moment().subtract(1, 'weeks').format() } }).toArray(function (err, result) {
-    //     result.map(tutor => {
-    //         req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $unset: {sent_mails:""} })
-    //     })
-    // })
-
-    req.db.collection('users').aggregate([
-        {
-            $group: {
-                _id: '$groupId',
-                tutor: {
-                    "$push": {
-                        $cond: {
-                            if: { $eq: ["$role", "tutor"] },
-                            then: "$$ROOT",
-                            else: "$$REMOVE",
-                        }
-                    }
-                },
-                count_users: { $sum: 1 }
-            }
-        },
-        {
-            $match: {
-                "tutor.seances": { $exists: false },
-                "tutor.sent_mails": { $exists: false },
-                "tutor.updated_at": { $lte: moment().subtract(1, 'weeks').format() },
-                // "tutor.fullname" : "Nouamane Tazi",
-            }
-        }
-    ]).toArray(function (err, result) {
-        if (err) res.json({ err: true })
-        else {
-            result = result.map(({ tutor, count_users }) => ({ tutor: tutor[0], count_users }))
-            const contacted_tutors = result
-                .map(({ tutor, count_users }) => ({ _id: tutor._id, hasStudents: Boolean(count_users > 1), to: tutor.mail ? tutor.mail : tutor.email ? tutor.email : !tutor.nickname.includes(' ') ? tutor.nickname + "@gmail.com" : null }))
-                .filter(x => x.to)
-            const tutorsWithStudents = contacted_tutors.filter(t => t.hasStudents).slice(0, MAX_RECIPIENTS )
-            const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents).slice(0, MAX_RECIPIENTS )
-            console.log(tutorsWithStudents.length, tutorsWithoutStudents.length)
-
-            // TUTORS WITH STUDENTS
-            message.bcc = tutorsWithStudents.map(t => t.to).join(', ')
-            message.html = html_tutorWithStudents
-            console.log("Destinataires avec élèves : ", message.bcc)
-            let log = {'Total': `${tutorsWithStudents.length} + ${tutorsWithStudents.length} = ${tutorsWithStudents.length + tutorsWithStudents.length}`}
-            log[ "Destinataires avec élèves"] =  "(" + String(tutorsWithStudents.length) + ") " + message.bcc 
-            transporter.sendMail(message, function (error, info) {
-                if (error) {
-                    console.log({ err: true })
-                } else {
-                    console.log('Email sent: ' + info.response);
-                    // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-                    tutorsWithStudents.map(tutor => {
-                        req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $push: { sent_mails: { date: new Date(), to: tutor.to } } })
-                    })
-                }
-
-                // TUTORS WITHOUT STUDENTS
-                message.bcc = tutorsWithoutStudents.map(t => t.to).join(', ')
-                message.html = html_tutorWithoutStudents
-                console.log("Destinataires sans élèves : ", message.bcc)
-                log['Destinataires sans élèves'] = "(" + String(tutorsWithoutStudents.length) + ") " + message.bcc
-                transporter.sendMail(message, function (error, info) {
-                    if (error) {
-                        console.log({ err: true })
-                    } else {
-                        console.log('Email sent: ' + info.response);
-                        // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-                        tutorsWithoutStudents.map(tutor => {
-                            req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $push: { sent_mails: { date: new Date(), to: tutor.to } } })
-                        })
-                    }
-                    res.json(log);
-                });
-
-            });
-
-        }
+    req.db.collection('users').find({ role: "tutor", seances: { $exists: false }, sent_mails: { $exists: true }, updated_at: { $lte: moment().subtract(1, 'weeks').format() } }).toArray(function (err, result) {
+        result.map(tutor => {
+            req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $unset: { sent_mails: "" } })
+        })
     })
+
+    res.json({ message: "done" })
+
+    // req.db.collection('users').aggregate([
+    //     {
+    //         $group: {
+    //             _id: '$groupId',
+    //             tutor: {
+    //                 "$push": {
+    //                     $cond: {
+    //                         if: { $eq: ["$role", "tutor"] },
+    //                         then: "$$ROOT",
+    //                         else: "$$REMOVE",
+    //                     }
+    //                 }
+    //             },
+    //             count_users: { $sum: 1 }
+    //         }
+    //     },
+    //     {
+    //         $match: {
+    //             "tutor.seances": { $exists: false },
+    //             "tutor.sent_mails": { $exists: false },
+    //             "tutor.updated_at": { $lte: moment().subtract(1, 'weeks').format() },
+    //             // "tutor.fullname" : "Nouamane Tazi",
+    //         }
+    //     }
+    // ]).toArray(function (err, result) {
+    //     if (err) res.json({ err: true })
+    //     else {
+    //         result = result.map(({ tutor, count_users }) => ({ tutor: tutor[0], count_users }))
+    //         const contacted_tutors = result
+    //             .map(({ tutor, count_users }) => ({ _id: tutor._id, firstname : tutor.firstname, lastname : tutor.lastname, hasStudents: Boolean(count_users > 1), to: tutor.mail ? tutor.mail : tutor.email ? tutor.email : !tutor.nickname.includes(' ') ? tutor.nickname + "@gmail.com" : null }))
+    //             .filter(x => x.to) // Picks the right email
+
+    //         // console.log(contacted_tutors.filter(t => t.hasStudents).map(t => t.to))
+    //         // console.log(contacted_tutors.filter(t => !t.hasStudents).map(t => t.to))
+
+
+    //         let mails = `mathemaroccontact@gmail.com
+    //         mathemarocc.on.ta.ct@gmail.com`
+    //         mails = mails.split('\n            ').splice(0, 10).join()
+
+    //         const tutorsWithStudents = contacted_tutors.filter(t => t.hasStudents).slice(0, MAX_RECIPIENTS)
+    //         const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents).slice(0, MAX_RECIPIENTS)
+    //         console.log(tutorsWithStudents.length, tutorsWithoutStudents.length)
+
+    //         // console.log(tutorsWithStudents.map(t => ({firstname:t.firstname, lastname:t.lastname, to:t.to})))
+    //         // TUTORS WITH STUDENTS
+    //         message.bcc = tutorsWithStudents.map(t => t.to)
+    //         // message.bcc = mails
+    //         message.html = html_tutorWithStudents
+    //         console.log("Destinataires avec élèves : ", message.bcc)
+    //         let log = { 'Total': `${tutorsWithStudents.length} + ${tutorsWithoutStudents.length} = ${tutorsWithStudents.length + tutorsWithoutStudents.length}` }
+
+    //         transporter.sendMail(message, function (error, info) {
+    //             if (error) {
+    //                 console.log({ err: error })
+    //                 log["Destinataires avec élèves"] = error
+    //             } else {
+    //                 console.log('Email sent: ' + info.response);
+    //                 // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    //                 tutorsWithStudents.map(tutor => {
+    //                     req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $push: { sent_mails: { date: new Date(), to: tutor.to } } })
+    //                 })
+    //                 log["Destinataires avec élèves"] = "(" + String(tutorsWithStudents.length) + ") " + message.bcc
+    //             }
+
+    //             // TUTORS WITHOUT STUDENTS
+    //             message.bcc = tutorsWithoutStudents.map(t => t.to).join(', ')
+    //             message.html = html_tutorWithoutStudents
+    //             console.log("Destinataires sans élèves : ", message.bcc)
+    //             transporter.sendMail(message, function (error, info) {
+    //                 if (error) {
+    //                     console.log({ err: error })
+    //                     log['Destinataires sans élèves'] = error
+    //                 } else {
+    //                     console.log('Email sent: ' + info.response);
+    //                     // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    //                     tutorsWithoutStudents.map(tutor => {
+    //                         req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $push: { sent_mails: { date: new Date(), to: tutor.to } } })
+    //                     })
+    //                     log['Destinataires sans élèves'] = "(" + String(tutorsWithoutStudents.length) + ") " + message.bcc
+    //                 }
+    //                 res.json(log);
+    //             });
+
+    //         });
+
+    //     }
+    // })
 })
 
 export default handler;

@@ -14,7 +14,7 @@ const ProfileSeancesTutors = ({setConfettis}) => {
         const seances = tutors.map(tutor => tutor.seances).filter(seance => seance !== undefined && seance.length > 0)
         // console.log("seances",seances)
         const nb_seances = seances.reduce((acc, seance) => acc + seance.length, 0)
-        if (nb_seances >= 300) setConfettis(true)
+        if (nb_seances >= 500) setConfettis(true)
         return nb_seances
     }
     const getNumberStudents = async () => {

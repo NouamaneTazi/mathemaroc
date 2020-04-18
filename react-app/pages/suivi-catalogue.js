@@ -87,15 +87,15 @@ const Admin = () => {
                                         {/* <th>Traité</th> */}
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    {tutors.map((tutor) => {
+                                <tbody> 
+                                    {tutors.map((tutor) => { // TODO: Change dates
                                         return (
                                             <>
                                                 {tutor.catalogue_logs.length > 0 && tutor.catalogue_logs.map((activity, index_activity) => (
                                                     <tr key={`${tutor._id}~${index_activity}`}>
                                                         {(index_activity == 0) && <th rowSpan={tutor.catalogue_logs.length} style={{ verticalAlign: "middle" }}>{tutor.groupId}</th>}
                                                         {(index_activity == 0) && <th rowSpan={tutor.catalogue_logs.length} style={{ verticalAlign: "middle" }}>{tutor.fullname}</th>}
-                                                        <td style={{ verticalAlign: "middle" }}>{activity.time}</td>
+                                                        <td style={{ verticalAlign: "middle" }}>{activity.time}</td> 
                                                         <td>{activity.students.map(s=>s.name).join(" - ")}</td>
                                                         <td>{activity.students.length}</td>
                                                     </tr>

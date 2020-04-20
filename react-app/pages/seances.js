@@ -5,6 +5,7 @@ import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
 import Icon from '@material-ui/core/Icon';
 import Rating from 'react-rating'
+import moment from 'moment'
 
 const Admin = () => {
     const getUserData = async (user) => {
@@ -90,13 +91,13 @@ const Admin = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {tutors.map(tutor => {
+                                    {tutors.sort((b,a)=> moment(a.last_updated) - moment(b.last_updated)).map(tutor => {
                                         return (
                                             <>
                                                 {tutor.seances && tutor.seances.map((seance, index) => (
                                                     <tr key={`${tutor._id}~${index}`}>
                                                         {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{tutor.firstname} {tutor.lastname}</th>}
-                                                        {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{tutor.last_updated}</th>}
+                                                        {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{moment(tutor.last_updated).format('DD/MM/YYYY HH:mm:ss')}</th>}
                                                         <td>{seance.date}</td>
                                                         <td>{seance.duree}</td>
                                                         <td>{seance.chapitres}</td>

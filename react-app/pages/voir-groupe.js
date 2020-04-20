@@ -93,8 +93,8 @@ const Admin = () => {
                                         <tr>
                                             <td>{tutor.groupId}</td>
                                             <td>{tutor.fullname}</td>
-                                            <td>{moment(tutor.updated_at).format('DD/MM/YYYY')}</td>
-                                            <td>{moment(tutor.last_updated).format('DD/MM/YYYY')}</td>
+                                            <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
+                                            <td>{moment(tutor.last_updated).format('DD/MM/YYYY HH:mm:ss')}</td>
                                             <td>{tutor.statut}</td>
                                             <td>{tutor.whatsapp}</td>
                                             <td>{tutor.mail}</td>

@@ -64,8 +64,8 @@ const ProfileSeancesTutors = ({setConfettis}) => {
                                     {tutor.seances && tutor.seances.map((seance, index) => (
                                         <tr key={`${tutor._id}~${index}`}>
                                             {index == 0 && <td rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}><b>{tutor.firstname} {tutor.lastname}</b></td>}
-                                            {index == 0 && <td rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}><b>{tutor.last_updated}</b></td>}
-                                            <td>{seance.date}</td>
+                                            {index == 0 && <td rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}><b>{moment(tutor.last_updated).format('DD/MM/YYYY HH:mm:ss')}</b></td>}
+                                            <td>{moment(seance.date).format('DD/MM/YYYY')}</td>
                                             <td>{seance.duree}</td>
                                             <td>{seance.chapitres}</td>
                                         </tr>

@@ -88,7 +88,7 @@ const Admin = () => {
                                     </tr>
                                 </thead>
                                 <tbody> 
-                                    {tutors.map((tutor) => { // TODO: Change dates
+                                    {tutors.map((tutor) => {
                                         return (
                                             <>
                                                 {tutor.catalogue_logs.length > 0 && tutor.catalogue_logs.map((activity, index_activity) => (

@@ -1,5 +1,5 @@
 import Head from "next/head"
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react" 
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
 import Router from "next/router"
@@ -9,7 +9,7 @@ const InputGroupId = ({ tutor }) => {
     const setGroupId = async (tutor) => {
         // console.log(tutor, selectedGroupId)
         await fetch('/api/mongodb', {
-            method: 'post',
+            method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })
         })
         window.location.reload(false)
@@ -37,14 +37,14 @@ const Reports = () => {
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getAwaitingTutors=true')
         const new_awaitingtutors = await res.json() 
-
+ 
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json()
 
         setAwaitingTutors(new_awaitingtutors)
         setAwaitingStudents(awaitingStudents)
     }
-
+ 
     const handleModClick = async (tutor, report_id) => {
         if (tutor.reports[report_id].mod) {
             delete tutor.reports[report_id].mod
@@ -55,15 +55,15 @@ const Reports = () => {
         const res = await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
-        })
-        setRefresh(!refresh)
+        }) 
+        setRefresh(!refresh) 
     } 
 
     let { user, loading } = useFetchUser()
     const [awaitingtutors, setAwaitingTutors] = useState([])
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)
-
+ 
     useEffect(() => { 
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
@@ -81,7 +81,7 @@ const Reports = () => {
                 </Head> 
                 <MenuAdmin user={user}/> 
                 <section id="one">
-                    <div className="inner" style={{maxWidth:"75em"}}>
+                    <div className="inner" style={{maxWidth:"75em"}}> 
                         <header className="major"> 
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>
                                 : <h1>Vous n'êtes pas connectés</h1>}
@@ -91,7 +91,7 @@ const Reports = () => {
                             <div className="table-wrapper">
                                 <table>
                                     <thead>
-                                        <tr>
+                                        <tr> 
                                             <th>Tuteur</th>
                                             <th>Statut</th>
                                             <th>Matières</th>
@@ -105,24 +105,24 @@ const Reports = () => {
 
                                         {awaitingtutors.map(tutor => (
                                             <tr key={`${tutor._id}`}>
-                                                <td>{tutor.firstname} {tutor.lastname}</td>
+                                                <td>{tutor.firstname} {tutor.lastname}</td> 
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td>
                                                 <td>{tutor.whatsapp}</td>
                                                 <td>{tutor.mail}</td>
-                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>
+                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td> 
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>
                                             </tr>
                                         )
                                         )}
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> 
                         </div>
                     </div> 
 
                 </section>
-            </Layout>
+            </Layout> 
             }
         </> 
     )

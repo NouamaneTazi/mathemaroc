@@ -13,15 +13,15 @@ const Admin = () => {
         res = await fetch('/api/mongodb?getTutorsSignUps=true')
         const value = await res.json()
         setGroupUsers(value.map(group => group.users).sort((b, a) => moment(a[0].updated_at) - moment(b[0].updated_at)))
-    }
-
+    } 
+ 
     const handleModClick = async (tutor, seance_id) => {
         if (tutor.seances[seance_id].mod) {
             delete tutor.seances[seance_id].mod
         } else {
             tutor.seances[seance_id].mod = { "id": user.sub, "name": user.name }
         }
-
+ 
         const res = await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { seances: tutor.seances } })
@@ -31,15 +31,15 @@ const Admin = () => {
 
     let { user, loading } = useFetchUser()
     const [groupUsers, setGroupUsers] = useState([])
-    const [refresh, setRefresh] = useState(true)
+    const [refresh, setRefresh] = useState(true) 
 
-    useEffect(() => {
+    useEffect(() => { 
         // {console.log("useEffect", user, loading)}
-        if (user && !loading) {
+        if (user && !loading) { 
             getUserData(user)
         }
     }, [user, loading])
-
+ 
     return (
         <>
             {/* {console.log(user)} */}
@@ -49,7 +49,7 @@ const Admin = () => {
                     <meta name="description" content="Suivi du catalogue" />
                 </Head>
                 
-                <section id="one">
+                <section id="one"> 
                     <div className="inner">
                         <header className="major">
                             {user ? <h1>Suivi des inscriptions</h1> : <h1>Vous n'êtes pas connectés</h1>}
@@ -70,7 +70,7 @@ const Admin = () => {
                         <div className="table-wrapper">
                             <table className="alt dense">
                                 <thead>
-                                    <tr>
+                                    <tr> 
                                         <th>Groupe</th>
                                         <th>Tuteur</th>
                                         <th>Date</th>
@@ -87,11 +87,11 @@ const Admin = () => {
                                         return (
                                             <>
                                                 <tr key={`${tutor._id}`}>
-                                                    <td>{tutor.groupId}</td>
+                                                    <td>{tutor.groupId}</td> 
                                                     <td>{tutor.fullname}</td>
                                                     <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
                                                     <td>{tutor.statut}</td>
-                                                    <td>{tutor.whatsapp}</td>
+                                                    <td>{tutor.whatsapp}</td> 
                                                     <td>{tutor.mail}</td>
                                                     <td>{users.length - 1}</td>
                                                     <td>{tutor.seances ? tutor.seances.length : 0}</td>
@@ -104,7 +104,7 @@ const Admin = () => {
                         </div>
 
 
-                    </div>
+                    </div> 
                 </section >
             </Layout >
             }

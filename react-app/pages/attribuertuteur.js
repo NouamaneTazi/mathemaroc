@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
-import { useFetchUser } from '../lib/user'
+import { useFetchUser } from '../lib/user' 
 import Router from "next/router"
 import MenuAdmin from '../components/MenuAdmin'
 
@@ -14,7 +14,7 @@ const InputGroupId = ({ tutor }) => {
         })
         window.location.reload(false)
     }
-
+ 
     const [selectedGroupId, setSelectedGroupId] = useState("")
 
     return (<div className="12u 12u(small)" >
@@ -36,7 +36,7 @@ const Reports = () => {
         if (!json.is_admin) Router.push('/profile')
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getAwaitingTutors=true')
-        const new_awaitingtutors = await res.json()
+        const new_awaitingtutors = await res.json() 
 
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json()
@@ -57,14 +57,14 @@ const Reports = () => {
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         })
         setRefresh(!refresh)
-    }
+    } 
 
     let { user, loading } = useFetchUser()
     const [awaitingtutors, setAwaitingTutors] = useState([])
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)
 
-    useEffect(() => {
+    useEffect(() => { 
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
             getUserData(user)
@@ -72,17 +72,17 @@ const Reports = () => {
     }, [user, loading])
 
     return (
-        <>
+        <> 
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
                     <title>Tuteurs en attente</title>
-                    <meta name="description" content="Tuteurs en attente" />
-                </Head>
-                <MenuAdmin user={user}/>
+                    <meta name="description" content="Tuteurs en attente" /> 
+                </Head> 
+                <MenuAdmin user={user}/> 
                 <section id="one">
                     <div className="inner" style={{maxWidth:"75em"}}>
-                        <header className="major">
+                        <header className="major"> 
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>
                                 : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
@@ -119,12 +119,12 @@ const Reports = () => {
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> 
 
                 </section>
             </Layout>
             }
-        </>
+        </> 
     )
 }
 

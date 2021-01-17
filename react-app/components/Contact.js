@@ -1,7 +1,7 @@
-const Contact = (props) => (
+const Contact = (props) => ( 
     <section id="contact">
         <div className="inner">
-            <section>
+            <section> 
                 <form method="post" action="#">
                     <div className="field half first">
                         <label htmlFor="name">Name</label>
@@ -9,8 +9,8 @@ const Contact = (props) => (
                     </div>
                     <div className="field half">
                         <label htmlFor="email">Email</label>
-                        <input type="text" name="email" id="email" />
-                    </div>
+                        <input type="text" name="email" id="email" /> 
+                    </div> 
                     <div className="field">
                         <label htmlFor="message">Message</label>
                         <textarea name="message" id="message" rows="6"></textarea>
@@ -21,9 +21,9 @@ const Contact = (props) => (
                     </ul>
                 </form>
             </section>
-            <section className="split">
+            <section className="split"> 
                 <section>
-                    <div className="contact-method">
+                    <div className="contact-method"> 
                         <span className="icon alt fa-envelope"></span>
                         <h3>Email</h3>
                         <a href="#">information@untitled.tld</a>
@@ -37,17 +37,17 @@ const Contact = (props) => (
                     </div>
                 </section>
                 <section>
-                    <div className="contact-method">
+                    <div className="contact-method"> 
                         <span className="icon alt fa-home"></span>
                         <h3>Address</h3>
-                        <span>1234 Somewhere Road #5432<br />
+                        <span>1234 Somewhere Road #5432<br /> 
                         Nashville, TN 00000<br />
                         United States of America</span>
                     </div>
                 </section>
-            </section>
-        </div>
+            </section> 
+        </div> 
     </section>
 )
-
+ 
 export default Contact

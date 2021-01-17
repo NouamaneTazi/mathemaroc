@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {render} from 'react-dom';
+import {render} from 'react-dom'; 
 import MapGL, {Source, Layer} from 'react-map-gl';
 import ControlPanel from './control-panel';
 
 import {dataLayer} from './map-style.js';
-import {updatePercentiles} from './utils';
+import {updatePercentiles} from './utils'; 
 import {json as requestJson} from 'd3-request';
 
 const MAPBOX_TOKEN = ''; // Set your mapbox token here
@@ -15,7 +15,7 @@ export default class App extends Component {
     data: null,
     hoveredFeature: null,
     viewport: {
-      latitude: 40,
+      latitude: 40, 
       longitude: -100,
       zoom: 3,
       bearing: 0,
@@ -30,7 +30,7 @@ export default class App extends Component {
         if (!error) {
           this._loadData(response);
         }
-      }
+      } 
     );
   }
 
@@ -40,7 +40,7 @@ export default class App extends Component {
     });
   };
 
-  _updateSettings = (name, value) => {
+  _updateSettings = (name, value) => { 
     if (name === 'year') {
       this.setState({year: value});
 
@@ -49,22 +49,22 @@ export default class App extends Component {
         // trigger update
         this.setState({
           data: updatePercentiles(data, f => f.properties.income[value])
-        });
+        }); 
       }
     }
   };
 
-  _onViewportChange = viewport => this.setState({viewport});
+  _onViewportChange = viewport => this.setState({viewport}); 
 
-  _onHover = event => {
+  _onHover = event => { 
     const {
       features,
-      srcEvent: {offsetX, offsetY}
+      srcEvent: {offsetX, offsetY} 
     } = event;
     const hoveredFeature = features && features.find(f => f.layer.id === 'data');
 
     this.setState({hoveredFeature, x: offsetX, y: offsetY});
-  };
+  }; 
 
   _renderTooltip() {
     const {hoveredFeature, x, y} = this.state;
@@ -73,15 +73,15 @@ export default class App extends Component {
       hoveredFeature && (
         <div className="tooltip" 
         // style={{left: x, top: y}}
-        >
+        > 
           <div>State: {hoveredFeature.properties.name}</div>
         </div>
       )
-    );
+    ); 
   }
 
   render() {
-    const {viewport, data} = this.state;
+    const {viewport, data} = this.state; 
 
     return (
       <div style={{height: '100%', position: 'relative'}}>
@@ -94,7 +94,7 @@ export default class App extends Component {
           mapboxApiAccessToken={MAPBOX_TOKEN}
           onHover={this._onHover}
         >
-          <Source type="geojson" data={data}>
+          <Source type="geojson" data={data}> 
             <Layer {...dataLayer} />
           </Source>
           {this._renderTooltip()}

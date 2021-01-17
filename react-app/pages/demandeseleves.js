@@ -1,7 +1,7 @@
-import Head from "next/head"
+import Head from "next/head" 
 import { useState, useEffect, Fragment } from "react"
 import Layout from '../components/Layout'
-import { useFetchUser } from '../lib/user'
+import { useFetchUser } from '../lib/user' 
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
 
  
@@ -17,7 +17,7 @@ const Reports = () => {
 
         setTutors(new_tutors)
         setAwaitingStudents(awaitingStudents)
-    }
+    } 
 
     const handleModClick = async (tutor, report_id) => {
         if (tutor.reports[report_id].mod) {
@@ -32,15 +32,15 @@ const Reports = () => {
         })
         setRefresh(!refresh)
     }
-
+ 
     let { user, loading } = useFetchUser()
     const [tutors, setTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)
     const [replacingStudent, setReplacingStudent] = useState(false)
 
-    useEffect(() => {
-        // {console.log("useEffect", user, loading)}
+    useEffect(() => { 
+        // {console.log("useEffect", user, loading)} 
         if (user && !loading) {
             getUserData(user) 
         }
@@ -67,20 +67,20 @@ const Reports = () => {
                             <div className="table-wrapper">
                                 <table>
                                     <thead>
-                                        <tr>
+                                        <tr> 
                                             <th>Date</th>
                                             <th>Tuteur</th>
-                                            <th>Groupe</th>
-                                            <th>Nombre d'élèves demandés</th>
+                                            <th>Groupe</th> 
+                                            <th>Nombre d'élèves demandés</th> 
                                             <th>Élèves donnés</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                        </tr> 
+                                    </thead> 
+                                    <tbody> 
 
                                         {tutors.map(tutor => {
                                             const asked_more_students = tutor.asked_more_students
                                             return (
-                                                <tr key={`${tutor._id}`}>
+                                                <tr key={`${tutor._id}`}> 
                                                     <td>{asked_more_students.time}</td> 
                                                     <td>{tutor.firstname} {tutor.lastname}</td> 
                                                     <td>{tutor.groupId}</td>
@@ -95,7 +95,7 @@ const Reports = () => {
                                     </tbody>
                                 </table>
                             </div>
-                        </div> 
+                        </div>  
 
                     </div>
                 </section> 

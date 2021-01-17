@@ -11,7 +11,7 @@ import Link from 'next/link'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from '@material-ui/core/Dialog'; 
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
@@ -48,7 +48,7 @@ const Reports = () => {
             for (let student of selectedStudents) {
                 await fetch('/api/mongodb', {
                     method: 'post',
-                    body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } })
+                    body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } }) 
                 })
             }
             let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : []
@@ -89,7 +89,7 @@ const Reports = () => {
             getUserData(user)
             getAwaitingStudentsData()
         }
-        else if (!userLoading && !user) {
+        else if (!userLoading && !user) { 
             Router.push('/profile')
         }
     }, [user, userLoading])
@@ -147,7 +147,7 @@ const Reports = () => {
                                 <Link href="/profile">
                                     <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
                                 </Link>
-                            </div>
+                            </div> 
                         }
                         <header className="major">
                             <h1>Catalogue des élèves</h1>
@@ -197,7 +197,7 @@ const Reports = () => {
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
 
-
+ 
                         <div className="table-wrapper">
                             <table>
                                 <thead>
@@ -209,10 +209,10 @@ const Reports = () => {
                                                     <option value="">- Filière -</option>
                                                     <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>
                                                     <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>
-                                                    <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option>
+                                                    <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option> 
                                                     <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
                                                     <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>
-                                                    <option value="ECONOMIE">ECONOMIE</option>
+                                                    <option value="ECONOMIE">ECONOMIE</option> 
                                                     <option value="SCIENCES TECH">SCIENCES TECH</option>
                                                     <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>
                                                     <option value="Bac Pro">BAC PRO</option>
@@ -249,4 +249,4 @@ const Reports = () => {
     )
 }
 
-export default Reports
+export default Reports 

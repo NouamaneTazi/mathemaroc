@@ -9,13 +9,13 @@ const Admin = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
-        Object.assign(user, json)
+        Object.assign(user, json) 
         res = await fetch('/api/mongodb?getTutorsSignUps=true')
         const value = await res.json()
         setGroupUsers(value.map(group => group.users).sort((b, a) => moment(a[0].updated_at) - moment(b[0].updated_at)))
     } 
  
-    const handleModClick = async (tutor, seance_id) => {
+    const handleModClick = async (tutor, seance_id) => { 
         if (tutor.seances[seance_id].mod) {
             delete tutor.seances[seance_id].mod
         } else {
@@ -33,14 +33,14 @@ const Admin = () => {
     const [groupUsers, setGroupUsers] = useState([])
     const [refresh, setRefresh] = useState(true) 
 
-    useEffect(() => { 
+    useEffect(() => {  
         // {console.log("useEffect", user, loading)}
         if (user && !loading) { 
             getUserData(user)
         }
     }, [user, loading])
  
-    return (
+    return ( 
         <>
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
@@ -56,14 +56,14 @@ const Admin = () => {
                         </header>
 
                         {/* {groupUsers.length > 0 &&
-                            <div className="12u 12u(medium)">
+                            <div className="12u 12u(medium)"> 
                                 <h3>Compteur de séances données :</h3>
                                 <div className="box" style={{ textAlign: "center" }}>
                                     <h1>{getNumberSeances(groupUsers)}</h1>
-                                </div>
+                                </div> 
 
                             </div>
-                        } */}
+                        } */} 
                     </div>
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
 
@@ -75,14 +75,14 @@ const Admin = () => {
                                         <th>Tuteur</th>
                                         <th>Date</th>
                                         <th>Statut</th>
-                                        <th>Téléphone</th>
+                                        <th>Téléphone</th> 
                                         <th>Mail</th>
                                         <th>Nombre d'élèves</th>
                                         <th>Nombre de séances</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {groupUsers && groupUsers.length > 0 && groupUsers.map((users) => {
+                                    {groupUsers && groupUsers.length > 0 && groupUsers.map((users) => { 
                                         let tutor = users[0]
                                         return (
                                             <>
@@ -110,6 +110,6 @@ const Admin = () => {
             }
         </>
     )
-}
-
+} 
+ 
 export default Admin

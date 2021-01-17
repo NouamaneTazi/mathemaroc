@@ -1,9 +1,9 @@
-import Head from "next/head"
+import Head from "next/head" 
 import { useState, useEffect } from "react" 
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
 import Router from "next/router"
-import MenuAdmin from '../components/MenuAdmin'
+import MenuAdmin from '../components/MenuAdmin' 
 
 const InputGroupId = ({ tutor }) => {
     const setGroupId = async (tutor) => {
@@ -11,7 +11,7 @@ const InputGroupId = ({ tutor }) => {
         await fetch('/api/mongodb', {
             method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })
-        })
+        }) 
         window.location.reload(false)
     }
  
@@ -22,8 +22,8 @@ const InputGroupId = ({ tutor }) => {
             type="text"
             id="group_id"
             name="group_id"
-            value={selectedGroupId}
-            onChange={event => setSelectedGroupId(parseInt(event.target.value))}
+            value={selectedGroupId} 
+            onChange={event => setSelectedGroupId(parseInt(event.target.value))} 
         />
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}
     </div>)
@@ -36,8 +36,8 @@ const Reports = () => {
         if (!json.is_admin) Router.push('/profile')
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getAwaitingTutors=true')
-        const new_awaitingtutors = await res.json() 
- 
+        const new_awaitingtutors = await res.json()  
+  
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json()
 
@@ -51,32 +51,32 @@ const Reports = () => {
         } else {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }
         }
-
+ 
         const res = await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         }) 
-        setRefresh(!refresh) 
+        setRefresh(!refresh)  
     } 
-
+ 
     let { user, loading } = useFetchUser()
     const [awaitingtutors, setAwaitingTutors] = useState([])
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)
  
-    useEffect(() => { 
+    useEffect(() => {  
         // {console.log("useEffect", user, loading)}
-        if (user && !loading) {
+        if (user && !loading) { 
             getUserData(user)
         }
     }, [user, loading])
 
-    return (
+    return ( 
         <> 
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
-                    <title>Tuteurs en attente</title>
+                    <title>Tuteurs en attente</title> 
                     <meta name="description" content="Tuteurs en attente" /> 
                 </Head> 
                 <MenuAdmin user={user}/> 
@@ -91,23 +91,23 @@ const Reports = () => {
                             <div className="table-wrapper">
                                 <table>
                                     <thead>
-                                        <tr> 
+                                        <tr>  
                                             <th>Tuteur</th>
                                             <th>Statut</th>
                                             <th>Matières</th>
                                             <th>Whatsapp</th>
                                             <th>Mail</th>
                                             <th>Veut encadrer groupe ?</th>
-                                            <th>Groupe</th>
+                                            <th>Groupe</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         {awaitingtutors.map(tutor => (
                                             <tr key={`${tutor._id}`}>
-                                                <td>{tutor.firstname} {tutor.lastname}</td> 
+                                                <td>{tutor.firstname} {tutor.lastname}</td>  
                                                 <td>{tutor.statut}</td>
-                                                <td>{tutor.matieres}</td>
+                                                <td>{tutor.matieres}</td> 
                                                 <td>{tutor.whatsapp}</td>
                                                 <td>{tutor.mail}</td>
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td> 
@@ -115,18 +115,18 @@ const Reports = () => {
                                             </tr>
                                         )
                                         )}
-                                    </tbody>
+                                    </tbody> 
                                 </table>
-                            </div> 
-                        </div>
+                            </div>  
+                        </div> 
                     </div> 
-
+ 
                 </section>
             </Layout> 
             }
         </> 
     )
 }
-
+ 
 
 export default Reports

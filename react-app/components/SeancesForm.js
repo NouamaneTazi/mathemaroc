@@ -16,7 +16,7 @@ const Seances = ({ user }) => {
         values.splice(index, 1);
         setInputFields(values);
     };
-
+ 
     const handleInputChange = (index, event) => {
         const values = [...inputFields];
         values[index][event.target.name] = event.target.value
@@ -31,7 +31,7 @@ const Seances = ({ user }) => {
             if (moment("2020-03-20") <= date && date < moment().add(1, 'M')) {
                 const values = [...inputFields];
                 values[index][event.target.name] = date.format('YYYY-MM-DD')
-                setInputFields(values)
+                setInputFields(values) 
             }
         }
     }
@@ -40,12 +40,12 @@ const Seances = ({ user }) => {
         if (absentStudent._id in inputFields[index].absents) delete inputFields[index].absents[absentStudent._id]
         else {
             let values = inputFields
-            values[index].absents[absentStudent._id] = `${absentStudent.firstname} ${absentStudent.lastname}`
+            values[index].absents[absentStudent._id] = `${absentStudent.firstname} ${absentStudent.lastname}` 
             setInputFields(values);
         }
     }
 
-    const handleSubmitSeances = async () => {
+    const handleSubmitSeances = async () => { 
         let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.remarques) // Keep non empty seances
         // console.log("query", user._id, seances)
         const res = await fetch('/api/mongodb', {
@@ -57,7 +57,7 @@ const Seances = ({ user }) => {
         setSavedSuccess(true)
     }
 
-    const [inputFields, setInputFields] = useState(user.seances ? user.seances : []);
+    const [inputFields, setInputFields] = useState(user.seances ? user.seances : []); 
     const [editMode, setEditMode] = useState(false)
     const [savedSuccess, setSavedSuccess] = useState(false)
 
@@ -79,7 +79,7 @@ const Seances = ({ user }) => {
                                 <th>Ressenti</th>
                                 <th></th>
                             </tr>
-                        </thead>
+                        </thead> 
                         {editMode ? <tbody>
                             {inputFields.map((inputField, index) => (
                                 <tr key={`${inputField}~${index}`}>
@@ -95,20 +95,20 @@ const Seances = ({ user }) => {
                                         />
                                     </td>
                                     <td style={{ width: '10%' }}>
-                                        <input
+                                        <input 
                                             type="text"
                                             id="duree"
                                             name="duree"
                                             value={inputField.duree}
-                                            onChange={event => handleInputChange(index, event)}
+                                            onChange={event => handleInputChange(index, event)} 
                                         />
                                     </td>
-                                    <td>
+                                    <td> 
                                         <textarea name="chapitres" id="chapitres-traites" placeholder="Enter your message" rows="7" value={inputField.chapitres} onChange={event => handleInputChange(index, event)}></textarea>
 
                                     </td>
 
-                                    <td>
+                                    <td> 
                                         {user.students.map((student) => (
                                             <div className="12u 12u(small)" key={student._id}>
                                                 {/* TODO: handle checked for absent students */}
@@ -116,7 +116,7 @@ const Seances = ({ user }) => {
                                                 <label htmlFor={`${index}-${student._id}`}>{student.fullname}</label>
                                             </div>
                                         ))
-                                        }
+                                        } 
                                     </td>
 
                                     <td>
@@ -138,7 +138,7 @@ const Seances = ({ user }) => {
                             ))}
                             <tr><th></th><th></th><th></th><th></th><th></th><th></th>
                                 <th style={{ paddingBottom: 0 }}>
-                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleAddFields()}>add_circle</Icon>
+                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleAddFields()}>add_circle</Icon> 
                                 </th>
                             </tr>
                         </tbody>
@@ -167,7 +167,7 @@ const Seances = ({ user }) => {
                 {(!inputFields || inputFields.length === 0) && <p style={{ textAlign: 'center' }}>Tu peux remplir ici les comptes rendus de chaque séance que tu fais avec tes élèves pour qu'on sache que les élèves sont bien pris en charge</p>}
 
                 <div>
-                    {editMode ?
+                    {editMode ? 
                         <button className="button" onClick={() => handleSubmitSeances()}>Enregistrer</button>
 
                         : <button className="button icon fa-pencil" onClick={() => {
@@ -177,7 +177,7 @@ const Seances = ({ user }) => {
                     }
                     {savedSuccess && <div style={{ display: "inline", marginLeft: "10px" }}>Modification réussie !</div>}
                 </div>
-            </div>
+            </div> 
         </>
 
     )

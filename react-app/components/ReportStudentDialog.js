@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
+import MuiDialogActions from '@material-ui/core/DialogActions'; 
 import Typography from '@material-ui/core/Typography';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -28,7 +28,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
         setOpen(false);
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async () => { 
         let report = {
             "student": { "_id": student._id, "name": `${student.firstname} ${student.lastname}` },
             "time": new Date(Date.now()).toLocaleString("en-US"),
@@ -47,7 +47,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
             await fetch('/api/mongodb', {
                 method: 'post',
                 body: JSON.stringify({ _id: student._id, data: student })
-            })
+            }) 
         } else if (reportOption === "returnQueue") {
             await fetch('/api/mongodb?unset=true', {
                 method: 'post',
@@ -55,12 +55,12 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
             })
             report.replaced_by = { name: "retour liste d'attente" }
             report.mod = { name: "Bot" }
-        }
+        } 
 
         let reports = "reports" in tutor ? tutor.reports : []
         reports.push(report)
 
-        await fetch('/api/mongodb', {
+        await fetch('/api/mongodb', { 
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: reports } })
         })
@@ -89,7 +89,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                             <FormControlLabel value="returnQueue" control={<Radio />} name="L'élève doit revenir à la liste d'attente." label="L'élève doit revenir à la liste d'attente." style={{ color: "black", textTransform: "none", margin: "0" }} />
                             <FormControlLabel value="other" control={<Radio />} name="Autre" label="Autre" style={{ color: "black", textTransform: "none", margin: "0" }} />
                         </RadioGroup>
-                        {reportOption === "other" && <textarea name="report-text" id={`dialog-${student._id}`} style={{ color: "white" }} placeholder="Décrivez ce qui s'est passé.." rows="6" value={reportText} onChange={e => setReportText(e.target.value)}></textarea>}
+                        {reportOption === "other" && <textarea name="report-text" id={`dialog-${student._id}`} style={{ color: "white" }} placeholder="Décrivez ce qui s'est passé.." rows="6" value={reportText} onChange={e => setReportText(e.target.value)}></textarea>} 
                     </div>
                 </DialogActions>
                 <DialogActions>
@@ -99,7 +99,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
 
                     <Button autoFocus onClick={() => handleSubmit()} color="primary">
                         Submit Report
-          </Button>
+          </Button> 
                 </DialogActions>
             </Dialog>
         </>

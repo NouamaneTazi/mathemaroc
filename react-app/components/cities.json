@@ -1,6 +1,6 @@
 [
     {
-        "name": "Benslimane",
+        "name": "Benslimane", 
         "longitude": -7.18859,
         "latitude": 33.6193,
         "counts": "16"
@@ -134,11 +134,11 @@
     {
         "name": "Jerada",
         "longitude": -2.158166034,
-        "latitude": 34.306998772,
+        "latitude": 34.306998772, 
         "counts": "1"
     },
     {
-        "name": "Nador",
+        "name": "Nador", 
         "longitude": -2.9241,
         "latitude": 35.17401,
         "counts": "14"
@@ -167,7 +167,7 @@
         "latitude": 33.16667,
         "counts": "25"
     },
-    {
+    { 
         "name": "Fes",
         "longitude": -5.00218, 
         "latitude": 34.03748,
@@ -189,13 +189,13 @@
         "name": "El-Hajeb",
         "longitude": -5.3678,
         "latitude": 33.6857,
-        "counts": "15"
+        "counts": "15" 
     },
     { 
         "name": "Errachidia",
         "longitude": -4.45363,
         "latitude": 31.94102,
-        "counts": "55"
+        "counts": "55" 
     },
     {
         "name": "Ifrane",
@@ -274,8 +274,8 @@
         "longitude": -9.7312,
         "latitude": 29.69647,
         "counts": "25"
-    },
-    {
+    }, 
+    { 
         "name": "Zagora",
         "longitude": -5.81686,
         "latitude": 30.34897,
@@ -298,7 +298,7 @@
         "longitude": -6.15163,
         "latitude": 35.19436,
         "counts": "6"
-    },
+    }, 
     {
         "name": "Tanger-Assilah", 
         "longitude": -5.99989,
@@ -356,7 +356,7 @@
     {
         "name": "Taounate",
         "longitude": -4.6399,
-        "latitude": 34.5369,
+        "latitude": 34.5369, 
         "counts": "34"
     }, 
     {

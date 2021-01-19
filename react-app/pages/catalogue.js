@@ -18,7 +18,7 @@ import Alert from '@material-ui/lab/Alert';
 
 const Reports = () => {
     const getUserData = async (user) => {
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub)
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
         let json = await res.json()
         Object.assign(user, json)
         if (!user.students || user.students.length === 0) {
@@ -33,13 +33,13 @@ const Reports = () => {
         setAwaitingStudents(awaitingStudents)
         setLoading(false)
     }
-
+ 
     const handleSelectStudent = (student) => {
         let value = selectedStudents
         value.push(student)
         setSelectedStudents([...value])
     }
-
+ 
     const handleSubmit = async () => {
         if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) {
             setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' })
@@ -72,7 +72,7 @@ const Reports = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState()
     const [awaitingStudents, setAwaitingStudents] = useState([])
-    const [filiereTerm, setFiliereTerm] = useState("")
+    const [filiereTerm, setFiliereTerm] = useState("") 
     const [matiereTerm, setMatiereTerm] = useState("")
     const [wishesTerm, setWishesTerm] = useState("")
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere']))
@@ -80,7 +80,7 @@ const Reports = () => {
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes']))
     const [selectedStudents, setSelectedStudents] = useState([])
     const [maxRows, setMaxRows] = useState(10)
-    const [userHasNoStudents, setUserHasNoStudents] = useState(false)
+    const [userHasNoStudents, setUserHasNoStudents] = useState(false) 
 
     useEffect(() => {
         // { console.log("useEffect", user, userLoading) }
@@ -126,7 +126,7 @@ const Reports = () => {
                             <br />
                             <ul>
                                 <li>
-                                    Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li>
+                                    Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li> 
                                 <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li>
                                 <li>Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! </li>
                             </ul>
@@ -149,11 +149,11 @@ const Reports = () => {
                                 </Link>
                             </div> 
                         }
-                        <header className="major">
+                        <header className="major"> 
                             <h1>Catalogue des élèves</h1>
                         </header>
-                        <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />
-                            Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>
+                        <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br /> 
+                            Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p> 
 
                     </div>
 
@@ -181,7 +181,7 @@ const Reports = () => {
                                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                                 }</td>
-                                            </tr>
+                                            </tr> 
                                         ))
 
                                         }
@@ -231,7 +231,7 @@ const Reports = () => {
                                             <td>{student.filiere}</td>
                                             <td style={{ width: "50%" }}>{student.matiere}</td>
                                             <td style={{ width: "40%" }}>{student.wishes}</td>
-                                            <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?
+                                            <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ? 
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
@@ -239,7 +239,7 @@ const Reports = () => {
                                     ))}
                                 </tbody>
                             </table>
-                            <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p>
+                            <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
                         </div>
                     </div>
                 </section>

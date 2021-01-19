@@ -4,13 +4,13 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
 
- 
-const Reports = () => {
+  
+const Reports = () => { 
     const getUserData = async (user) => {
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub)
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
         let json = await res.json()
         Object.assign(user, json)
-        res = await fetch('/api/mongodb?getDemandesDeleves=true')
+        res = await fetch('/api/mongodb?getDemandesDeleves=true') 
         const new_tutors = await res.json()
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json()
@@ -24,9 +24,9 @@ const Reports = () => {
             delete tutor.reports[report_id].mod
         } else {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }
-        }
+        } 
 
-        const res = await fetch('/api/mongodb', {
+        const res = await fetch('/api/mongodb', { 
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         })
@@ -42,12 +42,12 @@ const Reports = () => {
     useEffect(() => { 
         // {console.log("useEffect", user, loading)} 
         if (user && !loading) {
-            getUserData(user) 
+            getUserData(user)  
         }
     }, [user, loading])
 
     return (
-        <>
+        <> 
             {!loading && <Layout user={user} loading={loading}> 
                 <Head>
                     <title>Demandes élèves</title>
@@ -64,7 +64,7 @@ const Reports = () => {
                         {/* <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
                         Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}
                         <div className="12u 12u(medium)">
-                            <div className="table-wrapper">
+                            <div className="table-wrapper"> 
                                 <table>
                                     <thead>
                                         <tr> 
@@ -72,7 +72,7 @@ const Reports = () => {
                                             <th>Tuteur</th>
                                             <th>Groupe</th> 
                                             <th>Nombre d'élèves demandés</th> 
-                                            <th>Élèves donnés</th>
+                                            <th>Élèves donnés</th> 
                                         </tr> 
                                     </thead> 
                                     <tbody> 
@@ -84,7 +84,7 @@ const Reports = () => {
                                                     <td>{asked_more_students.time}</td> 
                                                     <td>{tutor.firstname} {tutor.lastname}</td> 
                                                     <td>{tutor.groupId}</td>
-                                                    <td>{asked_more_students.number}</td>
+                                                    <td>{asked_more_students.number}</td> 
 
                                                     <td> 
                                                         <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />
@@ -100,7 +100,7 @@ const Reports = () => {
                     </div>
                 </section> 
             </Layout>
-            }
+            } 
         </>
     )
 }

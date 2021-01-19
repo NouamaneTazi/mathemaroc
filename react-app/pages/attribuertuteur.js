@@ -8,7 +8,7 @@ import MenuAdmin from '../components/MenuAdmin'
 const InputGroupId = ({ tutor }) => {
     const setGroupId = async (tutor) => {
         // console.log(tutor, selectedGroupId)
-        await fetch('/api/mongodb', {
+        await fetch('/api/mongodb', { 
             method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })
         }) 
@@ -24,18 +24,18 @@ const InputGroupId = ({ tutor }) => {
             name="group_id"
             value={selectedGroupId} 
             onChange={event => setSelectedGroupId(parseInt(event.target.value))} 
-        />
+        /> 
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}
     </div>)
-}
-
+} 
+ 
 const Reports = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         if (!json.is_admin) Router.push('/profile')
         Object.assign(user, json)
-        res = await fetch('/api/mongodb?getAwaitingTutors=true')
+        res = await fetch('/api/mongodb?getAwaitingTutors=true') 
         const new_awaitingtutors = await res.json()  
   
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
@@ -52,7 +52,7 @@ const Reports = () => {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }
         }
  
-        const res = await fetch('/api/mongodb', {
+        const res = await fetch('/api/mongodb', { 
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         }) 
@@ -64,7 +64,7 @@ const Reports = () => {
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)
  
-    useEffect(() => {  
+    useEffect(() => {   
         // {console.log("useEffect", user, loading)}
         if (user && !loading) { 
             getUserData(user)
@@ -118,7 +118,7 @@ const Reports = () => {
                                     </tbody> 
                                 </table>
                             </div>  
-                        </div> 
+                        </div>  
                     </div> 
  
                 </section>

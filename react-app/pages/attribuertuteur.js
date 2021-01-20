@@ -1,4 +1,4 @@
-import Head from "next/head" 
+import Head from "next/head"  
 import { useState, useEffect } from "react" 
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
@@ -30,41 +30,41 @@ const InputGroupId = ({ tutor }) => {
 } 
  
 const Reports = () => {
-    const getUserData = async (user) => {
+    const getUserData = async (user) => { 
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         if (!json.is_admin) Router.push('/profile')
         Object.assign(user, json)
-        res = await fetch('/api/mongodb?getAwaitingTutors=true') 
+        res = await fetch('/api/mongodb?getAwaitingTutors=true')  
         const new_awaitingtutors = await res.json()  
   
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json()
-
+ 
         setAwaitingTutors(new_awaitingtutors)
         setAwaitingStudents(awaitingStudents)
-    }
+    } 
  
     const handleModClick = async (tutor, report_id) => {
-        if (tutor.reports[report_id].mod) {
+        if (tutor.reports[report_id].mod) { 
             delete tutor.reports[report_id].mod
         } else {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }
         }
  
         const res = await fetch('/api/mongodb', { 
-            method: 'post',
+            method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         }) 
         setRefresh(!refresh)  
     } 
  
-    let { user, loading } = useFetchUser()
+    let { user, loading } = useFetchUser() 
     const [awaitingtutors, setAwaitingTutors] = useState([])
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)
  
-    useEffect(() => {   
+    useEffect(() => {    
         // {console.log("useEffect", user, loading)}
         if (user && !loading) { 
             getUserData(user)
@@ -78,7 +78,7 @@ const Reports = () => {
                 <Head>
                     <title>Tuteurs en attente</title> 
                     <meta name="description" content="Tuteurs en attente" /> 
-                </Head> 
+                </Head>  
                 <MenuAdmin user={user}/> 
                 <section id="one">
                     <div className="inner" style={{maxWidth:"75em"}}> 
@@ -96,7 +96,7 @@ const Reports = () => {
                                             <th>Statut</th>
                                             <th>Matières</th>
                                             <th>Whatsapp</th>
-                                            <th>Mail</th>
+                                            <th>Mail</th> 
                                             <th>Veut encadrer groupe ?</th>
                                             <th>Groupe</th> 
                                         </tr>

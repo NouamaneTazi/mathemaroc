@@ -13,14 +13,14 @@ const Reports = () => {
         res = await fetch('/api/mongodb?getAllReports=true')
         const new_tutors = await res.json()
 
-        res = await fetch('/api/mongodb?getAwaitingStudents=true')
+        res = await fetch('/api/mongodb?getAwaitingStudents=true') 
         const awaitingStudents = await res.json()
 
         setTutors(new_tutors)
         setAwaitingStudents(awaitingStudents)
     }
 
-    const handleModClick = async (tutor, report_id) => {
+    const handleModClick = async (tutor, report_id) => { 
         if (tutor.reports[report_id].mod) {
             delete tutor.reports[report_id].mod
         } else {
@@ -35,7 +35,7 @@ const Reports = () => {
     }
 
     let { user, loading } = useFetchUser()
-    const [tutors, setTutors] = useState([])
+    const [tutors, setTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)
     const [replacingStudent, setReplacingStudent] = useState(false)
@@ -52,7 +52,7 @@ const Reports = () => {
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
-                    <title>Reports Page</title>
+                    <title>Reports Page</title> 
                     <meta name="description" content="Reports Page" />
                 </Head>
                 <section id="one">
@@ -67,7 +67,7 @@ const Reports = () => {
                             <div className="table-wrapper">
                                 <table>
                                     <thead>
-                                        <tr>
+                                        <tr> 
                                             <th>Groupe</th>
                                             <th>Tuteur</th>
                                             <th>Élève signalé</th>
@@ -85,7 +85,7 @@ const Reports = () => {
                                                     {report_index===0 && <td rowSpan={tutor.reports.length} style={{verticalAlign:"middle"}}>{tutor.groupId}</td>}
                                                     {report_index===0 && <td rowSpan={tutor.reports.length} style={{verticalAlign:"middle"}}>{tutor.firstname} {tutor.lastname}</td>}
                                                     <td>{report.student.name}</td>
-                                                    <td>{report.time}</td>
+                                                    <td>{report.time}</td> 
                                                     <td>{report.text}</td>
                                                     <td >
                                                         {!report.mod || !report.mod.name ?
@@ -102,7 +102,7 @@ const Reports = () => {
                                                                     <>
                                                                         <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked />
                                                                         <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
-                                                                    </>
+                                                                    </> 
                                                                     : null
                                                         }
                                                     </td>
@@ -112,7 +112,7 @@ const Reports = () => {
                                                             <UndoReplacedStudent replacingStudent={replacingStudent} setReplacingStudent={setReplacingStudent} tutor={tutor} report={report}/>
                                                         </>
                                                             : <SearchAndReplaceStudent reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={() => handleModClick(tutor, report_index)} />
-                                                    }</td>
+                                                    }</td> 
                                                 </tr>
                                             )) : null
                                         }

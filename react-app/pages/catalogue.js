@@ -42,7 +42,7 @@ const Reports = () => {
  
     const handleSubmit = async () => {
         if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) {
-            setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' })
+            setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' }) 
         }
         else {
             for (let student of selectedStudents) {
@@ -74,7 +74,7 @@ const Reports = () => {
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [filiereTerm, setFiliereTerm] = useState("") 
     const [matiereTerm, setMatiereTerm] = useState("")
-    const [wishesTerm, setWishesTerm] = useState("")
+    const [wishesTerm, setWishesTerm] = useState("") 
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere']))
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes']))
@@ -108,13 +108,13 @@ const Reports = () => {
 
     return (
         <>
-            <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
+            <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" />
             </Backdrop>
             {!loading && user && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Catalogue à élèves</title>
-                    <meta name="description" content="Catalogue des élèves" />
+                    <meta name="description" content="Catalogue des élèves" /> 
                 </Head>
 
                 <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth>
@@ -132,7 +132,7 @@ const Reports = () => {
                             </ul>
                         </Typography>
 
-                    </MuiDialogContent>
+                    </MuiDialogContent> 
 
                     <Button autoFocus onClick={() => setUserHasNoStudents(false)} color="primary">
                         Fermer
@@ -148,7 +148,7 @@ const Reports = () => {
                                     <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
                                 </Link>
                             </div> 
-                        }
+                        } 
                         <header className="major"> 
                             <h1>Catalogue des élèves</h1>
                         </header>
@@ -174,7 +174,7 @@ const Reports = () => {
                                         {selectedStudents.map(student => (
                                             <tr key={`${student._id}`}>
                                                 <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>
-                                                <td>{student.filiere}</td>
+                                                <td>{student.filiere}</td> 
                                                 <td>{student.matiere}</td>
                                                 <td>{student.wishes}</td>
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?
@@ -187,7 +187,7 @@ const Reports = () => {
                                         }
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> 
                             {error && <Alert severity="error">{error.message}</Alert>}
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p>
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
@@ -196,7 +196,7 @@ const Reports = () => {
                     </>}
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
-
+ 
  
                         <div className="table-wrapper">
                             <table>
@@ -245,7 +245,7 @@ const Reports = () => {
                 </section>
             </Layout>
             }
-        </>
+        </> 
     )
 }
 

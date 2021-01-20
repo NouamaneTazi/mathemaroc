@@ -2,10 +2,10 @@ import Head from "next/head"
 import { useState, useEffect } from "react" 
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
-import Router from "next/router"
+import Router from "next/router" 
 import MenuAdmin from '../components/MenuAdmin' 
 
-const InputGroupId = ({ tutor }) => {
+const InputGroupId = ({ tutor }) => { 
     const setGroupId = async (tutor) => {
         // console.log(tutor, selectedGroupId)
         await fetch('/api/mongodb', { 
@@ -19,7 +19,7 @@ const InputGroupId = ({ tutor }) => {
 
     return (<div className="12u 12u(small)" >
         <input
-            type="text"
+            type="text" 
             id="group_id"
             name="group_id"
             value={selectedGroupId} 
@@ -37,7 +37,7 @@ const Reports = () => {
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getAwaitingTutors=true')  
         const new_awaitingtutors = await res.json()  
-  
+   
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json()
  
@@ -65,12 +65,12 @@ const Reports = () => {
     const [refresh, setRefresh] = useState(true)
  
     useEffect(() => {    
-        // {console.log("useEffect", user, loading)}
+        // {console.log("useEffect", user, loading)} 
         if (user && !loading) { 
-            getUserData(user)
+            getUserData(user) 
         }
     }, [user, loading])
-
+ 
     return ( 
         <> 
             {/* {console.log(user)} */}
@@ -83,15 +83,15 @@ const Reports = () => {
                 <section id="one">
                     <div className="inner" style={{maxWidth:"75em"}}> 
                         <header className="major"> 
-                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>
-                                : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1> 
+                                : <h1>Vous n'êtes pas connectés</h1>} 
                         </header>
 
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper">
                                 <table>
                                     <thead>
-                                        <tr>  
+                                        <tr>   
                                             <th>Tuteur</th>
                                             <th>Statut</th>
                                             <th>Matières</th>
@@ -99,7 +99,7 @@ const Reports = () => {
                                             <th>Mail</th> 
                                             <th>Veut encadrer groupe ?</th>
                                             <th>Groupe</th> 
-                                        </tr>
+                                        </tr> 
                                     </thead>
                                     <tbody>
 
@@ -112,7 +112,7 @@ const Reports = () => {
                                                 <td>{tutor.mail}</td>
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td> 
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>
-                                            </tr>
+                                            </tr> 
                                         )
                                         )}
                                     </tbody> 

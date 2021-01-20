@@ -20,7 +20,7 @@ const Reports = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
         let json = await res.json()
-        Object.assign(user, json)
+        Object.assign(user, json) 
         if (!user.students || user.students.length === 0) {
             setUserHasNoStudents(true)
         }
@@ -34,7 +34,7 @@ const Reports = () => {
         setLoading(false)
     }
  
-    const handleSelectStudent = (student) => {
+    const handleSelectStudent = (student) => { 
         let value = selectedStudents
         value.push(student)
         setSelectedStudents([...value])
@@ -65,13 +65,13 @@ const Reports = () => {
             })
             Router.push('/profile')
         }
-        setLoading(false)
+        setLoading(false) 
     }
 
     let { user, loading: userLoading } = useFetchUser()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState()
-    const [awaitingStudents, setAwaitingStudents] = useState([])
+    const [awaitingStudents, setAwaitingStudents] = useState([]) 
     const [filiereTerm, setFiliereTerm] = useState("") 
     const [matiereTerm, setMatiereTerm] = useState("")
     const [wishesTerm, setWishesTerm] = useState("") 
@@ -131,17 +131,17 @@ const Reports = () => {
                                 <li>Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! </li>
                             </ul>
                         </Typography>
-
+ 
                     </MuiDialogContent> 
 
                     <Button autoFocus onClick={() => setUserHasNoStudents(false)} color="primary">
                         Fermer
-                        </Button>
+                        </Button> 
                 </Dialog>
-
+ 
 
                 <section id="one">
-                    <div className="inner">
+                    <div className="inner"> 
                         {(user.students && user.students.length !== 0) &&
                             <div style={{ marginBottom: "2em" }}>
                                 <Link href="/profile">
@@ -153,7 +153,7 @@ const Reports = () => {
                             <h1>Catalogue des élèves</h1>
                         </header>
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br /> 
-                            Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p> 
+                            Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>  
 
                     </div>
 
@@ -189,7 +189,7 @@ const Reports = () => {
                                 </table>
                             </div> 
                             {error && <Alert severity="error">{error.message}</Alert>}
-                            <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p>
+                            <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
                         </div>
                         <Divider style={{ marginBottom: "3em" }} />
@@ -230,7 +230,7 @@ const Reports = () => {
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>
                                             <td>{student.filiere}</td>
                                             <td style={{ width: "50%" }}>{student.matiere}</td>
-                                            <td style={{ width: "40%" }}>{student.wishes}</td>
+                                            <td style={{ width: "40%" }}>{student.wishes}</td> 
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ? 
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
@@ -238,7 +238,7 @@ const Reports = () => {
                                         </tr>
                                     ))}
                                 </tbody>
-                            </table>
+                            </table> 
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
                         </div>
                     </div>

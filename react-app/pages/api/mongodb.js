@@ -10,9 +10,9 @@ handler.get(async (req, res) => {
     console.log("query", req.query)
     let { groupId, auth0id, role, getAllSeances, getAllReports, getDemandesDeleves, getAwaitingStudents, getAwaitingTutors, getAllReportsFromStudents } = req.query
     if (groupId) {
-        req.db.collection('users').find({ groupId: parseInt(groupId) }).toArray(function (err, result) {
+        req.db.collection('users').find({ groupId: parseInt(groupId) }).toArray(function (err, result) { 
             if (err) res.json({ err: true })
-            else {
+            else { 
                 // console.log(result);
                 res.json(result);
             }
@@ -42,11 +42,11 @@ handler.get(async (req, res) => {
             if (err) res.json({ err: true })
             else {
                 // console.log(result);
-                res.json(result);
+                res.json(result); 
             }
-        });
+        }); 
     } else if (getAllSeances) {
-        req.db.collection('users').find({ role: "tutor", seances: { $exists: true } }).sort({ last_updated: -1 }).toArray(function (err, result) {
+        req.db.collection('users').find({ role: "tutor", seances: { $exists: true } }).sort({ last_updated: -1 }).toArray(function (err, result) { 
             if (err) res.json({ err: true })
             else {
                 res.json(result);
@@ -64,7 +64,7 @@ handler.get(async (req, res) => {
             { $match: { groupId: { $gte: 4000, $lte: 5000 } } },
             { $sort: { updated_at: -1 } },
             { $group: { _id: "$groupId", users: { $push: "$$ROOT" } } }
-        ]).toArray(function (err, result) {
+        ]).toArray(function (err, result) { 
             if (err) res.json({ err: true })
             else {
                 res.json(result);
@@ -75,14 +75,14 @@ handler.get(async (req, res) => {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
-            }
+            } 
         });
     } else if (getAllReports) {
         req.db.collection('users').find({ role: "tutor", reports: { $exists: true } }).sort({ "reports.time": -1 }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
                 res.json(result);
-            }
+            } 
         });
     } else if (getDemandesDeleves) {
         req.db.collection('users').find({ role: "tutor", asked_more_students: { $exists: true } }).sort({ "asked_more_students.time": -1 }).toArray(function (err, result) {
@@ -123,11 +123,11 @@ handler.get(async (req, res) => {
         req.db.collection('users').find({ groupId: parseInt(req.query.getUsersByGroupId) }).toArray(function (err, result) {
             if (err) res.json({ err: true })
             else {
-                res.json(result);
+                res.json(result); 
             }
         })
     } else if (req.query.count) {
-        let result = {}
+        let result = {} 
         result.supportedStudents = await req.db.collection('users').find({ role: 'student', groupId: { $exists: true } }).count()
         result.students = await req.db.collection('users').find({ role: 'student' }).count()
         res.json(result)
@@ -140,17 +140,17 @@ handler.post(async (req, res) => {
     ['_id', 'needsSetup', 'isSetup', 'sub', 'notYetSetUp'].map(key => key in user.data ? delete user.data[key] : null)
     console.log("query", req.query)
     console.log("user", user)
-    if (req.query.insert) {
+    if (req.query.insert) { 
         if (user.data.role === "tutor") {
             const ret = await req.db.collection('counters').findOneAndUpdate({ _id: 'groupId' }, { $inc: { seq: 1 } })
-            user.data.groupId = ret.value.seq
+            user.data.groupId = ret.value.seq 
             await req.db.collection('users').insertOne(user.data)
         } else if (user.data.role === "student") {
             user.data.timestamp = new Date(Date.now())
             if (user.data.whatsapp) {
                 await req.db.collection('users').updateOne({ whatsapp: user.data.whatsapp }, { $set: user.data }, true)
             } else {
-                await req.db.collection('users').insertOne(user.data)
+                await req.db.collection('users').insertOne(user.data) 
             }
         }
 

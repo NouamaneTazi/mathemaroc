@@ -12,7 +12,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog'; 
-import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogContent from '@material-ui/core/DialogContent'; 
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
 
@@ -32,7 +32,7 @@ const Reports = () => {
         const awaitingStudents = await res.json()
         setAwaitingStudents(awaitingStudents)
         setLoading(false)
-    }
+    } 
  
     const handleSelectStudent = (student) => { 
         let value = selectedStudents
@@ -68,7 +68,7 @@ const Reports = () => {
         setLoading(false) 
     }
 
-    let { user, loading: userLoading } = useFetchUser()
+    let { user, loading: userLoading } = useFetchUser() 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState()
     const [awaitingStudents, setAwaitingStudents] = useState([]) 
@@ -86,7 +86,7 @@ const Reports = () => {
         // { console.log("useEffect", user, userLoading) }
         if (user && !userLoading) {
             setLoading(true)
-            getUserData(user)
+            getUserData(user) 
             getAwaitingStudentsData()
         }
         else if (!userLoading && !user) { 
@@ -107,7 +107,7 @@ const Reports = () => {
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
 
     return (
-        <>
+        <> 
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" />
             </Backdrop>
@@ -144,7 +144,7 @@ const Reports = () => {
                     <div className="inner"> 
                         {(user.students && user.students.length !== 0) &&
                             <div style={{ marginBottom: "2em" }}>
-                                <Link href="/profile">
+                                <Link href="/profile"> 
                                     <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
                                 </Link>
                             </div> 
@@ -161,7 +161,7 @@ const Reports = () => {
                         <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
                             <div className="table-wrapper">
                                 <table>
-                                    <thead>
+                                    <thead> 
                                         <tr>
                                             <th>Date de demande</th>
                                             <th>Filière</th>
@@ -184,7 +184,7 @@ const Reports = () => {
                                             </tr> 
                                         ))
 
-                                        }
+                                        } 
                                     </tbody>
                                 </table>
                             </div> 
@@ -195,7 +195,7 @@ const Reports = () => {
                         <Divider style={{ marginBottom: "3em" }} />
                     </>}
 
-                    <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
+                    <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}> 
  
  
                         <div className="table-wrapper">
@@ -208,7 +208,7 @@ const Reports = () => {
                                                 <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>
                                                     <option value="">- Filière -</option>
                                                     <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>
-                                                    <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>
+                                                    <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option> 
                                                     <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option> 
                                                     <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
                                                     <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>

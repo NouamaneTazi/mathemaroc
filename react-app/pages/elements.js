@@ -101,15 +101,15 @@ export default () => (
                                             <li><a href="#" className="icon fa-tumblr"><span className="label">Tumblr</span></a></li>
                                         </ul>
                                         <ul className="icons">
-                                            <li><a href="#" className="icon alt fa-twitter"><span className="label">Twitter</span></a></li>
+                                            <li><a href="#" className="icon alt fa-twitter"><span className="label">Twitter</span></a></li> 
                                             <li><a href="#" className="icon alt fa-facebook"><span className="label">Facebook</span></a></li>
                                             <li><a href="#" className="icon alt fa-instagram"><span className="label">Instagram</span></a></li>
-                                        </ul>
+                                        </ul> 
 
                                     </div>
                                 </div>
                                 <h4>Definition</h4>
-                                <dl>
+                                <dl> 
                                     <dt>Item1</dt>
                                     <dd>
                                         <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p>
@@ -210,10 +210,10 @@ export default () => (
                                                 <td>19.99</td>
                                             </tr>
                                             <tr>
-                                                <td>Item5</td>
+                                                <td>Item5</td> 
                                                 <td>Ante turpis integer aliquet porttitor.</td>
                                                 <td>29.99</td>
-                                            </tr>
+                                            </tr> 
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -303,13 +303,13 @@ export default () => (
                                 <ul className="actions">
                                     <li><span className="button special disabled">Special</span></li>
                                     <li><span className="button disabled">Default</span></li>
-                                </ul>
+                                </ul> 
 
                                 <h3>Form</h3>
 
                                 <form method="post" action="#">
                                     <div className="row uniform">
-                                        <div className="6u 12u(xsmall)">
+                                        <div className="6u 12u(xsmall)"> 
                                             <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
                                         </div>
                                         <div className="6u 12u(xsmall)">
@@ -333,9 +333,9 @@ export default () => (
                                         <div className="4u 12u(small)">
                                             <input type="radio" id="demo-priority-normal" name="demo-priority" />
                                             <label htmlFor="demo-priority-normal">Normal</label>
-                                        </div>
+                                        </div> 
                                         <div className="4u 12u(small)">
-                                            <input type="radio" id="demo-priority-high" name="demo-priority" />
+                                            <input type="radio" id="demo-priority-high" name="demo-priority" /> 
                                             <label htmlFor="demo-priority-high">High</label>
                                         </div>
                                         <div className="6u 12u(small)">
@@ -349,7 +349,7 @@ export default () => (
                                         <div className="12u">
                                             <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
                                         </div>
-                                        <div className="12u">
+                                        <div className="12u"> 
                                             <ul className="actions">
                                                 <li><input type="submit" value="Send Message" className="special" /></li>
                                                 <li><input type="reset" value="Reset" /></li>
@@ -365,7 +365,7 @@ export default () => (
                                 <div className="box alt">
                                     <div className="row 50% uniform">
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div>
-                                        <div className="4u"><span className="image fit"><img src="/static/images/pic09.jpg" alt="" /></span></div>
+                                        <div className="4u"><span className="image fit"><img src="/static/images/pic09.jpg" alt="" /></span></div> 
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic10.jpg" alt="" /></span></div>
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic10.jpg" alt="" /></span></div>
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div>
@@ -391,12 +391,12 @@ export default () => (
                                 print 'It took ' + i + ' iterations to sort the deck.';
                                 </code></pre>
 
-                        </div>
-                    </div>
+                        </div> 
+                    </div> 
 
                 </div>
             </section>
-
+ 
         </div>
     </Layout>
 )

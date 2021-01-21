@@ -16,14 +16,14 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
 
-const Reports = () => {
+const Reports = () => { 
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
         let json = await res.json()
         Object.assign(user, json) 
-        if (!user.students || user.students.length === 0) {
+        if (!user.students || user.students.length === 0) { 
             setUserHasNoStudents(true)
-        }
+        } 
         // console.log("u",user)
     }
 
@@ -100,7 +100,7 @@ const Reports = () => {
         const timer = setTimeout(() => {
             if (!userLoading && user) {
                 getAwaitingStudentsData()
-            }
+            } 
         }, 1000);
 
         return () => clearTimeout(timer);
@@ -142,12 +142,12 @@ const Reports = () => {
 
                 <section id="one">
                     <div className="inner"> 
-                        {(user.students && user.students.length !== 0) &&
+                        {(user.students && user.students.length !== 0) && 
                             <div style={{ marginBottom: "2em" }}>
                                 <Link href="/profile"> 
                                     <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
                                 </Link>
-                            </div> 
+                            </div>  
                         } 
                         <header className="major"> 
                             <h1>Catalogue des élèves</h1>
@@ -173,7 +173,7 @@ const Reports = () => {
                                     <tbody>
                                         {selectedStudents.map(student => (
                                             <tr key={`${student._id}`}>
-                                                <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>
+                                                <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
                                                 <td>{student.filiere}</td> 
                                                 <td>{student.matiere}</td>
                                                 <td>{student.wishes}</td>
@@ -218,7 +218,7 @@ const Reports = () => {
                                                     <option value="Bac Pro">BAC PRO</option>
                                                 </select>
                                             </div>
-                                        </th>
+                                        </th> 
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th>
                                         <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>
                                         <th>Selectionné</th>
@@ -226,17 +226,17 @@ const Reports = () => {
                                 </thead>
                                 <tbody>
                                     {filteredWishesStudents.slice(0, maxRows).map(student => (
-                                        <tr key={`${student._id}`}>
+                                        <tr key={`${student._id}`}> 
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>
                                             <td>{student.filiere}</td>
                                             <td style={{ width: "50%" }}>{student.matiere}</td>
                                             <td style={{ width: "40%" }}>{student.wishes}</td> 
-                                            <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ? 
+                                            <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?  
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
                                         </tr>
-                                    ))}
+                                    ))} 
                                 </tbody>
                             </table> 
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 

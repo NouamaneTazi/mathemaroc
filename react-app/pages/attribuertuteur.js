@@ -11,10 +11,10 @@ const InputGroupId = ({ tutor }) => {
         await fetch('/api/mongodb', {  
             method: 'post',  
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })
-        }) 
+        })  
         window.location.reload(false)
     }
- 
+  
     const [selectedGroupId, setSelectedGroupId] = useState("")
 
     return (<div className="12u 12u(small)" >
@@ -34,11 +34,11 @@ const Reports = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         if (!json.is_admin) Router.push('/profile')
-        Object.assign(user, json) 
+        Object.assign(user, json)  
         res = await fetch('/api/mongodb?getAwaitingTutors=true')  
         const new_awaitingtutors = await res.json()   
    
-        res = await fetch('/api/mongodb?getAwaitingStudents=true')
+        res = await fetch('/api/mongodb?getAwaitingStudents=true') 
         const awaitingStudents = await res.json()
  
         setAwaitingTutors(new_awaitingtutors)
@@ -86,15 +86,15 @@ const Reports = () => {
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1> 
                                 : <h1>Vous n'êtes pas connectés</h1>} 
                         </header>
-
+ 
                         <div className="12u 12u(medium)"> 
                             <div className="table-wrapper">
                                 <table>
                                     <thead> 
                                         <tr>   
-                                            <th>Tuteur</th>
+                                            <th>Tuteur</th> 
                                             <th>Statut</th>
-                                            <th>Matières</th>
+                                            <th>Matières</th> 
                                             <th>Whatsapp</th>
                                             <th>Mail</th> 
                                             <th>Veut encadrer groupe ?</th>
@@ -118,7 +118,7 @@ const Reports = () => {
                                     </tbody> 
                                 </table>
                             </div>  
-                        </div>  
+                        </div>   
                     </div> 
   
                 </section>

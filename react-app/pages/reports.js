@@ -15,7 +15,7 @@ const Reports = () => {
 
         res = await fetch('/api/mongodb?getAwaitingStudents=true') 
         const awaitingStudents = await res.json()
-
+ 
         setTutors(new_tutors)
         setAwaitingStudents(awaitingStudents)
     }
@@ -27,7 +27,7 @@ const Reports = () => {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }
         }
 
-        const res = await fetch('/api/mongodb', {
+        const res = await fetch('/api/mongodb', { 
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         })
@@ -55,7 +55,7 @@ const Reports = () => {
                     <title>Reports Page</title> 
                     <meta name="description" content="Reports Page" />
                 </Head>
-                <section id="one">
+                <section id="one"> 
                     <div className="inner" style={{maxWidth:"90%", width:"100%"}}>
                         <header className="major">
                             {user ? <h1>Élèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
@@ -76,7 +76,7 @@ const Reports = () => {
                                             <th>Traité</th>
                                             <th>Élève remplaçant</th>
                                         </tr>
-                                    </thead>
+                                    </thead> 
                                     <tbody>
 
                                         {tutors.map(tutor => {
@@ -89,7 +89,7 @@ const Reports = () => {
                                                     <td>{report.text}</td>
                                                     <td >
                                                         {!report.mod || !report.mod.name ?
-                                                            <>
+                                                            <> 
                                                                 <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, report_index)} />
                                                                 <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}></label>
                                                             </>
@@ -111,7 +111,7 @@ const Reports = () => {
                                                             {report.replaced_by.name} <div className="button special" onClick={() => setReplacingStudent(report.replaced_by)}>Undo</div>
                                                             <UndoReplacedStudent replacingStudent={replacingStudent} setReplacingStudent={setReplacingStudent} tutor={tutor} report={report}/>
                                                         </>
-                                                            : <SearchAndReplaceStudent reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={() => handleModClick(tutor, report_index)} />
+                                                            : <SearchAndReplaceStudent reportedStudent={report.student} tutor={tutor} report={report} groupId={tutor.groupId} awaitingStudents={awaitingStudents} toggleTraiteCase={() => handleModClick(tutor, report_index)} /> 
                                                     }</td> 
                                                 </tr>
                                             )) : null
@@ -119,15 +119,15 @@ const Reports = () => {
                                         )}
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> 
                         </div>
 
                     </div>
-                </section>
+                </section> 
             </Layout>
             }
         </>
     )
-}
+} 
 
 export default Reports

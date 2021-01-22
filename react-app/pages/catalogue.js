@@ -7,7 +7,7 @@ import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
 import SearchInput, { createFilter } from 'react-search-input'
 import Router from 'next/router'
-import Link from 'next/link'
+import Link from 'next/link' 
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
@@ -23,7 +23,7 @@ const Reports = () => {
         Object.assign(user, json) 
         if (!user.students || user.students.length === 0) { 
             setUserHasNoStudents(true)
-        } 
+        }  
         // console.log("u",user)
     }
 
@@ -62,7 +62,7 @@ const Reports = () => {
                     _id: user._id,
                     data: { "catalogue_logs": catalogue_logs }
                 })
-            })
+            }) 
             Router.push('/profile')
         }
         setLoading(false) 
@@ -127,7 +127,7 @@ const Reports = () => {
                             <ul>
                                 <li>
                                     Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li> 
-                                <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li>
+                                <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li> 
                                 <li>Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! </li>
                             </ul>
                         </Typography>
@@ -155,7 +155,7 @@ const Reports = () => {
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br /> 
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>  
 
-                    </div>
+                    </div> 
 
                     {selectedStudents.length > 0 && <>
                         <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
@@ -170,7 +170,7 @@ const Reports = () => {
                                             <th style={{ textAlign: 'center', verticalAlign: 'middle' }}>Selectionné</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody> 
                                         {selectedStudents.map(student => (
                                             <tr key={`${student._id}`}>
                                                 <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
@@ -180,7 +180,7 @@ const Reports = () => {
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?
                                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
-                                                }</td>
+                                                }</td> 
                                             </tr> 
                                         ))
 
@@ -203,7 +203,7 @@ const Reports = () => {
                                 <thead>
                                     <tr>
                                         <th>Date de demande</th>
-                                        <th>Filière
+                                        <th>Filière 
                                             <div className="select-wrapper" >
                                                 <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>
                                                     <option value="">- Filière -</option>
@@ -225,17 +225,17 @@ const Reports = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {filteredWishesStudents.slice(0, maxRows).map(student => (
+                                    {filteredWishesStudents.slice(0, maxRows).map(student => ( 
                                         <tr key={`${student._id}`}> 
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>
                                             <td>{student.filiere}</td>
                                             <td style={{ width: "50%" }}>{student.matiere}</td>
-                                            <td style={{ width: "40%" }}>{student.wishes}</td> 
+                                            <td style={{ width: "40%" }}>{student.wishes}</td>  
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?  
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
-                                        </tr>
+                                        </tr> 
                                     ))} 
                                 </tbody>
                             </table> 

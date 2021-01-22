@@ -11,9 +11,9 @@ const Admin = () => {
         let json = await res.json()
         Object.assign(user, json) 
         res = await fetch('/api/mongodb?getTutorsSignUps=true')
-        const value = await res.json()
+        const value = await res.json() 
         setGroupUsers(value.map(group => group.users).sort((b, a) => moment(a[0].updated_at) - moment(b[0].updated_at)))
-    } 
+    }  
  
     const handleModClick = async (tutor, seance_id) => { 
         if (tutor.seances[seance_id].mod) {
@@ -22,7 +22,7 @@ const Admin = () => {
             tutor.seances[seance_id].mod = { "id": user.sub, "name": user.name }
         }
  
-        const res = await fetch('/api/mongodb', {
+        const res = await fetch('/api/mongodb', { 
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { seances: tutor.seances } })
         })
@@ -38,10 +38,10 @@ const Admin = () => {
         if (user && !loading) { 
             getUserData(user)
         }
-    }, [user, loading])
+    }, [user, loading]) 
  
     return ( 
-        <>
+        <> 
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
@@ -52,7 +52,7 @@ const Admin = () => {
                 <section id="one"> 
                     <div className="inner">
                         <header className="major">
-                            {user ? <h1>Suivi des inscriptions</h1> : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Suivi des inscriptions</h1> : <h1>Vous n'êtes pas connectés</h1>} 
                         </header>
 
                         {/* {groupUsers.length > 0 &&
@@ -62,7 +62,7 @@ const Admin = () => {
                                     <h1>{getNumberSeances(groupUsers)}</h1>
                                 </div> 
 
-                            </div>
+                            </div> 
                         } */} 
                     </div>
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
@@ -80,17 +80,17 @@ const Admin = () => {
                                         <th>Nombre d'élèves</th>
                                         <th>Nombre de séances</th>
                                     </tr>
-                                </thead>
+                                </thead> 
                                 <tbody>
                                     {groupUsers && groupUsers.length > 0 && groupUsers.map((users) => { 
                                         let tutor = users[0]
                                         return (
-                                            <>
+                                            <> 
                                                 <tr key={`${tutor._id}`}>
                                                     <td>{tutor.groupId}</td> 
-                                                    <td>{tutor.fullname}</td>
+                                                    <td>{tutor.fullname}</td> 
                                                     <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
-                                                    <td>{tutor.statut}</td>
+                                                    <td>{tutor.statut}</td> 
                                                     <td>{tutor.whatsapp}</td> 
                                                     <td>{tutor.mail}</td>
                                                     <td>{users.length - 1}</td>

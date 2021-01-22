@@ -1,10 +1,10 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
-import { useFetchUser } from '../lib/user' 
-import SeancesLineChart from '../components/SeancesLineChart'
-import Icon from '@material-ui/core/Icon';
-import Rating from 'react-rating'
+import { useFetchUser } from '../lib/user'  
+import SeancesLineChart from '../components/SeancesLineChart' 
+import Icon from '@material-ui/core/Icon'; 
+import Rating from 'react-rating' 
 import moment from 'moment' 
 
 const Admin = () => {
@@ -19,12 +19,12 @@ const Admin = () => {
 
     const getNumberSeances = tutors => {
         let seances = tutors.map(tutor => tutor.seances).filter(seance => seance !== undefined && seance.length > 0) 
-        // console.log("seances",seances)
-        return seances.reduce((acc, seance) => acc + seance.length, 0)
+        // console.log("seances",seances) 
+        return seances.reduce((acc, seance) => acc + seance.length, 0) 
     }
 
     const handleModClick = async (tutor, seance_id) => {
-        if (tutor.seances[seance_id].mod) {
+        if (tutor.seances[seance_id].mod) { 
             delete tutor.seances[seance_id].mod
         } else {
             tutor.seances[seance_id].mod = { "id": user.sub, "name": user.name }
@@ -34,7 +34,7 @@ const Admin = () => {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { seances: tutor.seances } })
         })
-        setRefresh(!refresh)
+        setRefresh(!refresh) 
     }
 
     let { user, loading } = useFetchUser()
@@ -42,7 +42,7 @@ const Admin = () => {
     const [refresh, setRefresh] = useState(true)
 
     useEffect(() => {
-        // {console.log("useEffect", user, loading)}
+        // {console.log("useEffect", user, loading)} 
         if (user && !loading) {
             getUserData(user)
         }
@@ -59,7 +59,7 @@ const Admin = () => {
                 <section id="one">
                     <div className="inner">
                         <header className="major">
-                            {user ? <h1>Séances données</h1> : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Séances données</h1> : <h1>Vous n'êtes pas connectés</h1>} 
                         </header>
  
                         <SeancesLineChart tutors={tutors} />
@@ -136,17 +136,17 @@ const Admin = () => {
                                             </> 
                                         )
                                     })}
-                                </tbody>
+                                </tbody> 
                             </table>
                         </div>
 
 
                     </div>
-                </section >
+                </section > 
             </Layout >
             }
         </>
     )
-}
+} 
 
-export default Admin
+export default Admin 

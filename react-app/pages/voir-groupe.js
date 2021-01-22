@@ -25,8 +25,8 @@ const Admin = () => {
 
     const handeRetourListeAttente = async () => {
         for (let student of students) {
-            await fetch('/api/mongodb?unset=true', {
-                method: 'post',
+            await fetch('/api/mongodb?unset=true', { 
+                method: 'post', 
                 body: JSON.stringify({ _id: student._id, data: { groupId: "" } })
             })
         }
@@ -41,7 +41,7 @@ const Admin = () => {
     const [students, setStudents] = useState([])
 
     return (
-        <>
+        <> 
             {/* {console.log(user)} */}
             {!userLoading && <Layout user={user} loading={userLoading}>
                 <Head>
@@ -61,12 +61,12 @@ const Admin = () => {
                                 <div className="box" style={{ textAlign: "center" }}>
                                     <h1>{getNumberSeances(groupUsers)}</h1>
                                 </div>
-
+ 
                             </div>
                         } */}
                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                             <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Entrez le numéro du groupe :</span>
-                            <input type="text" value={groupId} onChange={e => setGroupId(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? getGroupUsers() : null} />
+                            <input type="text" value={groupId} onChange={e => setGroupId(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? getGroupUsers() : null} /> 
                             <button className="button special" onClick={() => getGroupUsers()}>Confirmer</button>
                         </div>
 
@@ -83,14 +83,14 @@ const Admin = () => {
                                         <th>Date d'inscription</th>
                                         <th>Dernière modification</th>
                                         <th>Statut</th>
-                                        <th>Téléphone</th>
+                                        <th>Téléphone</th> 
                                         <th>Mail</th>
                                         <th>Nombre de séances</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {tutor && <>
-                                        <tr>
+                                        <tr> 
                                             <td>{tutor.groupId}</td>
                                             <td>{tutor.fullname}</td>
                                             <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
@@ -117,7 +117,7 @@ const Admin = () => {
                                         <th>Filière</th>
                                         <th>Matières</th>
                                         <th>Demandes</th>
-                                        <th>Whatsapp</th>
+                                        <th>Whatsapp</th> 
                                         <th>Facebook</th>
                                         <th>Signalé</th>
                                     </tr>
@@ -129,7 +129,7 @@ const Admin = () => {
                                             <td>{student.fullname}</td>
                                             <td>{student.lycee}</td>
                                             <td>{student.ville}</td>
-                                            <td>{student.filiere}</td>
+                                            <td>{student.filiere}</td> 
                                             <td>{student.matiere}</td>
                                             <td>{student.wishes}</td>
                                             <td>{student.whatsapp}</td>

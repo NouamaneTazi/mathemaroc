@@ -3,12 +3,12 @@
         "name": "Benslimane", 
         "longitude": -7.18859,
         "latitude": 33.6193,
-        "counts": "16"
+        "counts": "16" 
     },
     {
         "name": "Khouribga",
         "longitude": -6.89451,
-        "latitude": 32.87446,
+        "latitude": 32.87446, 
         "counts": "30"
     },
     {
@@ -34,7 +34,7 @@
         "longitude": -6.56309,
         "latitude": 34.26165,
         "counts": "53"
-    },
+    }, 
     {
         "name": "Sidi-Kacem",
         "longitude": -5.712916,
@@ -122,11 +122,11 @@
     {
         "name": "Berkane-Taourirt",
         "longitude": -2.31523,
-        "latitude": 34.91677,
+        "latitude": 34.91677, 
         "counts": "27"
     },
     {
-        "name": "Figuig",
+        "name": "Figuig", 
         "longitude": -1.23827,
         "latitude": 32.12033,
         "counts": "5"
@@ -145,7 +145,7 @@
     },
     {
         "name": "Oujda-Angad",
-        "longitude": -2.0273,
+        "longitude": -2.0273, 
         "latitude": 34.67935,
         "counts": "43"
     },
@@ -153,7 +153,7 @@
         "name": "Aousserd",
         "longitude": -15.02068,
         "latitude": 21.91977,
-        "counts": "4"
+        "counts": "4" 
     },
     {
         "name": "Oued-Ed-Dahab",
@@ -208,7 +208,7 @@
         "longitude": -5.65383,
         "latitude": 32.93877,
         "counts": "13"
-    },
+    }, 
     {
         "name": "Meknes",
         "longitude": -5.55059,
@@ -254,7 +254,7 @@
     {
         "name": "Inezgane-Ait Mellou",
         "longitude": -9.53662,
-        "latitude": 30.35403,
+        "latitude": 30.35403, 
         "counts": "15"
     },
     {
@@ -264,7 +264,7 @@
         "counts": "19"
     },
     {
-        "name": "Taroudannt",
+        "name": "Taroudannt", 
         "longitude": -8.87792,
         "latitude": 30.47065,
         "counts": "26"
@@ -356,7 +356,7 @@
     {
         "name": "Taounate",
         "longitude": -4.6399,
-        "latitude": 34.5369, 
+        "latitude": 34.5369,  
         "counts": "34"
     }, 
     {

@@ -39,7 +39,7 @@ class Map extends React.Component {
 
             const mapboxSource = this._sourceRef.current.getSource();
 
-            mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
+            mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => { 
                 if (err) {
                     return;
                 }
@@ -51,20 +51,20 @@ class Map extends React.Component {
                     zoom: 6,
                     transitionDuration: 500 
                 });
-            });
+            }); 
         }
-    };
+    }; 
     _onHover = event => {
         const {
-            features,
+            features, 
             srcEvent: { offsetX, offsetY }
         } = event;
-        const hoveredFeature = features && features.find(f => f.layer.id === 'data');
+        const hoveredFeature = features && features.find(f => f.layer.id === 'data'); 
 
         this.setState({ hoveredFeature: hoveredFeature })
     }; 
 
-
+ 
     render() {
         const { viewport, hoveredFeature } = this.state
         return (
@@ -83,7 +83,7 @@ class Map extends React.Component {
                 <Source
                     id="my-data" type="geojson" data={geojson}
                     cluster={true}
-                    clusterMaxZoom={14}
+                    clusterMaxZoom={14} 
                     clusterRadius={1}
                     ref={this._sourceRef}
                 >
@@ -110,11 +110,11 @@ class Map extends React.Component {
                             'text-size': 12
                         }} />
                     <Layer id='data'
-                        type='symbol'
+                        type='symbol' 
                         filter={['has', 'name']}
                     />
                     <Layer id='unclustered-point'
-                        type='circle'
+                        type='circle' 
                         filter={['!', ['has', 'point_count']]}
                         paint={{
                             'circle-color': '#11b4da',
@@ -122,7 +122,7 @@ class Map extends React.Component {
                             'circle-stroke-width': 3,
                             'circle-stroke-color': '#fff'
                         }} />
-                </Source>
+                </Source> 
                 {hoveredFeature && (
                     <div className="tooltip"
                     // style={{left: x, top: y}} 
@@ -136,4 +136,4 @@ class Map extends React.Component {
     }
 }
 
-export default Map;
+export default Map; 

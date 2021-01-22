@@ -2,23 +2,23 @@ import { useState, useEffect, StrictMode } from "react"
 import moment from 'moment'
 import Icon from '@material-ui/core/Icon';
 import Rating from 'react-rating'
-
+ 
 const Seances = ({ user }) => {
 
     const handleAddFields = () => {
         const values = [...inputFields];
         values.push({ chapitres: '', absents: {}, remarques: '', duree: '' });
-        setInputFields(values);
+        setInputFields(values); 
     };
 
     const handleRemoveFields = index => {
         const values = [...inputFields];
         values.splice(index, 1);
         setInputFields(values);
-    };
+    }; 
  
     const handleInputChange = (index, event) => {
-        const values = [...inputFields];
+        const values = [...inputFields]; 
         values[index][event.target.name] = event.target.value
         setInputFields(values);
     };
@@ -28,7 +28,7 @@ const Seances = ({ user }) => {
         let date = event.target.value
         if (moment(date, ["DD-MM-YYYY", "DD/MM/YYYY", 'YYYY-MM-DD', 'YYYY/MM/DD'], true).isValid()) {
             date = moment(date, ["DD-MM-YYYY", "DD/MM/YYYY", 'YYYY-MM-DD', 'YYYY/MM/DD'], true)
-            if (moment("2020-03-20") <= date && date < moment().add(1, 'M')) {
+            if (moment("2020-03-20") <= date && date < moment().add(1, 'M')) { 
                 const values = [...inputFields];
                 values[index][event.target.name] = date.format('YYYY-MM-DD')
                 setInputFields(values) 
@@ -49,7 +49,7 @@ const Seances = ({ user }) => {
         let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.remarques) // Keep non empty seances
         // console.log("query", user._id, seances)
         const res = await fetch('/api/mongodb', {
-            method: 'post',
+            method: 'post', 
             body: JSON.stringify({ _id: user._id, data: { seances: seances, last_updated: new Date(Date.now()).toLocaleString("en-US") } })
         })
         setInputFields(seances)
@@ -120,7 +120,7 @@ const Seances = ({ user }) => {
                                     </td>
 
                                     <td>
-                                        <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea>
+                                        <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea> 
 
                                     </td>
                                     <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
@@ -132,7 +132,7 @@ const Seances = ({ user }) => {
                                         />
                                     </td>
                                     <td>
-                                        <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleRemoveFields(index)}>remove_circle</Icon>
+                                        <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleRemoveFields(index)}>remove_circle</Icon> 
                                     </td>
                                 </tr>
                             ))}
@@ -143,7 +143,7 @@ const Seances = ({ user }) => {
                             </tr>
                         </tbody>
                             : <tbody>
-                                {inputFields.map((inputField, index) => (
+                                {inputFields.map((inputField, index) => ( 
                                     <tr key={`${inputField}~${index}`}>
                                         <td>{inputField.date ? moment(inputField.date, ['YYYY-MM-DD']).format('DD MMM YYYY') : ""}</td>
                                         <td>{inputField.duree}</td>
@@ -166,14 +166,14 @@ const Seances = ({ user }) => {
                 </div>
                 {(!inputFields || inputFields.length === 0) && <p style={{ textAlign: 'center' }}>Tu peux remplir ici les comptes rendus de chaque séance que tu fais avec tes élèves pour qu'on sache que les élèves sont bien pris en charge</p>}
 
-                <div>
+                <div> 
                     {editMode ? 
                         <button className="button" onClick={() => handleSubmitSeances()}>Enregistrer</button>
-
+ 
                         : <button className="button icon fa-pencil" onClick={() => {
                             setSavedSuccess(false)
                             setEditMode(true)
-                        }}>Modifier</button>
+                        }}>Modifier</button> 
                     }
                     {savedSuccess && <div style={{ display: "inline", marginLeft: "10px" }}>Modification réussie !</div>}
                 </div>

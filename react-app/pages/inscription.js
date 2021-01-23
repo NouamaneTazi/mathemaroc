@@ -1,11 +1,11 @@
 import Head from "next/head"
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react" 
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress'; 
 import Router from 'next/router';
 import isEmail from 'validator/lib/isEmail';
 import trim from 'validator/lib/trim';
@@ -21,7 +21,7 @@ const Signup = () => {
         },
     }))(Tooltip)
 
-    const capitalize = s => s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase();
+    const capitalize = s => s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase(); 
 
     const handleMatieresSelect = (val) => {
         if (inputFields.matieres.includes(val)) {
@@ -34,13 +34,13 @@ const Signup = () => {
             inputs.matieres.shift()
             inputs.matieres.push(val)
             setInputFields(inputs)
-            setRefresh(!refresh)
+            setRefresh(!refresh) 
         }
     }
 
     const handleSubmit = async () => {
         const requiredFields = role === "tutor" ? ['firstname', 'lastname', 'statut', 'mail'] : ['firstname', 'lastname', 'mail', 'lycee', 'ville', 'niveau', 'filiere', 'matieres', 'wishes']
-        if (requiredFields.every(x => (x in inputFields && inputFields[x] !== ''))) {
+        if (requiredFields.every(x => (x in inputFields && inputFields[x] !== ''))) { 
             if (!isEmail(inputFields.mail + '')) {
                 setError({ mail: true })
             } else {
@@ -52,7 +52,7 @@ const Signup = () => {
                 Object.entries(inputFields).map(([k, v]) => inputFields[k] = trim(v))
                 inputFields.firstname = capitalize(inputFields.firstname)
                 inputFields.lastname = capitalize(inputFields.lastname)
-                inputFields.fullname = inputFields.firstname + " " + inputFields.lastname
+                inputFields.fullname = inputFields.firstname + " " + inputFields.lastname 
                 inputFields.mail = normalizeEmail(inputFields.mail)
                 Object.assign(user, inputFields)
                 user.role = role
@@ -215,7 +215,7 @@ const Signup = () => {
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Filière (*) :</span>
                                                 <div className="select-wrapper" style={{ width: '100%', paddingLeft: 0 }}>
-                                                    <select onChange={e => setInputFields({ ...inputFields, filiere: e.target.value })}>
+                                                    <select onChange={e => setInputFields({ ...inputFields, filiere: e.target.value })}> 
                                                         <option value="">Sélectionnez votre filière</option>
                                                         <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>
                                                         <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option>
@@ -226,9 +226,9 @@ const Signup = () => {
                                                         <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>
                                                         <option value="Bac Pro">BAC PRO</option>
                                                     </select>
-                                                </div>
+                                                </div> 
                                             </div>
-                                            <div className="row" style={{ display: 'flex', marginBottom: '1em' }}>
+                                            <div className="row" style={{ display: 'flex', marginBottom: '1em' }}> 
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Matières (*) :</span>
                                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                                                     {['MATHÉMATIQUES', 'PHYSIQUE-CHIMIE', 'SVT', 'SI', 'ARABE', 'FRANÇAIS', 'ANGLAIS', 'PHILOSOPHIE', 'EDUCATION ISLAMIQUE', 'HISTOIRE GÉOGRAPHIE', 'COMPTABILITÉ', 'ECONOMIE GÉNÉRALE', 'ORGANISATION ADMINISTRATIVE DES ENTREPRISES']

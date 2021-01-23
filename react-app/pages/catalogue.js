@@ -82,14 +82,14 @@ const Reports = () => {
     const [maxRows, setMaxRows] = useState(10)
     const [userHasNoStudents, setUserHasNoStudents] = useState(false) 
 
-    useEffect(() => {
+    useEffect(() => { 
         // { console.log("useEffect", user, userLoading) }
         if (user && !userLoading) {
             setLoading(true)
-            getUserData(user) 
+            getUserData(user)  
             getAwaitingStudentsData()
-        }
-        else if (!userLoading && !user) { 
+        } 
+        else if (!userLoading && !user) {  
             Router.push('/profile')
         }
     }, [user, userLoading])
@@ -152,7 +152,7 @@ const Reports = () => {
                         <header className="major"> 
                             <h1>Catalogue des élèves</h1>
                         </header>
-                        <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br /> 
+                        <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />  
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>  
 
                     </div> 
@@ -175,7 +175,7 @@ const Reports = () => {
                                             <tr key={`${student._id}`}>
                                                 <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
                                                 <td>{student.filiere}</td> 
-                                                <td>{student.matiere}</td>
+                                                <td>{student.matiere}</td> 
                                                 <td>{student.wishes}</td>
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?
                                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
@@ -201,7 +201,7 @@ const Reports = () => {
                         <div className="table-wrapper">
                             <table>
                                 <thead>
-                                    <tr>
+                                    <tr> 
                                         <th>Date de demande</th>
                                         <th>Filière 
                                             <div className="select-wrapper" >
@@ -227,7 +227,7 @@ const Reports = () => {
                                 <tbody>
                                     {filteredWishesStudents.slice(0, maxRows).map(student => ( 
                                         <tr key={`${student._id}`}> 
-                                            <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>
+                                            <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
                                             <td>{student.filiere}</td>
                                             <td style={{ width: "50%" }}>{student.matiere}</td>
                                             <td style={{ width: "40%" }}>{student.wishes}</td>  

@@ -5,7 +5,7 @@ import { useFetchUser } from '../lib/user'
 import Router from "next/router" 
 import MenuAdmin from '../components/MenuAdmin' 
 
-const InputGroupId = ({ tutor }) => {  
+const InputGroupId = ({ tutor }) => {   
     const setGroupId = async (tutor) => {
         // console.log(tutor, selectedGroupId)
         await fetch('/api/mongodb', {  
@@ -39,18 +39,18 @@ const Reports = () => {
         const new_awaitingtutors = await res.json()   
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true') 
-        const awaitingStudents = await res.json()
+        const awaitingStudents = await res.json() 
  
         setAwaitingTutors(new_awaitingtutors) 
         setAwaitingStudents(awaitingStudents) 
-    } 
+    }  
  
     const handleModClick = async (tutor, report_id) => {
         if (tutor.reports[report_id].mod) {  
             delete tutor.reports[report_id].mod
         } else {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }
-        } 
+        }  
  
         const res = await fetch('/api/mongodb', { 
             method: 'post', 
@@ -60,7 +60,7 @@ const Reports = () => {
     } 
  
     let { user, loading } = useFetchUser()   
-    const [awaitingtutors, setAwaitingTutors] = useState([])
+    const [awaitingtutors, setAwaitingTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([]) 
     const [refresh, setRefresh] = useState(true)
   
@@ -69,7 +69,7 @@ const Reports = () => {
         if (user && !loading) {  
             getUserData(user) 
         } 
-    }, [user, loading])
+    }, [user, loading]) 
    
     return ( 
         <> 
@@ -81,7 +81,7 @@ const Reports = () => {
                 </Head>  
                 <MenuAdmin user={user}/> 
                 <section id="one">
-                    <div className="inner" style={{maxWidth:"75em"}}> 
+                    <div className="inner" style={{maxWidth:"75em"}}>  
                         <header className="major"> 
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1> 
                                 : <h1>Vous n'êtes pas connectés</h1>} 
@@ -95,7 +95,7 @@ const Reports = () => {
                                             <th>Tuteur</th> 
                                             <th>Statut</th>
                                             <th>Matières</th> 
-                                            <th>Whatsapp</th>
+                                            <th>Whatsapp</th> 
                                             <th>Mail</th> 
                                             <th>Veut encadrer groupe ?</th>
                                             <th>Groupe</th> 
@@ -121,7 +121,7 @@ const Reports = () => {
                         </div>   
                     </div> 
   
-                </section>
+                </section> 
             </Layout> 
             }
         </> 

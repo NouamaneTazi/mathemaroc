@@ -3,7 +3,7 @@ import moment from 'moment'
 
 const ProfileSeancesTutors = ({setConfettis}) => {
     const [tutors, setTutors] = useState([])
-    const [counts, setCounts] = useState({supportedStudents:'', students:''})
+    const [counts, setCounts] = useState({supportedStudents:'', students:''}) 
     const [maxRows, setMaxRows] = useState(10)
     const getSeances = async () => {
         const res = await fetch('/api/mongodb?getAllSeances=true')
@@ -25,17 +25,17 @@ const ProfileSeancesTutors = ({setConfettis}) => {
 
     useEffect(() => { 
         getSeances() 
-        getNumberStudents()
-    }, [])
+        getNumberStudents() 
+    }, []) 
 
-    return (
+    return ( 
         <div className="inner">
             <h2>Tu n'es pas seul !</h2> 
             <p>Voici toute une communauté qui travaille aussi pour aider une génération à étinceler. S’entre aider c’est réussir ensemble.<br /> Ensemble on va plus loin, on crée un vrai impact.</p>
             <div className='row'>
                 <div className="6u 12u$(small)">
                     <h3>Compteur de séances données :</h3>
-                    <div className="box" style={{ textAlign: "center" }}>
+                    <div className="box" style={{ textAlign: "center" }}> 
                         <h1>{getNumberSeances(tutors)}</h1>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ const ProfileSeancesTutors = ({setConfettis}) => {
                     <h3>Compteur d'élèves pris en charge :</h3> 
                     <div className="box" style={{ textAlign: "center" }}>
                         <h1>{counts.supportedStudents} / {counts.students}</h1>
-                    </div>
+                    </div> 
                 </div>
             </div>
             <div className="table-wrapper">
@@ -77,7 +77,7 @@ const ProfileSeancesTutors = ({setConfettis}) => {
                     </tbody>
                 </table>
                 <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p>
-            </div>
+            </div> 
 
         </div>
     )

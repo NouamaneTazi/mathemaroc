@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom'; 
-import MapGL, {Source, Layer} from 'react-map-gl';
+import MapGL, {Source, Layer} from 'react-map-gl'; 
 import ControlPanel from './control-panel';
 
 import {dataLayer} from './map-style.js';
@@ -13,7 +13,7 @@ export default class App extends Component {
   state = {
     year: 2015,
     data: null,
-    hoveredFeature: null,
+    hoveredFeature: null, 
     viewport: {
       latitude: 40, 
       longitude: -100,
@@ -22,8 +22,8 @@ export default class App extends Component {
       pitch: 0
     }
   };
-
-  componentDidMount() {
+ 
+  componentDidMount() { 
     requestJson(
       'https://raw.githubusercontent.com/uber/react-map-gl/master/examples/.data/us-income.geojson',
       (error, response) => {
@@ -36,7 +36,7 @@ export default class App extends Component {
 
   _loadData = data => {
     this.setState({
-      data: updatePercentiles(data, f => f.properties.income[this.state.year])
+      data: updatePercentiles(data, f => f.properties.income[this.state.year]) 
     });
   };
 
@@ -64,7 +64,7 @@ export default class App extends Component {
     const hoveredFeature = features && features.find(f => f.layer.id === 'data');
 
     this.setState({hoveredFeature, x: offsetX, y: offsetY});
-  }; 
+  };  
 
   _renderTooltip() {
     const {hoveredFeature, x, y} = this.state;
@@ -73,16 +73,16 @@ export default class App extends Component {
       hoveredFeature && (
         <div className="tooltip" 
         // style={{left: x, top: y}}
-        > 
+        >  
           <div>State: {hoveredFeature.properties.name}</div>
         </div>
       )
     ); 
   }
-
+ 
   render() {
     const {viewport, data} = this.state; 
-
+ 
     return (
       <div style={{height: '100%', position: 'relative'}}>
         <MapGL
@@ -96,7 +96,7 @@ export default class App extends Component {
         >
           <Source type="geojson" data={data}> 
             <Layer {...dataLayer} />
-          </Source>
+          </Source> 
           {this._renderTooltip()}
         </MapGL>
 
@@ -108,7 +108,7 @@ export default class App extends Component {
       </div>
     );
   }
-}
+} 
 
 export function renderToDom(container) {
   render(<App />, container);

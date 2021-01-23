@@ -4,7 +4,7 @@
         "longitude": -7.18859,
         "latitude": 33.6193,
         "counts": "16" 
-    },
+    }, 
     {
         "name": "Khouribga",
         "longitude": -6.89451,
@@ -32,7 +32,7 @@
     {
         "name": "Kenitra",
         "longitude": -6.56309,
-        "latitude": 34.26165,
+        "latitude": 34.26165, 
         "counts": "53"
     }, 
     {
@@ -75,16 +75,16 @@
         "name": "Boujdour",
         "longitude": -14.499998,
         "latitude": 26.1333328,
-        "counts": "19"
-    },
+        "counts": "19" 
+    }, 
     {
         "name": "Laayoune", 
         "longitude": -13.18797,
         "latitude": 27.1418, 
         "counts": "31"
     },
-    {
-        "name": "Al-Haouz",
+    { 
+        "name": "Al-Haouz", 
         "longitude": -7.91076,
         "latitude": 31.34083,
         "counts": "4"
@@ -98,7 +98,7 @@
     {
         "name": "El Kelaa",
         "longitude": -7.40499838,
-        "latitude": 32.042166498,
+        "latitude": 32.042166498, 
         "counts": "24"
     },
     {
@@ -165,7 +165,7 @@
         "name": "Boulemane",
         "longitude": -4.7303,
         "latitude": 33.16667,
-        "counts": "25"
+        "counts": "25" 
     },
     { 
         "name": "Fes",
@@ -184,7 +184,7 @@
         "longitude": -4.83322,
         "latitude": 33.83059,
         "counts": "16"
-    },
+    }, 
     {
         "name": "El-Hajeb",
         "longitude": -5.3678,
@@ -240,7 +240,7 @@
         "counts": "29"
     },
     {
-        "name": "Agadir-Ida-ou-Tnan",
+        "name": "Agadir-Ida-ou-Tnan", 
         "longitude": -9.58009,
         "latitude": 30.41662,
         "counts": "122"
@@ -250,13 +250,13 @@
         "longitude": -8.17603,
         "latitude": 33.29982,
         "counts": "12"
-    },
+    }, 
     {
         "name": "Inezgane-Ait Mellou",
         "longitude": -9.53662,
         "latitude": 30.35403, 
         "counts": "15"
-    },
+    }, 
     {
         "name": "Ouarzazate",
         "longitude": -6.93417,
@@ -279,7 +279,7 @@
         "name": "Zagora",
         "longitude": -5.81686,
         "latitude": 30.34897,
-        "counts": "7"
+        "counts": "7" 
     },
     { 
         "name": "Chefchaouen",
@@ -322,7 +322,7 @@
         "longitude": -7.5204,
         "latitude": 33.44251,
         "counts": "16"
-    },
+    }, 
     {
         "name": "Mohammedia",
         "longitude": -7.38491,

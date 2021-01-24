@@ -31,13 +31,13 @@ const Admin = () => {
 
     let { user, loading } = useFetchUser()
     const [groupUsers, setGroupUsers] = useState([])
-    const [refresh, setRefresh] = useState(true) 
+    const [refresh, setRefresh] = useState(true)  
 
-    useEffect(() => {  
+    useEffect(() => {   
         // {console.log("useEffect", user, loading)}
         if (user && !loading) { 
             getUserData(user)
-        }
+        } 
     }, [user, loading]) 
  
     return ( 
@@ -79,10 +79,10 @@ const Admin = () => {
                                         <th>Mail</th>
                                         <th>Nombre d'élèves</th>
                                         <th>Nombre de séances</th>
-                                    </tr>
+                                    </tr> 
                                 </thead> 
                                 <tbody>
-                                    {groupUsers && groupUsers.length > 0 && groupUsers.map((users) => { 
+                                    {groupUsers && groupUsers.length > 0 && groupUsers.map((users) => {  
                                         let tutor = users[0]
                                         return (
                                             <> 
@@ -99,16 +99,16 @@ const Admin = () => {
                                             </>
                                         )
                                     })}
-                                </tbody>
+                                </tbody> 
                             </table>
-                        </div>
+                        </div> 
 
 
                     </div> 
                 </section >
             </Layout >
             }
-        </>
+        </> 
     )
 } 
  

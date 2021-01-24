@@ -1,8 +1,8 @@
 import Head from "next/head"  
-import { useState, useEffect } from "react" 
+import { useState, useEffect } from "react"  
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
-import Router from "next/router" 
+import Router from "next/router"  
 import MenuAdmin from '../components/MenuAdmin' 
 
 const InputGroupId = ({ tutor }) => {   
@@ -10,9 +10,9 @@ const InputGroupId = ({ tutor }) => {
         // console.log(tutor, selectedGroupId)
         await fetch('/api/mongodb', {  
             method: 'post',  
-            body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })
+            body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
         })  
-        window.location.reload(false)
+        window.location.reload(false) 
     }
   
     const [selectedGroupId, setSelectedGroupId] = useState("")
@@ -67,11 +67,11 @@ const Reports = () => {
     useEffect(() => {     
         // {console.log("useEffect", user, loading)} 
         if (user && !loading) {  
-            getUserData(user) 
+            getUserData(user)  
         } 
     }, [user, loading]) 
    
-    return ( 
+    return (  
         <> 
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
@@ -93,12 +93,12 @@ const Reports = () => {
                                     <thead> 
                                         <tr>   
                                             <th>Tuteur</th> 
-                                            <th>Statut</th>
+                                            <th>Statut</th> 
                                             <th>Matières</th> 
                                             <th>Whatsapp</th> 
                                             <th>Mail</th> 
                                             <th>Veut encadrer groupe ?</th>
-                                            <th>Groupe</th> 
+                                            <th>Groupe</th>  
                                         </tr> 
                                     </thead>
                                     <tbody> 
@@ -122,7 +122,7 @@ const Reports = () => {
                     </div> 
   
                 </section> 
-            </Layout> 
+            </Layout>  
             }
         </> 
     )

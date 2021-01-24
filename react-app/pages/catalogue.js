@@ -10,7 +10,7 @@ import Router from 'next/router'
 import Link from 'next/link' 
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'; 
 import Dialog from '@material-ui/core/Dialog'; 
 import MuiDialogContent from '@material-ui/core/DialogContent'; 
 import Typography from '@material-ui/core/Typography';
@@ -28,14 +28,14 @@ const Reports = () => {
     }
 
     const getAwaitingStudentsData = async () => {
-        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits
-        const awaitingStudents = await res.json()
+        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits 
+        const awaitingStudents = await res.json() 
         setAwaitingStudents(awaitingStudents)
         setLoading(false)
     } 
  
     const handleSelectStudent = (student) => { 
-        let value = selectedStudents
+        let value = selectedStudents 
         value.push(student)
         setSelectedStudents([...value])
     }
@@ -72,7 +72,7 @@ const Reports = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState()
     const [awaitingStudents, setAwaitingStudents] = useState([]) 
-    const [filiereTerm, setFiliereTerm] = useState("") 
+    const [filiereTerm, setFiliereTerm] = useState("")  
     const [matiereTerm, setMatiereTerm] = useState("")
     const [wishesTerm, setWishesTerm] = useState("") 
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere']))
@@ -153,7 +153,7 @@ const Reports = () => {
                             <h1>Catalogue des élèves</h1>
                         </header>
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />  
-                            Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>  
+                            Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>   
 
                     </div> 
 
@@ -163,7 +163,7 @@ const Reports = () => {
                                 <table>
                                     <thead> 
                                         <tr>
-                                            <th>Date de demande</th>
+                                            <th>Date de demande</th> 
                                             <th>Filière</th>
                                             <th>Matières</th>
                                             <th>Demandes</th>
@@ -187,7 +187,7 @@ const Reports = () => {
                                         } 
                                     </tbody>
                                 </table>
-                            </div> 
+                            </div>  
                             {error && <Alert severity="error">{error.message}</Alert>}
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
@@ -214,7 +214,7 @@ const Reports = () => {
                                                     <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>
                                                     <option value="ECONOMIE">ECONOMIE</option> 
                                                     <option value="SCIENCES TECH">SCIENCES TECH</option>
-                                                    <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>
+                                                    <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option> 
                                                     <option value="Bac Pro">BAC PRO</option>
                                                 </select>
                                             </div>
@@ -227,7 +227,7 @@ const Reports = () => {
                                 <tbody>
                                     {filteredWishesStudents.slice(0, maxRows).map(student => ( 
                                         <tr key={`${student._id}`}> 
-                                            <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
+                                            <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>  
                                             <td>{student.filiere}</td>
                                             <td style={{ width: "50%" }}>{student.matiere}</td>
                                             <td style={{ width: "40%" }}>{student.wishes}</td>  
@@ -236,7 +236,7 @@ const Reports = () => {
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
                                         </tr> 
-                                    ))} 
+                                    ))}  
                                 </tbody>
                             </table> 
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 

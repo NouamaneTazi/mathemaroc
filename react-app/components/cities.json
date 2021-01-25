@@ -21,12 +21,12 @@
         "name": "El-Jadida",
         "longitude": -8.5007116,
         "latitude": 33.2316326,
-        "counts": "52"
+        "counts": "52" 
     },
     {
         "name": "Safi",
         "longitude": -9.23162,
-        "latitude": 32.29176,
+        "latitude": 32.29176, 
         "counts": "46"
     },
     {
@@ -42,7 +42,7 @@
         "counts": "25"
     },
     {
-        "name": "Assa-Zag",
+        "name": "Assa-Zag", 
         "longitude": -9.41667,
         "latitude": 28.16667,
         "counts": "3"
@@ -52,7 +52,7 @@
         "longitude": -11.67194,
         "latitude": 26.73841,
         "counts": "20"
-    },
+    }, 
     {
         "name": "Guelmim",
         "longitude": -10.05738,
@@ -85,9 +85,9 @@
     },
     { 
         "name": "Al-Haouz", 
-        "longitude": -7.91076,
+        "longitude": -7.91076, 
         "latitude": 31.34083,
-        "counts": "4"
+        "counts": "4" 
     },
     {
         "name": "Chichaoua",
@@ -121,7 +121,7 @@
     },
     {
         "name": "Berkane-Taourirt",
-        "longitude": -2.31523,
+        "longitude": -2.31523, 
         "latitude": 34.91677, 
         "counts": "27"
     },
@@ -137,7 +137,7 @@
         "latitude": 34.306998772, 
         "counts": "1"
     },
-    {
+    { 
         "name": "Nador", 
         "longitude": -2.9241,
         "latitude": 35.17401,
@@ -153,7 +153,7 @@
         "name": "Aousserd",
         "longitude": -15.02068,
         "latitude": 21.91977,
-        "counts": "4" 
+        "counts": "4"  
     },
     {
         "name": "Oued-Ed-Dahab",
@@ -183,7 +183,7 @@
         "name": "Sefrou",
         "longitude": -4.83322,
         "latitude": 33.83059,
-        "counts": "16"
+        "counts": "16" 
     }, 
     {
         "name": "El-Hajeb",
@@ -239,7 +239,7 @@
         "latitude": 33.93773,
         "counts": "29"
     },
-    {
+    { 
         "name": "Agadir-Ida-ou-Tnan", 
         "longitude": -9.58009,
         "latitude": 30.41662,
@@ -294,7 +294,7 @@
         "counts": "4"
     },
     {
-        "name": "Larache",
+        "name": "Larache", 
         "longitude": -6.15163,
         "latitude": 35.19436,
         "counts": "6"
@@ -348,13 +348,13 @@
         "counts": "25"
     },
     {
-        "name": "Al-Hoceima",
+        "name": "Al-Hoceima", 
         "longitude": -3.93054,
         "latitude": 35.24214,
         "counts": "22"
     },
     {
-        "name": "Taounate",
+        "name": "Taounate", 
         "longitude": -4.6399,
         "latitude": 34.5369,  
         "counts": "34"
@@ -365,4 +365,4 @@
         "latitude": 34.22619,
         "counts": "17"
     }
-]
+] 

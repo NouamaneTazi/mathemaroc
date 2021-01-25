@@ -16,7 +16,7 @@ const Admin = () => {
     }  
  
     const handleModClick = async (tutor, seance_id) => { 
-        if (tutor.seances[seance_id].mod) {
+        if (tutor.seances[seance_id].mod) { 
             delete tutor.seances[seance_id].mod
         } else {
             tutor.seances[seance_id].mod = { "id": user.sub, "name": user.name }
@@ -31,7 +31,7 @@ const Admin = () => {
 
     let { user, loading } = useFetchUser()
     const [groupUsers, setGroupUsers] = useState([])
-    const [refresh, setRefresh] = useState(true)  
+    const [refresh, setRefresh] = useState(true)   
 
     useEffect(() => {   
         // {console.log("useEffect", user, loading)}
@@ -54,7 +54,7 @@ const Admin = () => {
                         <header className="major">
                             {user ? <h1>Suivi des inscriptions</h1> : <h1>Vous n'êtes pas connectés</h1>} 
                         </header>
-
+ 
                         {/* {groupUsers.length > 0 &&
                             <div className="12u 12u(medium)"> 
                                 <h3>Compteur de séances données :</h3>
@@ -79,14 +79,14 @@ const Admin = () => {
                                         <th>Mail</th>
                                         <th>Nombre d'élèves</th>
                                         <th>Nombre de séances</th>
-                                    </tr> 
+                                    </tr>  
                                 </thead> 
                                 <tbody>
-                                    {groupUsers && groupUsers.length > 0 && groupUsers.map((users) => {  
+                                    {groupUsers && groupUsers.length > 0 && groupUsers.map((users) => {   
                                         let tutor = users[0]
                                         return (
                                             <> 
-                                                <tr key={`${tutor._id}`}>
+                                                <tr key={`${tutor._id}`}> 
                                                     <td>{tutor.groupId}</td> 
                                                     <td>{tutor.fullname}</td> 
                                                     <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
@@ -97,7 +97,7 @@ const Admin = () => {
                                                     <td>{tutor.seances ? tutor.seances.length : 0}</td>
                                                 </tr>
                                             </>
-                                        )
+                                        ) 
                                     })}
                                 </tbody> 
                             </table>

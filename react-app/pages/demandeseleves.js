@@ -3,7 +3,7 @@ import { useState, useEffect, Fragment } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
-
+ 
   
 const Reports = () => { 
     const getUserData = async (user) => {
@@ -41,18 +41,18 @@ const Reports = () => {
 
     useEffect(() => { 
         // {console.log("useEffect", user, loading)} 
-        if (user && !loading) {
+        if (user && !loading) { 
             getUserData(user)  
         }
     }, [user, loading])
  
-    return (
+    return ( 
         <> 
             {!loading && <Layout user={user} loading={loading}>  
-                <Head>
+                <Head> 
                     <title>Demandes élèves</title>
                     <meta name="description" content="Demandes élèves" />
-                </Head>
+                </Head> 
                 <MenuAdmin user={user}/>
                 <section id="one">
                     <div className="inner" style={{ maxWidth: "90%", width: "100%" }}>
@@ -66,7 +66,7 @@ const Reports = () => {
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper"> 
                                 <table>
-                                    <thead>
+                                    <thead> 
                                         <tr> 
                                             <th>Date</th> 
                                             <th>Tuteur</th>
@@ -95,14 +95,14 @@ const Reports = () => {
                                     </tbody>
                                 </table>
                             </div>
-                        </div>   
+                        </div>    
 
                     </div>
                 </section> 
             </Layout>
             } 
         </>
-    )
+    ) 
 }
  
 export default Reports 

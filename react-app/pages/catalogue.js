@@ -18,11 +18,11 @@ import Alert from '@material-ui/lab/Alert';
 
 const Reports = () => { 
     const getUserData = async (user) => {
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
         let json = await res.json()
         Object.assign(user, json) 
         if (!user.students || user.students.length === 0) { 
-            setUserHasNoStudents(true)
+            setUserHasNoStudents(true) 
         }  
         // console.log("u",user)
     }
@@ -94,7 +94,7 @@ const Reports = () => {
         }
     }, [user, userLoading])
 
-
+ 
     useEffect(() => {
         // {console.log("useEffect", user, userLoading)}
         const timer = setTimeout(() => {
@@ -123,7 +123,7 @@ const Reports = () => {
                             Bienvenue {user.fullname} !
                         </Typography>
                         <Typography align="left">
-                            <br />
+                            <br /> 
                             <ul>
                                 <li>
                                     Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li> 
@@ -153,14 +153,14 @@ const Reports = () => {
                             <h1>Catalogue des élèves</h1>
                         </header>
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />  
-                            Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>   
+                            Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>    
 
                     </div> 
 
                     {selectedStudents.length > 0 && <>
                         <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
                             <div className="table-wrapper">
-                                <table>
+                                <table> 
                                     <thead> 
                                         <tr>
                                             <th>Date de demande</th> 
@@ -177,11 +177,11 @@ const Reports = () => {
                                                 <td>{student.filiere}</td> 
                                                 <td>{student.matiere}</td> 
                                                 <td>{student.wishes}</td>
-                                                <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?
+                                                <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ? 
                                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                                 }</td> 
-                                            </tr> 
+                                            </tr>  
                                         ))
 
                                         } 
@@ -206,13 +206,13 @@ const Reports = () => {
                                         <th>Filière 
                                             <div className="select-wrapper" >
                                                 <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>
-                                                    <option value="">- Filière -</option>
+                                                    <option value="">- Filière -</option> 
                                                     <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>
                                                     <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option> 
                                                     <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option> 
                                                     <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
                                                     <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>
-                                                    <option value="ECONOMIE">ECONOMIE</option> 
+                                                    <option value="ECONOMIE">ECONOMIE</option>  
                                                     <option value="SCIENCES TECH">SCIENCES TECH</option>
                                                     <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option> 
                                                     <option value="Bac Pro">BAC PRO</option>
@@ -221,7 +221,7 @@ const Reports = () => {
                                         </th> 
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th>
                                         <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>
-                                        <th>Selectionné</th>
+                                        <th>Selectionné</th> 
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -247,6 +247,6 @@ const Reports = () => {
             }
         </> 
     )
-}
+} 
 
 export default Reports 

@@ -22,7 +22,7 @@ const Profile = () => {
     const CustomizedTooltip = withStyles(theme => ({
         tooltip: {
             backgroundColor: theme.palette.common.white,
-            color: '#3e467f',
+            color: '#3e467f', 
             boxShadow: theme.shadows[1],
             fontSize: 16, 
         },
@@ -48,8 +48,8 @@ const Profile = () => {
         Object.assign(user, json);
         await fetch('/api/mongodb', { 
             method: 'post',
-            body: JSON.stringify({ _id: json._id, data: {email:user.email} })
-        })
+            body: JSON.stringify({ _id: json._id, data: {email:user.email} }) 
+        }) 
         // console.log("user", user)
         setLoading(false)
     }
@@ -64,7 +64,7 @@ const Profile = () => {
         if (user && !userLoading) {
             setLoading(true) 
             getUserData(user)
-        } else if (!user && !userLoading) {
+        } else if (!user && !userLoading) { 
             Router.push('/api/login')
         }
 
@@ -109,7 +109,7 @@ const Profile = () => {
                                     <h2>Liste des élèves</h2>
                                     <div className="table-wrapper">
                                         <table>
-                                            <thead>
+                                            <thead> 
                                                 <tr>
                                                     <th>Nom</th>
                                                     <th>Lycée</th>
@@ -120,7 +120,7 @@ const Profile = () => {
                                                     <th>Whatsapp</th>
                                                     <th>Facebook</th>
                                                     <th>Signaler</th>
-                                                </tr>
+                                                </tr> 
                                             </thead>
                                             <tbody>
                                                 {user.students && user.students.map(student => (
@@ -131,7 +131,7 @@ const Profile = () => {
                                                         <td>{student.ville}</td>
                                                         <td>{student.filiere}</td>
                                                         <td>{student.matiere}</td>
-                                                        <td>{student.wishes}</td>
+                                                        <td>{student.wishes}</td> 
                                                         <td>{student.whatsapp}</td>
                                                         <td>{student.facebook}</td>
                                                         <td style={{ textAlign: "center" }}> {student.reported ?
@@ -161,7 +161,7 @@ const Profile = () => {
                     </div>
                         // user not associated
                         // : user && user.needsSetup && !loading ? 
-                        //     <AssociateUser user={user} />
+                        //     <AssociateUser user={user} /> 
                         // Not yet connected
                         : null
                 }
@@ -169,7 +169,7 @@ const Profile = () => {
 
             </Layout>}
         </>
-    )
+    ) 
 }
 
 export default Profile

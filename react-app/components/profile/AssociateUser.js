@@ -1,10 +1,10 @@
-import SearchInput, { createFilter } from 'react-search-input'
+import SearchInput, { createFilter } from 'react-search-input' 
 import { useState, useEffect } from "react"
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Link from 'next/link'
 
-const AssociateUser = ({ user }) => {
+const AssociateUser = ({ user }) => { 
     const getTutorsSuggestions = async () => {
         let res = await fetch('/api/mongodb?role=tutor') // find all tutors
         const json = await res.json()
@@ -24,7 +24,7 @@ const AssociateUser = ({ user }) => {
     const [searchTerm, setSearchTerm] = useState("")
     let selectedTutor = ""
     const [tutors, setTutors] = useState([])
-    const filteredTutors = tutors.filter(createFilter(searchTerm, ['firstname', 'lastname']))
+    const filteredTutors = tutors.filter(createFilter(searchTerm, ['firstname', 'lastname'])) 
     const CustomizedTooltip = withStyles(theme => ({
         tooltip: {
             backgroundColor: theme.palette.common.white,
@@ -39,7 +39,7 @@ const AssociateUser = ({ user }) => {
     },[])
 
     return (<div id="main" className="alt">
-        <section id="one">
+        <section id="one"> 
             <div className="inner">
                 <header className="major">
                     <h1>Profil</h1>
@@ -48,7 +48,7 @@ const AssociateUser = ({ user }) => {
                 <div className="row 200%">
                     <div className="12u 12u(medium)">
                         <h2 id="content">Mettez à jour votre profil</h2>
-                        <h4>Selectionnez votre nom :</h4>
+                        <h4>Selectionnez votre nom :</h4> 
                         <ul className="actions">
                             <SearchInput className="search-input" placeholder="Tapez votre nom..." onChange={(term) => { setSearchTerm(term) }} />
                             <br />
@@ -59,9 +59,9 @@ const AssociateUser = ({ user }) => {
                                 </div>
                             )) : null}
                         </ul>
-                        <div className="12u">
+                        <div className="12u"> 
                             <ul className="actions">
-                                <div className="button special" onClick={() => selectedTutor ? associateTutor(selectedTutor) : null}>Submit</div>
+                                <div className="button special" onClick={() => selectedTutor ? associateTutor(selectedTutor) : null}>Submit</div> 
                                     <div style={{ display: "inline", marginLeft: "10px" }}>Si tu as rempli notre formulaire de tuteurs, tu devrais pouvoir retrouver ton nom. Sinon <Link href='/inscription'><a><span>inscris-toi</span></a></Link> !</div>
                             </ul>
                         </div>

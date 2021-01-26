@@ -41,9 +41,9 @@ const Reports = () => {
     }
  
     const handleSubmit = async () => {
-        if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) {
+        if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) { 
             setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' }) 
-        }
+        } 
         else {
             for (let student of selectedStudents) {
                 await fetch('/api/mongodb', {
@@ -87,7 +87,7 @@ const Reports = () => {
         if (user && !userLoading) {
             setLoading(true)
             getUserData(user)  
-            getAwaitingStudentsData()
+            getAwaitingStudentsData() 
         } 
         else if (!userLoading && !user) {  
             Router.push('/profile')
@@ -150,8 +150,8 @@ const Reports = () => {
                             </div>  
                         } 
                         <header className="major"> 
-                            <h1>Catalogue des élèves</h1>
-                        </header>
+                            <h1>Catalogue des élèves</h1> 
+                        </header> 
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />  
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>    
 
@@ -185,7 +185,7 @@ const Reports = () => {
                                         ))
 
                                         } 
-                                    </tbody>
+                                    </tbody> 
                                 </table>
                             </div>  
                             {error && <Alert severity="error">{error.message}</Alert>}
@@ -201,7 +201,7 @@ const Reports = () => {
                         <div className="table-wrapper">
                             <table>
                                 <thead>
-                                    <tr> 
+                                    <tr>  
                                         <th>Date de demande</th>
                                         <th>Filière 
                                             <div className="select-wrapper" >
@@ -230,7 +230,7 @@ const Reports = () => {
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>  
                                             <td>{student.filiere}</td>
                                             <td style={{ width: "50%" }}>{student.matiere}</td>
-                                            <td style={{ width: "40%" }}>{student.wishes}</td>  
+                                            <td style={{ width: "40%" }}>{student.wishes}</td>   
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?  
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>

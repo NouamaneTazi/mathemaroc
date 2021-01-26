@@ -8,11 +8,11 @@ import MenuAdmin from '../components/MenuAdmin'
 const InputGroupId = ({ tutor }) => {   
     const setGroupId = async (tutor) => {
         // console.log(tutor, selectedGroupId)
-        await fetch('/api/mongodb', {  
+        await fetch('/api/mongodb', {   
             method: 'post',  
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
         })  
-        window.location.reload(false) 
+        window.location.reload(false)  
     }
   
     const [selectedGroupId, setSelectedGroupId] = useState("")
@@ -28,7 +28,7 @@ const InputGroupId = ({ tutor }) => {
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}
     </div>)
 }  
-  
+   
 const Reports = () => {
     const getUserData = async (user) => {  
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
@@ -46,7 +46,7 @@ const Reports = () => {
     }  
  
     const handleModClick = async (tutor, report_id) => {
-        if (tutor.reports[report_id].mod) {  
+        if (tutor.reports[report_id].mod) {   
             delete tutor.reports[report_id].mod 
         } else {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name } 
@@ -67,7 +67,7 @@ const Reports = () => {
     useEffect(() => {     
         // {console.log("useEffect", user, loading)}  
         if (user && !loading) {  
-            getUserData(user)   
+            getUserData(user)    
         }  
     }, [user, loading]) 
    
@@ -76,7 +76,7 @@ const Reports = () => {
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
-                    <title>Tuteurs en attente</title>  
+                    <title>Tuteurs en attente</title>   
                     <meta name="description" content="Tuteurs en attente" /> 
                 </Head>  
                 <MenuAdmin user={user}/> 
@@ -93,40 +93,40 @@ const Reports = () => {
                                     <thead> 
                                         <tr>   
                                             <th>Tuteur</th> 
-                                            <th>Statut</th> 
+                                            <th>Statut</th>  
                                             <th>Matières</th> 
                                             <th>Whatsapp</th> 
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th> 
-                                            <th>Groupe</th>   
+                                            <th>Groupe</th>    
                                         </tr> 
                                     </thead>
                                     <tbody>  
  
                                         {awaitingtutors.map(tutor => (
                                             <tr key={`${tutor._id}`}>
-                                                <td>{tutor.firstname} {tutor.lastname}</td>  
+                                                <td>{tutor.firstname} {tutor.lastname}</td>   
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td> 
                                                 <td>{tutor.whatsapp}</td>
                                                 <td>{tutor.mail}</td>
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>  
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>
-                                            </tr> 
+                                            </tr>  
                                         )  
                                         )}
                                     </tbody> 
                                 </table>
                             </div>  
-                        </div>   
+                        </div>    
                     </div> 
-  
+   
                 </section> 
             </Layout>  
             } 
         </> 
     )
-}
+} 
  
-
+ 
 export default Reports 

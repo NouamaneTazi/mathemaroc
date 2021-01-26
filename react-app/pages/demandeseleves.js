@@ -14,11 +14,11 @@ const Reports = () => {
         const new_tutors = await res.json()
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json() 
-
+ 
         setTutors(new_tutors)
         setAwaitingStudents(awaitingStudents)
-    } 
-
+    }  
+ 
     const handleModClick = async (tutor, report_id) => {
         if (tutor.reports[report_id].mod) { 
             delete tutor.reports[report_id].mod
@@ -30,13 +30,13 @@ const Reports = () => {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         })
-        setRefresh(!refresh)
+        setRefresh(!refresh) 
     } 
- 
+  
     let { user, loading } = useFetchUser()
     const [tutors, setTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([])
-    const [refresh, setRefresh] = useState(true) 
+    const [refresh, setRefresh] = useState(true)  
     const [replacingStudent, setReplacingStudent] = useState(false)
 
     useEffect(() => { 
@@ -51,12 +51,12 @@ const Reports = () => {
             {!loading && <Layout user={user} loading={loading}>  
                 <Head> 
                     <title>Demandes élèves</title>
-                    <meta name="description" content="Demandes élèves" />
+                    <meta name="description" content="Demandes élèves" /> 
                 </Head> 
                 <MenuAdmin user={user}/>
                 <section id="one">
                     <div className="inner" style={{ maxWidth: "90%", width: "100%" }}>
-                        <header className="major">
+                        <header className="major"> 
                             {user ? <h1>Demandes d'élèves</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
                         <p><b>Attention : </b> Fach tkhtaru TOUS les élèves à attribuer wdiru confirmer cava actualiser la page automatiquement wmaghatbqawch tlqaw le prof fhad la page. Donc faites attention avant de cliquer confirmer de bien selectionner tous les élèves concernés.</p>
@@ -67,7 +67,7 @@ const Reports = () => {
                             <div className="table-wrapper"> 
                                 <table>
                                     <thead> 
-                                        <tr> 
+                                        <tr>  
                                             <th>Date</th> 
                                             <th>Tuteur</th>
                                             <th>Groupe</th> 
@@ -79,8 +79,8 @@ const Reports = () => {
 
                                         {tutors.map(tutor => {
                                             const asked_more_students = tutor.asked_more_students 
-                                            return ( 
-                                                <tr key={`${tutor._id}`}> 
+                                            return (  
+                                                <tr key={`${tutor._id}`}>  
                                                     <td>{asked_more_students.time}</td> 
                                                     <td>{tutor.firstname} {tutor.lastname}</td> 
                                                     <td>{tutor.groupId}</td>
@@ -90,7 +90,7 @@ const Reports = () => {
                                                         <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} /> 
                                                     </td>
                                                 </tr>)
-                                        } 
+                                        }  
                                         )}
                                     </tbody>
                                 </table>
@@ -100,7 +100,7 @@ const Reports = () => {
                     </div>
                 </section> 
             </Layout>
-            } 
+            }  
         </>
     ) 
 }

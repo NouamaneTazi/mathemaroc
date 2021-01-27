@@ -44,7 +44,7 @@
     {
         "name": "Assa-Zag", 
         "longitude": -9.41667,
-        "latitude": 28.16667,
+        "latitude": 28.16667, 
         "counts": "3"
     },
     {
@@ -99,7 +99,7 @@
         "name": "El Kelaa",
         "longitude": -7.40499838,
         "latitude": 32.042166498, 
-        "counts": "24"
+        "counts": "24" 
     },
     {
         "name": "Essaouira",
@@ -124,7 +124,7 @@
         "longitude": -2.31523, 
         "latitude": 34.91677, 
         "counts": "27"
-    },
+    }, 
     {
         "name": "Figuig", 
         "longitude": -1.23827,
@@ -133,7 +133,7 @@
     },
     {
         "name": "Jerada",
-        "longitude": -2.158166034,
+        "longitude": -2.158166034, 
         "latitude": 34.306998772, 
         "counts": "1"
     },
@@ -202,11 +202,11 @@
         "longitude": -5.11274,
         "latitude": 33.52769,
         "counts": "12"
-    },
+    }, 
     {
         "name": "Khenifra",
         "longitude": -5.65383,
-        "latitude": 32.93877,
+        "latitude": 32.93877, 
         "counts": "13"
     }, 
     {
@@ -293,7 +293,7 @@
         "latitude": 35.7602,
         "counts": "4"
     },
-    {
+    { 
         "name": "Larache", 
         "longitude": -6.15163,
         "latitude": 35.19436,
@@ -310,7 +310,7 @@
         "longitude": -5.35736,
         "latitude": 35.57785,
         "counts": "97"
-    },
+    }, 
     {
         "name": "Casablanca",
         "longitude": -7.62462,

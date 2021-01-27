@@ -4,7 +4,7 @@
         "longitude": -7.18859,
         "latitude": 33.6193,
         "counts": "16" 
-    }, 
+    },  
     {
         "name": "Khouribga",
         "longitude": -6.89451,
@@ -66,7 +66,7 @@
         "counts": "21"
     }, 
     {
-        "name": "Tata",
+        "name": "Tata", 
         "longitude": -7.96935,
         "latitude": 29.74378,
         "counts": "22"
@@ -114,7 +114,7 @@
         "counts": "17"
     },
     {
-        "name": "Marrakech",
+        "name": "Marrakech", 
         "longitude": -7.99675,
         "latitude": 31.63278,
         "counts": "143"
@@ -141,10 +141,10 @@
         "name": "Nador", 
         "longitude": -2.9241,
         "latitude": 35.17401,
-        "counts": "14"
+        "counts": "14" 
     },
     {
-        "name": "Oujda-Angad",
+        "name": "Oujda-Angad", 
         "longitude": -2.0273, 
         "latitude": 34.67935,
         "counts": "43"
@@ -182,7 +182,7 @@
     {
         "name": "Sefrou",
         "longitude": -4.83322,
-        "latitude": 33.83059,
+        "latitude": 33.83059, 
         "counts": "16" 
     }, 
     {
@@ -192,9 +192,9 @@
         "counts": "15" 
     },
     { 
-        "name": "Errachidia",
+        "name": "Errachidia", 
         "longitude": -4.45363,
-        "latitude": 31.94102,
+        "latitude": 31.94102, 
         "counts": "55" 
     },
     {
@@ -203,7 +203,7 @@
         "latitude": 33.52769,
         "counts": "12"
     }, 
-    {
+    { 
         "name": "Khenifra",
         "longitude": -5.65383,
         "latitude": 32.93877, 
@@ -215,7 +215,7 @@
         "latitude": 33.89157,
         "counts": "63"
     },
-    {
+    { 
         "name": "Khemisset",
         "longitude": -6.0573,
         "latitude": 33.8154,
@@ -250,7 +250,7 @@
         "longitude": -8.17603,
         "latitude": 33.29982,
         "counts": "12"
-    }, 
+    },  
     {
         "name": "Inezgane-Ait Mellou",
         "longitude": -9.53662,
@@ -317,7 +317,7 @@
         "latitude": 33.58398,
         "counts": "368"
     },
-    {
+    { 
         "name": "Mediouna",
         "longitude": -7.5204,
         "latitude": 33.44251,
@@ -350,7 +350,7 @@
     {
         "name": "Al-Hoceima", 
         "longitude": -3.93054,
-        "latitude": 35.24214,
+        "latitude": 35.24214, 
         "counts": "22"
     },
     {

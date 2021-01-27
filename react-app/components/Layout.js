@@ -1,6 +1,6 @@
 import Head from "next/head"
 import stylesheet from 'styles/main.scss'
-
+ 
 import Header from './Header'
 import Menu from './Menu'
 import Contact from './Contact'
@@ -13,28 +13,28 @@ class Layout extends React.Component {
         super(props)
         this.state = {
             isMenuVisible: false, 
-            loading: 'is-loading'
+            loading: 'is-loading' 
         }
         this.handleToggleMenu = this.handleToggleMenu.bind(this)
     } 
 
     componentDidMount() {
-        if (!this.props.loading && !this.props.user) {
+        if (!this.props.loading && !this.props.user) { 
             Router.push('/profile') 
         } 
         this.timeoutId = setTimeout(() => {
             this.setState({ loading: '' });
         }, 100);
     }
-
+ 
     componentWillUnmount() {
         if (this.timeoutId) {
-            clearTimeout(this.timeoutId);
+            clearTimeout(this.timeoutId); 
         } 
     }
 
     handleToggleMenu() {
-        this.setState({
+        this.setState({ 
             isMenuVisible: !this.state.isMenuVisible
         })
     }
@@ -60,7 +60,7 @@ class Layout extends React.Component {
                 </Head>
                 <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
 
-                <div id="wrapper">
+                <div id="wrapper"> 
                     <Header onToggleMenu={this.handleToggleMenu} />
                    <MenuAdmin user={user} />
                     {this.props.children}
@@ -68,10 +68,10 @@ class Layout extends React.Component {
                     <Footer />
                 </div>
                 <Menu onToggleMenu={this.handleToggleMenu} user={this.props.user} loading={this.props.loading} />
-
+ 
             </div>
-        )
+        ) 
     }
 }
 
-export default Layout
+export default Layout 

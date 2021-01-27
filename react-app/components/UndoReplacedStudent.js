@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'; 
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography'; 
 
 
 const DialogContent = withStyles(theme => ({
-    root: {
+    root: { 
         padding: theme.spacing(2),
     },
 }))(MuiDialogContent);
 
 const DialogActions = withStyles(theme => ({
     root: {
-        margin: 0,
+        margin: 0, 
         padding: theme.spacing(1),
     },
 }))(MuiDialogActions);
@@ -23,7 +23,7 @@ const DialogActions = withStyles(theme => ({
 export default function CustomizedDialogs({ replacingStudent, setReplacingStudent, report, tutor }) {
     const handleClose = () => {
         setGroupId('')
-        setReplacingStudent(false);
+        setReplacingStudent(false); 
     };
 
     const handleSubmit = async () => {
@@ -38,15 +38,15 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
             body: JSON.stringify({ _id: tutor._id, data: tutor })
         })
         handleClose()
-    };
+    }; 
     let [groupId, setGroupId] = useState()
-    return (
+    return ( 
         <>
             <Dialog aria-labelledby="customized-dialog-title" open={replacingStudent ? true : false} fullWidth>
-                <DialogContent dividers>
-                    <Typography variant="h5" gutterBottom style={{ color: "black" }}>
-                        Undo :
-                    </Typography>
+                <DialogContent dividers> 
+                    <Typography variant="h5" gutterBottom style={{ color: "black" }}> 
+                        Undo : 
+                    </Typography> 
                     <Typography>
                         Donnez le groupe où vous voulez mettre {replacingStudent.name}
                     </Typography>
@@ -63,9 +63,9 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
 
                     <Button autoFocus onClick={() => groupId ? handleSubmit() : null} color="primary">
                         Submit
-                    </Button>
+                    </Button> 
                 </DialogActions>
             </Dialog>
         </>
-    );
-}
+    ); 
+} 

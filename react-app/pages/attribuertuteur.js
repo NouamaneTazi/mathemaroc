@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
 import Router from "next/router"  
-import MenuAdmin from '../components/MenuAdmin' 
+import MenuAdmin from '../components/MenuAdmin'  
 
 const InputGroupId = ({ tutor }) => {   
     const setGroupId = async (tutor) => {
@@ -14,7 +14,7 @@ const InputGroupId = ({ tutor }) => {
         })  
         window.location.reload(false)  
     } 
-  
+   
     const [selectedGroupId, setSelectedGroupId] = useState("")
 
     return (<div className="12u 12u(small)" >   
@@ -23,7 +23,7 @@ const InputGroupId = ({ tutor }) => {
             id="group_id"
             name="group_id" 
             value={selectedGroupId} 
-            onChange={event => setSelectedGroupId(parseInt(event.target.value))} 
+            onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
         />  
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}
     </div>)
@@ -56,7 +56,7 @@ const Reports = () => {
             method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })  
         }) 
-        setRefresh(!refresh)  
+        setRefresh(!refresh)   
     } 
  
     let { user, loading } = useFetchUser()   
@@ -70,8 +70,8 @@ const Reports = () => {
             getUserData(user)    
         }  
     }, [user, loading]) 
-   
-    return (   
+    
+    return (    
         <> 
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
@@ -107,12 +107,12 @@ const Reports = () => {
                                             <tr key={`${tutor._id}`}>
                                                 <td>{tutor.firstname} {tutor.lastname}</td>   
                                                 <td>{tutor.statut}</td>
-                                                <td>{tutor.matieres}</td> 
+                                                <td>{tutor.matieres}</td>  
                                                 <td>{tutor.whatsapp}</td>
                                                 <td>{tutor.mail}</td>
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>  
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>
-                                            </tr>  
+                                            </tr>   
                                         )  
                                         )}
                                     </tbody> 

@@ -13,11 +13,11 @@ const InputGroupId = ({ tutor }) => {
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
         })  
         window.location.reload(false)  
-    }
+    } 
   
     const [selectedGroupId, setSelectedGroupId] = useState("")
 
-    return (<div className="12u 12u(small)" >  
+    return (<div className="12u 12u(small)" >   
         <input 
             type="text" 
             id="group_id"
@@ -63,10 +63,10 @@ const Reports = () => {
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([]) 
     const [refresh, setRefresh] = useState(true)
-  
+   
     useEffect(() => {     
         // {console.log("useEffect", user, loading)}  
-        if (user && !loading) {  
+        if (user && !loading) {   
             getUserData(user)    
         }  
     }, [user, loading]) 
@@ -78,9 +78,9 @@ const Reports = () => {
                 <Head>
                     <title>Tuteurs en attente</title>   
                     <meta name="description" content="Tuteurs en attente" /> 
-                </Head>  
+                </Head>   
                 <MenuAdmin user={user}/> 
-                <section id="one">
+                <section id="one"> 
                     <div className="inner" style={{maxWidth:"75em"}}>  
                         <header className="major"> 
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1> 
@@ -97,7 +97,7 @@ const Reports = () => {
                                             <th>Matières</th> 
                                             <th>Whatsapp</th> 
                                             <th>Mail</th>  
-                                            <th>Veut encadrer groupe ?</th> 
+                                            <th>Veut encadrer groupe ?</th>  
                                             <th>Groupe</th>    
                                         </tr> 
                                     </thead>

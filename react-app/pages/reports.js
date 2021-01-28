@@ -1,4 +1,4 @@
-import Head from "next/head"
+import Head from "next/head" 
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
@@ -21,12 +21,12 @@ const Reports = () => {
     }
 
     const handleModClick = async (tutor, report_id) => { 
-        if (tutor.reports[report_id].mod) {
+        if (tutor.reports[report_id].mod) { 
             delete tutor.reports[report_id].mod
         } else {
-            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }
+            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name } 
         }
-
+ 
         const res = await fetch('/api/mongodb', { 
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
@@ -43,15 +43,15 @@ const Reports = () => {
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
-            getUserData(user)
+            getUserData(user) 
         }
     }, [user, loading])
 
-    return (
+    return ( 
         <>
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
-                <Head>
+                <Head> 
                     <title>Reports Page</title> 
                     <meta name="description" content="Reports Page" />
                 </Head>
@@ -61,7 +61,7 @@ const Reports = () => {
                             {user ? <h1>Élèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
 
-                        <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
+                        <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br /> 
                         Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p>
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper">
@@ -88,11 +88,11 @@ const Reports = () => {
                                                     <td>{report.time}</td> 
                                                     <td>{report.text}</td>
                                                     <td >
-                                                        {!report.mod || !report.mod.name ?
+                                                        {!report.mod || !report.mod.name ? 
                                                             <> 
                                                                 <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, report_index)} />
                                                                 <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}></label>
-                                                            </>
+                                                            </> 
                                                             : report.mod.id == user.sub && !("replaced_by" in report) ?
                                                                 <>
                                                                     <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked onClick={() => handleModClick(tutor, report_index)} />
@@ -104,7 +104,7 @@ const Reports = () => {
                                                                         <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
                                                                     </> 
                                                                     : null
-                                                        }
+                                                        } 
                                                     </td>
                                                     <td>{("replaced_by" in report) && (!report.mod || report.mod.id != user.sub) ? report.replaced_by.name
                                                         : ("replaced_by" in report) && report.mod.id == user.sub ? <>
@@ -118,16 +118,16 @@ const Reports = () => {
                                         }
                                         )}
                                     </tbody>
-                                </table>
+                                </table> 
                             </div> 
                         </div>
 
                     </div>
-                </section> 
+                </section>  
             </Layout>
             }
         </>
-    )
+    ) 
 } 
 
 export default Reports

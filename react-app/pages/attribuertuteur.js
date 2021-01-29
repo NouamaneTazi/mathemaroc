@@ -28,7 +28,7 @@ const InputGroupId = ({ tutor }) => {
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}
     </div>)
 }  
-   
+    
 const Reports = () => {
     const getUserData = async (user) => {  
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
@@ -82,7 +82,7 @@ const Reports = () => {
                 <MenuAdmin user={user}/> 
                 <section id="one"> 
                     <div className="inner" style={{maxWidth:"75em"}}>  
-                        <header className="major"> 
+                        <header className="major">  
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1> 
                                 : <h1>Vous n'êtes pas connectés</h1>}  
                         </header> 
@@ -90,7 +90,7 @@ const Reports = () => {
                         <div className="12u 12u(medium)"> 
                             <div className="table-wrapper">
                                 <table>
-                                    <thead> 
+                                    <thead>  
                                         <tr>   
                                             <th>Tuteur</th> 
                                             <th>Statut</th>  
@@ -99,7 +99,7 @@ const Reports = () => {
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>  
                                             <th>Groupe</th>    
-                                        </tr> 
+                                        </tr>  
                                     </thead>
                                     <tbody>  
  
@@ -117,16 +117,16 @@ const Reports = () => {
                                         )}
                                     </tbody> 
                                 </table>
-                            </div>  
+                            </div>   
                         </div>    
                     </div> 
    
                 </section> 
             </Layout>  
-            } 
+            }  
         </> 
     )
 } 
  
  
-export default Reports 
+export default Reports  

@@ -10,7 +10,7 @@ const Reports = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
         let json = await res.json()
         Object.assign(user, json)
-        res = await fetch('/api/mongodb?getDemandesDeleves=true') 
+        res = await fetch('/api/mongodb?getDemandesDeleves=true')  
         const new_tutors = await res.json()
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json() 
@@ -19,7 +19,7 @@ const Reports = () => {
         setAwaitingStudents(awaitingStudents)
     }  
  
-    const handleModClick = async (tutor, report_id) => {
+    const handleModClick = async (tutor, report_id) => { 
         if (tutor.reports[report_id].mod) { 
             delete tutor.reports[report_id].mod
         } else {
@@ -52,7 +52,7 @@ const Reports = () => {
                 <Head> 
                     <title>Demandes élèves</title>
                     <meta name="description" content="Demandes élèves" /> 
-                </Head> 
+                </Head>  
                 <MenuAdmin user={user}/>
                 <section id="one">
                     <div className="inner" style={{ maxWidth: "90%", width: "100%" }}>
@@ -67,9 +67,9 @@ const Reports = () => {
                             <div className="table-wrapper"> 
                                 <table>
                                     <thead> 
-                                        <tr>  
+                                        <tr>   
                                             <th>Date</th> 
-                                            <th>Tuteur</th>
+                                            <th>Tuteur</th> 
                                             <th>Groupe</th> 
                                             <th>Nombre d'élèves demandés</th> 
                                             <th>Élèves donnés</th> 
@@ -78,7 +78,7 @@ const Reports = () => {
                                     <tbody> 
 
                                         {tutors.map(tutor => {
-                                            const asked_more_students = tutor.asked_more_students 
+                                            const asked_more_students = tutor.asked_more_students  
                                             return (  
                                                 <tr key={`${tutor._id}`}>  
                                                     <td>{asked_more_students.time}</td> 
@@ -98,10 +98,10 @@ const Reports = () => {
                         </div>    
 
                     </div>
-                </section> 
+                </section>  
             </Layout>
             }  
-        </>
+        </> 
     ) 
 }
  

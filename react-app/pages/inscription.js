@@ -1,10 +1,10 @@
 import Head from "next/head"
 import { useState, useEffect } from "react" 
 import Layout from '../components/Layout'
-import { useFetchUser } from '../lib/user'
+import { useFetchUser } from '../lib/user' 
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Backdrop from '@material-ui/core/Backdrop';
+import Backdrop from '@material-ui/core/Backdrop'; 
 import CircularProgress from '@material-ui/core/CircularProgress'; 
 import Router from 'next/router';
 import isEmail from 'validator/lib/isEmail';
@@ -31,7 +31,7 @@ const Signup = () => {
             setInputFields({ ...inputFields, matieres: inputFields.matieres.concat([val]) })
         } else {
             let inputs = inputFields
-            inputs.matieres.shift()
+            inputs.matieres.shift() 
             inputs.matieres.push(val)
             setInputFields(inputs)
             setRefresh(!refresh) 
@@ -101,13 +101,13 @@ const Signup = () => {
             Router.push('/profile')
         }
     }, [user, userLoading])
-    return (
+    return ( 
         <>
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
             </Backdrop>
             {!userLoading && <Layout user={user} loading={userLoading}>
-                <Head>
+                <Head> 
                     <title>Incription</title>
                     <meta name="description" content="Incription" />
                 </Head>
@@ -126,11 +126,11 @@ const Signup = () => {
                                             <i style={{ fontSize: "9em" }} class="fas fa-chalkboard-teacher"></i>
                                             <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Tuteur</p>
                                         </span></a>
-                                    </div>
+                                    </div> 
                                     <div className="6u" style={{ textAlign: 'center' }}>
                                         <a style={{ borderBottom: "none", cursor: "pointer" }} onClick={() => setRole("student")}><span>
                                             <i style={{ fontSize: "9em" }} class="fas fa-book-reader"></i>
-                                            <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Élève</p>
+                                            <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Élève</p> 
                                         </span></a>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@ const Signup = () => {
                                                 <input className={error.facebook ? "invalid" : null} type="tel" value={inputFields.facebook} onChange={e => setInputFields({ ...inputFields, facebook: e.target.value })} placeholder="Nom sur Facebook" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
-                                                <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Adresse e-mail (*) :</span>
+                                                <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Adresse e-mail (*) :</span> 
                                                 <input className={error.mail ? "invalid" : null} type="email" value={inputFields.mail} onChange={e => setInputFields({ ...inputFields, mail: e.target.value })} placeholder="E-mail que vous consultez régulièrement..." />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
@@ -225,12 +225,12 @@ const Signup = () => {
                                                         <option value="SCIENCES TECH">SCIENCES TECH</option>
                                                         <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>
                                                         <option value="Bac Pro">BAC PRO</option>
-                                                    </select>
+                                                    </select> 
                                                 </div> 
                                             </div>
                                             <div className="row" style={{ display: 'flex', marginBottom: '1em' }}> 
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Matières (*) :</span>
-                                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <div style={{ display: 'flex', flexDirection: 'column' }}> 
                                                     {['MATHÉMATIQUES', 'PHYSIQUE-CHIMIE', 'SVT', 'SI', 'ARABE', 'FRANÇAIS', 'ANGLAIS', 'PHILOSOPHIE', 'EDUCATION ISLAMIQUE', 'HISTOIRE GÉOGRAPHIE', 'COMPTABILITÉ', 'ECONOMIE GÉNÉRALE', 'ORGANISATION ADMINISTRATIVE DES ENTREPRISES']
                                                         .map(matiere => (
                                                             <>

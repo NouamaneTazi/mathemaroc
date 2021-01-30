@@ -44,7 +44,7 @@ const Reports = () => {
         if (user && !loading) { 
             getUserData(user)  
         }
-    }, [user, loading])
+    }, [user, loading]) 
  
     return ( 
         <> 
@@ -52,7 +52,7 @@ const Reports = () => {
                 <Head> 
                     <title>Demandes élèves</title>
                     <meta name="description" content="Demandes élèves" /> 
-                </Head>  
+                </Head>   
                 <MenuAdmin user={user}/>
                 <section id="one">
                     <div className="inner" style={{ maxWidth: "90%", width: "100%" }}>
@@ -64,18 +64,18 @@ const Reports = () => {
                         {/* <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
                         Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}
                         <div className="12u 12u(medium)">
-                            <div className="table-wrapper"> 
+                            <div className="table-wrapper">  
                                 <table>
-                                    <thead> 
+                                    <thead>  
                                         <tr>   
                                             <th>Date</th> 
-                                            <th>Tuteur</th> 
+                                            <th>Tuteur</th>  
                                             <th>Groupe</th> 
                                             <th>Nombre d'élèves demandés</th> 
                                             <th>Élèves donnés</th> 
                                         </tr> 
-                                    </thead> 
-                                    <tbody> 
+                                    </thead>  
+                                    <tbody>  
 
                                         {tutors.map(tutor => {
                                             const asked_more_students = tutor.asked_more_students  
@@ -86,7 +86,7 @@ const Reports = () => {
                                                     <td>{tutor.groupId}</td>
                                                     <td>{asked_more_students.number}</td> 
 
-                                                    <td> 
+                                                    <td>  
                                                         <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} /> 
                                                     </td>
                                                 </tr>)
@@ -97,7 +97,7 @@ const Reports = () => {
                             </div>
                         </div>    
 
-                    </div>
+                    </div> 
                 </section>  
             </Layout>
             }  

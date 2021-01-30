@@ -9,7 +9,7 @@ const InputGroupId = ({ tutor }) => {
     const setGroupId = async (tutor) => {
         // console.log(tutor, selectedGroupId)
         await fetch('/api/mongodb', {   
-            method: 'post',  
+            method: 'post',   
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
         })  
         window.location.reload(false)  
@@ -35,14 +35,14 @@ const Reports = () => {
         let json = await res.json()
         if (!json.is_admin) Router.push('/profile') 
         Object.assign(user, json)  
-        res = await fetch('/api/mongodb?getAwaitingTutors=true')  
+        res = await fetch('/api/mongodb?getAwaitingTutors=true')   
         const new_awaitingtutors = await res.json()    
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json() 
  
         setAwaitingTutors(new_awaitingtutors) 
-        setAwaitingStudents(awaitingStudents) 
+        setAwaitingStudents(awaitingStudents)  
     }  
  
     const handleModClick = async (tutor, report_id) => {
@@ -52,7 +52,7 @@ const Reports = () => {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name } 
         }  
  
-        const res = await fetch('/api/mongodb', {  
+        const res = await fetch('/api/mongodb', {   
             method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })  
         }) 
@@ -66,7 +66,7 @@ const Reports = () => {
    
     useEffect(() => {     
         // {console.log("useEffect", user, loading)}  
-        if (user && !loading) {   
+        if (user && !loading) {    
             getUserData(user)    
         }  
     }, [user, loading]) 
@@ -83,13 +83,13 @@ const Reports = () => {
                 <section id="one"> 
                     <div className="inner" style={{maxWidth:"75em"}}>  
                         <header className="major">  
-                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1> 
+                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>  
                                 : <h1>Vous n'êtes pas connectés</h1>}  
                         </header> 
   
                         <div className="12u 12u(medium)"> 
                             <div className="table-wrapper">
-                                <table>
+                                <table> 
                                     <thead>  
                                         <tr>   
                                             <th>Tuteur</th> 
@@ -103,7 +103,7 @@ const Reports = () => {
                                     </thead>
                                     <tbody>  
  
-                                        {awaitingtutors.map(tutor => (
+                                        {awaitingtutors.map(tutor => ( 
                                             <tr key={`${tutor._id}`}>
                                                 <td>{tutor.firstname} {tutor.lastname}</td>   
                                                 <td>{tutor.statut}</td>
@@ -120,7 +120,7 @@ const Reports = () => {
                             </div>   
                         </div>    
                     </div> 
-   
+    
                 </section> 
             </Layout>  
             }  

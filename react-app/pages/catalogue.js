@@ -21,14 +21,14 @@ const Reports = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
         let json = await res.json()
         Object.assign(user, json) 
-        if (!user.students || user.students.length === 0) { 
+        if (!user.students || user.students.length === 0) {  
             setUserHasNoStudents(true) 
         }  
         // console.log("u",user)
     }
 
     const getAwaitingStudentsData = async () => {
-        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits 
+        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits  
         const awaitingStudents = await res.json() 
         setAwaitingStudents(awaitingStudents)
         setLoading(false)
@@ -57,7 +57,7 @@ const Reports = () => {
                 students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname }))
             })
             await fetch('/api/mongodb', {
-                method: 'post',
+                method: 'post', 
                 body: JSON.stringify({
                     _id: user._id,
                     data: { "catalogue_logs": catalogue_logs }
@@ -93,7 +93,7 @@ const Reports = () => {
             Router.push('/profile')
         }
     }, [user, userLoading])
-
+ 
  
     useEffect(() => {
         // {console.log("useEffect", user, userLoading)}
@@ -184,7 +184,7 @@ const Reports = () => {
                                             </tr>  
                                         ))
 
-                                        } 
+                                        }  
                                     </tbody> 
                                 </table>
                             </div>  
@@ -238,12 +238,12 @@ const Reports = () => {
                                         </tr> 
                                     ))}  
                                 </tbody>
-                            </table> 
+                            </table>  
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
                         </div>
                     </div>
                 </section>
-            </Layout>
+            </Layout> 
             }
         </> 
     )

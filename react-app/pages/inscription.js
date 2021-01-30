@@ -20,13 +20,13 @@ const Signup = () => {
             fontSize: 16,
         },
     }))(Tooltip)
-
-    const capitalize = s => s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase(); 
+ 
+    const capitalize = s => s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase();  
 
     const handleMatieresSelect = (val) => {
         if (inputFields.matieres.includes(val)) {
             setInputFields({ ...inputFields, matieres: inputFields.matieres.filter(mat => mat !== val) })
-        }
+        } 
         else if (inputFields.matieres.length < 3) {
             setInputFields({ ...inputFields, matieres: inputFields.matieres.concat([val]) })
         } else {
@@ -35,7 +35,7 @@ const Signup = () => {
             inputs.matieres.push(val)
             setInputFields(inputs)
             setRefresh(!refresh) 
-        }
+        } 
     }
 
     const handleSubmit = async () => {
@@ -68,7 +68,7 @@ const Signup = () => {
         else {
             let errors = {}
             requiredFields.map(x => (x in inputFields && inputFields[x] !== '') ? null : errors[x] = true)
-            setError({ ...errors })
+            setError({ ...errors }) 
             setShowError(true)
         }
         // console.log("error", error)
@@ -110,7 +110,7 @@ const Signup = () => {
                 <Head> 
                     <title>Incription</title>
                     <meta name="description" content="Incription" />
-                </Head>
+                </Head> 
 
                 <section id="one">
                     <div className="inner">
@@ -138,7 +138,7 @@ const Signup = () => {
                             : role == "tutor" ?
                                 <>
                                     <div className="6u 12u(medium)" style={{ margin: 'auto' }}>
-                                        <div className="6u" style={{ textAlign: 'center', margin: 'auto' }}>
+                                        <div className="6u" style={{ textAlign: 'center', margin: 'auto' }}> 
                                             <i style={{ fontSize: "5em" }} class="fas fa-chalkboard-teacher"></i>
                                             <p style={{ fontWeight: 600, fontSize: "2em", marginBottom: "1em" }}>Tuteur</p>
                                         </div>
@@ -150,7 +150,7 @@ const Signup = () => {
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
                                             <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: capitalize(e.target.value) })} placeholder="Nom" />
                                         </div>
-                                        <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
+                                        <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Statut (*) :</span>
                                             <input className={error.statut ? "invalid" : null} type="text" value={inputFields.statut} onChange={e => setInputFields({ ...inputFields, statut: e.target.value })} placeholder="Etudiant en master / université / prof..." />
                                         </div>
@@ -160,7 +160,7 @@ const Signup = () => {
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Adresse e-mail (*) :</span>
-                                            <input className={error.mail ? "invalid" : null} type="email" value={inputFields.mail} onChange={e => setInputFields({ ...inputFields, mail: e.target.value })} placeholder="E-mail que vous consultez régulièrement..." />
+                                            <input className={error.mail ? "invalid" : null} type="email" value={inputFields.mail} onChange={e => setInputFields({ ...inputFields, mail: e.target.value })} placeholder="E-mail que vous consultez régulièrement..." /> 
                                         </div>
                                         {showError && <span style={{ textAlign: 'center', display: 'block  ' }}>Tous les champs marqués en (*) doivent être remplis !</span>}
                                         <button style={{ margin: 'auto', marginTop: "3em", display: 'block' }} className="button special" onClick={() => handleSubmit()}>Confirmer</button>
@@ -199,7 +199,7 @@ const Signup = () => {
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Ville du lycée (*) :</span>
-                                                <input className={error.ville ? "invalid" : null} type="text" value={inputFields.ville} onChange={e => setInputFields({ ...inputFields, ville: e.target.value })} placeholder="Ville de votre lycée" />
+                                                <input className={error.ville ? "invalid" : null} type="text" value={inputFields.ville} onChange={e => setInputFields({ ...inputFields, ville: e.target.value })} placeholder="Ville de votre lycée" /> 
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Niveau scolaire (*) :</span>
@@ -207,8 +207,8 @@ const Signup = () => {
                                                     {/* <input type="radio" id="premiere-bac" checked={inputFields.niveau === 'bac-1'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac-1' })} />
                                                     <label style={{ margin: 0 }} htmlFor="premiere-bac">1ère bac</label> */}
 
-                                                    <input type="radio" id="deuxieme-bac" checked={inputFields.niveau === 'bac'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac' })} />
-                                                    <label style={{ margin: 0 }} htmlFor="deuxieme-bac">2ème bac</label>
+                                                    <input type="radio" id="deuxieme-bac" checked={inputFields.niveau === 'bac'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac' })} /> 
+                                                    <label style={{ margin: 0 }} htmlFor="deuxieme-bac">2ème bac</label> 
                                                 </div>
                                             </div>
 
@@ -231,7 +231,7 @@ const Signup = () => {
                                             <div className="row" style={{ display: 'flex', marginBottom: '1em' }}> 
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Matières (*) :</span>
                                                 <div style={{ display: 'flex', flexDirection: 'column' }}> 
-                                                    {['MATHÉMATIQUES', 'PHYSIQUE-CHIMIE', 'SVT', 'SI', 'ARABE', 'FRANÇAIS', 'ANGLAIS', 'PHILOSOPHIE', 'EDUCATION ISLAMIQUE', 'HISTOIRE GÉOGRAPHIE', 'COMPTABILITÉ', 'ECONOMIE GÉNÉRALE', 'ORGANISATION ADMINISTRATIVE DES ENTREPRISES']
+                                                    {['MATHÉMATIQUES', 'PHYSIQUE-CHIMIE', 'SVT', 'SI', 'ARABE', 'FRANÇAIS', 'ANGLAIS', 'PHILOSOPHIE', 'EDUCATION ISLAMIQUE', 'HISTOIRE GÉOGRAPHIE', 'COMPTABILITÉ', 'ECONOMIE GÉNÉRALE', 'ORGANISATION ADMINISTRATIVE DES ENTREPRISES'] 
                                                         .map(matiere => (
                                                             <>
                                                                 <input type="checkbox" id={matiere} checked={inputFields.matieres && inputFields.matieres.includes(matiere)} onClick={(e) => handleMatieresSelect(e.target.id)} />
@@ -254,7 +254,7 @@ const Signup = () => {
                         }
                     </div>
                 </section>
-            </Layout>}
+            </Layout>} 
         </>
     )
 }

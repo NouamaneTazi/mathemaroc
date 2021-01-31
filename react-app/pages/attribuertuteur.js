@@ -2,11 +2,11 @@ import Head from "next/head"
 import { useState, useEffect } from "react"  
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
-import Router from "next/router"  
+import Router from "next/router"   
 import MenuAdmin from '../components/MenuAdmin'  
 
 const InputGroupId = ({ tutor }) => {   
-    const setGroupId = async (tutor) => {
+    const setGroupId = async (tutor) => { 
         // console.log(tutor, selectedGroupId)
         await fetch('/api/mongodb', {   
             method: 'post',   
@@ -22,10 +22,10 @@ const InputGroupId = ({ tutor }) => {
             type="text" 
             id="group_id"
             name="group_id" 
-            value={selectedGroupId} 
+            value={selectedGroupId}  
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
         />  
-        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}
+        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>} 
     </div>)
 }  
     
@@ -34,7 +34,7 @@ const Reports = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         if (!json.is_admin) Router.push('/profile') 
-        Object.assign(user, json)  
+        Object.assign(user, json)   
         res = await fetch('/api/mongodb?getAwaitingTutors=true')   
         const new_awaitingtutors = await res.json()    
    
@@ -71,7 +71,7 @@ const Reports = () => {
         }  
     }, [user, loading]) 
     
-    return (    
+    return (     
         <> 
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
@@ -81,14 +81,14 @@ const Reports = () => {
                 </Head>   
                 <MenuAdmin user={user}/> 
                 <section id="one"> 
-                    <div className="inner" style={{maxWidth:"75em"}}>  
+                    <div className="inner" style={{maxWidth:"75em"}}>   
                         <header className="major">  
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>  
                                 : <h1>Vous n'êtes pas connectés</h1>}  
                         </header> 
   
                         <div className="12u 12u(medium)"> 
-                            <div className="table-wrapper">
+                            <div className="table-wrapper"> 
                                 <table> 
                                     <thead>  
                                         <tr>   
@@ -114,7 +114,7 @@ const Reports = () => {
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>
                                             </tr>   
                                         )  
-                                        )}
+                                        )} 
                                     </tbody> 
                                 </table>
                             </div>   

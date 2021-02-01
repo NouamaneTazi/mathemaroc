@@ -1,18 +1,18 @@
-import { useState } from "react"
+import { useState } from "react" 
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'; 
 import Dialog from '@material-ui/core/Dialog';
 import Typography from '@material-ui/core/Typography';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 
 const DialogContent = withStyles(theme => ({
-    root: {
+    root: { 
         padding: theme.spacing(2),
     },
 }))(MuiDialogContent);
-
-const DialogActions = withStyles(theme => ({
+ 
+const DialogActions = withStyles(theme => ({ 
     root: {
         margin: 0,
         padding: theme.spacing(1),
@@ -22,7 +22,7 @@ const DialogActions = withStyles(theme => ({
 
 const MoreSeances = ({ user }) => {
     const handleAskedMoreStudents = async () => {
-        user.asked_more_students = {
+        user.asked_more_students = { 
             time: new Date(Date.now()).toLocaleString("en-US"),
             number: numberStudents
         }
@@ -39,14 +39,14 @@ const MoreSeances = ({ user }) => {
         setOpen(false)
     }
 
-    const cancelAskedMoreStudents = async () => {
+    const cancelAskedMoreStudents = async () => { 
         delete user.asked_more_students
         const res = await fetch('/api/mongodb?unset=true', {
             method: 'post',
             body: JSON.stringify({ _id: user._id, data: { asked_more_students: "" } })
         })
-        setAskedMoreStudents(false)
-    }
+        setAskedMoreStudents(false) 
+    } 
 
     const [askedMoreStudents, setAskedMoreStudents] = useState(user.asked_more_students)
     const [numberStudents, setNumberStudents] = useState("")
@@ -63,7 +63,7 @@ const MoreSeances = ({ user }) => {
 
             <Dialog aria-labelledby="customized-dialog-title" open={open} fullWidth>
                 <DialogContent dividers>
-                    <Typography variant="h5" gutterBottom style={{ color: "black" }}>
+                    <Typography variant="h5" gutterBottom style={{ color: "black" }}> 
                         Demander plus d'élèves
                     </Typography>
                     <Typography>

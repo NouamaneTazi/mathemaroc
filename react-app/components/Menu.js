@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'  
-import Link from 'next/link'
+import Link from 'next/link' 
  
-const Menu = ({ user, loading, onToggleMenu }) => ( 
+const Menu = ({ user, loading, onToggleMenu }) => (  
     <nav id="menu">
         <div className="inner"> 
            {user && <img className="user-picture" src={user.picture} alt="user picture" />}
@@ -17,14 +17,14 @@ const Menu = ({ user, loading, onToggleMenu }) => (
                 {!user ? <li><a href="/api/login" className="button special fit">Log In</a></li> 
                     : <li><a href="/api/logout" className="button special fit">Log Out</a></li>} 
                 <li><a href="/join" className="button fit">Join Us</a></li> 
-            </ul>
+            </ul> 
         </div> 
-        <a className="close" onClick={onToggleMenu} href="javascript:;">Close</a>
+        <a className="close" onClick={onToggleMenu} href="javascript:;">Close</a> 
     </nav>
-)
+) 
 
 Menu.propTypes = {
     onToggleMenu: PropTypes.func
-} 
-
+}  
+ 
 export default Menu

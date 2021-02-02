@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
-import Layout from '../components/Layout'
+import Layout from '../components/Layout' 
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
 
@@ -35,7 +35,7 @@ const Admin = () => {
             body: JSON.stringify({ _id: tutor._id, data: { seances: tutor.seances } })
         })
         setRefresh(!refresh) 
-    }
+    } 
 
     let { user, loading } = useFetchUser()
     const [tutors, setTutors] = useState([])
@@ -45,10 +45,10 @@ const Admin = () => {
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
             getUserData(user)
-        }
+        } 
     }, [user, loading])
 
-    return (
+    return ( 
         <>
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
@@ -67,8 +67,8 @@ const Admin = () => {
                             <div className="12u 12u(medium)">
                                 <h3>Compteur de séances données :</h3>
                                 <div className="box" style={{ textAlign: "center" }}>
-                                    <h1>{getNumberSeances(tutors)}</h1>
-                                </div>
+                                    <h1>{getNumberSeances(tutors)}</h1> 
+                                </div> 
 
                             </div>
                         } */} 
@@ -82,8 +82,8 @@ const Admin = () => {
                                         <th>Groupe</th>
                                         <th>Tuteur</th>
                                         <th>Date</th>
-                                        <th>Élève pris</th>
-                                        <th>Nombre d'élèves</th> 
+                                        <th>Élève pris</th> 
+                                        <th>Nombre d'élèves</th>  
                                         {/* <th>Traité</th> */}
                                     </tr>
                                 </thead>
@@ -94,17 +94,17 @@ const Admin = () => {
                                                 {tutor.catalogue_logs.length > 0 && tutor.catalogue_logs.map((activity, index_activity) => (
                                                     <tr key={`${tutor._id}~${index_activity}`}>
                                                         {(index_activity == 0) && <th rowSpan={tutor.catalogue_logs.length} style={{ verticalAlign: "middle" }}>{tutor.groupId}</th>}
-                                                        {(index_activity == 0) && <th rowSpan={tutor.catalogue_logs.length} style={{ verticalAlign: "middle" }}>{tutor.fullname}</th>}
+                                                        {(index_activity == 0) && <th rowSpan={tutor.catalogue_logs.length} style={{ verticalAlign: "middle" }}>{tutor.fullname}</th>} 
                                                         <td style={{ verticalAlign: "middle" }}>{activity.time}</td> 
                                                         <td>{activity.students.map(s=>s.name).join(" - ")}</td>
                                                         <td>{activity.students.length}</td> 
                                                     </tr>
-                                                ))}
+                                                ))} 
                                                 {tutor.catalogue_logs.length > 0 && <tr style={{ height: "50px" }}></tr>}
                                             </>
                                         )
                                     })}
-                                </tbody>
+                                </tbody> 
                             </table>
                         </div> 
 
@@ -117,4 +117,4 @@ const Admin = () => {
     )
 }
 
-export default Admin
+export default Admin 

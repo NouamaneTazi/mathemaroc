@@ -9,7 +9,7 @@ const InputGroupId = ({ tutor }) => {
     const setGroupId = async (tutor) => { 
         // console.log(tutor, selectedGroupId)
         await fetch('/api/mongodb', {   
-            method: 'post',   
+            method: 'post',    
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
         })  
         window.location.reload(false)  
@@ -26,29 +26,29 @@ const InputGroupId = ({ tutor }) => {
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
         />  
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>} 
-    </div>)
+    </div>) 
 }  
     
 const Reports = () => {
-    const getUserData = async (user) => {  
+    const getUserData = async (user) => {   
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
-        if (!json.is_admin) Router.push('/profile') 
+        if (!json.is_admin) Router.push('/profile')  
         Object.assign(user, json)   
         res = await fetch('/api/mongodb?getAwaitingTutors=true')   
         const new_awaitingtutors = await res.json()    
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json() 
- 
+  
         setAwaitingTutors(new_awaitingtutors) 
         setAwaitingStudents(awaitingStudents)  
     }  
- 
+  
     const handleModClick = async (tutor, report_id) => {
         if (tutor.reports[report_id].mod) {   
-            delete tutor.reports[report_id].mod 
-        } else {
+            delete tutor.reports[report_id].mod  
+        } else { 
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name } 
         }  
  
@@ -93,12 +93,12 @@ const Reports = () => {
                                     <thead>  
                                         <tr>   
                                             <th>Tuteur</th> 
-                                            <th>Statut</th>  
+                                            <th>Statut</th>   
                                             <th>Matières</th> 
                                             <th>Whatsapp</th> 
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>  
-                                            <th>Groupe</th>    
+                                            <th>Groupe</th>     
                                         </tr>  
                                     </thead>
                                     <tbody>  
@@ -111,7 +111,7 @@ const Reports = () => {
                                                 <td>{tutor.whatsapp}</td>
                                                 <td>{tutor.mail}</td>
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>  
-                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>
+                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td> 
                                             </tr>   
                                         )  
                                         )} 
@@ -121,12 +121,12 @@ const Reports = () => {
                         </div>    
                     </div> 
     
-                </section> 
+                </section>  
             </Layout>  
             }  
         </> 
     )
 } 
- 
+  
  
 export default Reports  

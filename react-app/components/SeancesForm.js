@@ -9,13 +9,13 @@ const Seances = ({ user }) => {
         const values = [...inputFields];
         values.push({ chapitres: '', absents: {}, remarques: '', duree: '' });
         setInputFields(values); 
-    };
+    }; 
 
-    const handleRemoveFields = index => {
+    const handleRemoveFields = index => { 
         const values = [...inputFields];
         values.splice(index, 1);
         setInputFields(values);
-    }; 
+    };  
  
     const handleInputChange = (index, event) => {
         const values = [...inputFields]; 
@@ -52,14 +52,14 @@ const Seances = ({ user }) => {
             method: 'post', 
             body: JSON.stringify({ _id: user._id, data: { seances: seances, last_updated: new Date(Date.now()).toLocaleString("en-US") } })
         }) 
-        setInputFields(seances)
+        setInputFields(seances) 
         setEditMode(false)
         setSavedSuccess(true)
     }
 
     const [inputFields, setInputFields] = useState(user.seances ? user.seances : []); 
     const [editMode, setEditMode] = useState(false) 
-    const [savedSuccess, setSavedSuccess] = useState(false)
+    const [savedSuccess, setSavedSuccess] = useState(false) 
 
  
     return (
@@ -105,7 +105,7 @@ const Seances = ({ user }) => {
                                     </td>
                                     <td> 
                                         <textarea name="chapitres" id="chapitres-traites" placeholder="Enter your message" rows="7" value={inputField.chapitres} onChange={event => handleInputChange(index, event)}></textarea>
-
+ 
                                     </td>
 
                                     <td> 
@@ -141,14 +141,14 @@ const Seances = ({ user }) => {
                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleAddFields()}>add_circle</Icon> 
                                 </th>
                             </tr>
-                        </tbody> 
+                        </tbody>  
                             : <tbody>
                                 {inputFields.map((inputField, index) => ( 
                                     <tr key={`${inputField}~${index}`}>
                                         <td>{inputField.date ? moment(inputField.date, ['YYYY-MM-DD']).format('DD MMM YYYY') : ""}</td>
                                         <td>{inputField.duree}</td>
                                         <td>{inputField.chapitres}</td>
-                                        <td>{Object.values(inputField.absents).join(', ')}</td>
+                                        <td>{Object.values(inputField.absents).join(', ')}</td> 
                                         <td>{inputField.remarques}</td>
                                         <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
                                             <Rating
@@ -161,9 +161,9 @@ const Seances = ({ user }) => {
                                         </td>
                                     </tr>
                                 ))}
-                            </tbody>}
+                            </tbody>} 
                     </table>
-                </div>
+                </div> 
                 {(!inputFields || inputFields.length === 0) && <p style={{ textAlign: 'center' }}>Tu peux remplir ici les comptes rendus de chaque séance que tu fais avec tes élèves pour qu'on sache que les élèves sont bien pris en charge</p>}
 
                 <div> 
@@ -173,13 +173,13 @@ const Seances = ({ user }) => {
                         : <button className="button icon fa-pencil" onClick={() => {
                             setSavedSuccess(false)
                             setEditMode(true)
-                        }}>Modifier</button> 
+                        }}>Modifier</button>  
                     } 
                     {savedSuccess && <div style={{ display: "inline", marginLeft: "10px" }}>Modification réussie !</div>}
                 </div>
             </div> 
         </>
-
+ 
     )
 }
 

@@ -15,10 +15,10 @@ export default class App extends Component {
     data: null,
     hoveredFeature: null, 
     viewport: {
-      latitude: 40, 
+      latitude: 40,  
       longitude: -100,
       zoom: 3,
-      bearing: 0,
+      bearing: 0, 
       pitch: 0
     }
   };
@@ -41,7 +41,7 @@ export default class App extends Component {
   };
 
   _updateSettings = (name, value) => { 
-    if (name === 'year') {
+    if (name === 'year') { 
       this.setState({year: value});
 
       const {data} = this.state;
@@ -52,7 +52,7 @@ export default class App extends Component {
         }); 
       }
     }
-  };
+  }; 
 
   _onViewportChange = viewport => this.setState({viewport}); 
 
@@ -67,7 +67,7 @@ export default class App extends Component {
   };  
 
   _renderTooltip() {
-    const {hoveredFeature, x, y} = this.state;
+    const {hoveredFeature, x, y} = this.state; 
 
     return (
       hoveredFeature && (
@@ -78,10 +78,10 @@ export default class App extends Component {
         </div>
       )
     ); 
-  }
+  } 
  
   render() {
-    const {viewport, data} = this.state; 
+    const {viewport, data} = this.state;  
  
     return (
       <div style={{height: '100%', position: 'relative'}}>
@@ -101,7 +101,7 @@ export default class App extends Component {
         </MapGL>
 
         <ControlPanel
-          containerComponent={this.props.containerComponent}
+          containerComponent={this.props.containerComponent} 
           settings={this.state}
           onChange={this._updateSettings}
         />

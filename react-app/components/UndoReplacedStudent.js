@@ -6,7 +6,7 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography'; 
 
-
+ 
 const DialogContent = withStyles(theme => ({
     root: { 
         padding: theme.spacing(2),
@@ -23,18 +23,18 @@ const DialogActions = withStyles(theme => ({
 export default function CustomizedDialogs({ replacingStudent, setReplacingStudent, report, tutor }) {
     const handleClose = () => {
         setGroupId('')
-        setReplacingStudent(false); 
+        setReplacingStudent(false);  
     };
 
     const handleSubmit = async () => {
         await fetch('/api/mongodb', {
             method: 'post',
-            body: JSON.stringify({ _id: replacingStudent._id, data: { "groupId": groupId } })
+            body: JSON.stringify({ _id: replacingStudent._id, data: { "groupId": groupId } }) 
         })
         delete report.replaced_by
         delete report.mod
-        await fetch('/api/mongodb', {
-            method: 'post',
+        await fetch('/api/mongodb', { 
+            method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: tutor })
         })
         handleClose()
@@ -44,15 +44,15 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
         <>
             <Dialog aria-labelledby="customized-dialog-title" open={replacingStudent ? true : false} fullWidth>
                 <DialogContent dividers> 
-                    <Typography variant="h5" gutterBottom style={{ color: "black" }}> 
-                        Undo : 
+                    <Typography variant="h5" gutterBottom style={{ color: "black" }}>  
+                        Undo :  
                     </Typography> 
                     <Typography>
-                        Donnez le groupe où vous voulez mettre {replacingStudent.name}
+                        Donnez le groupe où vous voulez mettre {replacingStudent.name} 
                     </Typography>
                 </DialogContent>
                 <DialogActions>
-                    <div className="12u">
+                    <div className="12u"> 
                         <input type="text" name="demo-name" id="groupI" style={{ backgroundColor: "#0f111f", color: "white" }} value={groupId} onChange={e => setGroupId(parseInt(e.target.value))} />
                     </div>
                 </DialogActions>
@@ -62,7 +62,7 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
                     </Button>
 
                     <Button autoFocus onClick={() => groupId ? handleSubmit() : null} color="primary">
-                        Submit
+                        Submit 
                     </Button> 
                 </DialogActions>
             </Dialog>

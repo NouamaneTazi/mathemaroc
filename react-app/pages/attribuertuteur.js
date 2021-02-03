@@ -1,17 +1,17 @@
-import Head from "next/head"  
+import Head from "next/head"   
 import { useState, useEffect } from "react"  
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
 import Router from "next/router"   
 import MenuAdmin from '../components/MenuAdmin'  
-
+ 
 const InputGroupId = ({ tutor }) => {   
     const setGroupId = async (tutor) => { 
         // console.log(tutor, selectedGroupId)
         await fetch('/api/mongodb', {   
             method: 'post',    
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
-        })  
+        })   
         window.location.reload(false)  
     } 
    
@@ -28,7 +28,7 @@ const InputGroupId = ({ tutor }) => {
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>} 
     </div>) 
 }  
-    
+     
 const Reports = () => {
     const getUserData = async (user) => {   
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
@@ -42,11 +42,11 @@ const Reports = () => {
         const awaitingStudents = await res.json() 
   
         setAwaitingTutors(new_awaitingtutors) 
-        setAwaitingStudents(awaitingStudents)  
+        setAwaitingStudents(awaitingStudents)   
     }  
   
     const handleModClick = async (tutor, report_id) => {
-        if (tutor.reports[report_id].mod) {   
+        if (tutor.reports[report_id].mod) {    
             delete tutor.reports[report_id].mod  
         } else { 
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name } 
@@ -58,11 +58,11 @@ const Reports = () => {
         }) 
         setRefresh(!refresh)   
     } 
- 
+  
     let { user, loading } = useFetchUser()   
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([]) 
-    const [refresh, setRefresh] = useState(true)
+    const [refresh, setRefresh] = useState(true) 
    
     useEffect(() => {     
         // {console.log("useEffect", user, loading)}  
@@ -95,7 +95,7 @@ const Reports = () => {
                                             <th>Tuteur</th> 
                                             <th>Statut</th>   
                                             <th>Matières</th> 
-                                            <th>Whatsapp</th> 
+                                            <th>Whatsapp</th>  
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>  
                                             <th>Groupe</th>     
@@ -119,7 +119,7 @@ const Reports = () => {
                                 </table>
                             </div>   
                         </div>    
-                    </div> 
+                    </div>  
     
                 </section>  
             </Layout>  

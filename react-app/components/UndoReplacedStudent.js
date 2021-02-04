@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'; 
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from '@material-ui/core/Dialog'; 
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography'; 
-
+ 
  
 const DialogContent = withStyles(theme => ({
     root: { 
-        padding: theme.spacing(2),
+        padding: theme.spacing(2), 
     },
 }))(MuiDialogContent);
 
 const DialogActions = withStyles(theme => ({
     root: {
         margin: 0, 
-        padding: theme.spacing(1),
+        padding: theme.spacing(1), 
     },
 }))(MuiDialogActions);
 
@@ -25,9 +25,9 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
         setGroupId('')
         setReplacingStudent(false);  
     };
-
-    const handleSubmit = async () => {
-        await fetch('/api/mongodb', {
+ 
+    const handleSubmit = async () => { 
+        await fetch('/api/mongodb', { 
             method: 'post',
             body: JSON.stringify({ _id: replacingStudent._id, data: { "groupId": groupId } }) 
         })
@@ -37,10 +37,10 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
             method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: tutor })
         })
-        handleClose()
+        handleClose() 
     }; 
     let [groupId, setGroupId] = useState()
-    return ( 
+    return (  
         <>
             <Dialog aria-labelledby="customized-dialog-title" open={replacingStudent ? true : false} fullWidth>
                 <DialogContent dividers> 
@@ -56,16 +56,16 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
                         <input type="text" name="demo-name" id="groupI" style={{ backgroundColor: "#0f111f", color: "white" }} value={groupId} onChange={e => setGroupId(parseInt(e.target.value))} />
                     </div>
                 </DialogActions>
-                <DialogActions>
+                <DialogActions> 
                     <Button autoFocus onClick={handleClose} color="primary">
                         Cancel
                     </Button>
 
                     <Button autoFocus onClick={() => groupId ? handleSubmit() : null} color="primary">
-                        Submit 
+                        Submit  
                     </Button> 
                 </DialogActions>
-            </Dialog>
+            </Dialog> 
         </>
     ); 
 } 

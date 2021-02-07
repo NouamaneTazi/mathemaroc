@@ -11,7 +11,7 @@
         "latitude": 32.87446, 
         "counts": "30"
     },
-    {
+    { 
         "name": "Settat",
         "longitude": -7.61461,
         "latitude": 33.00456,
@@ -50,7 +50,7 @@
     {
         "name": "Es-Semara",
         "longitude": -11.67194,
-        "latitude": 26.73841,
+        "latitude": 26.73841, 
         "counts": "20"
     }, 
     {
@@ -82,7 +82,7 @@
         "longitude": -13.18797,
         "latitude": 27.1418, 
         "counts": "31"
-    },
+    }, 
     { 
         "name": "Al-Haouz", 
         "longitude": -7.91076, 
@@ -149,7 +149,7 @@
         "latitude": 34.67935,
         "counts": "43"
     },
-    {
+    { 
         "name": "Aousserd",
         "longitude": -15.02068,
         "latitude": 21.91977,
@@ -266,7 +266,7 @@
     {
         "name": "Taroudannt", 
         "longitude": -8.87792,
-        "latitude": 30.47065,
+        "latitude": 30.47065, 
         "counts": "26"
     },
     {
@@ -307,7 +307,7 @@
     },
     {
         "name": "Tetouan",
-        "longitude": -5.35736,
+        "longitude": -5.35736, 
         "latitude": 35.57785,
         "counts": "97"
     }, 
@@ -317,15 +317,15 @@
         "latitude": 33.58398,
         "counts": "368"
     },
-    { 
+    {  
         "name": "Mediouna",
         "longitude": -7.5204,
         "latitude": 33.44251,
         "counts": "16"
-    }, 
+    },  
     {
         "name": "Mohammedia",
-        "longitude": -7.38491,
+        "longitude": -7.38491, 
         "latitude": 33.69241,
         "counts": "26"
     },

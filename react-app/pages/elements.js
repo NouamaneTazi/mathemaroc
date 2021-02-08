@@ -14,7 +14,7 @@ export default () => (
             <section id="one">
                 <div className="inner">
                     <header className="major">
-                        <h1>Elements</h1>
+                        <h1>Elements</h1> 
                     </header>
 
                     <h2 id="content">Sample Content</h2>
@@ -103,7 +103,7 @@ export default () => (
                                         <ul className="icons">
                                             <li><a href="#" className="icon alt fa-twitter"><span className="label">Twitter</span></a></li> 
                                             <li><a href="#" className="icon alt fa-facebook"><span className="label">Facebook</span></a></li>
-                                            <li><a href="#" className="icon alt fa-instagram"><span className="label">Instagram</span></a></li>
+                                            <li><a href="#" className="icon alt fa-instagram"><span className="label">Instagram</span></a></li> 
                                         </ul> 
 
                                     </div>
@@ -112,7 +112,7 @@ export default () => (
                                 <dl> 
                                     <dt>Item1</dt>
                                     <dd>
-                                        <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p>
+                                        <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p> 
                                     </dd>
                                     <dt>Item2</dt>
                                     <dd>
@@ -128,7 +128,7 @@ export default () => (
                                 <ul className="actions">
                                     <li><a href="#" className="button special">Default</a></li>
                                     <li><a href="#" className="button">Default</a></li>
-                                </ul>
+                                </ul> 
                                 <ul className="actions small">
                                     <li><a href="#" className="button special small">Small</a></li>
                                     <li><a href="#" className="button small">Small</a></li>
@@ -198,7 +198,7 @@ export default () => (
                                                 <td>Item2</td>
                                                 <td>Vis ac commodo adipiscing arcu aliquet.</td>
                                                 <td>19.99</td>
-                                            </tr>
+                                            </tr> 
                                             <tr>
                                                 <td>Item3</td>
                                                 <td> Morbi faucibus arcu accumsan lorem.</td>
@@ -326,7 +326,7 @@ export default () => (
                                                 </select>
                                             </div>
                                         </div>
-                                        <div className="4u 12u(small)">
+                                        <div className="4u 12u(small)"> 
                                             <input type="radio" id="demo-priority-low" name="demo-priority" />
                                             <label htmlFor="demo-priority-low">Low</label>
                                         </div>
@@ -351,7 +351,7 @@ export default () => (
                                         </div>
                                         <div className="12u"> 
                                             <ul className="actions">
-                                                <li><input type="submit" value="Send Message" className="special" /></li>
+                                                <li><input type="submit" value="Send Message" className="special" /></li> 
                                                 <li><input type="reset" value="Reset" /></li>
                                             </ul>
                                         </div>

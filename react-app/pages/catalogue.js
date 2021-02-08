@@ -59,7 +59,7 @@ const Reports = () => {
             await fetch('/api/mongodb', {
                 method: 'post', 
                 body: JSON.stringify({
-                    _id: user._id,
+                    _id: user._id, 
                     data: { "catalogue_logs": catalogue_logs }
                 })
             }) 
@@ -100,7 +100,7 @@ const Reports = () => {
         const timer = setTimeout(() => {
             if (!userLoading && user) {
                 getAwaitingStudentsData()
-            } 
+            }  
         }, 1000);
 
         return () => clearTimeout(timer);
@@ -110,7 +110,7 @@ const Reports = () => {
         <> 
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" />
-            </Backdrop>
+            </Backdrop> 
             {!loading && user && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Catalogue à élèves</title>
@@ -191,11 +191,11 @@ const Reports = () => {
                             {error && <Alert severity="error">{error.message}</Alert>}
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
-                        </div>
+                        </div> 
                         <Divider style={{ marginBottom: "3em" }} />
                     </>}
 
-                    <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}> 
+                    <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
  
  
                         <div className="table-wrapper">
@@ -208,7 +208,7 @@ const Reports = () => {
                                                 <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>
                                                     <option value="">- Filière -</option> 
                                                     <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>
-                                                    <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option> 
+                                                    <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>  
                                                     <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option> 
                                                     <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
                                                     <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>
@@ -229,7 +229,7 @@ const Reports = () => {
                                         <tr key={`${student._id}`}> 
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>  
                                             <td>{student.filiere}</td>
-                                            <td style={{ width: "50%" }}>{student.matiere}</td>
+                                            <td style={{ width: "50%" }}>{student.matiere}</td> 
                                             <td style={{ width: "40%" }}>{student.wishes}</td>   
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?  
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
@@ -237,7 +237,7 @@ const Reports = () => {
                                             }</td>
                                         </tr> 
                                     ))}  
-                                </tbody>
+                                </tbody> 
                             </table>  
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
                         </div>

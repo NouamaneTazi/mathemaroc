@@ -20,7 +20,7 @@ const InputGroupId = ({ tutor }) => {
     return (<div className="12u 12u(small)" >   
         <input 
             type="text" 
-            id="group_id"
+            id="group_id" 
             name="group_id" 
             value={selectedGroupId}  
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
@@ -30,7 +30,7 @@ const InputGroupId = ({ tutor }) => {
 }  
      
 const Reports = () => {
-    const getUserData = async (user) => {   
+    const getUserData = async (user) => {    
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         if (!json.is_admin) Router.push('/profile')  
@@ -43,7 +43,7 @@ const Reports = () => {
   
         setAwaitingTutors(new_awaitingtutors) 
         setAwaitingStudents(awaitingStudents)   
-    }  
+    }   
   
     const handleModClick = async (tutor, report_id) => {
         if (tutor.reports[report_id].mod) {    
@@ -58,22 +58,22 @@ const Reports = () => {
         }) 
         setRefresh(!refresh)   
     } 
-  
+   
     let { user, loading } = useFetchUser()   
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
-    const [awaitingStudents, setAwaitingStudents] = useState([]) 
+    const [awaitingStudents, setAwaitingStudents] = useState([])  
     const [refresh, setRefresh] = useState(true) 
    
     useEffect(() => {     
-        // {console.log("useEffect", user, loading)}  
+        // {console.log("useEffect", user, loading)}   
         if (user && !loading) {    
             getUserData(user)    
         }  
-    }, [user, loading]) 
+    }, [user, loading])  
     
     return (     
         <> 
-            {/* {console.log(user)} */}
+            {/* {console.log(user)} */} 
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
                     <title>Tuteurs en attente</title>   
@@ -88,7 +88,7 @@ const Reports = () => {
                         </header> 
   
                         <div className="12u 12u(medium)"> 
-                            <div className="table-wrapper"> 
+                            <div className="table-wrapper">  
                                 <table> 
                                     <thead>  
                                         <tr>   
@@ -100,7 +100,7 @@ const Reports = () => {
                                             <th>Veut encadrer groupe ?</th>  
                                             <th>Groupe</th>     
                                         </tr>  
-                                    </thead>
+                                    </thead> 
                                     <tbody>  
  
                                         {awaitingtutors.map(tutor => ( 
@@ -110,23 +110,23 @@ const Reports = () => {
                                                 <td>{tutor.matieres}</td>  
                                                 <td>{tutor.whatsapp}</td>
                                                 <td>{tutor.mail}</td>
-                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>  
-                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td> 
+                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>   
+                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>  
                                             </tr>   
                                         )  
                                         )} 
                                     </tbody> 
                                 </table>
-                            </div>   
+                            </div>    
                         </div>    
                     </div>  
     
                 </section>  
             </Layout>  
-            }  
+            }   
         </> 
     )
 } 
   
  
-export default Reports  
+export default Reports   

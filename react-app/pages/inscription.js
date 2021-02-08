@@ -45,7 +45,7 @@ const Signup = () => {
                 setError({ mail: true })
             } else {
                 setLoading(true)
-                if (role === "student") {
+                if (role === "student") { 
                     inputFields.matiere = inputFields.matieres.join(', ')
                 }
                 delete inputFields.matieres
@@ -81,7 +81,7 @@ const Signup = () => {
         if (json.role) {
             Router.push('/profile')
         }
-        setLoading(false)
+        setLoading(false) 
     }
 
     let { user, loading: userLoading } = useFetchUser()
@@ -100,7 +100,7 @@ const Signup = () => {
         } else if (!userLoading && !user) {
             Router.push('/profile')
         }
-    }, [user, userLoading])
+    }, [user, userLoading]) 
     return ( 
         <>
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
@@ -147,7 +147,7 @@ const Signup = () => {
                                             <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: capitalize(e.target.value) })} placeholder="Prénom" />
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
-                                            <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
+                                            <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span> 
                                             <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: capitalize(e.target.value) })} placeholder="Nom" />
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
@@ -175,7 +175,7 @@ const Signup = () => {
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
-                                                <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname:capitalize(e.target.value) })} placeholder="Prénom" />
+                                                <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname:capitalize(e.target.value) })} placeholder="Prénom" /> 
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
@@ -197,7 +197,7 @@ const Signup = () => {
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom du lycée (*) :</span>
                                                 <input className={error.lycee ? "invalid" : null} type="text" value={inputFields.lycee} onChange={e => setInputFields({ ...inputFields, lycee: e.target.value })} placeholder="Nom de votre lycée" />
                                             </div>
-                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
+                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Ville du lycée (*) :</span>
                                                 <input className={error.ville ? "invalid" : null} type="text" value={inputFields.ville} onChange={e => setInputFields({ ...inputFields, ville: e.target.value })} placeholder="Ville de votre lycée" /> 
                                             </div>
@@ -205,7 +205,7 @@ const Signup = () => {
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Niveau scolaire (*) :</span>
                                                 <div style={{ width: "100%", display: 'flex', justifyContent: 'space-evenly', paddingLeft: 0 }}>
                                                     {/* <input type="radio" id="premiere-bac" checked={inputFields.niveau === 'bac-1'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac-1' })} />
-                                                    <label style={{ margin: 0 }} htmlFor="premiere-bac">1ère bac</label> */}
+                                                    <label style={{ margin: 0 }} htmlFor="premiere-bac">1ère bac</label> */} 
 
                                                     <input type="radio" id="deuxieme-bac" checked={inputFields.niveau === 'bac'} onClick={() => setInputFields({ ...inputFields, niveau: 'bac' })} /> 
                                                     <label style={{ margin: 0 }} htmlFor="deuxieme-bac">2ème bac</label> 
@@ -249,7 +249,7 @@ const Signup = () => {
                                             </div>
                                             {showError && <span style={{ textAlign: 'center', display: 'block  ' }}>Tous les champs marqués en (*) doivent être remplis !</span>}
                                             <button style={{ margin: 'auto', marginTop: "3em", display: 'block' }} className="button special" onClick={() => handleSubmit()}>Confirmer</button>
-                                        </div>
+                                        </div> 
                                     </> : null
                         }
                     </div>

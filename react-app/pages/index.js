@@ -4,12 +4,12 @@ import Layout from '../components/Layout'
 import Banner from '../components/Banner' 
 import { useFetchUser } from '../lib/user'
 import Router from 'next/router'
-import { useEffect } from 'react'
+import { useEffect } from 'react' 
 
 export default () => {
- 
+  
     const { user, loading } = useFetchUser()  
-    useEffect(() => {
+    useEffect(() => { 
         Router.push('/profile')
     }) 
      
@@ -25,7 +25,7 @@ export default () => {
                             <header className="major"> 
                                 <h3>Publications</h3>  
                                 <p>Nos publications...</p>  
-                            </header>
+                            </header> 
                             <Link href="/publications"><a className="link primary"></a></Link> 
                         </article>
 
@@ -42,10 +42,10 @@ export default () => {
                                 <h3>Actualités</h3> 
                                 <p>Suivez nos actualités...</p>
                             </header>  
-                            <Link href="/actualites"><a className="link primary"></a></Link>
+                            <Link href="/actualites"><a className="link primary"></a></Link> 
                         </article>
    
- 
+  
                         <article style={{ backgroundImage: `url('/static/images/stages.jpg')` }}>
                             <header className="major"> 
                                 <h3>Stages</h3>
@@ -53,7 +53,7 @@ export default () => {
                             </header>
                             <Link href="/stages"><a className="link primary"></a></Link>
                         </article>
-
+ 
                     </section>
  
                     {/* <section id="two">
@@ -64,7 +64,7 @@ export default () => {
                         <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p> 
                         <ul className="actions">
                             <li><Link href="/landing"><a className="button next">Get Started</a></Link></li>  
-                        </ul>
+                        </ul> 
                     </div>
                 </section> */} 
                 </div>
@@ -72,4 +72,4 @@ export default () => {
             </div>
         </Layout>
     ) 
-}
+} 

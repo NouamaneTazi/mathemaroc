@@ -5,8 +5,8 @@ import { useFetchUser } from '../lib/user'
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
  
   
-const Reports = () => { 
-    const getUserData = async (user) => {
+const Reports = () => {  
+    const getUserData = async (user) => { 
         let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
         let json = await res.json() 
         Object.assign(user, json)
@@ -18,7 +18,7 @@ const Reports = () => {
         setTutors(new_tutors)
         setAwaitingStudents(awaitingStudents)
     }   
- 
+  
     const handleModClick = async (tutor, report_id) => {  
         if (tutor.reports[report_id].mod) { 
             delete tutor.reports[report_id].mod
@@ -31,12 +31,12 @@ const Reports = () => {
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         })
         setRefresh(!refresh) 
-    } 
+    }  
   
     let { user, loading } = useFetchUser()
     const [tutors, setTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([])
-    const [refresh, setRefresh] = useState(true)   
+    const [refresh, setRefresh] = useState(true)    
     const [replacingStudent, setReplacingStudent] = useState(false)
 
     useEffect(() => { 
@@ -62,7 +62,7 @@ const Reports = () => {
                         <p><b>Attention : </b> Fach tkhtaru TOUS les élèves à attribuer wdiru confirmer cava actualiser la page automatiquement wmaghatbqawch tlqaw le prof fhad la page. Donc faites attention avant de cliquer confirmer de bien selectionner tous les élèves concernés.</p>
 
                         {/* <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
-                        Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}
+                        Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */} 
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper">  
                                 <table>
@@ -76,7 +76,7 @@ const Reports = () => {
                                         </tr>  
                                     </thead>  
                                     <tbody>  
-
+ 
                                         {tutors.map(tutor => { 
                                             const asked_more_students = tutor.asked_more_students  
                                             return (  
@@ -101,7 +101,7 @@ const Reports = () => {
                 </section>  
             </Layout>
             }  
-        </> 
+        </>  
     ) 
 }
  

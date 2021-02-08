@@ -7,12 +7,12 @@ import MenuAdmin from '../components/MenuAdmin'
  
 const InputGroupId = ({ tutor }) => {   
     const setGroupId = async (tutor) => { 
-        // console.log(tutor, selectedGroupId)
+        // console.log(tutor, selectedGroupId) 
         await fetch('/api/mongodb', {   
             method: 'post',    
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
         })   
-        window.location.reload(false)  
+        window.location.reload(false)   
     } 
    
     const [selectedGroupId, setSelectedGroupId] = useState("")
@@ -29,14 +29,14 @@ const InputGroupId = ({ tutor }) => {
     </div>) 
 }  
      
-const Reports = () => {
+const Reports = () => { 
     const getUserData = async (user) => {    
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         if (!json.is_admin) Router.push('/profile')  
         Object.assign(user, json)   
         res = await fetch('/api/mongodb?getAwaitingTutors=true')   
-        const new_awaitingtutors = await res.json()    
+        const new_awaitingtutors = await res.json()     
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json() 
@@ -49,8 +49,8 @@ const Reports = () => {
         if (tutor.reports[report_id].mod) {    
             delete tutor.reports[report_id].mod  
         } else { 
-            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name } 
-        }  
+            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
+        }   
  
         const res = await fetch('/api/mongodb', {   
             method: 'post', 
@@ -71,26 +71,26 @@ const Reports = () => {
         }  
     }, [user, loading])  
     
-    return (     
+    return (      
         <> 
-            {/* {console.log(user)} */} 
+            {/* {console.log(user)} */}  
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
                     <title>Tuteurs en attente</title>   
-                    <meta name="description" content="Tuteurs en attente" /> 
+                    <meta name="description" content="Tuteurs en attente" />  
                 </Head>   
                 <MenuAdmin user={user}/> 
                 <section id="one"> 
                     <div className="inner" style={{maxWidth:"75em"}}>   
                         <header className="major">  
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>  
-                                : <h1>Vous n'êtes pas connectés</h1>}  
+                                : <h1>Vous n'êtes pas connectés</h1>}   
                         </header> 
   
                         <div className="12u 12u(medium)"> 
                             <div className="table-wrapper">  
                                 <table> 
-                                    <thead>  
+                                    <thead>   
                                         <tr>   
                                             <th>Tuteur</th> 
                                             <th>Statut</th>   
@@ -98,7 +98,7 @@ const Reports = () => {
                                             <th>Whatsapp</th>  
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>  
-                                            <th>Groupe</th>     
+                                            <th>Groupe</th>      
                                         </tr>  
                                     </thead> 
                                     <tbody>  
@@ -116,9 +116,9 @@ const Reports = () => {
                                         )  
                                         )} 
                                     </tbody> 
-                                </table>
+                                </table> 
                             </div>    
-                        </div>    
+                        </div>     
                     </div>  
     
                 </section>  

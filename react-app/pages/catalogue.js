@@ -66,16 +66,16 @@ const Reports = () => {
             Router.push('/profile')
         }
         setLoading(false) 
-    }
+    } 
 
     let { user, loading: userLoading } = useFetchUser() 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState()
-    const [awaitingStudents, setAwaitingStudents] = useState([]) 
+    const [awaitingStudents, setAwaitingStudents] = useState([])  
     const [filiereTerm, setFiliereTerm] = useState("")  
     const [matiereTerm, setMatiereTerm] = useState("")
     const [wishesTerm, setWishesTerm] = useState("") 
-    const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere']))
+    const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere'])) 
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes']))
     const [selectedStudents, setSelectedStudents] = useState([])
@@ -107,7 +107,7 @@ const Reports = () => {
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
 
     return (
-        <> 
+        <>  
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" />
             </Backdrop> 
@@ -154,7 +154,7 @@ const Reports = () => {
                         </header> 
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />  
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>    
-
+ 
                     </div> 
 
                     {selectedStudents.length > 0 && <>
@@ -182,7 +182,7 @@ const Reports = () => {
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                                 }</td> 
                                             </tr>  
-                                        ))
+                                        )) 
 
                                         }  
                                     </tbody> 
@@ -192,7 +192,7 @@ const Reports = () => {
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
                         </div> 
-                        <Divider style={{ marginBottom: "3em" }} />
+                        <Divider style={{ marginBottom: "3em" }} /> 
                     </>}
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
@@ -220,7 +220,7 @@ const Reports = () => {
                                             </div>
                                         </th> 
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th>
-                                        <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>
+                                        <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th> 
                                         <th>Selectionné</th> 
                                     </tr>
                                 </thead>
@@ -249,4 +249,4 @@ const Reports = () => {
     )
 } 
 
-export default Reports 
+export default Reports  

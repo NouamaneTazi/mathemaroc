@@ -6,7 +6,7 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions'; 
 import Typography from '@material-ui/core/Typography'; 
 import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
+import RadioGroup from '@material-ui/core/RadioGroup'; 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const DialogContent = withStyles(theme => ({
@@ -28,12 +28,12 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
         setOpen(false);
     };
  
-    const handleSubmit = async () => { 
+    const handleSubmit = async () => {  
         let report = {
             "student": { "_id": student._id, "name": `${student.firstname} ${student.lastname}` },
             "time": new Date(Date.now()).toLocaleString("en-US"),
             "text": reportText
-        }
+        } 
 
         if (reportOption === "other" || reportOption.substring(0, 3) === "del") {
             student.reported = true
@@ -48,13 +48,13 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                 method: 'post',
                 body: JSON.stringify({ _id: student._id, data: student })
             }) 
-        } else if (reportOption === "returnQueue") {
+        } else if (reportOption === "returnQueue") { 
             await fetch('/api/mongodb?unset=true', {
                 method: 'post',
                 body: JSON.stringify({ _id: student._id, data: { groupId: "" } })
             })
             report.replaced_by = { name: "retour liste d'attente" }
-            report.mod = { name: "Bot" }
+            report.mod = { name: "Bot" } 
         } 
 
         let reports = "reports" in tutor ? tutor.reports : []
@@ -67,8 +67,8 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
         handleClose();
     };
 
-    let [reportText, setReportText] = useState()
-    let [reportOption, setReportOption] = useState("")
+    let [reportText, setReportText] = useState() 
+    let [reportOption, setReportOption] = useState("") 
 
     return (
         <>
@@ -78,7 +78,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                         Signaler {student.fullname} :
           </Typography>
                     <Typography>
-                        Décrivez ce qui s'est passé :
+                        Décrivez ce qui s'est passé : 
           </Typography>
                 </DialogContent>
                 <DialogActions>
@@ -102,6 +102,6 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
           </Button> 
                 </DialogActions>
             </Dialog>
-        </>
+        </> 
     );
 }

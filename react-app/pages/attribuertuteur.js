@@ -30,13 +30,13 @@ const InputGroupId = ({ tutor }) => {
 }  
      
 const Reports = () => { 
-    const getUserData = async (user) => {    
+    const getUserData = async (user) => {     
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
-        let json = await res.json()
+        let json = await res.json() 
         if (!json.is_admin) Router.push('/profile')  
         Object.assign(user, json)   
         res = await fetch('/api/mongodb?getAwaitingTutors=true')   
-        const new_awaitingtutors = await res.json()      
+        const new_awaitingtutors = await res.json()       
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json() 
@@ -44,7 +44,7 @@ const Reports = () => {
         setAwaitingTutors(new_awaitingtutors) 
         setAwaitingStudents(awaitingStudents)   
     }   
-  
+   
     const handleModClick = async (tutor, report_id) => {
         if (tutor.reports[report_id].mod) {    
             delete tutor.reports[report_id].mod  
@@ -52,7 +52,7 @@ const Reports = () => {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
         }   
  
-        const res = await fetch('/api/mongodb', {    
+        const res = await fetch('/api/mongodb', {     
             method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })  
         }) 
@@ -83,17 +83,17 @@ const Reports = () => {
                 <section id="one"> 
                     <div className="inner" style={{maxWidth:"75em"}}>   
                         <header className="major">   
-                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>  
+                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>   
                                 : <h1>Vous n'êtes pas connectés</h1>}   
                         </header> 
-  
+   
                         <div className="12u 12u(medium)">  
                             <div className="table-wrapper">  
                                 <table> 
                                     <thead>    
                                         <tr>   
-                                            <th>Tuteur</th> 
-                                            <th>Statut</th>   
+                                            <th>Tuteur</th>  
+                                            <th>Statut</th>    
                                             <th>Matières</th>  
                                             <th>Whatsapp</th>  
                                             <th>Mail</th>  

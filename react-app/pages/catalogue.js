@@ -50,7 +50,7 @@ const Reports = () => {
                     method: 'post',
                     body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } }) 
                 })
-            }
+            } 
             let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : []
             catalogue_logs.push({
                 time: new Date(Date.now()).toLocaleString("en-US"),
@@ -60,7 +60,7 @@ const Reports = () => {
                 method: 'post', 
                 body: JSON.stringify({
                     _id: user._id, 
-                    data: { "catalogue_logs": catalogue_logs }
+                    data: { "catalogue_logs": catalogue_logs } 
                 })
             }) 
             Router.push('/profile')
@@ -106,7 +106,7 @@ const Reports = () => {
         return () => clearTimeout(timer);
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
 
-    return (
+    return ( 
         <>  
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" />
@@ -138,7 +138,7 @@ const Reports = () => {
                         Fermer
                         </Button> 
                 </Dialog>
- 
+  
 
                 <section id="one">
                     <div className="inner"> 
@@ -157,7 +157,7 @@ const Reports = () => {
  
                     </div> 
 
-                    {selectedStudents.length > 0 && <>
+                    {selectedStudents.length > 0 && <> 
                         <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
                             <div className="table-wrapper">
                                 <table> 
@@ -165,7 +165,7 @@ const Reports = () => {
                                         <tr>
                                             <th>Date de demande</th> 
                                             <th>Filière</th>
-                                            <th>Matières</th>
+                                            <th>Matières</th> 
                                             <th>Demandes</th>
                                             <th style={{ textAlign: 'center', verticalAlign: 'middle' }}>Selectionné</th>
                                         </tr>
@@ -196,19 +196,19 @@ const Reports = () => {
                     </>}
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
- 
+  
  
                         <div className="table-wrapper">
                             <table>
                                 <thead>
                                     <tr>  
                                         <th>Date de demande</th>
-                                        <th>Filière 
+                                        <th>Filière  
                                             <div className="select-wrapper" >
-                                                <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>
+                                                <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}> 
                                                     <option value="">- Filière -</option> 
                                                     <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>
-                                                    <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>  
+                                                    <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>   
                                                     <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option> 
                                                     <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
                                                     <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>

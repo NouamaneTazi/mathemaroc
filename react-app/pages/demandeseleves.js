@@ -1,22 +1,22 @@
 import Head from "next/head"  
 import { useState, useEffect, Fragment } from "react"
-import Layout from '../components/Layout'
+import Layout from '../components/Layout' 
 import { useFetchUser } from '../lib/user' 
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
  
   
 const Reports = () => {  
     const getUserData = async (user) => { 
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
         let json = await res.json() 
         Object.assign(user, json)
-        res = await fetch('/api/mongodb?getDemandesDeleves=true')  
+        res = await fetch('/api/mongodb?getDemandesDeleves=true')   
         const new_tutors = await res.json()
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json() 
  
         setTutors(new_tutors)
-        setAwaitingStudents(awaitingStudents)
+        setAwaitingStudents(awaitingStudents) 
     }   
   
     const handleModClick = async (tutor, report_id) => {  
@@ -32,15 +32,15 @@ const Reports = () => {
         })
         setRefresh(!refresh) 
     }  
-  
-    let { user, loading } = useFetchUser()
+   
+    let { user, loading } = useFetchUser() 
     const [tutors, setTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([])
     const [refresh, setRefresh] = useState(true)    
     const [replacingStudent, setReplacingStudent] = useState(false)
 
     useEffect(() => { 
-        // {console.log("useEffect", user, loading)}  
+        // {console.log("useEffect", user, loading)}   
         if (user && !loading) { 
             getUserData(user)  
         }
@@ -81,13 +81,13 @@ const Reports = () => {
                                             const asked_more_students = tutor.asked_more_students  
                                             return (  
                                                 <tr key={`${tutor._id}`}>   
-                                                    <td>{asked_more_students.time}</td> 
+                                                    <td>{asked_more_students.time}</td>  
                                                     <td>{tutor.firstname} {tutor.lastname}</td> 
                                                     <td>{tutor.groupId}</td> 
                                                     <td>{asked_more_students.number}</td> 
 
                                                     <td>  
-                                                        <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />  
+                                                        <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />   
                                                     </td>
                                                 </tr>)
                                         }  
@@ -95,7 +95,7 @@ const Reports = () => {
                                     </tbody>
                                 </table>
                             </div>
-                        </div>    
+                        </div>     
 
                     </div> 
                 </section>  

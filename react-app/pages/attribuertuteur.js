@@ -1,5 +1,5 @@
 import Head from "next/head"    
-import { useState, useEffect } from "react"  
+import { useState, useEffect } from "react"   
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
 import Router from "next/router"   
@@ -7,7 +7,7 @@ import MenuAdmin from '../components/MenuAdmin'
  
 const InputGroupId = ({ tutor }) => {   
     const setGroupId = async (tutor) => { 
-        // console.log(tutor, selectedGroupId) 
+        // console.log(tutor, selectedGroupId)  
         await fetch('/api/mongodb', {   
             method: 'post',     
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
@@ -18,7 +18,7 @@ const InputGroupId = ({ tutor }) => {
     const [selectedGroupId, setSelectedGroupId] = useState("")
 
     return (<div className="12u 12u(small)" >   
-        <input  
+        <input   
             type="text" 
             id="group_id" 
             name="group_id" 
@@ -33,7 +33,7 @@ const Reports = () => {
     const getUserData = async (user) => {     
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json() 
-        if (!json.is_admin) Router.push('/profile')  
+        if (!json.is_admin) Router.push('/profile')   
         Object.assign(user, json)   
         res = await fetch('/api/mongodb?getAwaitingTutors=true')   
         const new_awaitingtutors = await res.json()       
@@ -58,7 +58,7 @@ const Reports = () => {
         }) 
         setRefresh(!refresh)   
     } 
-   
+    
     let { user, loading } = useFetchUser()   
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([])  
@@ -77,11 +77,11 @@ const Reports = () => {
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
                     <title>Tuteurs en attente</title>   
-                    <meta name="description" content="Tuteurs en attente" />  
+                    <meta name="description" content="Tuteurs en attente" />   
                 </Head>   
                 <MenuAdmin user={user}/> 
                 <section id="one"> 
-                    <div className="inner" style={{maxWidth:"75em"}}>   
+                    <div className="inner" style={{maxWidth:"75em"}}>    
                         <header className="major">   
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>   
                                 : <h1>Vous n'êtes pas connectés</h1>}   
@@ -95,28 +95,28 @@ const Reports = () => {
                                             <th>Tuteur</th>  
                                             <th>Statut</th>    
                                             <th>Matières</th>  
-                                            <th>Whatsapp</th>  
+                                            <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>  
                                             <th>Groupe</th>      
                                         </tr>  
                                     </thead> 
-                                    <tbody>  
+                                    <tbody>   
  
                                         {awaitingtutors.map(tutor => ( 
                                             <tr key={`${tutor._id}`}>
                                                 <td>{tutor.firstname} {tutor.lastname}</td>   
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td>   
-                                                <td>{tutor.whatsapp}</td>
-                                                <td>{tutor.mail}</td>
+                                                <td>{tutor.whatsapp}</td> 
+                                                <td>{tutor.mail}</td> 
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>   
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>  
                                             </tr>   
                                         )  
-                                        )} 
+                                        )}  
                                     </tbody> 
-                                </table> 
+                                </table>  
                             </div>    
                         </div>     
                     </div>  
@@ -129,4 +129,4 @@ const Reports = () => {
 } 
   
  
-export default Reports   
+export default Reports    

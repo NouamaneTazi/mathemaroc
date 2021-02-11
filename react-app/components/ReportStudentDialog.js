@@ -9,7 +9,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup'; 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-const DialogContent = withStyles(theme => ({
+const DialogContent = withStyles(theme => ({ 
     root: {
         padding: theme.spacing(2),
     },
@@ -19,7 +19,7 @@ const DialogActions = withStyles(theme => ({
     root: {
         margin: 0,
         padding: theme.spacing(1),
-    }, 
+    },  
 }))(MuiDialogActions);
 
 export default function CustomizedDialogs({ student, setOpen, tutor }) {
@@ -41,7 +41,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
             student.prev_groupId = tutor.groupId
             if (reportOption.substring(0, 3) === "del") {
                 student.groupId = -1 
-                report.replaced_by = { name: "--" }
+                report.replaced_by = { name: "--" } 
                 report.mod = { name: "Bot" }
             }
             await fetch('/api/mongodb', {
@@ -54,7 +54,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                 body: JSON.stringify({ _id: student._id, data: { groupId: "" } })
             })
             report.replaced_by = { name: "retour liste d'attente" }
-            report.mod = { name: "Bot" } 
+            report.mod = { name: "Bot" }  
         } 
 
         let reports = "reports" in tutor ? tutor.reports : []
@@ -63,9 +63,9 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
         await fetch('/api/mongodb', { 
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: reports } })
-        })
+        }) 
         handleClose();
-    };
+    }; 
 
     let [reportText, setReportText] = useState() 
     let [reportOption, setReportOption] = useState("") 
@@ -74,12 +74,12 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
         <>
             <Dialog aria-labelledby="customized-dialog-title" open={student ? true : false} fullWidth>
                 <DialogContent dividers>
-                    <Typography variant="h5" gutterBottom style={{ color: "black" }}>
+                    <Typography variant="h5" gutterBottom style={{ color: "black" }}> 
                         Signaler {student.fullname} :
           </Typography>
                     <Typography>
                         Décrivez ce qui s'est passé : 
-          </Typography>
+          </Typography> 
                 </DialogContent>
                 <DialogActions>
                     <div className="12u">
@@ -88,7 +88,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                             <FormControlLabel value="delete-2" control={<Radio />} name="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." label="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." style={{ color: "black", textTransform: "none", margin: "0" }} />
                             <FormControlLabel value="returnQueue" control={<Radio />} name="L'élève doit revenir à la liste d'attente." label="L'élève doit revenir à la liste d'attente." style={{ color: "black", textTransform: "none", margin: "0" }} /> 
                             <FormControlLabel value="other" control={<Radio />} name="Autre" label="Autre" style={{ color: "black", textTransform: "none", margin: "0" }} />
-                        </RadioGroup>
+                        </RadioGroup> 
                         {reportOption === "other" && <textarea name="report-text" id={`dialog-${student._id}`} style={{ color: "white" }} placeholder="Décrivez ce qui s'est passé.." rows="6" value={reportText} onChange={e => setReportText(e.target.value)}></textarea>} 
                     </div>
                 </DialogActions>
@@ -103,5 +103,5 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                 </DialogActions>
             </Dialog>
         </> 
-    );
+    ); 
 }

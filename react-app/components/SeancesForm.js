@@ -1,5 +1,5 @@
 import { useState, useEffect, StrictMode } from "react"
-import moment from 'moment' 
+import moment from 'moment'  
 import Icon from '@material-ui/core/Icon';
 import Rating from 'react-rating'
  
@@ -15,7 +15,7 @@ const Seances = ({ user }) => {
         const values = [...inputFields];
         values.splice(index, 1);
         setInputFields(values);
-    };  
+    };   
  
     const handleInputChange = (index, event) => {
         const values = [...inputFields]; 
@@ -30,10 +30,10 @@ const Seances = ({ user }) => {
             date = moment(date, ["DD-MM-YYYY", "DD/MM/YYYY", 'YYYY-MM-DD', 'YYYY/MM/DD'], true)
             if (moment("2020-03-20") <= date && date < moment().add(1, 'M')) { 
                 const values = [...inputFields];
-                values[index][event.target.name] = date.format('YYYY-MM-DD')
+                values[index][event.target.name] = date.format('YYYY-MM-DD') 
                 setInputFields(values) 
             }
-        }
+        } 
     } 
 
     const handleAbsentsChange = (index, absentStudent) => {
@@ -66,7 +66,7 @@ const Seances = ({ user }) => {
         <>
             {/* {console.log('inputs', inputFields)} */}
             <div className='inner' style={{ padding: 0 }}>
-                <h2>Séances</h2>
+                <h2>Séances</h2> 
                 <div className="table-wrapper">
                     <table> 
                         <thead>
@@ -80,7 +80,7 @@ const Seances = ({ user }) => {
                                 <th></th>
                             </tr>
                         </thead> 
-                        {editMode ? <tbody>
+                        {editMode ? <tbody> 
                             {inputFields.map((inputField, index) => (
                                 <tr key={`${inputField}~${index}`}>
                                     <td style={{ width: '10%' }}>
@@ -114,13 +114,13 @@ const Seances = ({ user }) => {
                                                 {/* TODO: handle checked for absent students */} 
                                                 <input type="checkbox" id={`${index}-${student._id}`} onChange={() => handleAbsentsChange(index, student)} />
                                                 <label htmlFor={`${index}-${student._id}`}>{student.fullname}</label>
-                                            </div>
+                                            </div> 
                                         ))
                                         } 
                                     </td>
 
-                                    <td>
-                                        <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea> 
+                                    <td> 
+                                        <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea>  
 
                                     </td>
                                     <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
@@ -143,17 +143,17 @@ const Seances = ({ user }) => {
                             </tr>
                         </tbody>  
                             : <tbody>
-                                {inputFields.map((inputField, index) => ( 
+                                {inputFields.map((inputField, index) => (  
                                     <tr key={`${inputField}~${index}`}>
                                         <td>{inputField.date ? moment(inputField.date, ['YYYY-MM-DD']).format('DD MMM YYYY') : ""}</td>
                                         <td>{inputField.duree}</td>
                                         <td>{inputField.chapitres}</td>
                                         <td>{Object.values(inputField.absents).join(', ')}</td> 
-                                        <td>{inputField.remarques}</td>
+                                        <td>{inputField.remarques}</td> 
                                         <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
                                             <Rating
                                                 readonly
-                                                initialRating={inputFields[index].rating}
+                                                initialRating={inputFields[index].rating} 
                                                 onChange={(val) => handleInputChange(index, { target: { name: 'rating', value: val } })}
                                                 emptySymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white" }}>{x}</Icon>)}
                                                 fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "#2ea1d9" }}>{x}</Icon>)}
@@ -170,7 +170,7 @@ const Seances = ({ user }) => {
                     {editMode ? 
                         <button className="button" onClick={() => handleSubmitSeances()}>Enregistrer</button>
  
-                        : <button className="button icon fa-pencil" onClick={() => {
+                        : <button className="button icon fa-pencil" onClick={() => { 
                             setSavedSuccess(false)
                             setEditMode(true)
                         }}>Modifier</button>  

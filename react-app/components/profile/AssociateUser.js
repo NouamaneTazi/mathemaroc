@@ -1,6 +1,6 @@
 import SearchInput, { createFilter } from 'react-search-input' 
 import { useState, useEffect } from "react"
-import { withStyles, makeStyles } from '@material-ui/core/styles'; 
+import { withStyles, makeStyles } from '@material-ui/core/styles';  
 import Tooltip from '@material-ui/core/Tooltip';
 import Link from 'next/link'
 
@@ -9,20 +9,20 @@ const AssociateUser = ({ user }) => {
         let res = await fetch('/api/mongodb?role=tutor') // find all tutors 
         const json = await res.json() 
         // console.log("tutors", json)
-        setTutors(json)
+        setTutors(json) 
     }
     const associateTutor = async (tutor) => { 
         Object.assign(user, tutor); 
         user.auth0id = user.sub
         const res = await fetch('/api/mongodb', {
             method: 'post',  
-            body: JSON.stringify({ _id: tutor._id, data: user })
+            body: JSON.stringify({ _id: tutor._id, data: user }) 
         })
         window.location.reload(false);
     }
 
     const [searchTerm, setSearchTerm] = useState("") 
-    let selectedTutor = "" 
+    let selectedTutor = ""  
     const [tutors, setTutors] = useState([])
     const filteredTutors = tutors.filter(createFilter(searchTerm, ['firstname', 'lastname'])) 
     const CustomizedTooltip = withStyles(theme => ({ 
@@ -32,18 +32,18 @@ const AssociateUser = ({ user }) => {
             boxShadow: theme.shadows[1],
             fontSize: 16, 
         }, 
-    }))(Tooltip)
+    }))(Tooltip) 
  
     useEffect(() => {
-        getTutorsSuggestions()
+        getTutorsSuggestions() 
     },[])
 
     return (<div id="main" className="alt">
         <section id="one"> 
             <div className="inner">
                 <header className="major">
-                    <h1>Profil</h1>
-                </header> 
+                    <h1>Profil</h1> 
+                </header>  
 
                 <div className="row 200%">
                     <div className="12u 12u(medium)">
@@ -73,5 +73,5 @@ const AssociateUser = ({ user }) => {
     </div>
     )
 } 
-
-export default AssociateUser
+ 
+export default AssociateUser 

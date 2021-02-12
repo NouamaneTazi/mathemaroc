@@ -96,7 +96,7 @@
         "counts": "5"
     },
     {
-        "name": "El Kelaa",
+        "name": "El Kelaa", 
         "longitude": -7.40499838,
         "latitude": 32.042166498, 
         "counts": "24" 
@@ -106,7 +106,7 @@
         "longitude": -9.76448,
         "latitude": 31.51141,
         "counts": "22"
-    },
+    }, 
     {
         "name": "Kelaa-Des-Sraghna",
         "longitude": -7.40499838,
@@ -133,10 +133,10 @@
     },
     {
         "name": "Jerada",
-        "longitude": -2.158166034, 
+        "longitude": -2.158166034,  
         "latitude": 34.306998772, 
         "counts": "1"
-    },
+    }, 
     { 
         "name": "Nador", 
         "longitude": -2.9241,
@@ -190,11 +190,11 @@
         "longitude": -5.3678,
         "latitude": 33.6857,
         "counts": "15" 
-    },
+    }, 
     { 
         "name": "Errachidia", 
         "longitude": -4.45363,
-        "latitude": 31.94102, 
+        "latitude": 31.94102,  
         "counts": "55" 
     },
     {
@@ -206,7 +206,7 @@
     { 
         "name": "Khenifra",
         "longitude": -5.65383,
-        "latitude": 32.93877, 
+        "latitude": 32.93877,  
         "counts": "13"
     }, 
     {
@@ -304,7 +304,7 @@
         "longitude": -5.99989,
         "latitude": 35.47219,
         "counts": "136"
-    },
+    }, 
     {
         "name": "Tetouan",
         "longitude": -5.35736, 
@@ -324,7 +324,7 @@
         "counts": "16"
     },  
     {
-        "name": "Mohammedia",
+        "name": "Mohammedia", 
         "longitude": -7.38491, 
         "latitude": 33.69241,
         "counts": "26"
@@ -359,7 +359,7 @@
         "latitude": 34.5369,  
         "counts": "34"
     }, 
-    {
+    { 
         "name": "Taza",
         "longitude": -4.00875,
         "latitude": 34.22619,

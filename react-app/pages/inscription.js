@@ -37,12 +37,12 @@ const Signup = () => {
             setRefresh(!refresh) 
         } 
     }
-
+ 
     const handleSubmit = async () => {
         const requiredFields = role === "tutor" ? ['firstname', 'lastname', 'statut', 'mail'] : ['firstname', 'lastname', 'mail', 'lycee', 'ville', 'niveau', 'filiere', 'matieres', 'wishes']
         if (requiredFields.every(x => (x in inputFields && inputFields[x] !== ''))) { 
-            if (!isEmail(inputFields.mail + '')) {
-                setError({ mail: true })
+            if (!isEmail(inputFields.mail + '')) { 
+                setError({ mail: true }) 
             } else {
                 setLoading(true)
                 if (role === "student") { 
@@ -69,7 +69,7 @@ const Signup = () => {
             let errors = {}
             requiredFields.map(x => (x in inputFields && inputFields[x] !== '') ? null : errors[x] = true)
             setError({ ...errors }) 
-            setShowError(true)
+            setShowError(true) 
         }
         // console.log("error", error)
     }
@@ -115,9 +115,9 @@ const Signup = () => {
                 <section id="one">
                     <div className="inner">
                         <header className="major">
-                            <h1>Inscription</h1>
+                            <h1>Inscription</h1> 
                         </header>
-                        {!role ?
+                        {!role ? 
                             <>
                                 <h2 style={{ textAlign: 'center' }}>Vous êtes :</h2>
                                 <div className="row">
@@ -173,7 +173,7 @@ const Signup = () => {
                                                 <i style={{ fontSize: "5em" }} class="fas fa-book-reader"></i>
                                                 <p style={{ fontWeight: 600, fontSize: "2em", marginBottom: "1em" }}>Élève</p>
                                             </div>
-                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
+                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
                                                 <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname:capitalize(e.target.value) })} placeholder="Prénom" /> 
                                             </div>
@@ -193,14 +193,14 @@ const Signup = () => {
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Adresse e-mail (*) :</span> 
                                                 <input className={error.mail ? "invalid" : null} type="email" value={inputFields.mail} onChange={e => setInputFields({ ...inputFields, mail: e.target.value })} placeholder="E-mail que vous consultez régulièrement..." />
                                             </div>
-                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
+                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom du lycée (*) :</span>
                                                 <input className={error.lycee ? "invalid" : null} type="text" value={inputFields.lycee} onChange={e => setInputFields({ ...inputFields, lycee: e.target.value })} placeholder="Nom de votre lycée" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Ville du lycée (*) :</span>
                                                 <input className={error.ville ? "invalid" : null} type="text" value={inputFields.ville} onChange={e => setInputFields({ ...inputFields, ville: e.target.value })} placeholder="Ville de votre lycée" /> 
-                                            </div>
+                                            </div> 
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Niveau scolaire (*) :</span>
                                                 <div style={{ width: "100%", display: 'flex', justifyContent: 'space-evenly', paddingLeft: 0 }}>

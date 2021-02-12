@@ -5,7 +5,7 @@ import { useFetchUser } from '../lib/user'
 import Router from "next/router"   
 import MenuAdmin from '../components/MenuAdmin'  
  
-const InputGroupId = ({ tutor }) => {   
+const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => { 
         // console.log(tutor, selectedGroupId)  
         await fetch('/api/mongodb', {   
@@ -15,7 +15,7 @@ const InputGroupId = ({ tutor }) => {
         window.location.reload(false)   
     } 
    
-    const [selectedGroupId, setSelectedGroupId] = useState("")
+    const [selectedGroupId, setSelectedGroupId] = useState("") 
 
     return (<div className="12u 12u(small)" >   
         <input   
@@ -25,13 +25,13 @@ const InputGroupId = ({ tutor }) => {
             value={selectedGroupId}  
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
         />  
-        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>} 
+        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}  
     </div>) 
 }  
      
 const Reports = () => { 
     const getUserData = async (user) => {     
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub)
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
         let json = await res.json() 
         if (!json.is_admin) Router.push('/profile')   
         Object.assign(user, json)   
@@ -45,7 +45,7 @@ const Reports = () => {
         setAwaitingStudents(awaitingStudents)   
     }   
    
-    const handleModClick = async (tutor, report_id) => {
+    const handleModClick = async (tutor, report_id) => { 
         if (tutor.reports[report_id].mod) {    
             delete tutor.reports[report_id].mod  
         } else { 
@@ -53,7 +53,7 @@ const Reports = () => {
         }   
  
         const res = await fetch('/api/mongodb', {     
-            method: 'post', 
+            method: 'post',  
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })  
         }) 
         setRefresh(!refresh)   
@@ -78,14 +78,14 @@ const Reports = () => {
                 <Head>
                     <title>Tuteurs en attente</title>   
                     <meta name="description" content="Tuteurs en attente" />   
-                </Head>   
+                </Head>    
                 <MenuAdmin user={user}/> 
                 <section id="one"> 
-                    <div className="inner" style={{maxWidth:"75em"}}>    
+                    <div className="inner" style={{maxWidth:"75em"}}>     
                         <header className="major">   
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>   
-                                : <h1>Vous n'êtes pas connectés</h1>}   
-                        </header> 
+                                : <h1>Vous n'êtes pas connectés</h1>}    
+                        </header>  
    
                         <div className="12u 12u(medium)">  
                             <div className="table-wrapper">  
@@ -94,7 +94,7 @@ const Reports = () => {
                                         <tr>   
                                             <th>Tuteur</th>  
                                             <th>Statut</th>    
-                                            <th>Matières</th>  
+                                            <th>Matières</th>   
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>  
@@ -124,7 +124,7 @@ const Reports = () => {
                 </section>  
             </Layout>  
             }   
-        </> 
+        </>  
     )
 } 
   

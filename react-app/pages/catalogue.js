@@ -26,7 +26,7 @@ const Reports = () => {
         }  
         // console.log("u",user)
     }
-
+ 
     const getAwaitingStudentsData = async () => {
         let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits  
         const awaitingStudents = await res.json() 
@@ -43,7 +43,7 @@ const Reports = () => {
     const handleSubmit = async () => {
         if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) { 
             setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' }) 
-        } 
+        }  
         else {
             for (let student of selectedStudents) {
                 await fetch('/api/mongodb', {
@@ -59,7 +59,7 @@ const Reports = () => {
             await fetch('/api/mongodb', {
                 method: 'post', 
                 body: JSON.stringify({
-                    _id: user._id, 
+                    _id: user._id,  
                     data: { "catalogue_logs": catalogue_logs } 
                 })
             }) 
@@ -67,7 +67,7 @@ const Reports = () => {
         }
         setLoading(false) 
     } 
-
+ 
     let { user, loading: userLoading } = useFetchUser() 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState()
@@ -80,8 +80,8 @@ const Reports = () => {
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes']))
     const [selectedStudents, setSelectedStudents] = useState([])
     const [maxRows, setMaxRows] = useState(10)
-    const [userHasNoStudents, setUserHasNoStudents] = useState(false) 
-
+    const [userHasNoStudents, setUserHasNoStudents] = useState(false)  
+ 
     useEffect(() => { 
         // { console.log("useEffect", user, userLoading) }
         if (user && !userLoading) {
@@ -110,19 +110,19 @@ const Reports = () => {
         <>  
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" />
-            </Backdrop> 
+            </Backdrop>  
             {!loading && user && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Catalogue à élèves</title>
                     <meta name="description" content="Catalogue des élèves" /> 
                 </Head>
 
-                <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth>
+                <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth> 
                     <MuiDialogContent dividers>
                         <Typography variant="h5" color="primary" align="center">
                             Bienvenue {user.fullname} !
                         </Typography>
-                        <Typography align="left">
+                        <Typography align="left"> 
                             <br /> 
                             <ul>
                                 <li>
@@ -152,7 +152,7 @@ const Reports = () => {
                         <header className="major"> 
                             <h1>Catalogue des élèves</h1> 
                         </header> 
-                        <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />  
+                        <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />   
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>    
  
                     </div> 
@@ -183,9 +183,9 @@ const Reports = () => {
                                                 }</td> 
                                             </tr>  
                                         )) 
-
+ 
                                         }  
-                                    </tbody> 
+                                    </tbody>  
                                 </table>
                             </div>  
                             {error && <Alert severity="error">{error.message}</Alert>}
@@ -249,4 +249,4 @@ const Reports = () => {
     )
 } 
 
-export default Reports  
+export default Reports   

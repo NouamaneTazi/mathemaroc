@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
 
 const Reports = () => { 
-    const getUserData = async (user) => {
+    const getUserData = async (user) => { 
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
         let json = await res.json()
         Object.assign(user, json) 
@@ -28,7 +28,7 @@ const Reports = () => {
     }
  
     const getAwaitingStudentsData = async () => {
-        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits  
+        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits   
         const awaitingStudents = await res.json() 
         setAwaitingStudents(awaitingStudents)
         setLoading(false)
@@ -51,7 +51,7 @@ const Reports = () => {
                     body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } }) 
                 })
             } 
-            let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : []
+            let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : [] 
             catalogue_logs.push({
                 time: new Date(Date.now()).toLocaleString("en-US"),
                 students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname }))
@@ -83,10 +83,10 @@ const Reports = () => {
     const [userHasNoStudents, setUserHasNoStudents] = useState(false)  
  
     useEffect(() => { 
-        // { console.log("useEffect", user, userLoading) }
+        // { console.log("useEffect", user, userLoading) } 
         if (user && !userLoading) {
             setLoading(true)
-            getUserData(user)  
+            getUserData(user)   
             getAwaitingStudentsData() 
         } 
         else if (!userLoading && !user) {  
@@ -127,12 +127,12 @@ const Reports = () => {
                             <ul>
                                 <li>
                                     Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li> 
-                                <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li> 
+                                <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li>  
                                 <li>Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! </li>
                             </ul>
                         </Typography>
  
-                    </MuiDialogContent> 
+                    </MuiDialogContent>  
 
                     <Button autoFocus onClick={() => setUserHasNoStudents(false)} color="primary">
                         Fermer
@@ -149,7 +149,7 @@ const Reports = () => {
                                 </Link>
                             </div>  
                         } 
-                        <header className="major"> 
+                        <header className="major">  
                             <h1>Catalogue des élèves</h1> 
                         </header> 
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />   
@@ -196,7 +196,7 @@ const Reports = () => {
                     </>}
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
-  
+   
  
                         <div className="table-wrapper">
                             <table>
@@ -217,7 +217,7 @@ const Reports = () => {
                                                     <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option> 
                                                     <option value="Bac Pro">BAC PRO</option>
                                                 </select>
-                                            </div>
+                                            </div> 
                                         </th> 
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th>
                                         <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th> 
@@ -232,7 +232,7 @@ const Reports = () => {
                                             <td style={{ width: "50%" }}>{student.matiere}</td> 
                                             <td style={{ width: "40%" }}>{student.wishes}</td>   
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?  
-                                                <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
+                                                <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
                                         </tr> 

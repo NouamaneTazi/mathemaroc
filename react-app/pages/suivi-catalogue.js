@@ -1,15 +1,15 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
-import Layout from '../components/Layout' 
+import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'
-import SeancesLineChart from '../components/SeancesLineChart'
+import SeancesLineChart from '../components/SeancesLineChart' 
 
 import moment from "moment"
 
 const Admin = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
-        let json = await res.json()
+        let json = await res.json() 
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getCatalogueLogs=true')
         const value = await res.json() 
@@ -19,7 +19,7 @@ const Admin = () => {
 
     const getNumberSeances = tutors => {
         let seances = tutors.map(tutor => tutor.seances).filter(seance => seance !== undefined && seance.length > 0)
-        // console.log("seances",seances)
+        // console.log("seances",seances) 
         return seances.reduce((acc, seance) => acc + seance.length, 0)
     } 
 
@@ -27,7 +27,7 @@ const Admin = () => {
         if (tutor.seances[seance_id].mod) {
             delete tutor.seances[seance_id].mod
         } else { 
-            tutor.seances[seance_id].mod = { "id": user.sub, "name": user.name }
+            tutor.seances[seance_id].mod = { "id": user.sub, "name": user.name } 
         }
 
         const res = await fetch('/api/mongodb', {
@@ -41,7 +41,7 @@ const Admin = () => {
     const [tutors, setTutors] = useState([])
     const [refresh, setRefresh] = useState(true)
 
-    useEffect(() => {
+    useEffect(() => { 
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
             getUserData(user)
@@ -97,7 +97,7 @@ const Admin = () => {
                                                         {(index_activity == 0) && <th rowSpan={tutor.catalogue_logs.length} style={{ verticalAlign: "middle" }}>{tutor.fullname}</th>} 
                                                         <td style={{ verticalAlign: "middle" }}>{activity.time}</td> 
                                                         <td>{activity.students.map(s=>s.name).join(" - ")}</td>
-                                                        <td>{activity.students.length}</td> 
+                                                        <td>{activity.students.length}</td>  
                                                     </tr>
                                                 ))} 
                                                 {tutor.catalogue_logs.length > 0 && <tr style={{ height: "50px" }}></tr>}
@@ -105,12 +105,12 @@ const Admin = () => {
                                         )
                                     })}
                                 </tbody> 
-                            </table>
+                            </table> 
                         </div> 
 
  
                     </div>
-                </section >
+                </section > 
             </Layout >
             }
         </>

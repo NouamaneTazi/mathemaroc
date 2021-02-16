@@ -21,7 +21,7 @@ const InputGroupId = ({ tutor }) => {
         <input   
             type="text" 
             id="group_id" 
-            name="group_id" 
+            name="group_id"  
             value={selectedGroupId}  
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
         />   
@@ -47,7 +47,7 @@ const Reports = () => {
     
     const handleModClick = async (tutor, report_id) => { 
         if (tutor.reports[report_id].mod) {    
-            delete tutor.reports[report_id].mod  
+            delete tutor.reports[report_id].mod   
         } else { 
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
         }   
@@ -58,7 +58,7 @@ const Reports = () => {
         }) 
         setRefresh(!refresh)   
     } 
-    
+     
     let { user, loading } = useFetchUser()   
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([])   
@@ -88,7 +88,7 @@ const Reports = () => {
                         </header>  
    
                         <div className="12u 12u(medium)">  
-                            <div className="table-wrapper">  
+                            <div className="table-wrapper">   
                                 <table> 
                                     <thead>    
                                         <tr>   
@@ -114,9 +114,9 @@ const Reports = () => {
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>  
                                             </tr>   
                                         )  
-                                        )}  
+                                        )}   
                                     </tbody> 
-                                </table>   
+                                </table>    
                             </div>    
                         </div>     
                     </div>  
@@ -125,8 +125,8 @@ const Reports = () => {
             </Layout>  
             }   
         </>  
-    )
+    ) 
 } 
   
- 
+  
 export default Reports     

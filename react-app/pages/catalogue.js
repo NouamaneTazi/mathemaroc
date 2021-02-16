@@ -9,7 +9,7 @@ import SearchInput, { createFilter } from 'react-search-input'
 import Router from 'next/router'
 import Link from 'next/link' 
 import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress'; 
 import Button from '@material-ui/core/Button'; 
 import Dialog from '@material-ui/core/Dialog'; 
 import MuiDialogContent from '@material-ui/core/DialogContent'; 
@@ -34,14 +34,14 @@ const Reports = () => {
         setLoading(false)
     } 
  
-    const handleSelectStudent = (student) => { 
+    const handleSelectStudent = (student) => {  
         let value = selectedStudents 
         value.push(student)
         setSelectedStudents([...value])
     }
  
     const handleSubmit = async () => {
-        if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) { 
+        if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) {  
             setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' }) 
         }  
         else {
@@ -54,7 +54,7 @@ const Reports = () => {
             let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : [] 
             catalogue_logs.push({
                 time: new Date(Date.now()).toLocaleString("en-US"),
-                students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname }))
+                students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname })) 
             })
             await fetch('/api/mongodb', {
                 method: 'post', 
@@ -63,16 +63,16 @@ const Reports = () => {
                     data: { "catalogue_logs": catalogue_logs } 
                 })
             }) 
-            Router.push('/profile')
+            Router.push('/profile') 
         }
         setLoading(false) 
     } 
  
     let { user, loading: userLoading } = useFetchUser() 
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState()
+    const [error, setError] = useState() 
     const [awaitingStudents, setAwaitingStudents] = useState([])  
-    const [filiereTerm, setFiliereTerm] = useState("")  
+    const [filiereTerm, setFiliereTerm] = useState("")   
     const [matiereTerm, setMatiereTerm] = useState("")
     const [wishesTerm, setWishesTerm] = useState("") 
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere'])) 
@@ -123,11 +123,11 @@ const Reports = () => {
                             Bienvenue {user.fullname} !
                         </Typography>
                         <Typography align="left"> 
-                            <br /> 
+                            <br />  
                             <ul>
                                 <li>
                                     Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li> 
-                                <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li>  
+                                <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li>   
                                 <li>Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! </li>
                             </ul>
                         </Typography>
@@ -167,7 +167,7 @@ const Reports = () => {
                                             <th>Filière</th>
                                             <th>Matières</th> 
                                             <th>Demandes</th>
-                                            <th style={{ textAlign: 'center', verticalAlign: 'middle' }}>Selectionné</th>
+                                            <th style={{ textAlign: 'center', verticalAlign: 'middle' }}>Selectionné</th> 
                                         </tr>
                                     </thead>
                                     <tbody> 
@@ -177,7 +177,7 @@ const Reports = () => {
                                                 <td>{student.filiere}</td> 
                                                 <td>{student.matiere}</td> 
                                                 <td>{student.wishes}</td>
-                                                <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ? 
+                                                <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?  
                                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                                 }</td> 
@@ -187,8 +187,8 @@ const Reports = () => {
                                         }  
                                     </tbody>  
                                 </table>
-                            </div>  
-                            {error && <Alert severity="error">{error.message}</Alert>}
+                            </div>   
+                            {error && <Alert severity="error">{error.message}</Alert>} 
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
                         </div> 
@@ -203,7 +203,7 @@ const Reports = () => {
                                 <thead>
                                     <tr>  
                                         <th>Date de demande</th>
-                                        <th>Filière  
+                                        <th>Filière   
                                             <div className="select-wrapper" >
                                                 <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}> 
                                                     <option value="">- Filière -</option> 

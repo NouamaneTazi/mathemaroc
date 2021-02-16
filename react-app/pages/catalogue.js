@@ -12,7 +12,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress'; 
 import Button from '@material-ui/core/Button'; 
 import Dialog from '@material-ui/core/Dialog'; 
-import MuiDialogContent from '@material-ui/core/DialogContent'; 
+import MuiDialogContent from '@material-ui/core/DialogContent';  
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
 
@@ -90,7 +90,7 @@ const Reports = () => {
             getAwaitingStudentsData() 
         } 
         else if (!userLoading && !user) {  
-            Router.push('/profile')
+            Router.push('/profile') 
         }
     }, [user, userLoading])
  
@@ -105,16 +105,16 @@ const Reports = () => {
 
         return () => clearTimeout(timer);
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
-
+ 
     return ( 
-        <>  
+        <>   
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" />
             </Backdrop>  
             {!loading && user && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Catalogue à élèves</title>
-                    <meta name="description" content="Catalogue des élèves" /> 
+                    <meta name="description" content="Catalogue des élèves" />  
                 </Head>
 
                 <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth> 
@@ -126,7 +126,7 @@ const Reports = () => {
                             <br />  
                             <ul>
                                 <li>
-                                    Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li> 
+                                    Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li>  
                                 <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li>   
                                 <li>Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! </li>
                             </ul>
@@ -140,7 +140,7 @@ const Reports = () => {
                 </Dialog>
   
 
-                <section id="one">
+                <section id="one"> 
                     <div className="inner"> 
                         {(user.students && user.students.length !== 0) && 
                             <div style={{ marginBottom: "2em" }}>
@@ -150,7 +150,7 @@ const Reports = () => {
                             </div>  
                         } 
                         <header className="major">  
-                            <h1>Catalogue des élèves</h1> 
+                            <h1>Catalogue des élèves</h1>  
                         </header> 
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />   
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>    
@@ -174,11 +174,11 @@ const Reports = () => {
                                         {selectedStudents.map(student => (
                                             <tr key={`${student._id}`}>
                                                 <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
-                                                <td>{student.filiere}</td> 
+                                                <td>{student.filiere}</td>  
                                                 <td>{student.matiere}</td> 
                                                 <td>{student.wishes}</td>
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?  
-                                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
+                                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                                 }</td> 
                                             </tr>  
@@ -219,7 +219,7 @@ const Reports = () => {
                                                 </select>
                                             </div> 
                                         </th> 
-                                        <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th>
+                                        <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th> 
                                         <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th> 
                                         <th>Selectionné</th> 
                                     </tr>
@@ -227,17 +227,17 @@ const Reports = () => {
                                 <tbody>
                                     {filteredWishesStudents.slice(0, maxRows).map(student => ( 
                                         <tr key={`${student._id}`}> 
-                                            <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>  
+                                            <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>   
                                             <td>{student.filiere}</td>
                                             <td style={{ width: "50%" }}>{student.matiere}</td> 
-                                            <td style={{ width: "40%" }}>{student.wishes}</td>   
+                                            <td style={{ width: "40%" }}>{student.wishes}</td>    
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?  
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
                                         </tr> 
                                     ))}  
-                                </tbody> 
+                                </tbody>  
                             </table>  
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
                         </div>

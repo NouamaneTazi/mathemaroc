@@ -4,9 +4,9 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
 import Router from "next/router"   
 import MenuAdmin from '../components/MenuAdmin'  
- 
+  
 const InputGroupId = ({ tutor }) => {    
-    const setGroupId = async (tutor) => { 
+    const setGroupId = async (tutor) => {  
         // console.log(tutor, selectedGroupId)  
         await fetch('/api/mongodb', {   
             method: 'post',     
@@ -74,7 +74,7 @@ const Reports = () => {
     return (      
         <> 
             {/* {console.log(user)} */}  
-            {!loading && <Layout user={user} loading={loading}>
+            {!loading && <Layout user={user} loading={loading}> 
                 <Head>
                     <title>Tuteurs en attente</title>   
                     <meta name="description" content="Tuteurs en attente" />   
@@ -82,7 +82,7 @@ const Reports = () => {
                 <MenuAdmin user={user}/> 
                 <section id="one"> 
                     <div className="inner" style={{maxWidth:"75em"}}>     
-                        <header className="major">   
+                        <header className="major">    
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>    
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>  
@@ -99,7 +99,7 @@ const Reports = () => {
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>  
                                             <th>Groupe</th>      
-                                        </tr>  
+                                        </tr>   
                                     </thead> 
                                     <tbody>   
  
@@ -111,13 +111,13 @@ const Reports = () => {
                                                 <td>{tutor.whatsapp}</td> 
                                                 <td>{tutor.mail}</td>  
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>   
-                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>  
+                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>   
                                             </tr>   
                                         )  
                                         )}   
                                     </tbody> 
                                 </table>    
-                            </div>    
+                            </div>     
                         </div>     
                     </div>  
     

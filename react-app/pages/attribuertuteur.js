@@ -18,19 +18,19 @@ const InputGroupId = ({ tutor }) => {
     const [selectedGroupId, setSelectedGroupId] = useState("") 
 
     return (<div className="12u 12u(small)" >   
-        <input   
-            type="text" 
+        <input    
+            type="text"  
             id="group_id" 
             name="group_id"  
             value={selectedGroupId}  
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
-        />   
+        />    
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}  
     </div>) 
 }  
      
 const Reports = () => { 
-    const getUserData = async (user) => {     
+    const getUserData = async (user) => {      
         let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
         let json = await res.json() 
         if (!json.is_admin) Router.push('/profile')   
@@ -55,8 +55,8 @@ const Reports = () => {
         const res = await fetch('/api/mongodb', {     
             method: 'post',  
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })  
-        }) 
-        setRefresh(!refresh)   
+        })  
+        setRefresh(!refresh)    
     } 
      
     let { user, loading } = useFetchUser()   
@@ -65,7 +65,7 @@ const Reports = () => {
     const [refresh, setRefresh] = useState(true)  
     
     useEffect(() => {     
-        // {console.log("useEffect", user, loading)}   
+        // {console.log("useEffect", user, loading)}    
         if (user && !loading) {    
             getUserData(user)     
         }  
@@ -75,14 +75,14 @@ const Reports = () => {
         <> 
             {/* {console.log(user)} */}  
             {!loading && <Layout user={user} loading={loading}> 
-                <Head>
+                <Head> 
                     <title>Tuteurs en attente</title>   
                     <meta name="description" content="Tuteurs en attente" />   
                 </Head>    
                 <MenuAdmin user={user}/> 
                 <section id="one"> 
                     <div className="inner" style={{maxWidth:"75em"}}>     
-                        <header className="major">    
+                        <header className="major">     
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>    
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>  
@@ -108,7 +108,7 @@ const Reports = () => {
                                                 <td>{tutor.firstname} {tutor.lastname}</td>   
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td>   
-                                                <td>{tutor.whatsapp}</td> 
+                                                <td>{tutor.whatsapp}</td>  
                                                 <td>{tutor.mail}</td>  
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>   
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>   

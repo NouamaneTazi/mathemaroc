@@ -28,7 +28,7 @@ const Reports = () => {
     }
  
     const getAwaitingStudentsData = async () => {
-        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits   
+        let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits    
         const awaitingStudents = await res.json() 
         setAwaitingStudents(awaitingStudents)
         setLoading(false)
@@ -46,7 +46,7 @@ const Reports = () => {
         }  
         else {
             for (let student of selectedStudents) {
-                await fetch('/api/mongodb', {
+                await fetch('/api/mongodb', { 
                     method: 'post',
                     body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } }) 
                 })
@@ -73,7 +73,7 @@ const Reports = () => {
     const [error, setError] = useState() 
     const [awaitingStudents, setAwaitingStudents] = useState([])  
     const [filiereTerm, setFiliereTerm] = useState("")   
-    const [matiereTerm, setMatiereTerm] = useState("")
+    const [matiereTerm, setMatiereTerm] = useState("") 
     const [wishesTerm, setWishesTerm] = useState("") 
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere'])) 
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
@@ -105,7 +105,7 @@ const Reports = () => {
 
         return () => clearTimeout(timer);
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
- 
+  
     return ( 
         <>   
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
@@ -147,7 +147,7 @@ const Reports = () => {
                                 <Link href="/profile"> 
                                     <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
                                 </Link>
-                            </div>  
+                            </div>   
                         } 
                         <header className="major">  
                             <h1>Catalogue des élèves</h1>  
@@ -192,20 +192,20 @@ const Reports = () => {
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
                         </div> 
-                        <Divider style={{ marginBottom: "3em" }} /> 
+                        <Divider style={{ marginBottom: "3em" }} />  
                     </>}
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
    
- 
-                        <div className="table-wrapper">
+  
+                        <div className="table-wrapper"> 
                             <table>
                                 <thead>
                                     <tr>  
                                         <th>Date de demande</th>
                                         <th>Filière   
                                             <div className="select-wrapper" >
-                                                <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}> 
+                                                <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>  
                                                     <option value="">- Filière -</option> 
                                                     <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>
                                                     <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>   
@@ -222,7 +222,7 @@ const Reports = () => {
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th> 
                                         <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th> 
                                         <th>Selectionné</th> 
-                                    </tr>
+                                    </tr> 
                                 </thead>
                                 <tbody>
                                     {filteredWishesStudents.slice(0, maxRows).map(student => ( 
@@ -240,13 +240,13 @@ const Reports = () => {
                                 </tbody>  
                             </table>  
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
-                        </div>
+                        </div> 
                     </div>
-                </section>
+                </section> 
             </Layout> 
             }
         </> 
     )
 } 
 
-export default Reports   
+export default Reports    

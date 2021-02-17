@@ -22,7 +22,7 @@ const Signup = () => {
     }))(Tooltip)
  
     const capitalize = s => s.substr(0, 1).toUpperCase() + s.substr(1).toLowerCase();  
-
+ 
     const handleMatieresSelect = (val) => {
         if (inputFields.matieres.includes(val)) {
             setInputFields({ ...inputFields, matieres: inputFields.matieres.filter(mat => mat !== val) })
@@ -61,7 +61,7 @@ const Signup = () => {
                     method: 'post',
                     body: JSON.stringify({ data: user })
                 })
-                Router.push('/profile')
+                Router.push('/profile') 
                 // console.log("res",user)
             }
         }
@@ -89,8 +89,8 @@ const Signup = () => {
     const [loading, setLoading] = useState(false)
     const [showError, setShowError] = useState(false)
     const [refresh, setRefresh] = useState(false)
-    const [error, setError] = useState({})
-    const [role, setRole] = useState()
+    const [error, setError] = useState({}) 
+    const [role, setRole] = useState() 
 
     useEffect(() => {
         // {console.log("useEffect", user, userLoading)}
@@ -145,7 +145,7 @@ const Signup = () => {
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
                                             <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: capitalize(e.target.value) })} placeholder="Prénom" />
-                                        </div>
+                                        </div> 
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span> 
                                             <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: capitalize(e.target.value) })} placeholder="Nom" />
@@ -228,7 +228,7 @@ const Signup = () => {
                                                     </select> 
                                                 </div> 
                                             </div>
-                                            <div className="row" style={{ display: 'flex', marginBottom: '1em' }}> 
+                                            <div className="row" style={{ display: 'flex', marginBottom: '1em' }}>  
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Matières (*) :</span>
                                                 <div style={{ display: 'flex', flexDirection: 'column' }}> 
                                                     {['MATHÉMATIQUES', 'PHYSIQUE-CHIMIE', 'SVT', 'SI', 'ARABE', 'FRANÇAIS', 'ANGLAIS', 'PHILOSOPHIE', 'EDUCATION ISLAMIQUE', 'HISTOIRE GÉOGRAPHIE', 'COMPTABILITÉ', 'ECONOMIE GÉNÉRALE', 'ORGANISATION ADMINISTRATIVE DES ENTREPRISES'] 
@@ -246,7 +246,7 @@ const Signup = () => {
                                                 <div style={{ width: "100%", padding: 0 }}>
                                                     <textarea className={error.wishes ? "invalid" : null} value={inputFields.wishes} onChange={e => setInputFields({ ...inputFields, wishes: e.target.value })} placeholder="Spécifiez les chapitres pour lesquels vous avez besoin d'aide" rows="6" />
                                                 </div>
-                                            </div>
+                                            </div> 
                                             {showError && <span style={{ textAlign: 'center', display: 'block  ' }}>Tous les champs marqués en (*) doivent être remplis !</span>}
                                             <button style={{ margin: 'auto', marginTop: "3em", display: 'block' }} className="button special" onClick={() => handleSubmit()}>Confirmer</button>
                                         </div> 

@@ -2,12 +2,12 @@ import Head from "next/head"
 import { useState, useEffect } from "react"   
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
-import Router from "next/router"   
-import MenuAdmin from '../components/MenuAdmin'  
+import Router from "next/router"    
+import MenuAdmin from '../components/MenuAdmin'   
   
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {  
-        // console.log(tutor, selectedGroupId)  
+        // console.log(tutor, selectedGroupId)   
         await fetch('/api/mongodb', {   
             method: 'post',     
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
@@ -15,27 +15,27 @@ const InputGroupId = ({ tutor }) => {
         window.location.reload(false)   
     } 
    
-    const [selectedGroupId, setSelectedGroupId] = useState("") 
+    const [selectedGroupId, setSelectedGroupId] = useState("")  
 
     return (<div className="12u 12u(small)" >   
         <input    
-            type="text"  
+            type="text"   
             id="group_id" 
             name="group_id"  
             value={selectedGroupId}   
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
         />    
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}  
-    </div>) 
+    </div>)  
 }  
      
 const Reports = () => { 
     const getUserData = async (user) => {      
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub) 
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
         let json = await res.json() 
         if (!json.is_admin) Router.push('/profile')   
         Object.assign(user, json)    
-        res = await fetch('/api/mongodb?getAwaitingTutors=true')   
+        res = await fetch('/api/mongodb?getAwaitingTutors=true')    
         const new_awaitingtutors = await res.json()       
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
@@ -47,8 +47,8 @@ const Reports = () => {
     
     const handleModClick = async (tutor, report_id) => { 
         if (tutor.reports[report_id].mod) {    
-            delete tutor.reports[report_id].mod   
-        } else { 
+            delete tutor.reports[report_id].mod    
+        } else {  
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
         }   
  
@@ -58,7 +58,7 @@ const Reports = () => {
         })  
         setRefresh(!refresh)    
     } 
-     
+      
     let { user, loading } = useFetchUser()   
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([])   
@@ -70,7 +70,7 @@ const Reports = () => {
             getUserData(user)     
         }  
     }, [user, loading])  
-    
+     
     return (      
         <> 
             {/* {console.log(user)} */}  
@@ -79,7 +79,7 @@ const Reports = () => {
                     <title>Tuteurs en attente</title>   
                     <meta name="description" content="Tuteurs en attente" />   
                 </Head>    
-                <MenuAdmin user={user}/> 
+                <MenuAdmin user={user}/>  
                 <section id="one"> 
                     <div className="inner" style={{maxWidth:"75em"}}>     
                         <header className="major">     
@@ -91,7 +91,7 @@ const Reports = () => {
                             <div className="table-wrapper">   
                                 <table> 
                                     <thead>    
-                                        <tr>   
+                                        <tr>    
                                             <th>Tuteur</th>  
                                             <th>Statut</th>    
                                             <th>Matières</th>   
@@ -99,7 +99,7 @@ const Reports = () => {
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>  
                                             <th>Groupe</th>      
-                                        </tr>   
+                                        </tr>    
                                     </thead> 
                                     <tbody>   
  

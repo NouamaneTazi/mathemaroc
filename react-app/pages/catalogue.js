@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
-import Layout from '../components/Layout'
+import Layout from '../components/Layout' 
 import { useFetchUser } from '../lib/user'
 import moment from 'moment'
 import Icon from '@material-ui/core/Icon';
@@ -43,7 +43,7 @@ const Reports = () => {
     const handleSubmit = async () => {
         if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) {  
             setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' }) 
-        }  
+        }   
         else {
             for (let student of selectedStudents) {
                 await fetch('/api/mongodb', { 
@@ -101,7 +101,7 @@ const Reports = () => {
             if (!userLoading && user) {
                 getAwaitingStudentsData()
             }  
-        }, 1000);
+        }, 1000); 
 
         return () => clearTimeout(timer);
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
@@ -119,7 +119,7 @@ const Reports = () => {
 
                 <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth> 
                     <MuiDialogContent dividers>
-                        <Typography variant="h5" color="primary" align="center">
+                        <Typography variant="h5" color="primary" align="center"> 
                             Bienvenue {user.fullname} !
                         </Typography>
                         <Typography align="left"> 
@@ -224,7 +224,7 @@ const Reports = () => {
                                         <th>Selectionné</th> 
                                     </tr> 
                                 </thead>
-                                <tbody>
+                                <tbody> 
                                     {filteredWishesStudents.slice(0, maxRows).map(student => ( 
                                         <tr key={`${student._id}`}> 
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>   
@@ -235,13 +235,13 @@ const Reports = () => {
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
-                                        </tr> 
+                                        </tr>  
                                     ))}  
                                 </tbody>  
-                            </table>  
+                            </table>   
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
                         </div> 
-                    </div>
+                    </div> 
                 </section> 
             </Layout> 
             }

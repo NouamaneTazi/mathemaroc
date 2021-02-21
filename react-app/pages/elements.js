@@ -19,14 +19,14 @@ export default () => (
 
                     <h2 id="content">Sample Content</h2>
                     <p>Praesent ac adipiscing ullamcorper semper ut amet ac risus. Lorem sapien ut odio odio nunc. Ac adipiscing nibh porttitor erat risus justo adipiscing adipiscing amet placerat accumsan. Vis. Faucibus odio magna tempus adipiscing a non. In mi primis arcu ut non accumsan vivamus ac blandit adipiscing adipiscing arcu metus praesent turpis eu ac lacinia nunc ac commodo gravida adipiscing eget accumsan ac nunc adipiscing adipiscing.</p>
-                    <div className="row">
+                    <div className="row"> 
                         <div className="6u 12u$(small)">
                             <h3>Sem turpis amet semper</h3>
                             <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat commodo eu sed ante lacinia. Sapien a lorem in integer ornare praesent commodo adipiscing arcu in massa commodo lorem accumsan at odio massa ac ac. Semper adipiscing varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
                         </div>
                         <div className="6u 12u$(small)">
                             <h3>Magna odio tempus commodo</h3>
-                            <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor. Ante commodo blandit adipiscing integer semper orci eget. Faucibus commodo adipiscing mi eu nullam accumsan morbi arcu ornare odio mi adipiscing nascetur lacus ac interdum morbi accumsan vis mi accumsan ac praesent.</p>
+                            <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor. Ante commodo blandit adipiscing integer semper orci eget. Faucibus commodo adipiscing mi eu nullam accumsan morbi arcu ornare odio mi adipiscing nascetur lacus ac interdum morbi accumsan vis mi accumsan ac praesent.</p> 
                         </div>
                         <div className="4u 12u$(medium)">
                             <h3>Interdum sapien gravida</h3>
@@ -40,7 +40,7 @@ export default () => (
                             <h3>Accumsan montes viverra</h3>
                             <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
                         </div>
-                    </div>
+                    </div> 
 
                     <hr className="major" />
 
@@ -94,7 +94,7 @@ export default () => (
                                         <h4>Icons</h4>
                                         <ul className="icons">
                                             <li><a href="#" className="icon fa-twitter"><span className="label">Twitter</span></a></li>
-                                            <li><a href="#" className="icon fa-facebook"><span className="label">Facebook</span></a></li>
+                                            <li><a href="#" className="icon fa-facebook"><span className="label">Facebook</span></a></li> 
                                             <li><a href="#" className="icon fa-instagram"><span className="label">Instagram</span></a></li>
                                             <li><a href="#" className="icon fa-github"><span className="label">Github</span></a></li>
                                             <li><a href="#" className="icon fa-dribbble"><span className="label">Dribbble</span></a></li>
@@ -203,7 +203,7 @@ export default () => (
                                                 <td>Item3</td>
                                                 <td> Morbi faucibus arcu accumsan lorem.</td>
                                                 <td>29.99</td>
-                                            </tr>
+                                            </tr> 
                                             <tr>
                                                 <td>Item4</td>
                                                 <td>Vitae integer tempus condimentum.</td>
@@ -272,7 +272,7 @@ export default () => (
 
                         </div>
                         <div className="6u 12u(medium)">
-
+ 
                                 <h3>Buttons</h3>
                                 <ul className="actions">
                                     <li><a href="#" className="button special">Special</a></li>
@@ -281,7 +281,7 @@ export default () => (
                                 <ul className="actions">
                                     <li><a href="#" className="button big">Big</a></li>
                                     <li><a href="#" className="button">Default</a></li>
-                                    <li><a href="#" className="button small">Small</a></li>
+                                    <li><a href="#" className="button small">Small</a></li> 
                                 </ul>
                                 <ul className="actions">
                                     <li><a href="#" className="button special big">Big</a></li>
@@ -311,7 +311,7 @@ export default () => (
                                     <div className="row uniform">
                                         <div className="6u 12u(xsmall)"> 
                                             <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-                                        </div>
+                                        </div> 
                                         <div className="6u 12u(xsmall)">
                                             <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
                                         </div>
@@ -321,7 +321,7 @@ export default () => (
                                                     <option value="">- Category -</option>
                                                     <option value="1">Manufacturing</option>
                                                     <option value="1">Shipping</option>
-                                                    <option value="1">Administration</option>
+                                                    <option value="1">Administration</option> 
                                                     <option value="1">Human Resources</option>
                                                 </select>
                                             </div>

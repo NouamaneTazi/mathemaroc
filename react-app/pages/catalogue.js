@@ -4,15 +4,15 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import moment from 'moment'
 import Icon from '@material-ui/core/Icon';
-import Divider from '@material-ui/core/Divider';
+import Divider from '@material-ui/core/Divider'; 
 import SearchInput, { createFilter } from 'react-search-input'
-import Router from 'next/router'
+import Router from 'next/router' 
 import Link from 'next/link' 
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress'; 
 import Button from '@material-ui/core/Button'; 
 import Dialog from '@material-ui/core/Dialog'; 
-import MuiDialogContent from '@material-ui/core/DialogContent';  
+import MuiDialogContent from '@material-ui/core/DialogContent';   
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
 
@@ -24,7 +24,7 @@ const Reports = () => {
         if (!user.students || user.students.length === 0) {  
             setUserHasNoStudents(true) 
         }  
-        // console.log("u",user)
+        // console.log("u",user) 
     }
  
     const getAwaitingStudentsData = async () => {
@@ -67,11 +67,11 @@ const Reports = () => {
         }
         setLoading(false) 
     } 
- 
+  
     let { user, loading: userLoading } = useFetchUser() 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState() 
-    const [awaitingStudents, setAwaitingStudents] = useState([])  
+    const [awaitingStudents, setAwaitingStudents] = useState([])   
     const [filiereTerm, setFiliereTerm] = useState("")   
     const [matiereTerm, setMatiereTerm] = useState("") 
     const [wishesTerm, setWishesTerm] = useState("") 
@@ -90,7 +90,7 @@ const Reports = () => {
             getAwaitingStudentsData() 
         } 
         else if (!userLoading && !user) {  
-            Router.push('/profile') 
+            Router.push('/profile')  
         }
     }, [user, userLoading])
  
@@ -180,7 +180,7 @@ const Reports = () => {
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?  
                                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
-                                                }</td> 
+                                                }</td>  
                                             </tr>  
                                         )) 
  
@@ -198,7 +198,7 @@ const Reports = () => {
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
    
   
-                        <div className="table-wrapper"> 
+                        <div className="table-wrapper">  
                             <table>
                                 <thead>
                                     <tr>  
@@ -215,7 +215,7 @@ const Reports = () => {
                                                     <option value="ECONOMIE">ECONOMIE</option>  
                                                     <option value="SCIENCES TECH">SCIENCES TECH</option>
                                                     <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option> 
-                                                    <option value="Bac Pro">BAC PRO</option>
+                                                    <option value="Bac Pro">BAC PRO</option> 
                                                 </select>
                                             </div> 
                                         </th> 
@@ -228,7 +228,7 @@ const Reports = () => {
                                     {filteredWishesStudents.slice(0, maxRows).map(student => ( 
                                         <tr key={`${student._id}`}> 
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>   
-                                            <td>{student.filiere}</td>
+                                            <td>{student.filiere}</td> 
                                             <td style={{ width: "50%" }}>{student.matiere}</td> 
                                             <td style={{ width: "40%" }}>{student.wishes}</td>    
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?  
@@ -248,5 +248,5 @@ const Reports = () => {
         </> 
     )
 } 
-
+ 
 export default Reports    

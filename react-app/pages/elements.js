@@ -54,7 +54,7 @@ export default () => (
                                 This is <u>underlined</u> and this is code: <code>for (;;)</code>.
                                 Finally, this is a <a href="#">link</a>.</p>
                                 <hr />
-                                <h2>Heading Level 2</h2>
+                                <h2>Heading Level 2</h2> 
                                 <h3>Heading Level 3</h3>
                                 <h4>Heading Level 4</h4>
                                 <hr />
@@ -77,7 +77,7 @@ export default () => (
                                             <li>Sagittis lorem eleifend.</li>
                                             <li>Felis feugiat viverra.</li>
                                         </ul>
-
+ 
                                     </div>
                                     <div className="6u 12u(small)">
 
@@ -154,7 +154,7 @@ export default () => (
                                     </div>
                                     <div className="6u 12u(small)">
                                         <ul className="actions vertical small">
-                                            <li><a href="#" className="button special small fit">Small</a></li>
+                                            <li><a href="#" className="button special small fit">Small</a></li> 
                                             <li><a href="#" className="button small fit">Small</a></li>
                                         </ul>
                                     </div>
@@ -181,7 +181,7 @@ export default () => (
                                 <h4>Default</h4>
                                 <div className="table-wrapper">
                                     <table>
-                                        <thead>
+                                        <thead> 
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Description</th>
@@ -197,7 +197,7 @@ export default () => (
                                             <tr>
                                                 <td>Item2</td>
                                                 <td>Vis ac commodo adipiscing arcu aliquet.</td>
-                                                <td>19.99</td>
+                                                <td>19.99</td> 
                                             </tr> 
                                             <tr>
                                                 <td>Item3</td>
@@ -241,7 +241,7 @@ export default () => (
                                                 <td>29.99</td>
                                             </tr>
                                             <tr>
-                                                <td>Item2</td>
+                                                <td>Item2</td> 
                                                 <td>Vis ac commodo adipiscing arcu aliquet.</td>
                                                 <td>19.99</td>
                                             </tr>
@@ -371,7 +371,7 @@ export default () => (
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div>
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic09.jpg" alt="" /></span></div>
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic09.jpg" alt="" /></span></div>
-                                        <div className="4u"><span className="image fit"><img src="/static/images/pic10.jpg" alt="" /></span></div>
+                                        <div className="4u"><span className="image fit"><img src="/static/images/pic10.jpg" alt="" /></span></div> 
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div>
                                     </div>
                                 </div>

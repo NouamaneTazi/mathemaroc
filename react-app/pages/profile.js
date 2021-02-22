@@ -1,4 +1,4 @@
-import Head from "next/head"
+import Head from "next/head" 
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
@@ -21,10 +21,10 @@ const Profile = () => {
 
     const CustomizedTooltip = withStyles(theme => ({
         tooltip: {
-            backgroundColor: theme.palette.common.white,
+            backgroundColor: theme.palette.common.white, 
             color: '#3e467f', 
             boxShadow: theme.shadows[1],
-            fontSize: 16, 
+            fontSize: 16,  
         },
     }))(Tooltip)
 
@@ -45,7 +45,7 @@ const Profile = () => {
         else if (json.role == "tutor" && (!json.students || json.students.length === 0)) {
             Router.push('/catalogue')
         } 
-        Object.assign(user, json);
+        Object.assign(user, json); 
         await fetch('/api/mongodb', { 
             method: 'post',
             body: JSON.stringify({ _id: json._id, data: {email:user.email} }) 
@@ -82,7 +82,7 @@ const Profile = () => {
 
                 <Head>
                     <title>Profil</title>
-                    <meta name="description" content="Profil" />
+                    <meta name="description" content="Profil" /> 
                 </Head>
 
                 {user && user.role === "student" ? <StudentProfile user={user} />
@@ -103,7 +103,7 @@ const Profile = () => {
                                             <br /><br />Si tu rencontres un quelconque souci avec le site ou autre, nous te prions de nous contacter à l'aide de l'adresse suivante: <strong>mathemaroc.contact@gmail.com</strong> (Un screen expliquant la situation sera préférable)
 </p>
 
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div className="12u 12u(medium)">
                                     <h2>Liste des élèves</h2>
@@ -125,7 +125,7 @@ const Profile = () => {
                                             <tbody>
                                                 {user.students && user.students.map(student => (
 
-                                                    <tr key={student._id} onMouseEnter={() => null}>
+                                                    <tr key={student._id} onMouseEnter={() => null}> 
                                                         <td>{student.firstname} {student.lastname}</td>
                                                         <td>{student.lycee}</td>
                                                         <td>{student.ville}</td>
@@ -152,7 +152,7 @@ const Profile = () => {
                                     <Link href={'/catalogue'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Ajouter plus d'élèves"}</button></Link>
 
                                 </div>
-                            </div>
+                            </div> 
 
                             <SeancesForm user={user} />
                             <ProfileSeancesTutors setConfettis={setConfettis} />
@@ -166,8 +166,8 @@ const Profile = () => {
                         : null
                 }
 
-
-            </Layout>}
+ 
+            </Layout>} 
         </>
     ) 
 }

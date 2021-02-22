@@ -8,16 +8,16 @@ import moment from 'moment'
 import useWindowSize from "react-use/lib/useWindowSize"
 
 const Admin = () => {
-    const getGroupUsers = async () => {
+    const getGroupUsers = async () => { 
         setLoading(true)
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getUsersByGroupId=' + groupId)
-        const users = await res.json()
+        const users = await res.json() 
         let students = []
         let tutor = undefined
-        users.map(user => user.role == "tutor" ? tutor = user : user.role == "student" ? students.push(user) : null)
+        users.map(user => user.role == "tutor" ? tutor = user : user.role == "student" ? students.push(user) : null) 
         setTutor(tutor)
         setStudents(students)
         setLoading(false)
@@ -25,7 +25,7 @@ const Admin = () => {
 
     const handeRetourListeAttente = async () => {
         for (let student of students) {
-            await fetch('/api/mongodb?unset=true', { 
+            await fetch('/api/mongodb?unset=true', {  
                 method: 'post', 
                 body: JSON.stringify({ _id: student._id, data: { groupId: "" } })
             })
@@ -48,7 +48,7 @@ const Admin = () => {
                     <title>Suivi du catalogue</title>
                     <meta name="description" content="Suivi du catalogue" />
                 </Head>
-                
+                 
                 <section id="one">
                     <div className="inner">
                         <header className="major">
@@ -69,14 +69,14 @@ const Admin = () => {
                             <input type="text" value={groupId} onChange={e => setGroupId(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? getGroupUsers() : null} /> 
                             <button className="button special" onClick={() => getGroupUsers()}>Confirmer</button>
                         </div>
-
+ 
                     </div>
                     <div className="inner" style={{ maxWidth: "95%", width: "100%" }}>
 
                         <div className="table-wrapper">
                             <h2>Tuteur :</h2>
                             <table className="alt dense">
-                                <thead>
+                                <thead> 
                                     <tr>
                                         <th>Groupe</th>
                                         <th>Tuteur</th>
@@ -86,7 +86,7 @@ const Admin = () => {
                                         <th>Téléphone</th> 
                                         <th>Mail</th>
                                         <th>Nombre de séances</th>
-                                    </tr>
+                                    </tr> 
                                 </thead>
                                 <tbody>
                                     {tutor && <>
@@ -110,7 +110,7 @@ const Admin = () => {
                         <div className="table-wrapper">
                             <table>
                                 <thead>
-                                    <tr>
+                                    <tr> 
                                         <th>Nom</th>
                                         <th>Lycée</th>
                                         <th>Ville</th>
@@ -148,7 +148,7 @@ const Admin = () => {
                                 <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Durée</th>
+                                        <th>Durée</th> 
                                         <th>Chapitres traités</th>
                                         <th>Élèves absents</th>
                                         <th>Remarques</th>

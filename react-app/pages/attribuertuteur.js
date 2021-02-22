@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
 import Router from "next/router"    
-import MenuAdmin from '../components/MenuAdmin'   
+import MenuAdmin from '../components/MenuAdmin'    
   
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {  
@@ -14,7 +14,7 @@ const InputGroupId = ({ tutor }) => {
         })   
         window.location.reload(false)   
     } 
-   
+    
     const [selectedGroupId, setSelectedGroupId] = useState("")  
 
     return (<div className="12u 12u(small)" >   
@@ -22,7 +22,7 @@ const InputGroupId = ({ tutor }) => {
             type="text"   
             id="group_id" 
             name="group_id"  
-            value={selectedGroupId}   
+            value={selectedGroupId}    
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
         />    
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}  
@@ -30,7 +30,7 @@ const InputGroupId = ({ tutor }) => {
 }  
      
 const Reports = () => { 
-    const getUserData = async (user) => {      
+    const getUserData = async (user) => {       
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
         let json = await res.json() 
         if (!json.is_admin) Router.push('/profile')   
@@ -40,10 +40,10 @@ const Reports = () => {
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json()  
-   
+    
         setAwaitingTutors(new_awaitingtutors) 
         setAwaitingStudents(awaitingStudents)   
-    }   
+    }    
     
     const handleModClick = async (tutor, report_id) => { 
         if (tutor.reports[report_id].mod) {    
@@ -61,12 +61,12 @@ const Reports = () => {
       
     let { user, loading } = useFetchUser()   
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
-    const [awaitingStudents, setAwaitingStudents] = useState([])   
+    const [awaitingStudents, setAwaitingStudents] = useState([])    
     const [refresh, setRefresh] = useState(true)  
     
     useEffect(() => {     
         // {console.log("useEffect", user, loading)}     
-        if (user && !loading) {    
+        if (user && !loading) {     
             getUserData(user)     
         }  
     }, [user, loading])  
@@ -86,7 +86,7 @@ const Reports = () => {
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>    
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>  
-   
+    
                         <div className="12u 12u(medium)">   
                             <div className="table-wrapper">   
                                 <table> 
@@ -105,7 +105,7 @@ const Reports = () => {
  
                                         {awaitingtutors.map(tutor => ( 
                                             <tr key={`${tutor._id}`}>
-                                                <td>{tutor.firstname} {tutor.lastname}</td>   
+                                                <td>{tutor.firstname} {tutor.lastname}</td>    
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td>   
                                                 <td>{tutor.whatsapp}</td>  
@@ -117,13 +117,13 @@ const Reports = () => {
                                         )}   
                                     </tbody> 
                                 </table>    
-                            </div>      
+                            </div>       
                         </div>     
                     </div>  
     
                 </section>  
             </Layout>  
-            }   
+            }    
         </>  
     )  
 } 

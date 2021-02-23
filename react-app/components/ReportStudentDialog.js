@@ -41,21 +41,21 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
             student.prev_groupId = tutor.groupId
             if (reportOption.substring(0, 3) === "del") {
                 student.groupId = -1 
-                report.replaced_by = { name: "--" } 
-                report.mod = { name: "Bot" }
+                report.replaced_by = { name: "--" }  
+                report.mod = { name: "Bot" } 
             }
             await fetch('/api/mongodb', {
                 method: 'post',
                 body: JSON.stringify({ _id: student._id, data: student })
             }) 
-        } else if (reportOption === "returnQueue") { 
-            await fetch('/api/mongodb?unset=true', {
+        } else if (reportOption === "returnQueue") {  
+            await fetch('/api/mongodb?unset=true', { 
                 method: 'post',
                 body: JSON.stringify({ _id: student._id, data: { groupId: "" } })
             })
             report.replaced_by = { name: "retour liste d'attente" }
             report.mod = { name: "Bot" }  
-        } 
+        }  
 
         let reports = "reports" in tutor ? tutor.reports : []
         reports.push(report)
@@ -82,7 +82,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
           </Typography> 
                 </DialogContent>
                 <DialogActions>
-                    <div className="12u">
+                    <div className="12u"> 
                         <RadioGroup aria-label="gender" name="gender1" value={reportOption} onChange={(e) => { setReportOption(e.target.value); e.target.value !== 'other' && setReportText(e.target.name) }}>
                             <FormControlLabel value="delete-1" control={<Radio />} name="L'élève est injoignable." label="L'élève est injoignable." style={{ color: "black", textTransform: "none", margin: "0" }} />
                             <FormControlLabel value="delete-2" control={<Radio />} name="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." label="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." style={{ color: "black", textTransform: "none", margin: "0" }} />
@@ -92,7 +92,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                         {reportOption === "other" && <textarea name="report-text" id={`dialog-${student._id}`} style={{ color: "white" }} placeholder="Décrivez ce qui s'est passé.." rows="6" value={reportText} onChange={e => setReportText(e.target.value)}></textarea>} 
                     </div>
                 </DialogActions>
-                <DialogActions>
+                <DialogActions> 
                     <Button autoFocus onClick={handleClose} color="primary">
                         Cancel
           </Button>

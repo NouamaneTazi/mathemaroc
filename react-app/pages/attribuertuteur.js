@@ -1,10 +1,10 @@
 import Head from "next/head"    
 import { useState, useEffect } from "react"   
 import Layout from '../components/Layout'
-import { useFetchUser } from '../lib/user' 
+import { useFetchUser } from '../lib/user'  
 import Router from "next/router"    
 import MenuAdmin from '../components/MenuAdmin'    
-  
+   
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {  
         // console.log(tutor, selectedGroupId)   
@@ -45,7 +45,7 @@ const Reports = () => {
         setAwaitingStudents(awaitingStudents)   
     }    
     
-    const handleModClick = async (tutor, report_id) => { 
+    const handleModClick = async (tutor, report_id) => {  
         if (tutor.reports[report_id].mod) {    
             delete tutor.reports[report_id].mod    
         } else {  
@@ -93,7 +93,7 @@ const Reports = () => {
                                     <thead>    
                                         <tr>    
                                             <th>Tuteur</th>  
-                                            <th>Statut</th>    
+                                            <th>Statut</th>     
                                             <th>Matières</th>   
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
@@ -108,25 +108,25 @@ const Reports = () => {
                                                 <td>{tutor.firstname} {tutor.lastname}</td>    
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td>   
-                                                <td>{tutor.whatsapp}</td>  
-                                                <td>{tutor.mail}</td>  
+                                                <td>{tutor.whatsapp}</td>   
+                                                <td>{tutor.mail}</td>   
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>   
-                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>   
-                                            </tr>   
+                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>    
+                                            </tr>    
                                         )   
                                         )}   
                                     </tbody> 
                                 </table>    
-                            </div>       
+                            </div>        
                         </div>     
                     </div>  
     
                 </section>  
             </Layout>  
-            }    
+            }     
         </>  
     )  
-} 
+}  
    
    
-export default Reports     
+export default Reports      

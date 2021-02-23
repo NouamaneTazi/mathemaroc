@@ -4,9 +4,9 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'  
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
   
-  
+   
 const Reports = () => {  
-    const getUserData = async (user) => { 
+    const getUserData = async (user) => {  
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
         let json = await res.json() 
         Object.assign(user, json)
@@ -20,7 +20,7 @@ const Reports = () => {
     }    
   
     const handleModClick = async (tutor, report_id) => {   
-        if (tutor.reports[report_id].mod) { 
+        if (tutor.reports[report_id].mod) {  
             delete tutor.reports[report_id].mod
         } else {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name } 
@@ -30,12 +30,12 @@ const Reports = () => {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         })
-        setRefresh(!refresh) 
+        setRefresh(!refresh)  
     }  
     
     let { user, loading } = useFetchUser() 
     const [tutors, setTutors] = useState([])  
-    const [awaitingStudents, setAwaitingStudents] = useState([])
+    const [awaitingStudents, setAwaitingStudents] = useState([]) 
     const [refresh, setRefresh] = useState(true)    
     const [replacingStudent, setReplacingStudent] = useState(false)
 
@@ -43,8 +43,8 @@ const Reports = () => {
         // {console.log("useEffect", user, loading)}   
         if (user && !loading) { 
             getUserData(user)   
-        }
-    }, [user, loading])  
+        } 
+    }, [user, loading])   
  
     return ( 
         <> 
@@ -77,19 +77,19 @@ const Reports = () => {
                                     </thead>  
                                     <tbody>    
  
-                                        {tutors.map(tutor => { 
-                                            const asked_more_students = tutor.asked_more_students   
+                                        {tutors.map(tutor => {  
+                                            const asked_more_students = tutor.asked_more_students    
                                             return (  
                                                 <tr key={`${tutor._id}`}>   
                                                     <td>{asked_more_students.time}</td>  
                                                     <td>{tutor.firstname} {tutor.lastname}</td> 
-                                                    <td>{tutor.groupId}</td>  
+                                                    <td>{tutor.groupId}</td>   
                                                     <td>{asked_more_students.number}</td> 
 
                                                     <td>  
                                                         <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />   
-                                                    </td>
-                                                </tr>) 
+                                                    </td> 
+                                                </tr>)  
                                         }  
                                         )}
                                     </tbody>

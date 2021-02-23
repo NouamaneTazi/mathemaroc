@@ -1,5 +1,5 @@
-import nextConnect from 'next-connect';
-import middleware from '../../lib/database';
+import nextConnect from 'next-connect'; 
+import middleware from '../../lib/database'; 
 var ObjectID = require('mongodb').ObjectID; 
 
 const handler = nextConnect();
@@ -20,7 +20,7 @@ handler.get(async (req, res) => {
     } else if (auth0id) {
         req.db.collection('users').findOne({ auth0id }, function (err, user) {
             if (err) res.json({ err: true })
-            else if (!user) {
+            else if (!user) { 
                 console.log("Not Yet Setup")
                 res.json({ notYetSetUp: true })
             }
@@ -44,22 +44,22 @@ handler.get(async (req, res) => {
                 // console.log(result);
                 res.json(result);  
             }
-        }); 
+        });  
     } else if (getAllSeances) {
         req.db.collection('users').find({ role: "tutor", seances: { $exists: true } }).sort({ last_updated: -1 }).toArray(function (err, result) { 
             if (err) res.json({ err: true })
             else {
                 res.json(result);
-            } 
+            }  
         });
     } else if (req.query.getCatalogueLogs) {
         req.db.collection('users').find({ catalogue_logs: { $exists: true } }).sort({ "catalogue_logs.time": -1 }).toArray(function (err, result) {
-            if (err) res.json({ err: true })
+            if (err) res.json({ err: true }) 
             else {
                 res.json(result);
             }
         }); 
-    } else if (req.query.getTutorsSignUps) {
+    } else if (req.query.getTutorsSignUps) { 
         req.db.collection('users').aggregate([
             { $match: { groupId: { $gte: 4000, $lte: 5000 } } },
             { $sort: { updated_at: -1 } },
@@ -114,7 +114,7 @@ handler.get(async (req, res) => {
         });
     } else if (getAllReportsFromStudents) {
         req.db.collection('users').find({ reported: true, groupId: { $ne: -1 } }).sort({ "report.tutor.name": 1 }).toArray(function (err, result) {
-            if (err) res.json({ err: true })
+            if (err) res.json({ err: true }) 
             else {
                 res.json(result);
             }
@@ -126,7 +126,7 @@ handler.get(async (req, res) => {
                 res.json(result); 
             }
         })
-    } else if (req.query.count) {
+    } else if (req.query.count) { 
         let result = {} 
         result.supportedStudents = await req.db.collection('users').find({ role: 'student', groupId: { $exists: true } }).count()
         result.students = await req.db.collection('users').find({ role: 'student' }).count()

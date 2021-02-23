@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { useState, useEffect } from "react" 
 import Layout from '../components/Layout'
-import { useFetchUser } from '../lib/user' 
+import { useFetchUser } from '../lib/user'  
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop'; 
@@ -43,7 +43,7 @@ const Signup = () => {
         if (requiredFields.every(x => (x in inputFields && inputFields[x] !== ''))) { 
             if (!isEmail(inputFields.mail + '')) { 
                 setError({ mail: true }) 
-            } else {
+            } else { 
                 setLoading(true)
                 if (role === "student") { 
                     inputFields.matiere = inputFields.matieres.join(', ')
@@ -79,7 +79,7 @@ const Signup = () => {
         let json = await res.json()
         // console.log("json", json)
         if (json.role) {
-            Router.push('/profile')
+            Router.push('/profile') 
         }
         setLoading(false) 
     }
@@ -92,7 +92,7 @@ const Signup = () => {
     const [error, setError] = useState({}) 
     const [role, setRole] = useState() 
 
-    useEffect(() => {
+    useEffect(() => { 
         // {console.log("useEffect", user, userLoading)}
         if (user && !userLoading) {
             setLoading(true)
@@ -119,9 +119,9 @@ const Signup = () => {
                         </header>
                         {!role ? 
                             <>
-                                <h2 style={{ textAlign: 'center' }}>Vous êtes :</h2>
+                                <h2 style={{ textAlign: 'center' }}>Vous êtes :</h2> 
                                 <div className="row">
-                                    <div className="6u" style={{ textAlign: 'center' }}>
+                                    <div className="6u" style={{ textAlign: 'center' }}> 
                                         <a style={{ borderBottom: "none", cursor: "pointer" }} onClick={() => setRole("tutor")}><span>
                                             <i style={{ fontSize: "9em" }} class="fas fa-chalkboard-teacher"></i>
                                             <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Tuteur</p>
@@ -130,10 +130,10 @@ const Signup = () => {
                                     <div className="6u" style={{ textAlign: 'center' }}>
                                         <a style={{ borderBottom: "none", cursor: "pointer" }} onClick={() => setRole("student")}><span>
                                             <i style={{ fontSize: "9em" }} class="fas fa-book-reader"></i>
-                                            <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Élève</p> 
+                                            <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Élève</p>  
                                         </span></a>
                                     </div>
-                                </div>
+                                </div> 
                             </>
                             : role == "tutor" ?
                                 <>
@@ -161,7 +161,7 @@ const Signup = () => {
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                             <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Adresse e-mail (*) :</span>
                                             <input className={error.mail ? "invalid" : null} type="email" value={inputFields.mail} onChange={e => setInputFields({ ...inputFields, mail: e.target.value })} placeholder="E-mail que vous consultez régulièrement..." /> 
-                                        </div>
+                                        </div> 
                                         {showError && <span style={{ textAlign: 'center', display: 'block  ' }}>Tous les champs marqués en (*) doivent être remplis !</span>}
                                         <button style={{ margin: 'auto', marginTop: "3em", display: 'block' }} className="button special" onClick={() => handleSubmit()}>Confirmer</button>
                                     </div>
@@ -185,12 +185,12 @@ const Signup = () => {
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Numéro Whatsapp :</span>
                                                 <input className={error.whatsapp ? "invalid" : null} type="tel" value={inputFields.whatsapp} onChange={e => setInputFields({ ...inputFields, whatsapp: e.target.value })} placeholder="+212611223344" />
                                             </div>
-                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
+                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Facebook :</span>
                                                 <input className={error.facebook ? "invalid" : null} type="tel" value={inputFields.facebook} onChange={e => setInputFields({ ...inputFields, facebook: e.target.value })} placeholder="Nom sur Facebook" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
-                                                <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Adresse e-mail (*) :</span> 
+                                                <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Adresse e-mail (*) :</span>  
                                                 <input className={error.mail ? "invalid" : null} type="email" value={inputFields.mail} onChange={e => setInputFields({ ...inputFields, mail: e.target.value })} placeholder="E-mail que vous consultez régulièrement..." />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
@@ -251,7 +251,7 @@ const Signup = () => {
                                             <button style={{ margin: 'auto', marginTop: "3em", display: 'block' }} className="button special" onClick={() => handleSubmit()}>Confirmer</button>
                                         </div> 
                                     </> : null
-                        }
+                        } 
                     </div>
                 </section>
             </Layout>} 

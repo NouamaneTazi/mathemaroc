@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button'; 
+import Button from '@material-ui/core/Button';  
 import Dialog from '@material-ui/core/Dialog'; 
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
@@ -8,12 +8,12 @@ import Typography from '@material-ui/core/Typography';
  
  
 const DialogContent = withStyles(theme => ({
-    root: { 
+    root: {  
         padding: theme.spacing(2), 
     },
-}))(MuiDialogContent);
+}))(MuiDialogContent); 
 
-const DialogActions = withStyles(theme => ({
+const DialogActions = withStyles(theme => ({ 
     root: {
         margin: 0, 
         padding: theme.spacing(1), 
@@ -24,12 +24,12 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
     const handleClose = () => {
         setGroupId('')
         setReplacingStudent(false);  
-    };
+    }; 
  
     const handleSubmit = async () => { 
         await fetch('/api/mongodb', { 
             method: 'post',
-            body: JSON.stringify({ _id: replacingStudent._id, data: { "groupId": groupId } }) 
+            body: JSON.stringify({ _id: replacingStudent._id, data: { "groupId": groupId } })  
         })
         delete report.replaced_by
         delete report.mod
@@ -45,7 +45,7 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
             <Dialog aria-labelledby="customized-dialog-title" open={replacingStudent ? true : false} fullWidth>
                 <DialogContent dividers> 
                     <Typography variant="h5" gutterBottom style={{ color: "black" }}>  
-                        Undo :  
+                        Undo :   
                     </Typography> 
                     <Typography>
                         Donnez le groupe où vous voulez mettre {replacingStudent.name} 
@@ -63,9 +63,9 @@ export default function CustomizedDialogs({ replacingStudent, setReplacingStuden
 
                     <Button autoFocus onClick={() => groupId ? handleSubmit() : null} color="primary">
                         Submit  
-                    </Button> 
+                    </Button>  
                 </DialogActions>
             </Dialog> 
-        </>
-    ); 
-} 
+        </> 
+    );  
+}  

@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 
 export default () => (
     <Layout>
-        <Head>
+        <Head> 
             <title>Elements Page</title>
             <meta name="description" content="Elements Page" />
         </Head>
@@ -92,13 +92,13 @@ export default () => (
                                         </ol>
 
                                         <h4>Icons</h4>
-                                        <ul className="icons">
+                                        <ul className="icons"> 
                                             <li><a href="#" className="icon fa-twitter"><span className="label">Twitter</span></a></li>
                                             <li><a href="#" className="icon fa-facebook"><span className="label">Facebook</span></a></li> 
                                             <li><a href="#" className="icon fa-instagram"><span className="label">Instagram</span></a></li>
                                             <li><a href="#" className="icon fa-github"><span className="label">Github</span></a></li>
                                             <li><a href="#" className="icon fa-dribbble"><span className="label">Dribbble</span></a></li>
-                                            <li><a href="#" className="icon fa-tumblr"><span className="label">Tumblr</span></a></li>
+                                            <li><a href="#" className="icon fa-tumblr"><span className="label">Tumblr</span></a></li> 
                                         </ul>
                                         <ul className="icons">
                                             <li><a href="#" className="icon alt fa-twitter"><span className="label">Twitter</span></a></li> 
@@ -126,7 +126,7 @@ export default () => (
 
                                 <h4>Actions</h4>
                                 <ul className="actions">
-                                    <li><a href="#" className="button special">Default</a></li>
+                                    <li><a href="#" className="button special">Default</a></li> 
                                     <li><a href="#" className="button">Default</a></li>
                                 </ul> 
                                 <ul className="actions small">
@@ -162,7 +162,7 @@ export default () => (
 
                                 <h4>Pagination</h4>
                                 <ul className="pagination">
-                                    <li><span className="button small disabled">Prev</span></li>
+                                    <li><span className="button small disabled">Prev</span></li> 
                                     <li><a href="#" className="page active">1</a></li>
                                     <li><a href="#" className="page">2</a></li>
                                     <li><a href="#" className="page">3</a></li>
@@ -173,7 +173,7 @@ export default () => (
                                     <li><a href="#" className="button small">Next</a></li>
                                 </ul>
 
-                                <h3>Blockquote</h3>
+                                <h3>Blockquote</h3> 
                                 <blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis.</blockquote>
 
                                 <h3>Table</h3>
@@ -290,7 +290,7 @@ export default () => (
                                 </ul>
                                 <ul className="actions fit">
                                     <li><a href="#" className="button special fit">Fit</a></li>
-                                    <li><a href="#" className="button fit">Fit</a></li>
+                                    <li><a href="#" className="button fit">Fit</a></li> 
                                 </ul>
                                 <ul className="actions fit small">
                                     <li><a href="#" className="button special fit small">Fit + Small</a></li>
@@ -299,7 +299,7 @@ export default () => (
                                 <ul className="actions">
                                     <li><a href="#" className="button special icon fa-search">Icon</a></li>
                                     <li><a href="#" className="button icon fa-download">Icon</a></li>
-                                </ul>
+                                </ul> 
                                 <ul className="actions">
                                     <li><span className="button special disabled">Special</span></li>
                                     <li><span className="button disabled">Default</span></li>
@@ -309,7 +309,7 @@ export default () => (
 
                                 <form method="post" action="#">
                                     <div className="row uniform">
-                                        <div className="6u 12u(xsmall)"> 
+                                        <div className="6u 12u(xsmall)">  
                                             <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
                                         </div> 
                                         <div className="6u 12u(xsmall)">
@@ -319,9 +319,9 @@ export default () => (
                                             <div className="select-wrapper">
                                                 <select name="demo-category" id="demo-category">
                                                     <option value="">- Category -</option>
-                                                    <option value="1">Manufacturing</option>
+                                                    <option value="1">Manufacturing</option> 
                                                     <option value="1">Shipping</option>
-                                                    <option value="1">Administration</option> 
+                                                    <option value="1">Administration</option>  
                                                     <option value="1">Human Resources</option>
                                                 </select>
                                             </div>
@@ -339,7 +339,7 @@ export default () => (
                                             <label htmlFor="demo-priority-high">High</label>
                                         </div>
                                         <div className="6u 12u(small)">
-                                            <input type="checkbox" id="demo-copy" name="demo-copy" />
+                                            <input type="checkbox" id="demo-copy" name="demo-copy" /> 
                                             <label htmlFor="demo-copy">Email me a copy</label>
                                         </div>
                                         <div className="6u 12u(small)">

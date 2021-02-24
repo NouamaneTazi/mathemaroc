@@ -3,14 +3,14 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'  
 import Router from "next/router"    
-import MenuAdmin from '../components/MenuAdmin'    
+import MenuAdmin from '../components/MenuAdmin'     
    
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {  
         // console.log(tutor, selectedGroupId)   
         await fetch('/api/mongodb', {   
             method: 'post',      
-            body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } }) 
+            body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
         })   
         window.location.reload(false)   
     } 
@@ -23,7 +23,7 @@ const InputGroupId = ({ tutor }) => {
             id="group_id" 
             name="group_id"  
             value={selectedGroupId}    
-            onChange={event => setSelectedGroupId(parseInt(event.target.value))}  
+            onChange={event => setSelectedGroupId(parseInt(event.target.value))}   
         />     
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}  
     </div>)  
@@ -51,7 +51,7 @@ const Reports = () => {
         } else {  
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
         }   
- 
+  
         const res = await fetch('/api/mongodb', {     
             method: 'post',  
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })   
@@ -72,9 +72,9 @@ const Reports = () => {
     }, [user, loading])  
      
     return (      
-        <> 
+        <>  
             {/* {console.log(user)} */}  
-            {!loading && <Layout user={user} loading={loading}> 
+            {!loading && <Layout user={user} loading={loading}>  
                 <Head> 
                     <title>Tuteurs en attente</title>   
                     <meta name="description" content="Tuteurs en attente" />   
@@ -98,7 +98,7 @@ const Reports = () => {
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>  
-                                            <th>Groupe</th>      
+                                            <th>Groupe</th>       
                                         </tr>    
                                     </thead> 
                                     <tbody>   
@@ -108,7 +108,7 @@ const Reports = () => {
                                                 <td>{tutor.firstname} {tutor.lastname}</td>    
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td>   
-                                                <td>{tutor.whatsapp}</td>   
+                                                <td>{tutor.whatsapp}</td>    
                                                 <td>{tutor.mail}</td>   
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>   
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>    
@@ -117,7 +117,7 @@ const Reports = () => {
                                         )}   
                                     </tbody> 
                                 </table>    
-                            </div>        
+                            </div>         
                         </div>     
                     </div>  
     
@@ -125,7 +125,7 @@ const Reports = () => {
             </Layout>  
             }     
         </>   
-    )  
+    )   
 }  
    
    

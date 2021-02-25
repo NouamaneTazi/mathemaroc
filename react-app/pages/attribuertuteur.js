@@ -18,13 +18,13 @@ const InputGroupId = ({ tutor }) => {
     const [selectedGroupId, setSelectedGroupId] = useState("")   
 
     return (<div className="12u 12u(small)" >    
-        <input    
+        <input     
             type="text"   
             id="group_id" 
-            name="group_id"  
+            name="group_id"   
             value={selectedGroupId}    
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}   
-        />     
+        />      
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}  
     </div>)  
 }  
@@ -40,13 +40,13 @@ const Reports = () => {
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json()  
-    
+     
         setAwaitingTutors(new_awaitingtutors) 
         setAwaitingStudents(awaitingStudents)    
     }    
     
     const handleModClick = async (tutor, report_id) => {  
-        if (tutor.reports[report_id].mod) {    
+        if (tutor.reports[report_id].mod) {     
             delete tutor.reports[report_id].mod    
         } else {  
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
@@ -65,19 +65,19 @@ const Reports = () => {
     const [refresh, setRefresh] = useState(true)  
     
     useEffect(() => {     
-        // {console.log("useEffect", user, loading)}      
+        // {console.log("useEffect", user, loading)}       
         if (user && !loading) {      
             getUserData(user)     
         }  
     }, [user, loading])  
-     
+      
     return (      
         <>  
             {/* {console.log(user)} */}  
             {!loading && <Layout user={user} loading={loading}>  
                 <Head> 
                     <title>Tuteurs en attente</title>   
-                    <meta name="description" content="Tuteurs en attente" />   
+                    <meta name="description" content="Tuteurs en attente" />    
                 </Head>    
                 <MenuAdmin user={user}/>  
                 <section id="one"> 
@@ -90,9 +90,9 @@ const Reports = () => {
                         <div className="12u 12u(medium)">    
                             <div className="table-wrapper">    
                                 <table> 
-                                    <thead>    
+                                    <thead>     
                                         <tr>    
-                                            <th>Tuteur</th>   
+                                            <th>Tuteur</th>    
                                             <th>Statut</th>     
                                             <th>Matières</th>   
                                             <th>Whatsapp</th>   
@@ -115,9 +115,9 @@ const Reports = () => {
                                             </tr>    
                                         )    
                                         )}   
-                                    </tbody> 
+                                    </tbody>  
                                 </table>    
-                            </div>         
+                            </div>          
                         </div>     
                     </div>  
     

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'  
 import Router from "next/router"    
-import MenuAdmin from '../components/MenuAdmin'     
+import MenuAdmin from '../components/MenuAdmin'      
    
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {  
@@ -15,7 +15,7 @@ const InputGroupId = ({ tutor }) => {
         window.location.reload(false)   
     } 
     
-    const [selectedGroupId, setSelectedGroupId] = useState("")  
+    const [selectedGroupId, setSelectedGroupId] = useState("")   
 
     return (<div className="12u 12u(small)" >    
         <input    
@@ -42,7 +42,7 @@ const Reports = () => {
         const awaitingStudents = await res.json()  
     
         setAwaitingTutors(new_awaitingtutors) 
-        setAwaitingStudents(awaitingStudents)   
+        setAwaitingStudents(awaitingStudents)    
     }    
     
     const handleModClick = async (tutor, report_id) => {  
@@ -66,7 +66,7 @@ const Reports = () => {
     
     useEffect(() => {     
         // {console.log("useEffect", user, loading)}      
-        if (user && !loading) {     
+        if (user && !loading) {      
             getUserData(user)     
         }  
     }, [user, loading])  
@@ -87,8 +87,8 @@ const Reports = () => {
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>  
     
-                        <div className="12u 12u(medium)">   
-                            <div className="table-wrapper">   
+                        <div className="12u 12u(medium)">    
+                            <div className="table-wrapper">    
                                 <table> 
                                     <thead>    
                                         <tr>    
@@ -103,9 +103,9 @@ const Reports = () => {
                                     </thead> 
                                     <tbody>   
  
-                                        {awaitingtutors.map(tutor => ( 
+                                        {awaitingtutors.map(tutor => (  
                                             <tr key={`${tutor._id}`}>
-                                                <td>{tutor.firstname} {tutor.lastname}</td>    
+                                                <td>{tutor.firstname} {tutor.lastname}</td>     
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td>   
                                                 <td>{tutor.whatsapp}</td>    

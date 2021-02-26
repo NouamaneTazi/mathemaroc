@@ -7,15 +7,15 @@ const ProfileSeancesTutors = ({setConfettis}) => {
     const [maxRows, setMaxRows] = useState(10) 
     const getSeances = async () => {
         const res = await fetch('/api/mongodb?getAllSeances=true') 
-        const value = await res.json()
+        const value = await res.json() 
         setTutors(value)
     }
     const getNumberSeances = tutors => {
         const seances = tutors.map(tutor => tutor.seances).filter(seance => seance !== undefined && seance.length > 0) 
         // console.log("seances",seances)
-        const nb_seances = seances.reduce((acc, seance) => acc + seance.length, 0)
+        const nb_seances = seances.reduce((acc, seance) => acc + seance.length, 0) 
         if (nb_seances >= 500) setConfettis(true)
-        return nb_seances 
+        return nb_seances  
     }
     const getNumberStudents = async () => {
         const res = await fetch('/api/mongodb?count=students')
@@ -30,10 +30,10 @@ const ProfileSeancesTutors = ({setConfettis}) => {
 
     return (  
         <div className="inner">
-            <h2>Tu n'es pas seul !</h2> 
+            <h2>Tu n'es pas seul !</h2>  
             <p>Voici toute une communauté qui travaille aussi pour aider une génération à étinceler. S’entre aider c’est réussir ensemble.<br /> Ensemble on va plus loin, on crée un vrai impact.</p>
             <div className='row'>
-                <div className="6u 12u$(small)">  
+                <div className="6u 12u$(small)">   
                     <h3>Compteur de séances données :</h3>
                     <div className="box" style={{ textAlign: "center" }}> 
                         <h1>{getNumberSeances(tutors)}</h1>
@@ -42,10 +42,10 @@ const ProfileSeancesTutors = ({setConfettis}) => {
                 <div className="6u 12u$(small)">
                     <h3>Compteur d'élèves pris en charge :</h3>  
                     <div className="box" style={{ textAlign: "center" }}>
-                        <h1>{counts.supportedStudents} / {counts.students}</h1>
+                        <h1>{counts.supportedStudents} / {counts.students}</h1> 
                     </div> 
                 </div> 
-            </div>
+            </div> 
             <div className="table-wrapper">
                 <table className="alt dense">
                     <thead>
@@ -59,7 +59,7 @@ const ProfileSeancesTutors = ({setConfettis}) => {
                     </thead>
                     <tbody>
                         {tutors.sort((b,a)=> moment(a.last_updated) - moment(b.last_updated)).slice(0, maxRows).map(tutor => { 
-                            return ( 
+                            return (  
                                 <Fragment key={`${tutor._id}`}>
                                     {tutor.seances && tutor.seances.map((seance, index) => (
                                         <tr key={`${tutor._id}~${index}`}>  
@@ -76,9 +76,9 @@ const ProfileSeancesTutors = ({setConfettis}) => {
                         })}
                     </tbody>
                 </table>
-                <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p>
+                <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
             </div> 
-  
+   
         </div> 
     )
 }

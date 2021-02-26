@@ -14,8 +14,8 @@ const InputGroupId = ({ tutor }) => {
         })   
         window.location.reload(false)   
     } 
-    
-    const [selectedGroupId, setSelectedGroupId] = useState("")   
+     
+    const [selectedGroupId, setSelectedGroupId] = useState("")    
 
     return (<div className="12u 12u(small)" >    
         <input     
@@ -35,7 +35,7 @@ const Reports = () => {
         let json = await res.json() 
         if (!json.is_admin) Router.push('/profile')   
         Object.assign(user, json)    
-        res = await fetch('/api/mongodb?getAwaitingTutors=true')    
+        res = await fetch('/api/mongodb?getAwaitingTutors=true')     
         const new_awaitingtutors = await res.json()       
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
@@ -53,7 +53,7 @@ const Reports = () => {
         }   
   
         const res = await fetch('/api/mongodb', {     
-            method: 'post',  
+            method: 'post',   
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })   
         })  
         setRefresh(!refresh)     
@@ -86,7 +86,7 @@ const Reports = () => {
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>    
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>  
-    
+     
                         <div className="12u 12u(medium)">    
                             <div className="table-wrapper">    
                                 <table> 
@@ -102,21 +102,21 @@ const Reports = () => {
                                         </tr>    
                                     </thead> 
                                     <tbody>   
- 
+  
                                         {awaitingtutors.map(tutor => (  
                                             <tr key={`${tutor._id}`}>
                                                 <td>{tutor.firstname} {tutor.lastname}</td>     
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td>   
-                                                <td>{tutor.whatsapp}</td>    
+                                                <td>{tutor.whatsapp}</td>     
                                                 <td>{tutor.mail}</td>   
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>   
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>    
-                                            </tr>    
+                                            </tr>     
                                         )    
                                         )}   
                                     </tbody>  
-                                </table>    
+                                </table>     
                             </div>          
                         </div>     
                     </div>  
@@ -128,5 +128,5 @@ const Reports = () => {
     )   
 }  
    
-   
+    
 export default Reports      

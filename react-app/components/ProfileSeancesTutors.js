@@ -7,7 +7,7 @@ const ProfileSeancesTutors = ({setConfettis}) => {
     const [maxRows, setMaxRows] = useState(10) 
     const getSeances = async () => {
         const res = await fetch('/api/mongodb?getAllSeances=true') 
-        const value = await res.json() 
+        const value = await res.json()  
         setTutors(value)
     }
     const getNumberSeances = tutors => {
@@ -20,9 +20,9 @@ const ProfileSeancesTutors = ({setConfettis}) => {
     const getNumberStudents = async () => {
         const res = await fetch('/api/mongodb?count=students')
         const counts = await res.json()
-        setCounts(counts)
+        setCounts(counts) 
     }
-
+ 
     useEffect(() => {  
         getSeances() 
         getNumberStudents()  
@@ -47,7 +47,7 @@ const ProfileSeancesTutors = ({setConfettis}) => {
                 </div> 
             </div> 
             <div className="table-wrapper">
-                <table className="alt dense">
+                <table className="alt dense"> 
                     <thead>
                         <tr>
                             <th>Tuteur</th> 
@@ -57,11 +57,11 @@ const ProfileSeancesTutors = ({setConfettis}) => {
                             <th>Chapitres traités</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {tutors.sort((b,a)=> moment(a.last_updated) - moment(b.last_updated)).slice(0, maxRows).map(tutor => { 
+                    <tbody> 
+                        {tutors.sort((b,a)=> moment(a.last_updated) - moment(b.last_updated)).slice(0, maxRows).map(tutor => {  
                             return (  
                                 <Fragment key={`${tutor._id}`}>
-                                    {tutor.seances && tutor.seances.map((seance, index) => (
+                                    {tutor.seances && tutor.seances.map((seance, index) => ( 
                                         <tr key={`${tutor._id}~${index}`}>  
                                             {index == 0 && <td rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}><b>{tutor.firstname} {tutor.lastname}</b></td>}
                                             {index == 0 && <td rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}><b>{moment(tutor.last_updated).format('DD/MM/YYYY HH:mm:ss')}</b></td>}
@@ -79,7 +79,7 @@ const ProfileSeancesTutors = ({setConfettis}) => {
                 <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
             </div> 
    
-        </div> 
+        </div>  
     )
 }
  

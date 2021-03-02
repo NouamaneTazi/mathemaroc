@@ -98,7 +98,7 @@
     {
         "name": "El Kelaa", 
         "longitude": -7.40499838,
-        "latitude": 32.042166498, 
+        "latitude": 32.042166498,  
         "counts": "24" 
     },
     {
@@ -196,11 +196,11 @@
         "longitude": -4.45363,
         "latitude": 31.94102,  
         "counts": "55" 
-    },
+    }, 
     {
         "name": "Ifrane",
         "longitude": -5.11274,
-        "latitude": 33.52769,
+        "latitude": 33.52769, 
         "counts": "12"
     }, 
     { 
@@ -208,15 +208,15 @@
         "longitude": -5.65383,
         "latitude": 32.93877,  
         "counts": "13"
-    }, 
+    },  
     {
         "name": "Meknes",
         "longitude": -5.55059,
         "latitude": 33.89157,
         "counts": "63"
-    },
+    }, 
     { 
-        "name": "Khemisset",
+        "name": "Khemisset", 
         "longitude": -6.0573,
         "latitude": 33.8154,
         "counts": "27"
@@ -300,7 +300,7 @@
         "counts": "6"
     }, 
     {
-        "name": "Tanger-Assilah", 
+        "name": "Tanger-Assilah",  
         "longitude": -5.99989,
         "latitude": 35.47219,
         "counts": "136"
@@ -321,7 +321,7 @@
         "name": "Mediouna",
         "longitude": -7.5204,
         "latitude": 33.44251,
-        "counts": "16"
+        "counts": "16" 
     },  
     {
         "name": "Mohammedia", 

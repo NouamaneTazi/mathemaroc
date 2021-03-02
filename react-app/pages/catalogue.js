@@ -8,9 +8,9 @@ import Divider from '@material-ui/core/Divider';
 import SearchInput, { createFilter } from 'react-search-input'
 import Router from 'next/router' 
 import Link from 'next/link' 
-import Backdrop from '@material-ui/core/Backdrop';
+import Backdrop from '@material-ui/core/Backdrop'; 
 import CircularProgress from '@material-ui/core/CircularProgress'; 
-import Button from '@material-ui/core/Button'; 
+import Button from '@material-ui/core/Button';  
 import Dialog from '@material-ui/core/Dialog'; 
 import MuiDialogContent from '@material-ui/core/DialogContent';   
 import Typography from '@material-ui/core/Typography';
@@ -18,7 +18,7 @@ import Alert from '@material-ui/lab/Alert';
 
 const Reports = () => { 
     const getUserData = async (user) => { 
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub)   
         let json = await res.json()
         Object.assign(user, json) 
         if (!user.students || user.students.length === 0) {  
@@ -69,7 +69,7 @@ const Reports = () => {
     } 
   
     let { user, loading: userLoading } = useFetchUser() 
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false) 
     const [error, setError] = useState() 
     const [awaitingStudents, setAwaitingStudents] = useState([])   
     const [filiereTerm, setFiliereTerm] = useState("")   
@@ -80,7 +80,7 @@ const Reports = () => {
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes']))
     const [selectedStudents, setSelectedStudents] = useState([])
     const [maxRows, setMaxRows] = useState(10)
-    const [userHasNoStudents, setUserHasNoStudents] = useState(false)  
+    const [userHasNoStudents, setUserHasNoStudents] = useState(false)   
  
     useEffect(() => { 
         // { console.log("useEffect", user, userLoading) } 
@@ -101,8 +101,8 @@ const Reports = () => {
             if (!userLoading && user) {
                 getAwaitingStudentsData()
             }  
-        }, 1000); 
-
+        }, 1000);  
+ 
         return () => clearTimeout(timer);
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
   
@@ -120,9 +120,9 @@ const Reports = () => {
                 <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth> 
                     <MuiDialogContent dividers>
                         <Typography variant="h5" color="primary" align="center"> 
-                            Bienvenue {user.fullname} !
+                            Bienvenue {user.fullname} ! 
                         </Typography>
-                        <Typography align="left"> 
+                        <Typography align="left">  
                             <br />  
                             <ul>
                                 <li>
@@ -172,7 +172,7 @@ const Reports = () => {
                                     </thead>
                                     <tbody> 
                                         {selectedStudents.map(student => (
-                                            <tr key={`${student._id}`}>
+                                            <tr key={`${student._id}`}> 
                                                 <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
                                                 <td>{student.filiere}</td>  
                                                 <td>{student.matiere}</td> 
@@ -180,7 +180,7 @@ const Reports = () => {
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?  
                                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
-                                                }</td>  
+                                                }</td>   
                                             </tr>  
                                         )) 
  
@@ -188,12 +188,12 @@ const Reports = () => {
                                     </tbody>  
                                 </table>
                             </div>   
-                            {error && <Alert severity="error">{error.message}</Alert>} 
+                            {error && <Alert severity="error">{error.message}</Alert>}  
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
-                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
+                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button> 
                         </div> 
                         <Divider style={{ marginBottom: "3em" }} />  
-                    </>}
+                    </>} 
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
    
@@ -214,7 +214,7 @@ const Reports = () => {
                                                     <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>
                                                     <option value="ECONOMIE">ECONOMIE</option>  
                                                     <option value="SCIENCES TECH">SCIENCES TECH</option>
-                                                    <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option> 
+                                                    <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>  
                                                     <option value="Bac Pro">BAC PRO</option> 
                                                 </select>
                                             </div> 

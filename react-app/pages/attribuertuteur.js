@@ -3,17 +3,17 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'  
 import Router from "next/router"    
-import MenuAdmin from '../components/MenuAdmin'      
+import MenuAdmin from '../components/MenuAdmin'       
    
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {  
         // console.log(tutor, selectedGroupId)   
-        await fetch('/api/mongodb', {   
+        await fetch('/api/mongodb', {    
             method: 'post',      
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
         })   
         window.location.reload(false)   
-    } 
+    }  
      
     const [selectedGroupId, setSelectedGroupId] = useState("")    
 
@@ -27,7 +27,7 @@ const InputGroupId = ({ tutor }) => {
         />      
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}  
     </div>)  
-}  
+}   
      
 const Reports = () => { 
     const getUserData = async (user) => {       
@@ -42,7 +42,7 @@ const Reports = () => {
         const awaitingStudents = await res.json()  
      
         setAwaitingTutors(new_awaitingtutors) 
-        setAwaitingStudents(awaitingStudents)    
+        setAwaitingStudents(awaitingStudents)     
     }    
     
     const handleModClick = async (tutor, report_id) => {  
@@ -52,7 +52,7 @@ const Reports = () => {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
         }   
   
-        const res = await fetch('/api/mongodb', {     
+        const res = await fetch('/api/mongodb', {      
             method: 'post',   
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })   
         })  
@@ -71,7 +71,7 @@ const Reports = () => {
         }  
     }, [user, loading])  
       
-    return (      
+    return (       
         <>  
             {/* {console.log(user)} */}  
             {!loading && <Layout user={user} loading={loading}>  
@@ -86,10 +86,10 @@ const Reports = () => {
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>    
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>  
-     
-                        <div className="12u 12u(medium)">    
+      
+                        <div className="12u 12u(medium)">     
                             <div className="table-wrapper">    
-                                <table> 
+                                <table>  
                                     <thead>     
                                         <tr>    
                                             <th>Tuteur</th>    
@@ -104,8 +104,8 @@ const Reports = () => {
                                     <tbody>   
   
                                         {awaitingtutors.map(tutor => (  
-                                            <tr key={`${tutor._id}`}>
-                                                <td>{tutor.firstname} {tutor.lastname}</td>     
+                                            <tr key={`${tutor._id}`}> 
+                                                <td>{tutor.firstname} {tutor.lastname}</td>      
                                                 <td>{tutor.statut}</td>
                                                 <td>{tutor.matieres}</td>   
                                                 <td>{tutor.whatsapp}</td>     
@@ -120,9 +120,9 @@ const Reports = () => {
                             </div>          
                         </div>     
                     </div>  
-    
+     
                 </section>  
-            </Layout>  
+            </Layout>   
             }     
         </>   
     )   

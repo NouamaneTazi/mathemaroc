@@ -12,7 +12,7 @@ const features = data.reduce((s, region) => {
 // console.log(data)
 const geojson = {
     type: 'FeatureCollection',
-    // crs: { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+    // crs: { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } }, 
     features: features
 };
 
@@ -38,11 +38,11 @@ class Map extends React.Component {
             const clusterId = feature.properties.cluster_id;
 
             const mapboxSource = this._sourceRef.current.getSource();
-
+ 
             mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => { 
                 if (err) {
                     return;
-                }
+                } 
                 // console.log("zoom", zoom)
                 this._onViewportChange({
                     ...this.state.viewport,
@@ -55,15 +55,15 @@ class Map extends React.Component {
         }
     }; 
     _onHover = event => {
-        const {
+        const { 
             features, 
-            srcEvent: { offsetX, offsetY }
+            srcEvent: { offsetX, offsetY } 
         } = event;
         const hoveredFeature = features && features.find(f => f.layer.id === 'data'); 
 
         this.setState({ hoveredFeature: hoveredFeature })
     }; 
-
+ 
  
     render() {
         const { viewport, hoveredFeature } = this.state
@@ -91,7 +91,7 @@ class Map extends React.Component {
                         type='circle'
                         filter={['has', 'point_count']}
                         paint={{
-                            'circle-color': ['step', ['get', 'point_count'], '#51bbd6', 100, '#f1f075', 750, '#f28cb1'],
+                            'circle-color': ['step', ['get', 'point_count'], '#51bbd6', 100, '#f1f075', 750, '#f28cb1'], 
                             'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40]
                         }} /> */}
                     <Layer id='clusters'
@@ -109,10 +109,10 @@ class Map extends React.Component {
                             'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
                             'text-size': 12
                         }} />
-                    <Layer id='data'
+                    <Layer id='data' 
                         type='symbol' 
                         filter={['has', 'name']}
-                    />
+                    /> 
                     <Layer id='unclustered-point'
                         type='circle' 
                         filter={['!', ['has', 'point_count']]}

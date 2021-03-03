@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react"
-import SearchInput, { createFilter } from 'react-search-input'
- 
+import { useState, useEffect } from "react" 
+import SearchInput, { createFilter } from 'react-search-input' 
+  
 const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, toggleTraiteCase, groupId, report, tutor }) => {
     const replaceStudent = async (reportedStudent, selectedReplacement) => { 
         if (selectedReplacement.firstname !== "retour liste d'attente") {
-            await fetch('/api/mongodb', {  
+            await fetch('/api/mongodb', {   
                 method: 'post',
                 body: JSON.stringify({ _id: reportedStudent._id, data: { groupId: -1 } })
             })
         } else { 
             await fetch('/api/mongodb?unset=true', {
-                method: 'post',
+                method: 'post', 
                 body: JSON.stringify({ _id: reportedStudent._id, data: { groupId: "", reported: '' } })
             }) 
         } 
@@ -22,7 +22,7 @@ const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, toggleTrai
 
         report.replaced_by = { _id: selectedReplacement._id, name: `${selectedReplacement.firstname} ${selectedReplacement.lastname}` } 
         await fetch('/api/mongodb', {
-            method: 'post', 
+            method: 'post',  
             body: JSON.stringify({ _id: tutor._id, data: tutor })
         })
         toggleTraiteCase()
@@ -35,22 +35,22 @@ const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, toggleTrai
         console.log(awaitingStudents)
         awaitingStudents.push({ firstname: "retour liste d'attente", lastname: "" })
         awaitingStudents.push({ firstname: "--", lastname: "" }) 
-    }, [awaitingStudents]) 
+    }, [awaitingStudents])  
 
-    return (<div className="12u 12u(small)" >
+    return (<div className="12u 12u(small)" > 
         <SearchInput className="search-input" placeholder="Tapez nom ou prénom ou numéro de l'élève..." onChange={(term) => { setSearchTerm(term) }} />
-        <br /> 
+        <br />  
         {
             searchTerm !== "" && <> 
-                {filteredAwaitingStudents.slice(0, 3).map(student => (
+                {filteredAwaitingStudents.slice(0, 3).map(student => ( 
                     <>
                         <input type="radio" id={`${student.firstname}-${student.lastname}`} name="demo-priority" onChange={() => { setSelectedReplacement(student) }} />
-                        <label htmlFor={`${student.firstname}-${student.lastname}`}>{student.lastname} {student.firstname}</label>
+                        <label htmlFor={`${student.firstname}-${student.lastname}`}>{student.lastname} {student.firstname}</label> 
                     </>
                 ))}
-                {selectedReplacement && <div className="button special" onClick={() => replaceStudent(reportedStudent, selectedReplacement)}>Confimer</div>}
+                {selectedReplacement && <div className="button special" onClick={() => replaceStudent(reportedStudent, selectedReplacement)}>Confimer</div>} 
             </>
- 
+  
         }
     </div>)
 }

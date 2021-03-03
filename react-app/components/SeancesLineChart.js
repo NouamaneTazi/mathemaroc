@@ -19,7 +19,7 @@ import {
 import moment from 'moment'
 
 const legendStyles = () => ({
-    root: {
+    root: { 
         display: 'flex',
         margin: 'auto',
         flexDirection: 'row',
@@ -37,12 +37,12 @@ const legendItemStyles = () => ({
     },
 });
 
-const legendRootBase = ({ classes, ...restProps }) => (
+const legendRootBase = ({ classes, ...restProps }) => ( 
     <Legend.Root {...restProps} className={classes.root} />
 );
 const legendLabelBase = ({ classes, ...restProps }) => (
     <Legend.Label className={classes.label} {...restProps} />
-);
+); 
 const legendItemBase = ({ classes, ...restProps }) => (
     <Legend.Item className={classes.item} {...restProps} />
 );
@@ -52,7 +52,7 @@ const Item = withStyles(legendItemStyles, { name: 'LegendItem' })(legendItemBase
 
 
 const ValueLabel = (props) => {
-    const { text } = props;
+    const { text } = props; 
     return (
         <ValueAxis.Label
             {...props}
@@ -62,7 +62,7 @@ const ValueLabel = (props) => {
     );
 };
 
-const ArgumentLabel = (props) => {
+const ArgumentLabel = (props) => { 
     const { text } = props;
     return (
         <ArgumentAxis.Label
@@ -76,7 +76,7 @@ const ArgumentLabel = (props) => {
 
         />
     );
-};
+}; 
 
 const titleStyles = {
     title: {
@@ -107,7 +107,7 @@ const getData = (tutors) => {
         // console.log(moment(dates[0]))
         let startDate = moment(dates[0]).subtract(1, 'd')
         const endDate = new Date(dates.slice(-1)[0])
-        let date = startDate
+        let date = startDate 
         while (date <= endDate) {
             // console.log(date.format('L'), dates)
             dates.includes(date.format('L')) ? null : seances[moment(date).format('L')] = []
@@ -123,12 +123,12 @@ const getData = (tutors) => {
                 "seances": arr.length
             })
         })
-    }
+    } 
 
     return data
 }
 
-const TooltipContent = ({ targetItem }, data) => {
+const TooltipContent = ({ targetItem }, data) => { 
     const item = data[targetItem.point];
     return item.seances
 };
@@ -157,7 +157,7 @@ class Demo extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [] 
         }
     }
 
@@ -179,7 +179,7 @@ class Demo extends PureComponent {
                     height={400}
                 >
                     <ArgumentAxis showGrid={true} showTicks={false} labelComponent={ArgumentLabel} />
-                    <ValueAxis
+                    <ValueAxis 
                         labelComponent={ValueLabel}
                     />
 
@@ -191,7 +191,7 @@ class Demo extends PureComponent {
                     {/* <Legend position="right" rootComponent={Root} itemComponent={Item} labelComponent={Label} /> */}
                     <Title
                         textComponent={TitleText}
-                        text={`Nombre de séances données par jour`}
+                        text={`Nombre de séances données par jour`} 
                     />
 
                     <EventTracker />

@@ -95,12 +95,12 @@ export default () => (
                                         <ul className="icons"> 
                                             <li><a href="#" className="icon fa-twitter"><span className="label">Twitter</span></a></li>
                                             <li><a href="#" className="icon fa-facebook"><span className="label">Facebook</span></a></li> 
-                                            <li><a href="#" className="icon fa-instagram"><span className="label">Instagram</span></a></li>
+                                            <li><a href="#" className="icon fa-instagram"><span className="label">Instagram</span></a></li> 
                                             <li><a href="#" className="icon fa-github"><span className="label">Github</span></a></li>
                                             <li><a href="#" className="icon fa-dribbble"><span className="label">Dribbble</span></a></li>
                                             <li><a href="#" className="icon fa-tumblr"><span className="label">Tumblr</span></a></li> 
                                         </ul>
-                                        <ul className="icons">
+                                        <ul className="icons"> 
                                             <li><a href="#" className="icon alt fa-twitter"><span className="label">Twitter</span></a></li> 
                                             <li><a href="#" className="icon alt fa-facebook"><span className="label">Facebook</span></a></li>
                                             <li><a href="#" className="icon alt fa-instagram"><span className="label">Instagram</span></a></li> 
@@ -113,7 +113,7 @@ export default () => (
                                     <dt>Item1</dt>
                                     <dd>
                                         <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p> 
-                                    </dd>
+                                    </dd> 
                                     <dt>Item2</dt>
                                     <dd>
                                         <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p>
@@ -142,7 +142,7 @@ export default () => (
                                     </div>
                                     <div className="6u 12u(small)">
                                         <ul className="actions vertical small">
-                                            <li><a href="#" className="button special small">Small</a></li>
+                                            <li><a href="#" className="button special small">Small</a></li> 
                                             <li><a href="#" className="button small">Small</a></li>
                                         </ul>
                                     </div>
@@ -159,8 +159,8 @@ export default () => (
                                         </ul>
                                     </div>
                                 </div>
-
-                                <h4>Pagination</h4>
+ 
+                                <h4>Pagination</h4> 
                                 <ul className="pagination">
                                     <li><span className="button small disabled">Prev</span></li> 
                                     <li><a href="#" className="page active">1</a></li>
@@ -234,10 +234,10 @@ export default () => (
                                                 <th>Price</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody> 
                                             <tr>
                                                 <td>Item1</td>
-                                                <td>Ante turpis integer aliquet porttitor.</td>
+                                                <td>Ante turpis integer aliquet porttitor.</td> 
                                                 <td>29.99</td>
                                             </tr>
                                             <tr>
@@ -245,7 +245,7 @@ export default () => (
                                                 <td>Vis ac commodo adipiscing arcu aliquet.</td>
                                                 <td>19.99</td>
                                             </tr>
-                                            <tr>
+                                            <tr> 
                                                 <td>Item3</td>
                                                 <td> Morbi faucibus arcu accumsan lorem.</td>
                                                 <td>29.99</td>
@@ -258,7 +258,7 @@ export default () => (
                                             <tr>
                                                 <td>Item5</td>
                                                 <td>Ante turpis integer aliquet porttitor.</td>
-                                                <td>29.99</td>
+                                                <td>29.99</td> 
                                             </tr>
                                         </tbody>
                                         <tfoot>
@@ -374,7 +374,7 @@ export default () => (
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic10.jpg" alt="" /></span></div> 
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div>
                                     </div>
-                                </div>
+                                </div> 
 
                                 <h4>Left &amp; Right</h4>
                                 <p><span className="image left"><img src="/static/images/pic09.jpg" alt="" /></span>Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget tempus vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.</p>

@@ -1,8 +1,8 @@
 import Head from "next/head"    
-import { useState, useEffect } from "react"    
+import { useState, useEffect } from "react"     
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'  
-import Router from "next/router"    
+import Router from "next/router"     
 import MenuAdmin from '../components/MenuAdmin'       
     
 const InputGroupId = ({ tutor }) => {    
@@ -37,25 +37,25 @@ const Reports = () => {
         Object.assign(user, json)     
         res = await fetch('/api/mongodb?getAwaitingTutors=true')     
         const new_awaitingtutors = await res.json()       
-   
+    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json()   
      
         setAwaitingTutors(new_awaitingtutors) 
-        setAwaitingStudents(awaitingStudents)     
+        setAwaitingStudents(awaitingStudents)      
     }    
     
     const handleModClick = async (tutor, report_id) => {  
         if (tutor.reports[report_id].mod) {     
-            delete tutor.reports[report_id].mod    
-        } else {  
+            delete tutor.reports[report_id].mod     
+        } else {   
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
         }   
   
         const res = await fetch('/api/mongodb', {      
             method: 'post',   
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })   
-        })  
+        })   
         setRefresh(!refresh)     
     } 
        
@@ -69,12 +69,12 @@ const Reports = () => {
         if (user && !loading) {      
             getUserData(user)     
         }   
-    }, [user, loading])  
-      
-    return (       
+    }, [user, loading])   
+       
+    return (        
         <>  
             {/* {console.log(user)} */}   
-            {!loading && <Layout user={user} loading={loading}>  
+            {!loading && <Layout user={user} loading={loading}>   
                 <Head> 
                     <title>Tuteurs en attente</title>   
                     <meta name="description" content="Tuteurs en attente" />    
@@ -106,11 +106,11 @@ const Reports = () => {
                                         {awaitingtutors.map(tutor => (  
                                             <tr key={`${tutor._id}`}> 
                                                 <td>{tutor.firstname} {tutor.lastname}</td>      
-                                                <td>{tutor.statut}</td>
+                                                <td>{tutor.statut}</td> 
                                                 <td>{tutor.matieres}</td>   
                                                 <td>{tutor.whatsapp}</td>     
                                                 <td>{tutor.mail}</td>   
-                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>   
+                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>    
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>    
                                             </tr>     
                                         )    
@@ -118,7 +118,7 @@ const Reports = () => {
                                     </tbody>  
                                 </table>     
                             </div>          
-                        </div>     
+                        </div>      
                     </div>  
      
                 </section>  

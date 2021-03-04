@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'
 import moment from 'moment'
-import Icon from '@material-ui/core/Icon';
+import Icon from '@material-ui/core/Icon'; 
 import Divider from '@material-ui/core/Divider'; 
 import SearchInput, { createFilter } from 'react-search-input'
 import Router from 'next/router' 
@@ -11,14 +11,14 @@ import Link from 'next/link'
 import Backdrop from '@material-ui/core/Backdrop'; 
 import CircularProgress from '@material-ui/core/CircularProgress'; 
 import Button from '@material-ui/core/Button';  
-import Dialog from '@material-ui/core/Dialog'; 
+import Dialog from '@material-ui/core/Dialog';  
 import MuiDialogContent from '@material-ui/core/DialogContent';   
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
 
 const Reports = () => { 
     const getUserData = async (user) => { 
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub)   
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
         let json = await res.json()
         Object.assign(user, json)  
         if (!user.students || user.students.length === 0) {  
@@ -63,7 +63,7 @@ const Reports = () => {
                     data: { "catalogue_logs": catalogue_logs } 
                 })
             }) 
-            Router.push('/profile') 
+            Router.push('/profile')  
         }
         setLoading(false) 
     } 
@@ -77,13 +77,13 @@ const Reports = () => {
     const [wishesTerm, setWishesTerm] = useState("") 
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere'])) 
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
-    const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes']))
+    const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes'])) 
     const [selectedStudents, setSelectedStudents] = useState([])
     const [maxRows, setMaxRows] = useState(10)
     const [userHasNoStudents, setUserHasNoStudents] = useState(false)   
  
     useEffect(() => { 
-        // { console.log("useEffect", user, userLoading) } 
+        // { console.log("useEffect", user, userLoading) }  
         if (user && !userLoading) {
             setLoading(true)
             getUserData(user)   
@@ -95,7 +95,7 @@ const Reports = () => {
     }, [user, userLoading])
  
  
-    useEffect(() => {
+    useEffect(() => { 
         // {console.log("useEffect", user, userLoading)}
         const timer = setTimeout(() => {
             if (!userLoading && user) {
@@ -113,7 +113,7 @@ const Reports = () => {
             </Backdrop>  
             {!loading && user && <Layout user={user} loading={userLoading}>
                 <Head>
-                    <title>Catalogue à élèves</title>
+                    <title>Catalogue à élèves</title> 
                     <meta name="description" content="Catalogue des élèves" />  
                 </Head>
 
@@ -133,7 +133,7 @@ const Reports = () => {
                         </Typography>
  
                     </MuiDialogContent>  
-
+ 
                     <Button autoFocus onClick={() => setUserHasNoStudents(false)} color="primary">
                         Fermer
                         </Button> 
@@ -143,7 +143,7 @@ const Reports = () => {
                 <section id="one"> 
                     <div className="inner"> 
                         {(user.students && user.students.length !== 0) && 
-                            <div style={{ marginBottom: "2em" }}>
+                            <div style={{ marginBottom: "2em" }}> 
                                 <Link href="/profile"> 
                                     <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
                                 </Link>
@@ -166,7 +166,7 @@ const Reports = () => {
                                             <th>Date de demande</th> 
                                             <th>Filière</th>
                                             <th>Matières</th> 
-                                            <th>Demandes</th>
+                                            <th>Demandes</th> 
                                             <th style={{ textAlign: 'center', verticalAlign: 'middle' }}>Selectionné</th> 
                                         </tr>
                                     </thead>
@@ -198,7 +198,7 @@ const Reports = () => {
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
    
   
-                        <div className="table-wrapper">  
+                        <div className="table-wrapper">   
                             <table>
                                 <thead>
                                     <tr>  
@@ -228,7 +228,7 @@ const Reports = () => {
                                     {filteredWishesStudents.slice(0, maxRows).map(student => ( 
                                         <tr key={`${student._id}`}> 
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>   
-                                            <td>{student.filiere}</td> 
+                                            <td>{student.filiere}</td>  
                                             <td style={{ width: "50%" }}>{student.matiere}</td> 
                                             <td style={{ width: "40%" }}>{student.wishes}</td>    
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?  

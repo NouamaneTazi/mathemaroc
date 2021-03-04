@@ -46,8 +46,8 @@ const Signup = () => {
             } else { 
                 setLoading(true)
                 if (role === "student") { 
-                    inputFields.matiere = inputFields.matieres.join(', ')
-                }
+                    inputFields.matiere = inputFields.matieres.join(', ') 
+                } 
                 delete inputFields.matieres
                 Object.entries(inputFields).map(([k, v]) => inputFields[k] = trim(v))
                 inputFields.firstname = capitalize(inputFields.firstname)
@@ -55,9 +55,9 @@ const Signup = () => {
                 inputFields.fullname = inputFields.firstname + " " + inputFields.lastname 
                 inputFields.mail = normalizeEmail(inputFields.mail)
                 Object.assign(user, inputFields)
-                user.role = role
+                user.role = role 
                 user.auth0id = user.sub
-                await fetch('/api/mongodb?insert=true', {
+                await fetch('/api/mongodb?insert=true', { 
                     method: 'post',
                     body: JSON.stringify({ data: user })
                 })
@@ -91,7 +91,7 @@ const Signup = () => {
     const [refresh, setRefresh] = useState(false)
     const [error, setError] = useState({}) 
     const [role, setRole] = useState() 
-
+ 
     useEffect(() => { 
         // {console.log("useEffect", user, userLoading)}
         if (user && !userLoading) {
@@ -165,8 +165,8 @@ const Signup = () => {
                                         {showError && <span style={{ textAlign: 'center', display: 'block  ' }}>Tous les champs marqués en (*) doivent être remplis !</span>}
                                         <button style={{ margin: 'auto', marginTop: "3em", display: 'block' }} className="button special" onClick={() => handleSubmit()}>Confirmer</button>
                                     </div>
-                                </>
-                                : role == "student" ?
+                                </> 
+                                : role == "student" ? 
                                     <>
                                         <div className="6u 12u(medium)" style={{ margin: 'auto' }}>
                                             <div className="6u" style={{ textAlign: 'center', margin: 'auto' }}>
@@ -179,8 +179,8 @@ const Signup = () => {
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
-                                                <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: capitalize(e.target.value)})} placeholder="Nom" />
-                                            </div>
+                                                <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: capitalize(e.target.value)})} placeholder="Nom" /> 
+                                            </div> 
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Numéro Whatsapp :</span>
                                                 <input className={error.whatsapp ? "invalid" : null} type="tel" value={inputFields.whatsapp} onChange={e => setInputFields({ ...inputFields, whatsapp: e.target.value })} placeholder="+212611223344" />
@@ -194,7 +194,7 @@ const Signup = () => {
                                                 <input className={error.mail ? "invalid" : null} type="email" value={inputFields.mail} onChange={e => setInputFields({ ...inputFields, mail: e.target.value })} placeholder="E-mail que vous consultez régulièrement..." />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
-                                                <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom du lycée (*) :</span>
+                                                <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom du lycée (*) :</span> 
                                                 <input className={error.lycee ? "invalid" : null} type="text" value={inputFields.lycee} onChange={e => setInputFields({ ...inputFields, lycee: e.target.value })} placeholder="Nom de votre lycée" />
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
@@ -239,7 +239,7 @@ const Signup = () => {
                                                             </>
                                                         ))}
                                                 </div>
-                                            </div>
+                                            </div> 
 
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Chapitres (*) :</span>

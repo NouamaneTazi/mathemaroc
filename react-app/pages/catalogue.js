@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
-import Layout from '../components/Layout' 
+import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'
 import moment from 'moment'
 import Icon from '@material-ui/core/Icon';
@@ -20,7 +20,7 @@ const Reports = () => {
     const getUserData = async (user) => { 
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)   
         let json = await res.json()
-        Object.assign(user, json) 
+        Object.assign(user, json)  
         if (!user.students || user.students.length === 0) {  
             setUserHasNoStudents(true) 
         }  
@@ -29,7 +29,7 @@ const Reports = () => {
  
     const getAwaitingStudentsData = async () => {
         let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits    
-        const awaitingStudents = await res.json() 
+        const awaitingStudents = await res.json()  
         setAwaitingStudents(awaitingStudents)
         setLoading(false)
     } 
@@ -56,7 +56,7 @@ const Reports = () => {
                 time: new Date(Date.now()).toLocaleString("en-US"),
                 students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname })) 
             })
-            await fetch('/api/mongodb', {
+            await fetch('/api/mongodb', { 
                 method: 'post', 
                 body: JSON.stringify({
                     _id: user._id,  
@@ -106,7 +106,7 @@ const Reports = () => {
         return () => clearTimeout(timer);
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
   
-    return ( 
+    return (  
         <>   
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" />
@@ -138,7 +138,7 @@ const Reports = () => {
                         Fermer
                         </Button> 
                 </Dialog>
-  
+   
 
                 <section id="one"> 
                     <div className="inner"> 
@@ -154,12 +154,12 @@ const Reports = () => {
                         </header> 
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />   
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>    
- 
+  
                     </div> 
 
                     {selectedStudents.length > 0 && <> 
                         <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
-                            <div className="table-wrapper">
+                            <div className="table-wrapper"> 
                                 <table> 
                                     <thead> 
                                         <tr>
@@ -171,7 +171,7 @@ const Reports = () => {
                                         </tr>
                                     </thead>
                                     <tbody> 
-                                        {selectedStudents.map(student => (
+                                        {selectedStudents.map(student => ( 
                                             <tr key={`${student._id}`}> 
                                                 <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
                                                 <td>{student.filiere}</td>  
@@ -192,7 +192,7 @@ const Reports = () => {
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button> 
                         </div> 
-                        <Divider style={{ marginBottom: "3em" }} />  
+                        <Divider style={{ marginBottom: "3em" }} />   
                     </>} 
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  

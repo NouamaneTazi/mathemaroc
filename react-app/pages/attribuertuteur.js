@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'  
 import Router from "next/router"    
 import MenuAdmin from '../components/MenuAdmin'       
-   
+    
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {  
         // console.log(tutor, selectedGroupId)   
@@ -14,12 +14,12 @@ const InputGroupId = ({ tutor }) => {
         })   
         window.location.reload(false)   
     }  
-     
+      
     const [selectedGroupId, setSelectedGroupId] = useState("")    
 
     return (<div className="12u 12u(small)" >    
-        <input     
-            type="text"   
+        <input      
+            type="text"    
             id="group_id" 
             name="group_id"   
             value={selectedGroupId}    
@@ -34,12 +34,12 @@ const Reports = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)   
         let json = await res.json() 
         if (!json.is_admin) Router.push('/profile')   
-        Object.assign(user, json)    
+        Object.assign(user, json)     
         res = await fetch('/api/mongodb?getAwaitingTutors=true')     
         const new_awaitingtutors = await res.json()       
    
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
-        const awaitingStudents = await res.json()  
+        const awaitingStudents = await res.json()   
      
         setAwaitingTutors(new_awaitingtutors) 
         setAwaitingStudents(awaitingStudents)     
@@ -62,18 +62,18 @@ const Reports = () => {
     let { user, loading } = useFetchUser()   
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
     const [awaitingStudents, setAwaitingStudents] = useState([])    
-    const [refresh, setRefresh] = useState(true)  
+    const [refresh, setRefresh] = useState(true)   
     
     useEffect(() => {     
         // {console.log("useEffect", user, loading)}       
         if (user && !loading) {      
             getUserData(user)     
-        }  
+        }   
     }, [user, loading])  
       
     return (       
         <>  
-            {/* {console.log(user)} */}  
+            {/* {console.log(user)} */}   
             {!loading && <Layout user={user} loading={loading}>  
                 <Head> 
                     <title>Tuteurs en attente</title>   
@@ -85,7 +85,7 @@ const Reports = () => {
                         <header className="major">     
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>    
                                 : <h1>Vous n'êtes pas connectés</h1>}    
-                        </header>  
+                        </header>   
       
                         <div className="12u 12u(medium)">     
                             <div className="table-wrapper">    
@@ -126,7 +126,7 @@ const Reports = () => {
             }     
         </>   
     )   
-}  
+}   
    
     
 export default Reports      

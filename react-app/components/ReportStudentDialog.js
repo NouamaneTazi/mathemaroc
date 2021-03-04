@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button'; 
+import { withStyles } from '@material-ui/core/styles'; 
+import Button from '@material-ui/core/Button';  
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions'; 
@@ -15,7 +15,7 @@ const DialogContent = withStyles(theme => ({
     },
 }))(MuiDialogContent);
  
-const DialogActions = withStyles(theme => ({ 
+const DialogActions = withStyles(theme => ({  
     root: {
         margin: 0,
         padding: theme.spacing(1),
@@ -31,14 +31,14 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
     const handleSubmit = async () => {  
         let report = {
             "student": { "_id": student._id, "name": `${student.firstname} ${student.lastname}` },
-            "time": new Date(Date.now()).toLocaleString("en-US"),
+            "time": new Date(Date.now()).toLocaleString("en-US"), 
             "text": reportText
         } 
 
         if (reportOption === "other" || reportOption.substring(0, 3) === "del") {
             student.reported = true
             student.report = { "tutor": { "_id": tutor._id, "name": `${tutor.fullname}` }, "text": reportText }
-            student.prev_groupId = tutor.groupId
+            student.prev_groupId = tutor.groupId 
             if (reportOption.substring(0, 3) === "del") {
                 student.groupId = -1 
                 report.replaced_by = { name: "--" }  
@@ -46,7 +46,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
             }
             await fetch('/api/mongodb', {
                 method: 'post',
-                body: JSON.stringify({ _id: student._id, data: student })
+                body: JSON.stringify({ _id: student._id, data: student }) 
             }) 
         } else if (reportOption === "returnQueue") {  
             await fetch('/api/mongodb?unset=true', { 
@@ -72,9 +72,9 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
 
     return (
         <>
-            <Dialog aria-labelledby="customized-dialog-title" open={student ? true : false} fullWidth>
-                <DialogContent dividers>
-                    <Typography variant="h5" gutterBottom style={{ color: "black" }}> 
+            <Dialog aria-labelledby="customized-dialog-title" open={student ? true : false} fullWidth> 
+                <DialogContent dividers> 
+                    <Typography variant="h5" gutterBottom style={{ color: "black" }}>  
                         Signaler {student.fullname} :
           </Typography>
                     <Typography>
@@ -88,7 +88,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                             <FormControlLabel value="delete-2" control={<Radio />} name="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." label="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." style={{ color: "black", textTransform: "none", margin: "0" }} />
                             <FormControlLabel value="returnQueue" control={<Radio />} name="L'élève doit revenir à la liste d'attente." label="L'élève doit revenir à la liste d'attente." style={{ color: "black", textTransform: "none", margin: "0" }} /> 
                             <FormControlLabel value="other" control={<Radio />} name="Autre" label="Autre" style={{ color: "black", textTransform: "none", margin: "0" }} />
-                        </RadioGroup> 
+                        </RadioGroup>  
                         {reportOption === "other" && <textarea name="report-text" id={`dialog-${student._id}`} style={{ color: "white" }} placeholder="Décrivez ce qui s'est passé.." rows="6" value={reportText} onChange={e => setReportText(e.target.value)}></textarea>} 
                     </div>
                 </DialogActions>
@@ -97,9 +97,9 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                         Cancel
           </Button>
  
-                    <Button autoFocus onClick={() => handleSubmit()} color="primary">
+                    <Button autoFocus onClick={() => handleSubmit()} color="primary"> 
                         Submit Report
-          </Button> 
+          </Button>  
                 </DialogActions>
             </Dialog>
         </> 

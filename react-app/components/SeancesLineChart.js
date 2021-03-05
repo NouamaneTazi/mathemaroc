@@ -24,15 +24,15 @@ const legendStyles = () => ({
         margin: 'auto',
         flexDirection: 'row',
     },
-});
-const legendLabelStyles = theme => ({
+}); 
+const legendLabelStyles = theme => ({ 
     label: {
         paddingTop: theme.spacing(1),
         whiteSpace: 'nowrap',
     },
 });
 const legendItemStyles = () => ({
-    item: {
+    item: { 
         flexDirection: 'column',
     },
 });
@@ -47,7 +47,7 @@ const legendItemBase = ({ classes, ...restProps }) => (
     <Legend.Item className={classes.item} {...restProps} />
 );
 const Root = withStyles(legendStyles, { name: 'LegendRoot' })(legendRootBase);
-const Label = withStyles(legendLabelStyles, { name: 'LegendLabel' })(legendLabelBase);
+const Label = withStyles(legendLabelStyles, { name: 'LegendLabel' })(legendLabelBase); 
 const Item = withStyles(legendItemStyles, { name: 'LegendItem' })(legendItemBase);
 
 
@@ -83,7 +83,7 @@ const titleStyles = {
         whiteSpace: 'pre',
         color: "#3e467f"
     },
-};
+}; 
 const TitleText = withStyles(titleStyles)(({ classes, ...props }) => (
     <Title.Text {...props} className={classes.title} />
 ));
@@ -122,7 +122,7 @@ const getData = (tutors) => {
                 "day": moment(date).format('DD/MM/YYYY'),
                 "seances": arr.length
             })
-        })
+        }) 
     } 
 
     return data
@@ -151,7 +151,7 @@ const demoStyles = () => ({
         // margin:"auto"
         marginBottom: '1em'
     }
-});
+}); 
 
 class Demo extends PureComponent {
     constructor(props) {

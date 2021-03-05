@@ -4,22 +4,22 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions'; 
-import Typography from '@material-ui/core/Typography'; 
+import Typography from '@material-ui/core/Typography';  
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup'; 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const DialogContent = withStyles(theme => ({ 
     root: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(2), 
     },
 }))(MuiDialogContent);
  
 const DialogActions = withStyles(theme => ({  
-    root: {
+    root: { 
         margin: 0,
         padding: theme.spacing(1),
-    },  
+    },   
 }))(MuiDialogActions);
 
 export default function CustomizedDialogs({ student, setOpen, tutor }) {
@@ -49,15 +49,15 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                 body: JSON.stringify({ _id: student._id, data: student }) 
             }) 
         } else if (reportOption === "returnQueue") {  
-            await fetch('/api/mongodb?unset=true', { 
+            await fetch('/api/mongodb?unset=true', {  
                 method: 'post',
                 body: JSON.stringify({ _id: student._id, data: { groupId: "" } })
             })
             report.replaced_by = { name: "retour liste d'attente" }
             report.mod = { name: "Bot" }  
         }  
-
-        let reports = "reports" in tutor ? tutor.reports : []
+ 
+        let reports = "reports" in tutor ? tutor.reports : [] 
         reports.push(report)
 
         await fetch('/api/mongodb', { 
@@ -72,21 +72,21 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
 
     return (
         <>
-            <Dialog aria-labelledby="customized-dialog-title" open={student ? true : false} fullWidth> 
+            <Dialog aria-labelledby="customized-dialog-title" open={student ? true : false} fullWidth>  
                 <DialogContent dividers> 
                     <Typography variant="h5" gutterBottom style={{ color: "black" }}>  
                         Signaler {student.fullname} :
-          </Typography>
+          </Typography> 
                     <Typography>
                         Décrivez ce qui s'est passé : 
           </Typography> 
                 </DialogContent>
-                <DialogActions>
+                <DialogActions> 
                     <div className="12u"> 
                         <RadioGroup aria-label="gender" name="gender1" value={reportOption} onChange={(e) => { setReportOption(e.target.value); e.target.value !== 'other' && setReportText(e.target.name) }}>
                             <FormControlLabel value="delete-1" control={<Radio />} name="L'élève est injoignable." label="L'élève est injoignable." style={{ color: "black", textTransform: "none", margin: "0" }} />
                             <FormControlLabel value="delete-2" control={<Radio />} name="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." label="L'élève m'a mal respecté / a quitté le groupe / ne veut pas travailler." style={{ color: "black", textTransform: "none", margin: "0" }} />
-                            <FormControlLabel value="returnQueue" control={<Radio />} name="L'élève doit revenir à la liste d'attente." label="L'élève doit revenir à la liste d'attente." style={{ color: "black", textTransform: "none", margin: "0" }} /> 
+                            <FormControlLabel value="returnQueue" control={<Radio />} name="L'élève doit revenir à la liste d'attente." label="L'élève doit revenir à la liste d'attente." style={{ color: "black", textTransform: "none", margin: "0" }} />  
                             <FormControlLabel value="other" control={<Radio />} name="Autre" label="Autre" style={{ color: "black", textTransform: "none", margin: "0" }} />
                         </RadioGroup>  
                         {reportOption === "other" && <textarea name="report-text" id={`dialog-${student._id}`} style={{ color: "white" }} placeholder="Décrivez ce qui s'est passé.." rows="6" value={reportText} onChange={e => setReportText(e.target.value)}></textarea>} 
@@ -96,7 +96,7 @@ export default function CustomizedDialogs({ student, setOpen, tutor }) {
                     <Button autoFocus onClick={handleClose} color="primary">
                         Cancel
           </Button>
- 
+  
                     <Button autoFocus onClick={() => handleSubmit()} color="primary"> 
                         Submit Report
           </Button>  

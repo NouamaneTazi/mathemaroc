@@ -50,7 +50,7 @@ const Root = withStyles(legendStyles, { name: 'LegendRoot' })(legendRootBase);
 const Label = withStyles(legendLabelStyles, { name: 'LegendLabel' })(legendLabelBase); 
 const Item = withStyles(legendItemStyles, { name: 'LegendItem' })(legendItemBase);
 
-
+ 
 const ValueLabel = (props) => {
     const { text } = props; 
     return (
@@ -91,10 +91,10 @@ const TitleText = withStyles(titleStyles)(({ classes, ...props }) => (
 const getData = (tutors) => {
     let data = []
     let seances = []
-    tutors.map(tutor => {
+    tutors.map(tutor => { 
         tutor.seances.map(seance => {
             if ("date" in seance) {
-                let date = moment(seance.date).format('L')
+                let date = moment(seance.date).format('L') 
                 date in seances ? seances[date].push(seance) : seances[date] = [seance]
             }
         })
@@ -131,19 +131,19 @@ const getData = (tutors) => {
 const TooltipContent = ({ targetItem }, data) => { 
     const item = data[targetItem.point];
     return item.seances
-};
+}; 
 
 const demoStyles = () => ({
     chart: {
         paddingRight: '20px',
-        color: "#3e467f",
+        color: "#3e467f", 
 
     },
     title: {
         whiteSpace: 'pre',
     },
     white: {
-        color: 'white'
+        color: 'white' 
     },
     paper: {
         backgroundColor: "transparent",
@@ -187,8 +187,8 @@ class Demo extends PureComponent {
                         name="Nombre de séances"
                         valueField="seances"
                         argumentField="day"
-                    />
-                    {/* <Legend position="right" rootComponent={Root} itemComponent={Item} labelComponent={Label} /> */}
+                    /> 
+                    {/* <Legend position="right" rootComponent={Root} itemComponent={Item} labelComponent={Label} /> */} 
                     <Title
                         textComponent={TitleText}
                         text={`Nombre de séances données par jour`} 

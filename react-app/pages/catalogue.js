@@ -4,9 +4,9 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import moment from 'moment'
 import Icon from '@material-ui/core/Icon'; 
-import Divider from '@material-ui/core/Divider'; 
-import SearchInput, { createFilter } from 'react-search-input'
-import Router from 'next/router' 
+import Divider from '@material-ui/core/Divider';  
+import SearchInput, { createFilter } from 'react-search-input' 
+import Router from 'next/router'  
 import Link from 'next/link' 
 import Backdrop from '@material-ui/core/Backdrop'; 
 import CircularProgress from '@material-ui/core/CircularProgress'; 
@@ -21,7 +21,7 @@ const Reports = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
         let json = await res.json()
         Object.assign(user, json)  
-        if (!user.students || user.students.length === 0) {  
+        if (!user.students || user.students.length === 0) {   
             setUserHasNoStudents(true) 
         }  
         // console.log("u",user) 
@@ -60,7 +60,7 @@ const Reports = () => {
                 method: 'post', 
                 body: JSON.stringify({
                     _id: user._id,  
-                    data: { "catalogue_logs": catalogue_logs } 
+                    data: { "catalogue_logs": catalogue_logs }  
                 })
             }) 
             Router.push('/profile')  
@@ -89,7 +89,7 @@ const Reports = () => {
             getUserData(user)   
             getAwaitingStudentsData() 
         } 
-        else if (!userLoading && !user) {  
+        else if (!userLoading && !user) {   
             Router.push('/profile')  
         }
     }, [user, userLoading])
@@ -116,8 +116,8 @@ const Reports = () => {
                     <title>Catalogue à élèves</title> 
                     <meta name="description" content="Catalogue des élèves" />  
                 </Head>
-
-                <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth> 
+ 
+                <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth>  
                     <MuiDialogContent dividers>
                         <Typography variant="h5" color="primary" align="center"> 
                             Bienvenue {user.fullname} ! 
@@ -207,14 +207,14 @@ const Reports = () => {
                                             <div className="select-wrapper" >
                                                 <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>  
                                                     <option value="">- Filière -</option> 
-                                                    <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>
+                                                    <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option> 
                                                     <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>   
                                                     <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option> 
                                                     <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
                                                     <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>
                                                     <option value="ECONOMIE">ECONOMIE</option>  
                                                     <option value="SCIENCES TECH">SCIENCES TECH</option>
-                                                    <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>  
+                                                    <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>   
                                                     <option value="Bac Pro">BAC PRO</option> 
                                                 </select>
                                             </div> 
@@ -237,7 +237,7 @@ const Reports = () => {
                                             }</td>
                                         </tr>  
                                     ))}  
-                                </tbody>  
+                                </tbody>   
                             </table>   
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
                         </div> 

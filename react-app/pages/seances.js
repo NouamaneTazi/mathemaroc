@@ -4,8 +4,8 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'  
 import SeancesLineChart from '../components/SeancesLineChart' 
 import Icon from '@material-ui/core/Icon'; 
-import Rating from 'react-rating' 
-import moment from 'moment' 
+import Rating from 'react-rating'  
+import moment from 'moment'  
 
 const Admin = () => {
     const getUserData = async (user) => {
@@ -40,7 +40,7 @@ const Admin = () => {
     let { user, loading } = useFetchUser()
     const [tutors, setTutors] = useState([])
     const [refresh, setRefresh] = useState(true)
-
+ 
     useEffect(() => {
         // {console.log("useEffect", user, loading)} 
         if (user && !loading) {
@@ -57,7 +57,7 @@ const Admin = () => {
                     <meta name="description" content="Admin Page" />
                 </Head>
                 <section id="one">
-                    <div className="inner">
+                    <div className="inner"> 
                         <header className="major">
                             {user ? <h1>Séances données</h1> : <h1>Vous n'êtes pas connectés</h1>} 
                         </header>
@@ -71,7 +71,7 @@ const Admin = () => {
                                 </div>
  
                             </div>
-                        }
+                        } 
                     </div>
                     <div className="inner" style={{ maxWidth: "95%", width: "100%" }}>
 
@@ -84,7 +84,7 @@ const Admin = () => {
                                         <th>Date</th>
                                         <th>Durée</th>
                                         <th>Chapitres traités</th>
-                                        <th>Élèves absents</th>
+                                        <th>Élèves absents</th> 
                                         <th>Remarques</th>
                                         <th>Ressenti</th>
                                         <th>Traité</th>
@@ -100,7 +100,7 @@ const Admin = () => {
                                                         {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{moment(tutor.last_updated).format('DD/MM/YYYY HH:mm:ss')}</th>}
                                                         <td>{seance.date}</td>
                                                         <td>{seance.duree}</td>
-                                                        <td>{seance.chapitres}</td> 
+                                                        <td>{seance.chapitres}</td>  
                                                         <td>{Object.values(seance.absents).join(', ')}</td>
                                                         <td>{seance.remarques}</td>
                                                         <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
@@ -108,7 +108,7 @@ const Admin = () => {
                                                                 readonly
                                                                 initialRating={seance.rating} 
                                                                 emptySymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white" }}>{x}</Icon>)}
-                                                                fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "#2ea1d9" }}>{x}</Icon>)}
+                                                                fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "#2ea1d9" }}>{x}</Icon>)} 
                                                             /> 
                                                         </td>
                                                         <td style={{ verticalAlign: "middle" }}>
@@ -118,10 +118,10 @@ const Admin = () => {
                                                                     <label htmlFor={`${tutor._id}~${index}`}></label>
                                                                 </>
                                                                 : seance.mod.id == user.sub ?
-                                                                    <>
+                                                                    <> 
                                                                         <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked onClick={() => handleModClick(tutor, index)} /> 
                                                                         <label htmlFor={`${tutor._id}~${index}`}>{seance.mod.name}</label>
-                                                                    </>
+                                                                    </> 
                                                                     : seance.mod.id !== user.sub ?
                                                                         <>
                                                                             <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked />
@@ -137,7 +137,7 @@ const Admin = () => {
                                         )
                                     })}
                                 </tbody> 
-                            </table>
+                            </table> 
                         </div>
 
 
@@ -149,4 +149,4 @@ const Admin = () => {
     )
 } 
 
-export default Admin 
+export default Admin  

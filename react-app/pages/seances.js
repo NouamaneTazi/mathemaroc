@@ -20,8 +20,8 @@ const Admin = () => {
     const getNumberSeances = tutors => {
         let seances = tutors.map(tutor => tutor.seances).filter(seance => seance !== undefined && seance.length > 0) 
         // console.log("seances",seances) 
-        return seances.reduce((acc, seance) => acc + seance.length, 0) 
-    }
+        return seances.reduce((acc, seance) => acc + seance.length, 0)  
+    } 
 
     const handleModClick = async (tutor, seance_id) => {
         if (tutor.seances[seance_id].mod) { 
@@ -63,10 +63,10 @@ const Admin = () => {
                         </header>
  
                         <SeancesLineChart tutors={tutors} />
-                        {tutors.length > 0 &&
+                        {tutors.length > 0 && 
                             <div className="12u 12u(medium)">
                                 <h3>Compteur de séances données :</h3>
-                                <div className="box" style={{ textAlign: "center" }}>
+                                <div className="box" style={{ textAlign: "center" }}> 
                                     <h1>{getNumberSeances(tutors)}</h1>
                                 </div>
  
@@ -86,7 +86,7 @@ const Admin = () => {
                                         <th>Chapitres traités</th>
                                         <th>Élèves absents</th> 
                                         <th>Remarques</th>
-                                        <th>Ressenti</th>
+                                        <th>Ressenti</th> 
                                         <th>Traité</th>
                                     </tr>
                                 </thead>
@@ -109,13 +109,13 @@ const Admin = () => {
                                                                 initialRating={seance.rating} 
                                                                 emptySymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white" }}>{x}</Icon>)}
                                                                 fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "#2ea1d9" }}>{x}</Icon>)} 
-                                                            /> 
+                                                            />  
                                                         </td>
                                                         <td style={{ verticalAlign: "middle" }}>
                                                             {!seance.mod || !seance.mod.id ?
-                                                                <>
+                                                                <> 
                                                                     <input type="checkbox" id={`${tutor._id}~${index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, index)} />
-                                                                    <label htmlFor={`${tutor._id}~${index}`}></label>
+                                                                    <label htmlFor={`${tutor._id}~${index}`}></label> 
                                                                 </>
                                                                 : seance.mod.id == user.sub ?
                                                                     <> 
@@ -135,7 +135,7 @@ const Admin = () => {
                                                 {tutor.seances.length > 0 && <tr style={{ height: "50px" }}></tr>}
                                             </> 
                                         )
-                                    })}
+                                    })} 
                                 </tbody> 
                             </table> 
                         </div>

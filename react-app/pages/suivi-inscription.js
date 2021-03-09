@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
-import { useFetchUser } from '../lib/user'
+import { useFetchUser } from '../lib/user' 
 import SeancesLineChart from '../components/SeancesLineChart'
 import moment from 'moment'
 
@@ -9,7 +9,7 @@ const Admin = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
-        Object.assign(user, json) 
+        Object.assign(user, json)  
         res = await fetch('/api/mongodb?getTutorsSignUps=true')
         const value = await res.json() 
         setGroupUsers(value.map(group => group.users).sort((b, a) => moment(a[0].updated_at) - moment(b[0].updated_at)))
@@ -34,16 +34,16 @@ const Admin = () => {
     const [refresh, setRefresh] = useState(true)   
 
     useEffect(() => {   
-        // {console.log("useEffect", user, loading)}
+        // {console.log("useEffect", user, loading)} 
         if (user && !loading) { 
             getUserData(user)
-        } 
+        }  
     }, [user, loading]) 
  
     return ( 
         <> 
             {/* {console.log(user)} */}
-            {!loading && <Layout user={user} loading={loading}>
+            {!loading && <Layout user={user} loading={loading}> 
                 <Head>
                     <title>Suivi du catalogue</title>
                     <meta name="description" content="Suivi du catalogue" />
@@ -92,11 +92,11 @@ const Admin = () => {
                                                     <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
                                                     <td>{tutor.statut}</td> 
                                                     <td>{tutor.whatsapp}</td> 
-                                                    <td>{tutor.mail}</td>
+                                                    <td>{tutor.mail}</td> 
                                                     <td>{users.length - 1}</td>
                                                     <td>{tutor.seances ? tutor.seances.length : 0}</td>
                                                 </tr>
-                                            </>
+                                            </> 
                                         ) 
                                     })}
                                 </tbody> 

@@ -1,10 +1,10 @@
 import Link from 'next/link' 
-
-import Layout from '../components/Layout'    
+ 
+import Layout from '../components/Layout'     
 import Banner from '../components/Banner'  
 import { useFetchUser } from '../lib/user'
 import Router from 'next/router'  
-import { useEffect } from 'react' 
+import { useEffect } from 'react'  
 
 export default () => {
   
@@ -44,18 +44,18 @@ export default () => {
                             </header>   
                             <Link href="/actualites"><a className="link primary"></a></Link> 
                         </article>
-   
+    
    
                         <article style={{ backgroundImage: `url('/static/images/stages.jpg')` }}>
                             <header className="major"> 
                                 <h3>Stages</h3> 
                                 <p>Savoir plus sur nos stages...</p>
                             </header>
-                            <Link href="/stages"><a className="link primary"></a></Link> 
+                            <Link href="/stages"><a className="link primary"></a></Link>  
                         </article>
  
                     </section>
-  
+   
                     {/* <section id="two">
                     <div className="inner"> 
                         <header className="major">  
@@ -71,5 +71,5 @@ export default () => {
  
             </div>
         </Layout>
-    ) 
+    )  
 } 

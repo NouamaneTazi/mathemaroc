@@ -4,16 +4,16 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'  
 import Router from "next/router"     
 import MenuAdmin from '../components/MenuAdmin'       
-    
+     
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {  
         // console.log(tutor, selectedGroupId)    
-        await fetch('/api/mongodb', {    
+        await fetch('/api/mongodb', {     
             method: 'post',      
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
         })   
         window.location.reload(false)   
-    }  
+    }   
        
     const [selectedGroupId, setSelectedGroupId] = useState("")    
 
@@ -61,7 +61,7 @@ const Reports = () => {
        
     let { user, loading } = useFetchUser()   
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
-    const [awaitingStudents, setAwaitingStudents] = useState([])     
+    const [awaitingStudents, setAwaitingStudents] = useState([])      
     const [refresh, setRefresh] = useState(true)   
     
     useEffect(() => {     
@@ -70,7 +70,7 @@ const Reports = () => {
             getUserData(user)     
         }    
     }, [user, loading])   
-       
+        
     return (        
         <>  
             {/* {console.log(user)} */}   
@@ -80,7 +80,7 @@ const Reports = () => {
                     <meta name="description" content="Tuteurs en attente" />    
                 </Head>    
                 <MenuAdmin user={user}/>   
-                <section id="one"> 
+                <section id="one">  
                     <div className="inner" style={{maxWidth:"75em"}}>     
                         <header className="major">     
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>    
@@ -122,7 +122,7 @@ const Reports = () => {
                     </div>  
       
                 </section>  
-            </Layout>   
+            </Layout>    
             }     
         </>   
     )   

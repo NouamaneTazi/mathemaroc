@@ -5,21 +5,21 @@ import { useFetchUser } from '../lib/user'
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
   
    
-const Reports = () => {  
-    const getUserData = async (user) => {  
+const Reports = () => {   
+    const getUserData = async (user) => {   
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
-        let json = await res.json() 
+        let json = await res.json()  
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getDemandesDeleves=true')   
         const new_tutors = await res.json()
         res = await fetch('/api/mongodb?getAwaitingStudents=true') 
-        const awaitingStudents = await res.json() 
- 
+        const awaitingStudents = await res.json()  
+  
         setTutors(new_tutors) 
         setAwaitingStudents(awaitingStudents) 
-    }    
+    }     
   
-    const handleModClick = async (tutor, report_id) => {   
+    const handleModClick = async (tutor, report_id) => {    
         if (tutor.reports[report_id].mod) {   
             delete tutor.reports[report_id].mod
         } else {
@@ -30,7 +30,7 @@ const Reports = () => {
             method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } }) 
         })
-        setRefresh(!refresh)  
+        setRefresh(!refresh)   
     }   
     
     let { user, loading } = useFetchUser() 
@@ -39,17 +39,17 @@ const Reports = () => {
     const [refresh, setRefresh] = useState(true)    
     const [replacingStudent, setReplacingStudent] = useState(false)
 
-    useEffect(() => { 
+    useEffect(() => {  
         // {console.log("useEffect", user, loading)}   
         if (user && !loading) { 
             getUserData(user)   
         } 
     }, [user, loading])   
  
-    return ( 
+    return (  
         <> 
             {!loading && <Layout user={user} loading={loading}>   
-                <Head> 
+                <Head>  
                     <title>Demandes élèves</title> 
                     <meta name="description" content="Demandes élèves" /> 
                 </Head>   
@@ -57,7 +57,7 @@ const Reports = () => {
                 <section id="one">
                     <div className="inner" style={{ maxWidth: "90%", width: "100%" }}>
                         <header className="major"> 
-                            {user ? <h1>Demandes d'élèves</h1> : <h1>Vous n'êtes pas connectés</h1>} 
+                            {user ? <h1>Demandes d'élèves</h1> : <h1>Vous n'êtes pas connectés</h1>}  
                         </header>
                         <p><b>Attention : </b> Fach tkhtaru TOUS les élèves à attribuer wdiru confirmer cava actualiser la page automatiquement wmaghatbqawch tlqaw le prof fhad la page. Donc faites attention avant de cliquer confirmer de bien selectionner tous les élèves concernés.</p>
 
@@ -89,15 +89,15 @@ const Reports = () => {
                                                     <td>  
                                                         <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />   
                                                     </td> 
-                                                </tr>)   
+                                                </tr>)    
                                         }  
                                         )}
                                     </tbody>
                                 </table> 
                             </div>
-                        </div>     
+                        </div>      
 
-                    </div> 
+                    </div>  
                 </section>  
             </Layout> 
             }  

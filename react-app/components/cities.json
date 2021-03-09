@@ -33,7 +33,7 @@
         "name": "Kenitra",
         "longitude": -6.56309,
         "latitude": 34.26165, 
-        "counts": "53"
+        "counts": "53" 
     }, 
     {
         "name": "Sidi-Kacem",
@@ -70,7 +70,7 @@
         "longitude": -7.96935,
         "latitude": 29.74378,
         "counts": "22"
-    },
+    }, 
     {
         "name": "Boujdour",
         "longitude": -14.499998,
@@ -117,7 +117,7 @@
         "name": "Marrakech", 
         "longitude": -7.99675,
         "latitude": 31.63278,
-        "counts": "143"
+        "counts": "143" 
     },
     {
         "name": "Berkane-Taourirt",
@@ -208,13 +208,13 @@
         "longitude": -5.65383,
         "latitude": 32.93877,  
         "counts": "13"
-    },  
+    },   
     {
         "name": "Meknes",
         "longitude": -5.55059,
         "latitude": 33.89157,
         "counts": "63"
-    }, 
+    },  
     { 
         "name": "Khemisset", 
         "longitude": -6.0573,
@@ -301,7 +301,7 @@
     }, 
     {
         "name": "Tanger-Assilah",  
-        "longitude": -5.99989,
+        "longitude": -5.99989, 
         "latitude": 35.47219,
         "counts": "136"
     }, 
@@ -327,7 +327,7 @@
         "name": "Mohammedia", 
         "longitude": -7.38491, 
         "latitude": 33.69241,
-        "counts": "26"
+        "counts": "26" 
     },
     {
         "name": "Nouaceur",
@@ -338,7 +338,7 @@
     {
         "name": "Azilal",
         "longitude": -6.57037,
-        "latitude": 31.9623,
+        "latitude": 31.9623, 
         "counts": "11"
     },
     {
@@ -348,7 +348,7 @@
         "counts": "25"
     },
     {
-        "name": "Al-Hoceima", 
+        "name": "Al-Hoceima",  
         "longitude": -3.93054,
         "latitude": 35.24214, 
         "counts": "22"

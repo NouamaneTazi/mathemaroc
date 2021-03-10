@@ -6,12 +6,12 @@ import ControlPanel from './control-panel';
 import {dataLayer} from './map-style.js';
 import {updatePercentiles} from './utils'; 
 import {json as requestJson} from 'd3-request';
-
+ 
 const MAPBOX_TOKEN = ''; // Set your mapbox token here
 
 export default class App extends Component {
-  state = {
-    year: 2015, 
+  state = { 
+    year: 2015,  
     data: null,
     hoveredFeature: null, 
     viewport: {
@@ -25,10 +25,10 @@ export default class App extends Component {
  
   componentDidMount() { 
     requestJson(
-      'https://raw.githubusercontent.com/uber/react-map-gl/master/examples/.data/us-income.geojson',
+      'https://raw.githubusercontent.com/uber/react-map-gl/master/examples/.data/us-income.geojson', 
       (error, response) => {
         if (!error) {
-          this._loadData(response);
+          this._loadData(response); 
         }
       } 
     );
@@ -57,7 +57,7 @@ export default class App extends Component {
   _onViewportChange = viewport => this.setState({viewport});  
 
   _onHover = event => { 
-    const {
+    const { 
       features,
       srcEvent: {offsetX, offsetY} 
     } = event;
@@ -66,7 +66,7 @@ export default class App extends Component {
     this.setState({hoveredFeature, x: offsetX, y: offsetY});
   };  
 
-  _renderTooltip() {
+  _renderTooltip() { 
     const {hoveredFeature, x, y} = this.state; 
 
     return (
@@ -74,7 +74,7 @@ export default class App extends Component {
         <div className="tooltip" 
         // style={{left: x, top: y}}
         >   
-          <div>State: {hoveredFeature.properties.name}</div>
+          <div>State: {hoveredFeature.properties.name}</div> 
         </div>
       )
     ); 
@@ -99,11 +99,11 @@ export default class App extends Component {
           </Source> 
           {this._renderTooltip()}
         </MapGL>
-
+ 
         <ControlPanel
           containerComponent={this.props.containerComponent} 
           settings={this.state}
-          onChange={this._updateSettings}
+          onChange={this._updateSettings} 
         />
       </div>
     );

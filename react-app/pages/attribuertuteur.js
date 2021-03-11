@@ -17,7 +17,7 @@ const InputGroupId = ({ tutor }) => {
        
     const [selectedGroupId, setSelectedGroupId] = useState("")    
 
-    return (<div className="12u 12u(small)" >    
+    return (<div className="12u 12u(small)" >     
         <input        
             type="text"    
             id="group_id" 
@@ -42,11 +42,11 @@ const Reports = () => {
         const awaitingStudents = await res.json()    
      
         setAwaitingTutors(new_awaitingtutors) 
-        setAwaitingStudents(awaitingStudents)      
+        setAwaitingStudents(awaitingStudents)       
     }    
     
     const handleModClick = async (tutor, report_id) => {  
-        if (tutor.reports[report_id].mod) {     
+        if (tutor.reports[report_id].mod) {      
             delete tutor.reports[report_id].mod     
         } else {   
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
@@ -65,7 +65,7 @@ const Reports = () => {
     const [refresh, setRefresh] = useState(true)   
     
     useEffect(() => {     
-        // {console.log("useEffect", user, loading)}        
+        // {console.log("useEffect", user, loading)}         
         if (user && !loading) {      
             getUserData(user)     
         }    
@@ -78,7 +78,7 @@ const Reports = () => {
                 <Head>  
                     <title>Tuteurs en attente</title>   
                     <meta name="description" content="Tuteurs en attente" />    
-                </Head>     
+                </Head>      
                 <MenuAdmin user={user}/>    
                 <section id="one">  
                     <div className="inner" style={{maxWidth:"75em"}}>     
@@ -93,15 +93,15 @@ const Reports = () => {
                                     <thead>     
                                         <tr>    
                                             <th>Tuteur</th>     
-                                            <th>Statut</th>      
+                                            <th>Statut</th>       
                                             <th>Matières</th>   
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>   
-                                            <th>Groupe</th>         
+                                            <th>Groupe</th>          
                                         </tr>     
                                     </thead> 
-                                    <tbody>   
+                                    <tbody>    
   
                                         {awaitingtutors.map(tutor => (  
                                             <tr key={`${tutor._id}`}>  
@@ -122,10 +122,10 @@ const Reports = () => {
                     </div>  
       
                 </section>  
-            </Layout>    
+            </Layout>     
             }     
         </>   
-    )   
+    )    
 }   
     
     

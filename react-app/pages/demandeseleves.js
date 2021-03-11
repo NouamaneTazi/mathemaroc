@@ -40,8 +40,8 @@ const Reports = () => {
     const [replacingStudent, setReplacingStudent] = useState(false)
 
     useEffect(() => {  
-        // {console.log("useEffect", user, loading)}   
-        if (user && !loading) { 
+        // {console.log("useEffect", user, loading)}    
+        if (user && !loading) {  
             getUserData(user)   
         } 
     }, [user, loading])   
@@ -52,13 +52,13 @@ const Reports = () => {
                 <Head>  
                     <title>Demandes élèves</title> 
                     <meta name="description" content="Demandes élèves" /> 
-                </Head>   
+                </Head>    
                 <MenuAdmin user={user}/> 
                 <section id="one">
                     <div className="inner" style={{ maxWidth: "90%", width: "100%" }}>
                         <header className="major"> 
                             {user ? <h1>Demandes d'élèves</h1> : <h1>Vous n'êtes pas connectés</h1>}  
-                        </header>
+                        </header> 
                         <p><b>Attention : </b> Fach tkhtaru TOUS les élèves à attribuer wdiru confirmer cava actualiser la page automatiquement wmaghatbqawch tlqaw le prof fhad la page. Donc faites attention avant de cliquer confirmer de bien selectionner tous les élèves concernés.</p>
 
                         {/* <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
@@ -82,19 +82,19 @@ const Reports = () => {
                                             return (   
                                                 <tr key={`${tutor._id}`}>   
                                                     <td>{asked_more_students.time}</td>  
-                                                    <td>{tutor.firstname} {tutor.lastname}</td> 
+                                                    <td>{tutor.firstname} {tutor.lastname}</td>  
                                                     <td>{tutor.groupId}</td>   
                                                     <td>{asked_more_students.number}</td>  
 
                                                     <td>  
-                                                        <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />   
+                                                        <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />    
                                                     </td> 
                                                 </tr>)    
                                         }  
                                         )}
                                     </tbody>
                                 </table> 
-                            </div>
+                            </div> 
                         </div>      
 
                     </div>  

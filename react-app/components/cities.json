@@ -44,9 +44,9 @@
     {
         "name": "Assa-Zag", 
         "longitude": -9.41667,
-        "latitude": 28.16667, 
+        "latitude": 28.16667,  
         "counts": "3"
-    },
+    }, 
     {
         "name": "Es-Semara",
         "longitude": -11.67194,
@@ -148,7 +148,7 @@
         "longitude": -2.0273, 
         "latitude": 34.67935,
         "counts": "43"
-    },
+    }, 
     { 
         "name": "Aousserd",
         "longitude": -15.02068,
@@ -202,7 +202,7 @@
         "longitude": -5.11274,
         "latitude": 33.52769, 
         "counts": "12"
-    }, 
+    },  
     { 
         "name": "Khenifra",
         "longitude": -5.65383,
@@ -231,13 +231,13 @@
         "name": "Sale",
         "longitude": -6.78783,
         "latitude": 34.04493,
-        "counts": "118"
+        "counts": "118" 
     },
     {
         "name": "Skhirate-Temara",
         "longitude": -6.9029,
         "latitude": 33.93773,
-        "counts": "29"
+        "counts": "29" 
     },
     { 
         "name": "Agadir-Ida-ou-Tnan", 
@@ -254,7 +254,7 @@
     {
         "name": "Inezgane-Ait Mellou",
         "longitude": -9.53662,
-        "latitude": 30.35403, 
+        "latitude": 30.35403,  
         "counts": "15"
     }, 
     {
@@ -312,7 +312,7 @@
         "counts": "97"
     }, 
     {
-        "name": "Casablanca",
+        "name": "Casablanca", 
         "longitude": -7.62462,
         "latitude": 33.58398,
         "counts": "368"
@@ -344,7 +344,7 @@
     {
         "name": "Beni-Mellal",
         "longitude": -6.3758,
-        "latitude": 32.3424,
+        "latitude": 32.3424, 
         "counts": "25"
     },
     {

@@ -22,7 +22,7 @@ const Reports = () => {
 
     const handleModClick = async (tutor, report_id) => { 
         if (tutor.reports[report_id].mod) { 
-            delete tutor.reports[report_id].mod
+            delete tutor.reports[report_id].mod 
         } else {
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name } 
         }
@@ -53,17 +53,17 @@ const Reports = () => {
             {!loading && <Layout user={user} loading={loading}>
                 <Head> 
                     <title>Reports Page</title> 
-                    <meta name="description" content="Reports Page" />
+                    <meta name="description" content="Reports Page" /> 
                 </Head>
                 <section id="one"> 
                     <div className="inner" style={{maxWidth:"90%", width:"100%"}}>
                         <header className="major">
                             {user ? <h1>Élèves signalés</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
-
+ 
                         <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br /> 
                         Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p>
-                        <div className="12u 12u(medium)">
+                        <div className="12u 12u(medium)"> 
                             <div className="table-wrapper">
                                 <table>
                                     <thead>
@@ -72,7 +72,7 @@ const Reports = () => {
                                             <th>Tuteur</th>
                                             <th>Élève signalé</th>
                                             <th>Date</th>
-                                            <th>Détails</th>
+                                            <th>Détails</th> 
                                             <th>Traité</th>
                                             <th>Élève remplaçant</th>
                                         </tr>
@@ -88,7 +88,7 @@ const Reports = () => {
                                                     <td>{report.time}</td> 
                                                     <td>{report.text}</td>
                                                     <td >
-                                                        {!report.mod || !report.mod.name ? 
+                                                        {!report.mod || !report.mod.name ?  
                                                             <> 
                                                                 <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked={false} onClick={() => handleModClick(tutor, report_index)} />
                                                                 <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}></label>
@@ -103,7 +103,7 @@ const Reports = () => {
                                                                         <input type="checkbox" id={`${tutor._id}~${report_index}`} name="demo-human" checked />
                                                                         <label style={{ verticalAlign: "text-top" }} htmlFor={`${tutor._id}~${report_index}`}>{report.mod.name}</label>
                                                                     </> 
-                                                                    : null
+                                                                    : null 
                                                         } 
                                                     </td>
                                                     <td>{("replaced_by" in report) && (!report.mod || report.mod.id != user.sub) ? report.replaced_by.name

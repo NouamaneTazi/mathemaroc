@@ -14,7 +14,7 @@ export default () => (
             <section id="one">
                 <div className="inner">
                     <header className="major">
-                        <h1>Elements</h1> 
+                        <h1>Elements</h1>  
                     </header>
 
                     <h2 id="content">Sample Content</h2>
@@ -23,7 +23,7 @@ export default () => (
                         <div className="6u 12u$(small)">
                             <h3>Sem turpis amet semper</h3>
                             <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat commodo eu sed ante lacinia. Sapien a lorem in integer ornare praesent commodo adipiscing arcu in massa commodo lorem accumsan at odio massa ac ac. Semper adipiscing varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-                        </div>
+                        </div> 
                         <div className="6u 12u$(small)">
                             <h3>Magna odio tempus commodo</h3>
                             <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor. Ante commodo blandit adipiscing integer semper orci eget. Faucibus commodo adipiscing mi eu nullam accumsan morbi arcu ornare odio mi adipiscing nascetur lacus ac interdum morbi accumsan vis mi accumsan ac praesent.</p> 
@@ -32,7 +32,7 @@ export default () => (
                             <h3>Interdum sapien gravida</h3>
                             <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
                         </div>
-                        <div className="4u 12u$(medium)">
+                        <div className="4u 12u$(medium)"> 
                             <h3>Faucibus consequat lorem</h3>
                             <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
                         </div>
@@ -48,7 +48,7 @@ export default () => (
                     <div className="row 200%">
                         <div className="6u 12u(medium)">
 
-                                <h3>Text</h3>
+                                <h3>Text</h3> 
                                 <p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
                                 This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
                                 This is <u>underlined</u> and this is code: <code>for (;;)</code>.
@@ -63,7 +63,7 @@ export default () => (
                                 <h3>Lists</h3>
                                 <div className="row">
                                     <div className="6u 12u(small)">
-
+ 
                                         <h4>Unordered</h4>
                                         <ul>
                                             <li>Dolor etiam magna etiam.</li>
@@ -84,7 +84,7 @@ export default () => (
                                         <h4>Ordered</h4>
                                         <ol>
                                             <li>Dolor etiam magna etiam.</li>
-                                            <li>Etiam vel lorem sed viverra.</li>
+                                            <li>Etiam vel lorem sed viverra.</li> 
                                             <li>Felis dolore viverra.</li>
                                             <li>Dolor etiam magna etiam.</li>
                                             <li>Etiam vel lorem sed viverra.</li>
@@ -120,7 +120,7 @@ export default () => (
                                     </dd>
                                     <dt>Item3</dt>
                                     <dd>
-                                        <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p>
+                                        <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p> 
                                     </dd>
                                 </dl>
 
@@ -184,7 +184,7 @@ export default () => (
                                         <thead> 
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Description</th>
+                                                <th>Description</th> 
                                                 <th>Price</th>
                                             </tr>
                                         </thead>
@@ -201,7 +201,7 @@ export default () => (
                                             </tr> 
                                             <tr>
                                                 <td>Item3</td>
-                                                <td> Morbi faucibus arcu accumsan lorem.</td>
+                                                <td> Morbi faucibus arcu accumsan lorem.</td> 
                                                 <td>29.99</td>
                                             </tr> 
                                             <tr>
@@ -217,12 +217,12 @@ export default () => (
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td colSpan="2"></td>
+                                                <td colSpan="2"></td> 
                                                 <td>100.00</td>
                                             </tr>
-                                        </tfoot>
+                                        </tfoot> 
                                     </table>
-                                </div>
+                                </div> 
 
                                 <h4>Alternate</h4>
                                 <div className="table-wrapper">
@@ -236,10 +236,10 @@ export default () => (
                                         </thead>
                                         <tbody> 
                                             <tr>
-                                                <td>Item1</td>
+                                                <td>Item1</td> 
                                                 <td>Ante turpis integer aliquet porttitor.</td> 
                                                 <td>29.99</td>
-                                            </tr>
+                                            </tr> 
                                             <tr>
                                                 <td>Item2</td> 
                                                 <td>Vis ac commodo adipiscing arcu aliquet.</td>
@@ -259,7 +259,7 @@ export default () => (
                                                 <td>Item5</td>
                                                 <td>Ante turpis integer aliquet porttitor.</td>
                                                 <td>29.99</td> 
-                                            </tr>
+                                            </tr> 
                                         </tbody>
                                         <tfoot>
                                             <tr>

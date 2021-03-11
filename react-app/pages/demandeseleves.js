@@ -6,7 +6,7 @@ import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndRepla
   
    
 const Reports = () => {   
-    const getUserData = async (user) => {   
+    const getUserData = async (user) => {    
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
         let json = await res.json()  
         Object.assign(user, json)
@@ -14,8 +14,8 @@ const Reports = () => {
         const new_tutors = await res.json()
         res = await fetch('/api/mongodb?getAwaitingStudents=true') 
         const awaitingStudents = await res.json()  
-  
-        setTutors(new_tutors) 
+   
+        setTutors(new_tutors)  
         setAwaitingStudents(awaitingStudents) 
     }     
   
@@ -34,7 +34,7 @@ const Reports = () => {
     }   
     
     let { user, loading } = useFetchUser() 
-    const [tutors, setTutors] = useState([])  
+    const [tutors, setTutors] = useState([])   
     const [awaitingStudents, setAwaitingStudents] = useState([]) 
     const [refresh, setRefresh] = useState(true)    
     const [replacingStudent, setReplacingStudent] = useState(false)
@@ -47,7 +47,7 @@ const Reports = () => {
     }, [user, loading])   
  
     return (  
-        <> 
+        <>  
             {!loading && <Layout user={user} loading={loading}>   
                 <Head>  
                     <title>Demandes élèves</title> 
@@ -58,28 +58,28 @@ const Reports = () => {
                     <div className="inner" style={{ maxWidth: "90%", width: "100%" }}>
                         <header className="major"> 
                             {user ? <h1>Demandes d'élèves</h1> : <h1>Vous n'êtes pas connectés</h1>}  
-                        </header> 
+                        </header>  
                         <p><b>Attention : </b> Fach tkhtaru TOUS les élèves à attribuer wdiru confirmer cava actualiser la page automatiquement wmaghatbqawch tlqaw le prof fhad la page. Donc faites attention avant de cliquer confirmer de bien selectionner tous les élèves concernés.</p>
-
+ 
                         {/* <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
-                        Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}  
+                        Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}   
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper">  
                                 <table>
                                     <thead>  
-                                        <tr>   
+                                        <tr>    
                                             <th>Date</th> 
                                             <th>Tuteur</th>   
                                             <th>Groupe</th>  
                                             <th>Nombre d'élèves demandés</th> 
                                             <th>Élèves donnés</th> 
-                                        </tr>  
+                                        </tr>   
                                     </thead>  
                                     <tbody>    
   
                                         {tutors.map(tutor => {  
                                             const asked_more_students = tutor.asked_more_students    
-                                            return (   
+                                            return (    
                                                 <tr key={`${tutor._id}`}>   
                                                     <td>{asked_more_students.time}</td>  
                                                     <td>{tutor.firstname} {tutor.lastname}</td>  
@@ -95,12 +95,12 @@ const Reports = () => {
                                     </tbody>
                                 </table> 
                             </div> 
-                        </div>      
+                        </div>       
 
                     </div>  
                 </section>  
             </Layout> 
-            }  
+            }   
         </>  
     ) 
 }

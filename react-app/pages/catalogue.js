@@ -32,9 +32,9 @@ const Reports = () => {
         const awaitingStudents = await res.json()  
         setAwaitingStudents(awaitingStudents)
         setLoading(false)
-    } 
+    }  
  
-    const handleSelectStudent = (student) => {  
+    const handleSelectStudent = (student) => {   
         let value = selectedStudents 
         value.push(student)
         setSelectedStudents([...value])
@@ -62,7 +62,7 @@ const Reports = () => {
                     _id: user._id,  
                     data: { "catalogue_logs": catalogue_logs }  
                 })
-            }) 
+            })  
             Router.push('/profile')  
         }
         setLoading(false) 
@@ -94,7 +94,7 @@ const Reports = () => {
         }
     }, [user, userLoading])
  
- 
+  
     useEffect(() => { 
         // {console.log("useEffect", user, userLoading)}
         const timer = setTimeout(() => {
@@ -105,7 +105,7 @@ const Reports = () => {
  
         return () => clearTimeout(timer);
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
-  
+   
     return (  
         <>   
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
@@ -171,7 +171,7 @@ const Reports = () => {
                                         </tr>
                                     </thead>
                                     <tbody> 
-                                        {selectedStudents.map(student => ( 
+                                        {selectedStudents.map(student => (  
                                             <tr key={`${student._id}`}> 
                                                 <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
                                                 <td>{student.filiere}</td>  
@@ -184,13 +184,13 @@ const Reports = () => {
                                             </tr>  
                                         )) 
  
-                                        }  
+                                        }   
                                     </tbody>  
                                 </table>
                             </div>   
                             {error && <Alert severity="error">{error.message}</Alert>}  
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
-                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button> 
+                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>  
                         </div> 
                         <Divider style={{ marginBottom: "3em" }} />   
                     </>} 
@@ -206,7 +206,7 @@ const Reports = () => {
                                         <th>Filière   
                                             <div className="select-wrapper" >
                                                 <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>  
-                                                    <option value="">- Filière -</option> 
+                                                    <option value="">- Filière -</option>  
                                                     <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option> 
                                                     <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>   
                                                     <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option> 

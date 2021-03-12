@@ -7,14 +7,14 @@ import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndRepla
    
 const Reports = () => {   
     const getUserData = async (user) => {    
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub)  
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub)   
         let json = await res.json()  
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getDemandesDeleves=true')   
         const new_tutors = await res.json()
-        res = await fetch('/api/mongodb?getAwaitingStudents=true') 
+        res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json()  
-   
+    
         setTutors(new_tutors)  
         setAwaitingStudents(awaitingStudents) 
     }     
@@ -36,7 +36,7 @@ const Reports = () => {
     let { user, loading } = useFetchUser() 
     const [tutors, setTutors] = useState([])   
     const [awaitingStudents, setAwaitingStudents] = useState([]) 
-    const [refresh, setRefresh] = useState(true)    
+    const [refresh, setRefresh] = useState(true)     
     const [replacingStudent, setReplacingStudent] = useState(false)
 
     useEffect(() => {  
@@ -47,7 +47,7 @@ const Reports = () => {
     }, [user, loading])   
  
     return (  
-        <>  
+        <>   
             {!loading && <Layout user={user} loading={loading}>   
                 <Head>  
                     <title>Demandes élèves</title> 
@@ -62,14 +62,14 @@ const Reports = () => {
                         <p><b>Attention : </b> Fach tkhtaru TOUS les élèves à attribuer wdiru confirmer cava actualiser la page automatiquement wmaghatbqawch tlqaw le prof fhad la page. Donc faites attention avant de cliquer confirmer de bien selectionner tous les élèves concernés.</p>
  
                         {/* <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
-                        Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}   
+                        Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}    
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper">  
                                 <table>
                                     <thead>  
-                                        <tr>    
+                                        <tr>     
                                             <th>Date</th> 
-                                            <th>Tuteur</th>   
+                                            <th>Tuteur</th>    
                                             <th>Groupe</th>  
                                             <th>Nombre d'élèves demandés</th> 
                                             <th>Élèves donnés</th> 
@@ -85,10 +85,10 @@ const Reports = () => {
                                                     <td>{tutor.firstname} {tutor.lastname}</td>  
                                                     <td>{tutor.groupId}</td>   
                                                     <td>{asked_more_students.number}</td>  
-
+ 
                                                     <td>  
                                                         <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />    
-                                                    </td> 
+                                                    </td>  
                                                 </tr>)    
                                         }  
                                         )}

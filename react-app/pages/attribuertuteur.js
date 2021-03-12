@@ -14,7 +14,7 @@ const InputGroupId = ({ tutor }) => {
         })   
         window.location.reload(false)   
     }   
-        
+         
     const [selectedGroupId, setSelectedGroupId] = useState("")    
 
     return (<div className="12u 12u(small)" >     
@@ -25,10 +25,10 @@ const InputGroupId = ({ tutor }) => {
             value={selectedGroupId}    
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}   
         />      
-        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}  
+        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}   
     </div>)  
 }   
-     
+      
 const Reports = () => { 
     const getUserData = async (user) => {       
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
@@ -55,20 +55,20 @@ const Reports = () => {
         const res = await fetch('/api/mongodb', {       
             method: 'post',    
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })   
-        })   
+        })    
         setRefresh(!refresh)     
     } 
         
     let { user, loading } = useFetchUser()   
     const [awaitingtutors, setAwaitingTutors] = useState([]) 
-    const [awaitingStudents, setAwaitingStudents] = useState([])      
+    const [awaitingStudents, setAwaitingStudents] = useState([])       
     const [refresh, setRefresh] = useState(true)   
     
     useEffect(() => {     
         // {console.log("useEffect", user, loading)}         
         if (user && !loading) {      
             getUserData(user)     
-        }    
+        }     
     }, [user, loading])   
         
     return (        
@@ -94,7 +94,7 @@ const Reports = () => {
                                         <tr>    
                                             <th>Tuteur</th>     
                                             <th>Statut</th>       
-                                            <th>Matières</th>   
+                                            <th>Matières</th>    
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>   
@@ -107,7 +107,7 @@ const Reports = () => {
                                             <tr key={`${tutor._id}`}>  
                                                 <td>{tutor.firstname} {tutor.lastname}</td>       
                                                 <td>{tutor.statut}</td> 
-                                                <td>{tutor.matieres}</td>   
+                                                <td>{tutor.matieres}</td>    
                                                 <td>{tutor.whatsapp}</td>     
                                                 <td>{tutor.mail}</td>    
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>    
@@ -116,7 +116,7 @@ const Reports = () => {
                                         )     
                                         )}   
                                     </tbody>  
-                                </table>      
+                                </table>       
                             </div>           
                         </div>      
                     </div>  

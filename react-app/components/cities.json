@@ -72,7 +72,7 @@
         "counts": "22"
     }, 
     {
-        "name": "Boujdour",
+        "name": "Boujdour", 
         "longitude": -14.499998,
         "latitude": 26.1333328,
         "counts": "19" 
@@ -109,7 +109,7 @@
     }, 
     {
         "name": "Kelaa-Des-Sraghna",
-        "longitude": -7.40499838,
+        "longitude": -7.40499838, 
         "latitude": 32.042166498,
         "counts": "17"
     },
@@ -119,14 +119,14 @@
         "latitude": 31.63278,
         "counts": "143" 
     },
-    {
+    { 
         "name": "Berkane-Taourirt",
         "longitude": -2.31523, 
         "latitude": 34.91677, 
         "counts": "27"
     }, 
     {
-        "name": "Figuig", 
+        "name": "Figuig",  
         "longitude": -1.23827,
         "latitude": 32.12033,
         "counts": "5"
@@ -157,13 +157,13 @@
     },
     {
         "name": "Oued-Ed-Dahab",
-        "longitude": -14.44934,
+        "longitude": -14.44934, 
         "latitude": 23.64201,
         "counts": "16"
     },
     {
         "name": "Boulemane",
-        "longitude": -4.7303,
+        "longitude": -4.7303, 
         "latitude": 33.16667,
         "counts": "25" 
     },
@@ -230,7 +230,7 @@
     {
         "name": "Sale",
         "longitude": -6.78783,
-        "latitude": 34.04493,
+        "latitude": 34.04493, 
         "counts": "118" 
     },
     {
@@ -319,7 +319,7 @@
     },
     {  
         "name": "Mediouna",
-        "longitude": -7.5204,
+        "longitude": -7.5204, 
         "latitude": 33.44251,
         "counts": "16" 
     },  
@@ -337,7 +337,7 @@
     },
     {
         "name": "Azilal",
-        "longitude": -6.57037,
+        "longitude": -6.57037, 
         "latitude": 31.9623, 
         "counts": "11"
     },

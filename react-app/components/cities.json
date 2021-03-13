@@ -9,7 +9,7 @@
         "name": "Khouribga",
         "longitude": -6.89451,
         "latitude": 32.87446, 
-        "counts": "30"
+        "counts": "30" 
     },
     { 
         "name": "Settat",
@@ -48,7 +48,7 @@
         "counts": "3"
     }, 
     {
-        "name": "Es-Semara",
+        "name": "Es-Semara", 
         "longitude": -11.67194,
         "latitude": 26.73841, 
         "counts": "20"
@@ -106,7 +106,7 @@
         "longitude": -9.76448,
         "latitude": 31.51141,
         "counts": "22"
-    }, 
+    },  
     {
         "name": "Kelaa-Des-Sraghna",
         "longitude": -7.40499838, 
@@ -143,7 +143,7 @@
         "latitude": 35.17401,
         "counts": "14" 
     },
-    {
+    { 
         "name": "Oujda-Angad", 
         "longitude": -2.0273, 
         "latitude": 34.67935,
@@ -153,10 +153,10 @@
         "name": "Aousserd",
         "longitude": -15.02068,
         "latitude": 21.91977,
-        "counts": "4"  
+        "counts": "4"   
     },
     {
-        "name": "Oued-Ed-Dahab",
+        "name": "Oued-Ed-Dahab", 
         "longitude": -14.44934, 
         "latitude": 23.64201,
         "counts": "16"
@@ -180,7 +180,7 @@
         "counts": "2"
     },
     {
-        "name": "Sefrou",
+        "name": "Sefrou", 
         "longitude": -4.83322,
         "latitude": 33.83059, 
         "counts": "16" 
@@ -255,7 +255,7 @@
         "name": "Inezgane-Ait Mellou",
         "longitude": -9.53662,
         "latitude": 30.35403,  
-        "counts": "15"
+        "counts": "15" 
     }, 
     {
         "name": "Ouarzazate",
@@ -307,7 +307,7 @@
     }, 
     {
         "name": "Tetouan",
-        "longitude": -5.35736, 
+        "longitude": -5.35736,  
         "latitude": 35.57785,
         "counts": "97"
     }, 
@@ -323,8 +323,8 @@
         "latitude": 33.44251,
         "counts": "16" 
     },  
-    {
-        "name": "Mohammedia", 
+    { 
+        "name": "Mohammedia",  
         "longitude": -7.38491, 
         "latitude": 33.69241,
         "counts": "26" 
@@ -343,7 +343,7 @@
     },
     {
         "name": "Beni-Mellal",
-        "longitude": -6.3758,
+        "longitude": -6.3758, 
         "latitude": 32.3424, 
         "counts": "25"
     },
@@ -353,13 +353,13 @@
         "latitude": 35.24214, 
         "counts": "22"
     },
-    {
+    { 
         "name": "Taounate", 
         "longitude": -4.6399,
         "latitude": 34.5369,  
         "counts": "34"
     }, 
-    { 
+    {  
         "name": "Taza",
         "longitude": -4.00875,
         "latitude": 34.22619,

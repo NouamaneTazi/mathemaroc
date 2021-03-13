@@ -10,16 +10,16 @@ const Contact = (props) => (
                     <div className="field half"> 
                         <label htmlFor="email">Email</label>    
                         <input type="text" name="email" id="email" />  
-                    </div>    
-                    <div className="field">  
+                    </div>     
+                    <div className="field">   
                         <label htmlFor="message">Message</label>   
-                        <textarea name="message" id="message" rows="6"></textarea> 
+                        <textarea name="message" id="message" rows="6"></textarea>  
                     </div>   
                     <ul className="actions">  
                         <li><input type="submit" value="Send Message" className="special" /></li>    
                         <li><input type="reset" value="Clear" /></li>    
                     </ul> 
-                </form>  
+                </form>   
             </section>  
             <section className="split">  
                 <section>    
@@ -39,12 +39,12 @@ const Contact = (props) => (
                 <section>   
                     <div className="contact-method">     
                         <span className="icon alt fa-home"></span>
-                        <h3>Address</h3> 
+                        <h3>Address</h3>  
                         <span>1234 Somewhere Road #5432<br />  
                         Nashville, TN 00000<br /> 
-                        United States of America</span>   
+                        United States of America</span>    
                     </div> 
-                </section>  
+                </section>   
             </section>   
         </div>    
     </section>

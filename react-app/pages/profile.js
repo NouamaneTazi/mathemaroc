@@ -48,7 +48,7 @@ const Profile = () => {
         Object.assign(user, json); 
         await fetch('/api/mongodb', { 
             method: 'post',
-            body: JSON.stringify({ _id: json._id, data: {email:user.email} }) 
+            body: JSON.stringify({ _id: json._id, data: {email:user.email} })  
         }) 
         // console.log("user", user)
         setLoading(false)
@@ -72,7 +72,7 @@ const Profile = () => {
 
     const { width, height } = useWindowSize()
     return (
-        <> 
+        <>  
             {/* {console.log("user", user, userLoading)} */}
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
@@ -92,7 +92,7 @@ const Profile = () => {
                             <div className="inner">
                                 <header className="major">
                                     <h1>Profil</h1> 
-                                </header>
+                                </header> 
  
                                 <div className="row 200%">
                                     <div className="12u 12u(medium)">
@@ -105,7 +105,7 @@ const Profile = () => {
 
                                     </div> 
                                 </div>
-                                <div className="12u 12u(medium)">
+                                <div className="12u 12u(medium)"> 
                                     <h2>Liste des élèves</h2>
                                     <div className="table-wrapper">
                                         <table>
@@ -115,7 +115,7 @@ const Profile = () => {
                                                     <th>Lycée</th>
                                                     <th>Ville</th>
                                                     <th>Filière</th>
-                                                    <th>Matières</th>
+                                                    <th>Matières</th> 
                                                     <th>Demandes</th>
                                                     <th>Whatsapp</th>
                                                     <th>Facebook</th>
@@ -129,7 +129,7 @@ const Profile = () => {
                                                         <td>{student.firstname} {student.lastname}</td>
                                                         <td>{student.lycee}</td>
                                                         <td>{student.ville}</td>
-                                                        <td>{student.filiere}</td>
+                                                        <td>{student.filiere}</td> 
                                                         <td>{student.matiere}</td>
                                                         <td>{student.wishes}</td> 
                                                         <td>{student.whatsapp}</td>
@@ -145,7 +145,7 @@ const Profile = () => {
                                                     </tr>
 
                                                 ))}
-                                            </tbody>
+                                            </tbody> 
                                         </table>
                                     </div>
                                     {!user.students || user.students.length === 0 && <p style={{ textAlign: 'center' }}>Commence par sélectionner les élèves que tu veux travailler avec en cliquant sur "Ajouter plus d'élèves" ! <br /> Il nous reste plus de 1000 élèves en attente, donc nous te prions de prendre 5 élèves au minimum !</p>}
@@ -159,7 +159,7 @@ const Profile = () => {
 
                         </section>
                     </div>
-                        // user not associated
+                        // user not associated 
                         // : user && user.needsSetup && !loading ? 
                         //     <AssociateUser user={user} /> 
                         // Not yet connected

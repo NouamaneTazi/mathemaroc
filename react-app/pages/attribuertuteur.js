@@ -1,6 +1,6 @@
 import Head from "next/head"    
-import { useState, useEffect } from "react"     
-import Layout from '../components/Layout'
+import { useState, useEffect } from "react"      
+import Layout from '../components/Layout' 
 import { useFetchUser } from '../lib/user'  
 import Router from "next/router"      
 import MenuAdmin from '../components/MenuAdmin'       
@@ -33,7 +33,7 @@ const Reports = () => {
     const getUserData = async (user) => {       
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
         let json = await res.json()   
-        if (!json.is_admin) Router.push('/profile')     
+        if (!json.is_admin) Router.push('/profile')      
         Object.assign(user, json)      
         res = await fetch('/api/mongodb?getAwaitingTutors=true')     
         const new_awaitingtutors = await res.json()       
@@ -45,11 +45,11 @@ const Reports = () => {
         setAwaitingStudents(awaitingStudents)        
     }    
     
-    const handleModClick = async (tutor, report_id) => {  
+    const handleModClick = async (tutor, report_id) => {   
         if (tutor.reports[report_id].mod) {      
             delete tutor.reports[report_id].mod      
         } else {   
-            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }  
+            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }   
         }    
    
         const res = await fetch('/api/mongodb', {       
@@ -112,7 +112,7 @@ const Reports = () => {
                                                 <td>{tutor.mail}</td>    
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>    
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>    
-                                            </tr>     
+                                            </tr>      
                                         )     
                                         )}   
                                     </tbody>  
@@ -123,7 +123,7 @@ const Reports = () => {
       
                 </section>  
             </Layout>     
-            }     
+            }      
         </>   
     )    
 }   

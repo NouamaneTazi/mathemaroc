@@ -9,10 +9,10 @@ const Admin = () => {
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
-        Object.assign(user, json)  
+        Object.assign(user, json)   
         res = await fetch('/api/mongodb?getTutorsSignUps=true')
         const value = await res.json() 
-        setGroupUsers(value.map(group => group.users).sort((b, a) => moment(a[0].updated_at) - moment(b[0].updated_at)))
+        setGroupUsers(value.map(group => group.users).sort((b, a) => moment(a[0].updated_at) - moment(b[0].updated_at))) 
     }  
  
     const handleModClick = async (tutor, seance_id) => { 
@@ -24,7 +24,7 @@ const Admin = () => {
  
         const res = await fetch('/api/mongodb', { 
             method: 'post',
-            body: JSON.stringify({ _id: tutor._id, data: { seances: tutor.seances } })
+            body: JSON.stringify({ _id: tutor._id, data: { seances: tutor.seances } }) 
         })
         setRefresh(!refresh)
     }
@@ -53,7 +53,7 @@ const Admin = () => {
                     <div className="inner">
                         <header className="major">
                             {user ? <h1>Suivi des inscriptions</h1> : <h1>Vous n'êtes pas connectés</h1>} 
-                        </header>
+                        </header> 
  
                         {/* {groupUsers.length > 0 &&
                             <div className="12u 12u(medium)"> 
@@ -61,17 +61,17 @@ const Admin = () => {
                                 <div className="box" style={{ textAlign: "center" }}>
                                     <h1>{getNumberSeances(groupUsers)}</h1>
                                 </div> 
-
+ 
                             </div> 
                         } */} 
                     </div>
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
 
                         <div className="table-wrapper">
-                            <table className="alt dense">
+                            <table className="alt dense"> 
                                 <thead>
                                     <tr> 
-                                        <th>Groupe</th>
+                                        <th>Groupe</th> 
                                         <th>Tuteur</th>
                                         <th>Date</th>
                                         <th>Statut</th>
@@ -79,7 +79,7 @@ const Admin = () => {
                                         <th>Mail</th>
                                         <th>Nombre d'élèves</th>
                                         <th>Nombre de séances</th>
-                                    </tr>  
+                                    </tr>   
                                 </thead> 
                                 <tbody>
                                     {groupUsers && groupUsers.length > 0 && groupUsers.map((users) => {   
@@ -91,25 +91,25 @@ const Admin = () => {
                                                     <td>{tutor.fullname}</td> 
                                                     <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
                                                     <td>{tutor.statut}</td> 
-                                                    <td>{tutor.whatsapp}</td> 
+                                                    <td>{tutor.whatsapp}</td>  
                                                     <td>{tutor.mail}</td> 
-                                                    <td>{users.length - 1}</td>
+                                                    <td>{users.length - 1}</td> 
                                                     <td>{tutor.seances ? tutor.seances.length : 0}</td>
                                                 </tr>
-                                            </> 
+                                            </>  
                                         ) 
                                     })}
                                 </tbody> 
                             </table>
-                        </div> 
+                        </div>  
 
-
+ 
                     </div> 
                 </section >
             </Layout >
             }
         </> 
-    )
+    ) 
 } 
  
 export default Admin

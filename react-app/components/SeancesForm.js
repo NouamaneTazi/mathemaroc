@@ -10,7 +10,7 @@ const Seances = ({ user }) => {
         values.push({ chapitres: '', absents: {}, remarques: '', duree: '' });
         setInputFields(values); 
     }; 
-
+ 
     const handleRemoveFields = index => { 
         const values = [...inputFields];
         values.splice(index, 1);
@@ -36,7 +36,7 @@ const Seances = ({ user }) => {
         } 
     } 
 
-    const handleAbsentsChange = (index, absentStudent) => {
+    const handleAbsentsChange = (index, absentStudent) => { 
         if (absentStudent._id in inputFields[index].absents) delete inputFields[index].absents[absentStudent._id]
         else {
             let values = inputFields
@@ -49,13 +49,13 @@ const Seances = ({ user }) => {
         let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.remarques) // Keep non empty seances
         // console.log("query", user._id, seances)
         const res = await fetch('/api/mongodb', {
-            method: 'post', 
+            method: 'post',  
             body: JSON.stringify({ _id: user._id, data: { seances: seances, last_updated: new Date(Date.now()).toLocaleString("en-US") } })
         }) 
         setInputFields(seances) 
         setEditMode(false)
         setSavedSuccess(true)
-    }
+    } 
 
     const [inputFields, setInputFields] = useState(user.seances ? user.seances : []); 
     const [editMode, setEditMode] = useState(false) 
@@ -100,7 +100,7 @@ const Seances = ({ user }) => {
                                             id="duree"
                                             name="duree"
                                             value={inputField.duree}
-                                            onChange={event => handleInputChange(index, event)} 
+                                            onChange={event => handleInputChange(index, event)}  
                                         />
                                     </td>
                                     <td> 
@@ -124,10 +124,10 @@ const Seances = ({ user }) => {
 
                                     </td>
                                     <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
-                                        <Rating 
+                                        <Rating  
                                             initialRating={inputFields[index].rating}
                                             onChange={(val) => handleInputChange(index, { target: { name: 'rating', value: val } })}
-                                            emptySymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30 }}>{x}</Icon>)}
+                                            emptySymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30 }}>{x}</Icon>)} 
                                             fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, color: "#2ea1d9" }}>{x}</Icon>)}
                                         />
                                     </td>
@@ -147,7 +147,7 @@ const Seances = ({ user }) => {
                                     <tr key={`${inputField}~${index}`}>
                                         <td>{inputField.date ? moment(inputField.date, ['YYYY-MM-DD']).format('DD MMM YYYY') : ""}</td>
                                         <td>{inputField.duree}</td>
-                                        <td>{inputField.chapitres}</td>
+                                        <td>{inputField.chapitres}</td> 
                                         <td>{Object.values(inputField.absents).join(', ')}</td> 
                                         <td>{inputField.remarques}</td> 
                                         <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>

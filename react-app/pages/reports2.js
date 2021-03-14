@@ -1,22 +1,22 @@
-import Head from "next/head" 
+import Head from "next/head"  
 import { useState, useEffect } from "react"  
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
-import SearchAndReplaceStudent2 from '../components/SearchAndReplaceStudent2' 
- 
+import SearchAndReplaceStudent2 from '../components/SearchAndReplaceStudent2'  
+  
 const Reports = () => {
     const getUserData = async (user) => {  
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json() 
-        Object.assign(user, json) 
+        Object.assign(user, json)  
         res = await fetch('/api/mongodb?getAllReportsFromStudents=true') 
         const new_students = await res.json()
-
+ 
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json()
 
         setStudents(new_students)
-        setAwaitingStudents(awaitingStudents)
+        setAwaitingStudents(awaitingStudents) 
     } 
  
     let { user, loading } = useFetchUser()
@@ -40,18 +40,18 @@ const Reports = () => {
                     <meta name="description" content="Reports Page" /> 
                 </Head>
                 <section id="one">
-                    <div className="inner">
+                    <div className="inner"> 
                         <header className="major"> 
-                            {user ? <h1>Élèves signalés ({students.length})</h1> : <h1>Vous n'êtes pas connectés</h1>}
+                            {user ? <h1>Élèves signalés ({students.length})</h1> : <h1>Vous n'êtes pas connectés</h1>} 
                         </header>
   
                         <div className="12u 12u(medium)"> 
                             <div className="table-wrapper">
                                 <table>
-                                    <thead>
+                                    <thead> 
                                         <tr>
                                             <th>Groupe</th> 
-                                            <th>Tuteur</th> 
+                                            <th>Tuteur</th>  
                                             <th>Élève signalé</th>  
                                             <th>Détails</th>
                                             <th>Élève remplaçant</th> 

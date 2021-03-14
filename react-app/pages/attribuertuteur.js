@@ -9,12 +9,12 @@ const InputGroupId = ({ tutor }) => {
     const setGroupId = async (tutor) => {  
         // console.log(tutor, selectedGroupId)    
         await fetch('/api/mongodb', {     
-            method: 'post',      
+            method: 'post',       
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
         })   
         window.location.reload(false)   
     }   
-         
+          
     const [selectedGroupId, setSelectedGroupId] = useState("")    
 
     return (<div className="12u 12u(small)" >     
@@ -69,7 +69,7 @@ const Reports = () => {
         if (user && !loading) {      
             getUserData(user)     
         }     
-    }, [user, loading])   
+    }, [user, loading])    
         
     return (        
         <>  
@@ -79,7 +79,7 @@ const Reports = () => {
                     <title>Tuteurs en attente</title>    
                     <meta name="description" content="Tuteurs en attente" />    
                 </Head>      
-                <MenuAdmin user={user}/>    
+                <MenuAdmin user={user}/>     
                 <section id="one">  
                     <div className="inner" style={{maxWidth:"75em"}}>     
                         <header className="major">      
@@ -94,7 +94,7 @@ const Reports = () => {
                                         <tr>    
                                             <th>Tuteur</th>     
                                             <th>Statut</th>       
-                                            <th>Matières</th>    
+                                            <th>Matières</th>     
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>   
@@ -104,7 +104,7 @@ const Reports = () => {
                                     <tbody>    
   
                                         {awaitingtutors.map(tutor => (  
-                                            <tr key={`${tutor._id}`}>  
+                                            <tr key={`${tutor._id}`}>   
                                                 <td>{tutor.firstname} {tutor.lastname}</td>       
                                                 <td>{tutor.statut}</td> 
                                                 <td>{tutor.matieres}</td>    
@@ -119,7 +119,7 @@ const Reports = () => {
                                 </table>       
                             </div>           
                         </div>      
-                    </div>  
+                    </div>   
       
                 </section>  
             </Layout>     

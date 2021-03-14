@@ -4,17 +4,17 @@ const MAPBOX_TOKEN = 'pk.eyJ1Ijoibm91YW1hbmV0YXppIiwiYSI6ImNrOGN5bjJ6YzByZ3YzZnR
 import data from './cities.json' 
 
 const features = data.reduce((s, region) => {
-    const feature = { type: 'Feature', properties: { name: region.name }, geometry: { type: 'Point', coordinates: [Number(region.longitude), Number(region.latitude)] } }
+    const feature = { type: 'Feature', properties: { name: region.name }, geometry: { type: 'Point', coordinates: [Number(region.longitude), Number(region.latitude)] } } 
     let arr = Array(parseInt(region.counts)).fill(feature)
     return s.concat(arr) 
-}, [])
+}, []) 
 
 // console.log(data)
-const geojson = {
+const geojson = { 
     type: 'FeatureCollection',
     // crs: { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } }, 
     features: features 
-};
+}; 
 
 
 class Map extends React.Component {
@@ -36,7 +36,7 @@ class Map extends React.Component {
         const feature = event.features[0]; 
         if (feature && 'properties' in feature) {
             const clusterId = feature.properties.cluster_id;
-
+ 
             const mapboxSource = this._sourceRef.current.getSource();
  
             mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => { 
@@ -54,11 +54,11 @@ class Map extends React.Component {
             }); 
         }
     }; 
-    _onHover = event => {
+    _onHover = event => { 
         const { 
-            features, 
+            features,  
             srcEvent: { offsetX, offsetY } 
-        } = event;
+        } = event; 
         const hoveredFeature = features && features.find(f => f.layer.id === 'data'); 
 
         this.setState({ hoveredFeature: hoveredFeature })
@@ -77,7 +77,7 @@ class Map extends React.Component {
                 onClick={this._onClick}
                 style={{ margin: "auto", marginBottom: "1em", position:"absolute", overflow: "hidden"}}
                 height={"100%"}
-                width={"100%"}
+                width={"100%"} 
                 onHover={this._onHover} 
             >
                 <Source
@@ -87,7 +87,7 @@ class Map extends React.Component {
                     clusterRadius={1} 
                     ref={this._sourceRef}
                 >
-                    {/* <Layer id='clusters'
+                    {/* <Layer id='clusters' 
                         type='circle'
                         filter={['has', 'point_count']}
                         paint={{ 
@@ -101,8 +101,8 @@ class Map extends React.Component {
                             'circle-color': '#51bbd6',
                             'circle-radius': ['step', ['get', 'point_count'], 10, 100, 15]
                         }} />
-                    <Layer id='cluster-count' 
-                        type='symbol' 
+                    <Layer id='cluster-count'  
+                        type='symbol'  
                         filter={['has', 'point_count']} 
                         layout={{
                             'text-field': '{point_count}',

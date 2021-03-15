@@ -43,13 +43,13 @@ const Seances = ({ user }) => {
             values[index].absents[absentStudent._id] = `${absentStudent.firstname} ${absentStudent.lastname}` 
             setInputFields(values);
         }
-    }
+    } 
 
     const handleSubmitSeances = async () => { 
-        let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.remarques) // Keep non empty seances
+        let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.remarques) // Keep non empty seances 
         // console.log("query", user._id, seances)
         const res = await fetch('/api/mongodb', {
-            method: 'post',  
+            method: 'post',   
             body: JSON.stringify({ _id: user._id, data: { seances: seances, last_updated: new Date(Date.now()).toLocaleString("en-US") } })
         }) 
         setInputFields(seances) 
@@ -75,13 +75,13 @@ const Seances = ({ user }) => {
                                 <th>Durée</th>
                                 <th>Chapitres traités</th>
                                 <th>Élèves absents</th> 
-                                <th>Remarques</th>
+                                <th>Remarques</th> 
                                 <th>Ressenti</th>
                                 <th></th>
                             </tr>
                         </thead> 
                         {editMode ? <tbody> 
-                            {inputFields.map((inputField, index) => (
+                            {inputFields.map((inputField, index) => ( 
                                 <tr key={`${inputField}~${index}`}>
                                     <td style={{ width: '10%' }}>
                                         <input 
@@ -114,13 +114,13 @@ const Seances = ({ user }) => {
                                                 {/* TODO: handle checked for absent students */} 
                                                 <input type="checkbox" id={`${index}-${student._id}`} onChange={() => handleAbsentsChange(index, student)} />
                                                 <label htmlFor={`${index}-${student._id}`}>{student.fullname}</label>
-                                            </div> 
+                                            </div>  
                                         ))
                                         } 
-                                    </td>
+                                    </td> 
 
                                     <td> 
-                                        <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea>  
+                                        <textarea name="remarques" id="remarques" placeholder="Enter your message" rows="7" value={inputField.remarques} onChange={event => handleInputChange(index, event)}></textarea>   
 
                                     </td>
                                     <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
@@ -131,12 +131,12 @@ const Seances = ({ user }) => {
                                             fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, color: "#2ea1d9" }}>{x}</Icon>)}
                                         />
                                     </td>
-                                    <td>
+                                    <td> 
                                         <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleRemoveFields(index)}>remove_circle</Icon> 
                                     </td>
                                 </tr>
-                            ))}
-                            <tr><th></th><th></th><th></th><th></th><th></th><th></th>
+                            ))} 
+                            <tr><th></th><th></th><th></th><th></th><th></th><th></th> 
                                 <th style={{ paddingBottom: 0 }}>
                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleAddFields()}>add_circle</Icon> 
                                 </th>
@@ -163,7 +163,7 @@ const Seances = ({ user }) => {
                                 ))}
                             </tbody>} 
                     </table>
-                </div> 
+                </div>  
                 {(!inputFields || inputFields.length === 0) && <p style={{ textAlign: 'center' }}>Tu peux remplir ici les comptes rendus de chaque séance que tu fais avec tes élèves pour qu'on sache que les élèves sont bien pris en charge</p>}
 
                 <div> 

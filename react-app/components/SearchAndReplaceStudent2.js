@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react" 
 import SearchInput, { createFilter } from 'react-search-input'
 
 const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, groupId}) => {
@@ -16,13 +16,13 @@ const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, groupId}) 
         window.location.reload(false)
     }
     const [searchTerm, setSearchTerm] = useState("") 
-    const filteredAwaitingStudents = awaitingStudents.filter(createFilter(searchTerm, ['firstname', 'lastname', 'whatsapp']))
-    let selectedReplacement = ""
- 
+    const filteredAwaitingStudents = awaitingStudents.filter(createFilter(searchTerm, ['firstname', 'lastname', 'whatsapp'])) 
+    let selectedReplacement = "" 
+  
     return (<div className="12u 12u(small)" >
         <SearchInput className="search-input" placeholder="Tapez nom ou prénom ou numéro de l'élève..." onChange={(term) => { setSearchTerm(term) }} /> 
         <br /> 
-        {
+        { 
             searchTerm !== "" ? <>
                 {filteredAwaitingStudents.slice(0, 3).map(student => (
                     <>
@@ -32,8 +32,8 @@ const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, groupId}) 
                 ))}
                 <div className="button special" onClick={() => replaceStudent(reportedStudent, selectedReplacement)}>Confimer</div>
             </> : null
-        } 
-    </div>)
+        }  
+    </div>) 
 } 
- 
+  
 export default SearchAndReplaceStudent

@@ -1,11 +1,11 @@
 import Link from 'next/link' 
  
-import Layout from '../components/Layout'     
+import Layout from '../components/Layout'      
 import Banner from '../components/Banner'  
 import { useFetchUser } from '../lib/user'
 import Router from 'next/router'  
 import { useEffect } from 'react'  
-
+ 
 export default () => {
   
     const { user, loading } = useFetchUser()  
@@ -21,22 +21,22 @@ export default () => {
                 <div id="main">  
                     <section id="one" className="tiles"> 
   
-                        <article style={{ backgroundImage: `url('/static/images/publications.jpg')` }}>
+                        <article style={{ backgroundImage: `url('/static/images/publications.jpg')` }}> 
                             <header className="major"> 
                                 <h3>Publications</h3>  
-                                <p>Nos publications...</p>   
+                                <p>Nos publications...</p>    
                             </header> 
                             <Link href="/publications"><a className="link primary"></a></Link> 
                         </article> 
 
-                        <article style={{ backgroundImage: `url('/static/images/IMO/IMO2019.jpg')` }}>
+                        <article style={{ backgroundImage: `url('/static/images/IMO/IMO2019.jpg')` }}> 
                             <header className="major"> 
                                 <h3>Olympiades</h3> 
                                 <p>IMOs...</p>   
                             </header> 
                             <Link href="/olympiades"><a className="link primary"></a></Link> 
                         </article> 
-  
+   
                         <article style={{ backgroundImage: `url('/static/images/news.jpg')` }}> 
                             <header className="major"> 
                                 <h3>Actualités</h3> 
@@ -44,15 +44,15 @@ export default () => {
                             </header>   
                             <Link href="/actualites"><a className="link primary"></a></Link> 
                         </article>
-    
+     
    
                         <article style={{ backgroundImage: `url('/static/images/stages.jpg')` }}>
                             <header className="major"> 
-                                <h3>Stages</h3> 
+                                <h3>Stages</h3>  
                                 <p>Savoir plus sur nos stages...</p>
                             </header>
                             <Link href="/stages"><a className="link primary"></a></Link>  
-                        </article>
+                        </article> 
  
                     </section>
    
@@ -68,7 +68,7 @@ export default () => {
                     </div>
                 </section> */} 
                 </div>
- 
+  
             </div>
         </Layout>
     )  

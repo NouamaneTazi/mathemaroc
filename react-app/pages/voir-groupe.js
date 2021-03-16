@@ -2,14 +2,14 @@ import Head from "next/head"
 import { useState, useEffect } from "react" 
 import Layout from '../components/Layout' 
 import { useFetchUser } from '../lib/user'
-import SeancesLineChart from '../components/SeancesLineChart'
+import SeancesLineChart from '../components/SeancesLineChart' 
 
 import moment from 'moment'
 import useWindowSize from "react-use/lib/useWindowSize"
 
 const Admin = () => {
     const getGroupUsers = async () => { 
-        setLoading(true)
+        setLoading(true) 
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         Object.assign(user, json)
@@ -19,7 +19,7 @@ const Admin = () => {
         let tutor = undefined
         users.map(user => user.role == "tutor" ? tutor = user : user.role == "student" ? students.push(user) : null) 
         setTutor(tutor)
-        setStudents(students)
+        setStudents(students) 
         setLoading(false)
     }
 
@@ -108,7 +108,7 @@ const Admin = () => {
                         <h2 style={{display:"inline-block", marginBottom:"1em"}}>Liste des élèves : </h2>
                         <button className="button special small" style={{verticalAlign:'super', float:"right"}} onClick={() => {setLoading(true); handeRetourListeAttente()}}>retour élèves liste d'attente</button>
                         <div className="table-wrapper"> 
-                            <table>
+                            <table> 
                                 <thead>
                                     <tr> 
                                         <th>Nom</th>
@@ -121,7 +121,7 @@ const Admin = () => {
                                         <th>Facebook</th>
                                         <th>Signalé</th>
                                     </tr>
-                                </thead>
+                                </thead> 
                                 <tbody>
                                     {students.map(student => (
 
@@ -129,13 +129,13 @@ const Admin = () => {
                                             <td>{student.fullname}</td>
                                             <td>{student.lycee}</td>
                                             <td>{student.ville}</td> 
-                                            <td>{student.filiere}</td> 
+                                            <td>{student.filiere}</td>  
                                             <td>{student.matiere}</td>
                                             <td>{student.wishes}</td>
                                             <td>{student.whatsapp}</td>
                                             <td>{student.facebook}</td>
                                             <td style={{ textAlign: "center" }}>{student.reported ? 'Oui' : 'Non'}</td>
-                                        </tr>
+                                        </tr> 
 
                                     ))}
                                 </tbody>
@@ -147,8 +147,8 @@ const Admin = () => {
                             <table className="alt dense">
                                 <thead>
                                     <tr>
-                                        <th>Date</th>
-                                        <th>Durée</th> 
+                                        <th>Date</th> 
+                                        <th>Durée</th>  
                                         <th>Chapitres traités</th>
                                         <th>Élèves absents</th>
                                         <th>Remarques</th>
@@ -176,4 +176,4 @@ const Admin = () => {
     )
 }
 
-export default Admin
+export default Admin 

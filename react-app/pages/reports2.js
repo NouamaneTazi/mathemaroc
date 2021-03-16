@@ -1,10 +1,10 @@
-import Head from "next/head"  
+import Head from "next/head"   
 import { useState, useEffect } from "react"  
 import Layout from '../components/Layout'
-import { useFetchUser } from '../lib/user'
-import SearchAndReplaceStudent2 from '../components/SearchAndReplaceStudent2'  
+import { useFetchUser } from '../lib/user' 
+import SearchAndReplaceStudent2 from '../components/SearchAndReplaceStudent2'   
   
-const Reports = () => {
+const Reports = () => { 
     const getUserData = async (user) => {  
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json() 
@@ -15,7 +15,7 @@ const Reports = () => {
         res = await fetch('/api/mongodb?getAwaitingStudents=true')
         const awaitingStudents = await res.json()
 
-        setStudents(new_students)
+        setStudents(new_students) 
         setAwaitingStudents(awaitingStudents) 
     } 
  
@@ -24,9 +24,9 @@ const Reports = () => {
     const [awaitingStudents, setAwaitingStudents] = useState([]) 
     const [refresh, setRefresh] = useState(true)
 
-    useEffect(() => { 
+    useEffect(() => {  
         // {console.log("useEffect", user, loading)}
-        if (user && !loading) {
+        if (user && !loading) { 
             getUserData(user)
         }
     }, [user, loading])
@@ -37,13 +37,13 @@ const Reports = () => {
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
                     <title>Reports Page</title>
-                    <meta name="description" content="Reports Page" /> 
+                    <meta name="description" content="Reports Page" />  
                 </Head>
                 <section id="one">
                     <div className="inner"> 
                         <header className="major"> 
                             {user ? <h1>Élèves signalés ({students.length})</h1> : <h1>Vous n'êtes pas connectés</h1>} 
-                        </header>
+                        </header> 
   
                         <div className="12u 12u(medium)"> 
                             <div className="table-wrapper">
@@ -59,15 +59,15 @@ const Reports = () => {
                                     </thead>
                                     <tbody>  
 
-                                        {students.map(student => ( 
+                                        {students.map(student => (  
                                             <tr key={`${student._id}`}> 
                                                 <td>{student.groupId}</td> 
                                                 <td>{student.report.tutor.name}</td>
                                                 <td>{student.fullname}</td>
                                                 <td>{student.report.text}</td> 
                                                 <td><SearchAndReplaceStudent2 reportedStudent={student} groupId={student.groupId} awaitingStudents={awaitingStudents} /></td>
-                                            </tr>
-                                        ))
+                                            </tr> 
+                                        )) 
 
                                         }
                                     </tbody>
@@ -77,10 +77,10 @@ const Reports = () => {
 
                     </div>
                 </section>
-            </Layout>
+            </Layout> 
             } 
         </>
-    )
-}
+    ) 
+} 
 
 export default Reports

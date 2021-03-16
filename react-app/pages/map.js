@@ -1,18 +1,18 @@
-import Head from "next/head"    
-import StudentsMap from "../components/StudentsMap"    
-import Layout from '../components/Layout' 
-      
+import Head from "next/head"     
+import StudentsMap from "../components/StudentsMap"     
+import Layout from '../components/Layout'  
+       
 const Admin = () => { 
-     
-    return ( 
+      
+    return (  
         <>   
-            <Head>     
+            <Head>      
                 <title>Map</title>     
-                <meta name="description" content="Map" />   
+                <meta name="description" content="Map" />    
             </Head>     
             <StudentsMap />    
-        </> 
-    )    
-}   
+        </>  
+    )     
+}    
      
-export default Admin     
+export default Admin      

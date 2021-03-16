@@ -30,7 +30,7 @@ const Reports = () => {
     const getAwaitingStudentsData = async () => {
         let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits    
         const awaitingStudents = await res.json()  
-        setAwaitingStudents(awaitingStudents)
+        setAwaitingStudents(awaitingStudents) 
         setLoading(false)
     }  
  
@@ -52,7 +52,7 @@ const Reports = () => {
                 })
             } 
             let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : [] 
-            catalogue_logs.push({
+            catalogue_logs.push({ 
                 time: new Date(Date.now()).toLocaleString("en-US"),
                 students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname })) 
             })
@@ -78,7 +78,7 @@ const Reports = () => {
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere'])) 
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes'])) 
-    const [selectedStudents, setSelectedStudents] = useState([])
+    const [selectedStudents, setSelectedStudents] = useState([]) 
     const [maxRows, setMaxRows] = useState(10)
     const [userHasNoStudents, setUserHasNoStudents] = useState(false)   
  
@@ -118,7 +118,7 @@ const Reports = () => {
                 </Head>
  
                 <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth>  
-                    <MuiDialogContent dividers>
+                    <MuiDialogContent dividers> 
                         <Typography variant="h5" color="primary" align="center"> 
                             Bienvenue {user.fullname} ! 
                         </Typography>
@@ -146,12 +146,12 @@ const Reports = () => {
                             <div style={{ marginBottom: "2em" }}> 
                                 <Link href="/profile"> 
                                     <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>
-                                </Link>
+                                </Link> 
                             </div>   
                         } 
                         <header className="major">  
                             <h1>Catalogue des élèves</h1>  
-                        </header> 
+                        </header>  
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />   
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>    
   
@@ -182,7 +182,7 @@ const Reports = () => {
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                                 }</td>   
                                             </tr>  
-                                        )) 
+                                        ))  
  
                                         }   
                                     </tbody>  
@@ -215,17 +215,17 @@ const Reports = () => {
                                                     <option value="ECONOMIE">ECONOMIE</option>  
                                                     <option value="SCIENCES TECH">SCIENCES TECH</option>
                                                     <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>   
-                                                    <option value="Bac Pro">BAC PRO</option> 
+                                                    <option value="Bac Pro">BAC PRO</option>  
                                                 </select>
                                             </div> 
                                         </th> 
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th> 
                                         <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>  
                                         <th>Selectionné</th> 
-                                    </tr> 
+                                    </tr>  
                                 </thead>
-                                <tbody> 
-                                    {filteredWishesStudents.slice(0, maxRows).map(student => ( 
+                                <tbody>  
+                                    {filteredWishesStudents.slice(0, maxRows).map(student => (  
                                         <tr key={`${student._id}`}> 
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>   
                                             <td>{student.filiere}</td>  
@@ -235,7 +235,7 @@ const Reports = () => {
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
-                                        </tr>  
+                                        </tr>   
                                     ))}  
                                 </tbody>   
                             </table>   

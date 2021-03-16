@@ -1,17 +1,17 @@
 import Head from "next/head"    
 import { useState, useEffect } from "react"      
-import Layout from '../components/Layout' 
+import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'   
 import Router from "next/router"      
 import MenuAdmin from '../components/MenuAdmin'       
       
 const InputGroupId = ({ tutor }) => {    
-    const setGroupId = async (tutor) => {  
+    const setGroupId = async (tutor) => {   
         // console.log(tutor, selectedGroupId)    
         await fetch('/api/mongodb', {     
             method: 'post',       
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
-        })   
+        })    
         window.location.reload(false)   
     }   
           
@@ -24,13 +24,13 @@ const InputGroupId = ({ tutor }) => {
             name="group_id"   
             value={selectedGroupId}    
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}   
-        />      
+        />       
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}   
     </div>)  
 }   
       
 const Reports = () => { 
-    const getUserData = async (user) => {       
+    const getUserData = async (user) => {        
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
         let json = await res.json()   
         if (!json.is_admin) Router.push('/profile')       
@@ -46,7 +46,7 @@ const Reports = () => {
     }    
     
     const handleModClick = async (tutor, report_id) => {   
-        if (tutor.reports[report_id].mod) {      
+        if (tutor.reports[report_id].mod) {       
             delete tutor.reports[report_id].mod      
         } else {   
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }   
@@ -60,7 +60,7 @@ const Reports = () => {
     } 
         
     let { user, loading } = useFetchUser()   
-    const [awaitingtutors, setAwaitingTutors] = useState([]) 
+    const [awaitingtutors, setAwaitingTutors] = useState([])  
     const [awaitingStudents, setAwaitingStudents] = useState([])       
     const [refresh, setRefresh] = useState(true)   
     
@@ -74,7 +74,7 @@ const Reports = () => {
     return (        
         <>  
             {/* {console.log(user)} */}   
-            {!loading && <Layout user={user} loading={loading}>    
+            {!loading && <Layout user={user} loading={loading}>     
                 <Head>  
                     <title>Tuteurs en attente</title>    
                     <meta name="description" content="Tuteurs en attente" />    
@@ -98,21 +98,21 @@ const Reports = () => {
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>   
-                                            <th>Groupe</th>          
+                                            <th>Groupe</th>           
                                         </tr>     
-                                    </thead> 
+                                    </thead>  
                                     <tbody>    
   
                                         {awaitingtutors.map(tutor => (  
                                             <tr key={`${tutor._id}`}>    
-                                                <td>{tutor.firstname} {tutor.lastname}</td>       
-                                                <td>{tutor.statut}</td> 
+                                                <td>{tutor.firstname} {tutor.lastname}</td>        
+                                                <td>{tutor.statut}</td>  
                                                 <td>{tutor.matieres}</td>    
                                                 <td>{tutor.whatsapp}</td>     
                                                 <td>{tutor.mail}</td>    
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>    
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>    
-                                            </tr>      
+                                            </tr>       
                                         )     
                                         )}    
                                     </tbody>  
@@ -121,9 +121,9 @@ const Reports = () => {
                         </div>      
                     </div>   
       
-                </section>  
+                </section>   
             </Layout>     
-            }      
+            }       
         </>   
     )    
 }   

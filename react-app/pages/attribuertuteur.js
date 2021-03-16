@@ -8,7 +8,7 @@ import MenuAdmin from '../components/MenuAdmin'
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {   
         // console.log(tutor, selectedGroupId)    
-        await fetch('/api/mongodb', {     
+        await fetch('/api/mongodb', {      
             method: 'post',       
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
         })    
@@ -21,11 +21,11 @@ const InputGroupId = ({ tutor }) => {
         <input        
             type="text"    
             id="group_id" 
-            name="group_id"   
+            name="group_id"    
             value={selectedGroupId}    
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}   
-        />       
-        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}   
+        />        
+        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}    
     </div>)  
 }   
       
@@ -35,13 +35,13 @@ const Reports = () => {
         let json = await res.json()   
         if (!json.is_admin) Router.push('/profile')       
         Object.assign(user, json)      
-        res = await fetch('/api/mongodb?getAwaitingTutors=true')     
+        res = await fetch('/api/mongodb?getAwaitingTutors=true')      
         const new_awaitingtutors = await res.json()       
-    
+     
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json()    
-     
-        setAwaitingTutors(new_awaitingtutors) 
+      
+        setAwaitingTutors(new_awaitingtutors)  
         setAwaitingStudents(awaitingStudents)        
     }    
     
@@ -59,31 +59,31 @@ const Reports = () => {
         setRefresh(!refresh)     
     } 
         
-    let { user, loading } = useFetchUser()   
+    let { user, loading } = useFetchUser()    
     const [awaitingtutors, setAwaitingTutors] = useState([])  
     const [awaitingStudents, setAwaitingStudents] = useState([])       
     const [refresh, setRefresh] = useState(true)   
     
-    useEffect(() => {     
+    useEffect(() => {      
         // {console.log("useEffect", user, loading)}         
         if (user && !loading) {      
             getUserData(user)     
         }     
     }, [user, loading])    
         
-    return (        
+    return (         
         <>  
             {/* {console.log(user)} */}   
             {!loading && <Layout user={user} loading={loading}>     
                 <Head>  
                     <title>Tuteurs en attente</title>    
                     <meta name="description" content="Tuteurs en attente" />    
-                </Head>      
+                </Head>       
                 <MenuAdmin user={user}/>     
                 <section id="one">  
                     <div className="inner" style={{maxWidth:"75em"}}>     
                         <header className="major">      
-                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>    
+                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>     
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>    
        
@@ -105,7 +105,7 @@ const Reports = () => {
   
                                         {awaitingtutors.map(tutor => (  
                                             <tr key={`${tutor._id}`}>    
-                                                <td>{tutor.firstname} {tutor.lastname}</td>        
+                                                <td>{tutor.firstname} {tutor.lastname}</td>         
                                                 <td>{tutor.statut}</td>  
                                                 <td>{tutor.matieres}</td>    
                                                 <td>{tutor.whatsapp}</td>     
@@ -120,7 +120,7 @@ const Reports = () => {
                             </div>           
                         </div>      
                     </div>   
-      
+       
                 </section>   
             </Layout>     
             }       

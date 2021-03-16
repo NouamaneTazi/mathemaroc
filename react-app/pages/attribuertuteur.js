@@ -1,10 +1,10 @@
 import Head from "next/head"    
 import { useState, useEffect } from "react"      
 import Layout from '../components/Layout' 
-import { useFetchUser } from '../lib/user'  
+import { useFetchUser } from '../lib/user'   
 import Router from "next/router"      
 import MenuAdmin from '../components/MenuAdmin'       
-     
+      
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {  
         // console.log(tutor, selectedGroupId)    
@@ -33,7 +33,7 @@ const Reports = () => {
     const getUserData = async (user) => {       
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
         let json = await res.json()   
-        if (!json.is_admin) Router.push('/profile')      
+        if (!json.is_admin) Router.push('/profile')       
         Object.assign(user, json)      
         res = await fetch('/api/mongodb?getAwaitingTutors=true')     
         const new_awaitingtutors = await res.json()       
@@ -54,7 +54,7 @@ const Reports = () => {
    
         const res = await fetch('/api/mongodb', {       
             method: 'post',    
-            body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })   
+            body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })    
         })    
         setRefresh(!refresh)     
     } 
@@ -91,8 +91,8 @@ const Reports = () => {
                             <div className="table-wrapper">    
                                 <table>  
                                     <thead>     
-                                        <tr>    
-                                            <th>Tuteur</th>     
+                                        <tr>     
+                                            <th>Tuteur</th>      
                                             <th>Statut</th>       
                                             <th>Matières</th>     
                                             <th>Whatsapp</th>   
@@ -104,7 +104,7 @@ const Reports = () => {
                                     <tbody>    
   
                                         {awaitingtutors.map(tutor => (  
-                                            <tr key={`${tutor._id}`}>   
+                                            <tr key={`${tutor._id}`}>    
                                                 <td>{tutor.firstname} {tutor.lastname}</td>       
                                                 <td>{tutor.statut}</td> 
                                                 <td>{tutor.matieres}</td>    
@@ -114,7 +114,7 @@ const Reports = () => {
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>    
                                             </tr>      
                                         )     
-                                        )}   
+                                        )}    
                                     </tbody>  
                                 </table>       
                             </div>           
@@ -127,6 +127,6 @@ const Reports = () => {
         </>   
     )    
 }   
-    
+     
     
 export default Reports       

@@ -1,6 +1,6 @@
 import Head from "next/head"
-import { useState, useEffect } from "react"
-import Layout from '../components/Layout'
+import { useState, useEffect } from "react" 
+import Layout from '../components/Layout' 
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
 
@@ -34,7 +34,7 @@ const Admin = () => {
         setStudents([])
     }
 
-    let { user, loading: userLoading } = useFetchUser()
+    let { user, loading: userLoading } = useFetchUser() 
     const [loading, setLoading] = useState(false)
     const [groupId, setGroupId] = useState()
     const [tutor, setTutor] = useState()
@@ -47,17 +47,17 @@ const Admin = () => {
                 <Head>
                     <title>Suivi du catalogue</title>
                     <meta name="description" content="Suivi du catalogue" />
-                </Head>
+                </Head> 
                  
                 <section id="one">
-                    <div className="inner">
+                    <div className="inner"> 
                         <header className="major">
                             {user ? <h1>Voir un groupe</h1> : <h1>Vous n'êtes pas connectés</h1>}
                         </header>
 
                         {/* {groupUsers.length > 0 &&
                             <div className="12u 12u(medium)">
-                                <h3>Compteur de séances données :</h3>
+                                <h3>Compteur de séances données :</h3> 
                                 <div className="box" style={{ textAlign: "center" }}>
                                     <h1>{getNumberSeances(groupUsers)}</h1>
                                 </div>
@@ -69,13 +69,13 @@ const Admin = () => {
                             <input type="text" value={groupId} onChange={e => setGroupId(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? getGroupUsers() : null} /> 
                             <button className="button special" onClick={() => getGroupUsers()}>Confirmer</button>
                         </div>
- 
+  
                     </div>
                     <div className="inner" style={{ maxWidth: "95%", width: "100%" }}>
 
                         <div className="table-wrapper">
                             <h2>Tuteur :</h2>
-                            <table className="alt dense">
+                            <table className="alt dense"> 
                                 <thead> 
                                     <tr>
                                         <th>Groupe</th>
@@ -97,17 +97,17 @@ const Admin = () => {
                                             <td>{moment(tutor.last_updated).format('DD/MM/YYYY HH:mm:ss')}</td>
                                             <td>{tutor.statut}</td>
                                             <td>{tutor.whatsapp}</td>
-                                            <td>{tutor.mail}</td>
+                                            <td>{tutor.mail}</td> 
                                             <td>{tutor.seances ? tutor.seances.length : 0}</td>
                                         </tr>
-                                    </>}
+                                    </>} 
                                 </tbody>
                             </table>
                         </div>
 
                         <h2 style={{display:"inline-block", marginBottom:"1em"}}>Liste des élèves : </h2>
                         <button className="button special small" style={{verticalAlign:'super', float:"right"}} onClick={() => {setLoading(true); handeRetourListeAttente()}}>retour élèves liste d'attente</button>
-                        <div className="table-wrapper">
+                        <div className="table-wrapper"> 
                             <table>
                                 <thead>
                                     <tr> 
@@ -128,7 +128,7 @@ const Admin = () => {
                                         <tr key={student._id} onMouseEnter={() => null}>
                                             <td>{student.fullname}</td>
                                             <td>{student.lycee}</td>
-                                            <td>{student.ville}</td>
+                                            <td>{student.ville}</td> 
                                             <td>{student.filiere}</td> 
                                             <td>{student.matiere}</td>
                                             <td>{student.wishes}</td>
@@ -168,7 +168,7 @@ const Admin = () => {
                             </table>
                         </div>
 
-                    </div>
+                    </div> 
                 </section >
             </Layout >
             }

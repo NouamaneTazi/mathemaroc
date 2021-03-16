@@ -4,9 +4,9 @@ import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import moment from 'moment'
 import Icon from '@material-ui/core/Icon'; 
-import Divider from '@material-ui/core/Divider';  
+import Divider from '@material-ui/core/Divider';   
 import SearchInput, { createFilter } from 'react-search-input' 
-import Router from 'next/router'  
+import Router from 'next/router'   
 import Link from 'next/link' 
 import Backdrop from '@material-ui/core/Backdrop'; 
 import CircularProgress from '@material-ui/core/CircularProgress'; 
@@ -34,7 +34,7 @@ const Reports = () => {
         setLoading(false)
     }  
  
-    const handleSelectStudent = (student) => {   
+    const handleSelectStudent = (student) => {    
         let value = selectedStudents 
         value.push(student)
         setSelectedStudents([...value])
@@ -109,7 +109,7 @@ const Reports = () => {
     return (  
         <>   
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
-                <CircularProgress color="inherit" />
+                <CircularProgress color="inherit" /> 
             </Backdrop>  
             {!loading && user && <Layout user={user} loading={userLoading}>
                 <Head>
@@ -168,14 +168,14 @@ const Reports = () => {
                                             <th>Matières</th> 
                                             <th>Demandes</th> 
                                             <th style={{ textAlign: 'center', verticalAlign: 'middle' }}>Selectionné</th> 
-                                        </tr>
+                                        </tr> 
                                     </thead>
                                     <tbody> 
                                         {selectedStudents.map(student => (  
                                             <tr key={`${student._id}`}> 
                                                 <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
                                                 <td>{student.filiere}</td>  
-                                                <td>{student.matiere}</td> 
+                                                <td>{student.matiere}</td>  
                                                 <td>{student.wishes}</td>
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?  
                                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
@@ -201,7 +201,7 @@ const Reports = () => {
                         <div className="table-wrapper">   
                             <table>
                                 <thead>
-                                    <tr>  
+                                    <tr>   
                                         <th>Date de demande</th>
                                         <th>Filière   
                                             <div className="select-wrapper" >
@@ -220,7 +220,7 @@ const Reports = () => {
                                             </div> 
                                         </th> 
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th> 
-                                        <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th> 
+                                        <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>  
                                         <th>Selectionné</th> 
                                     </tr> 
                                 </thead>

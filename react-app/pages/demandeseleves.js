@@ -1,6 +1,6 @@
 import Head from "next/head"  
 import { useState, useEffect, Fragment } from "react"
-import Layout from '../components/Layout' 
+import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'  
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
   
@@ -16,7 +16,7 @@ const Reports = () => {
         const awaitingStudents = await res.json()  
     
         setTutors(new_tutors)  
-        setAwaitingStudents(awaitingStudents) 
+        setAwaitingStudents(awaitingStudents)  
     }     
   
     const handleModClick = async (tutor, report_id) => {    
@@ -47,11 +47,11 @@ const Reports = () => {
     }, [user, loading])   
  
     return (  
-        <>   
+        <>    
             {!loading && <Layout user={user} loading={loading}>   
                 <Head>  
                     <title>Demandes élèves</title> 
-                    <meta name="description" content="Demandes élèves" /> 
+                    <meta name="description" content="Demandes élèves" />  
                 </Head>    
                 <MenuAdmin user={user}/> 
                 <section id="one">
@@ -81,7 +81,7 @@ const Reports = () => {
                                             const asked_more_students = tutor.asked_more_students    
                                             return (    
                                                 <tr key={`${tutor._id}`}>   
-                                                    <td>{asked_more_students.time}</td>  
+                                                    <td>{asked_more_students.time}</td>   
                                                     <td>{tutor.firstname} {tutor.lastname}</td>  
                                                     <td>{tutor.groupId}</td>   
                                                     <td>{asked_more_students.number}</td>  
@@ -91,7 +91,7 @@ const Reports = () => {
                                                     </td>  
                                                 </tr>)    
                                         }  
-                                        )}
+                                        )} 
                                     </tbody>
                                 </table> 
                             </div> 
@@ -104,5 +104,5 @@ const Reports = () => {
         </>  
     ) 
 }
-  
+   
 export default Reports 

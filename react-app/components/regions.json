@@ -4,7 +4,7 @@
         "code": "MA06",   
         "name_ar": "\u0627\u0644\u062f\u0627\u0631 \u0627\u0644\u0628\u064a\u0636\u0627\u0621 - \u0633\u0637\u0627\u062a", 
         "latitude": "33.5883102",   
-        "longitude": "-7.6113801", 
+        "longitude": "-7.6113801",  
         "counts": "501" 
     },   
     { 
@@ -20,7 +20,7 @@
         "code": "MA04",  
         "name_ar": "\u0627\u0644\u0631\u0628\u0627\u0637 - \u0633\u0644\u0627 - \u0627\u0644\u0642\u0646\u064a\u0637\u0631\u0629",
         "latitude": "34.1728", 
-        "longitude": "-6.2376",
+        "longitude": "-6.2376", 
         "counts": "331"
     },  
     {  
@@ -32,14 +32,14 @@
         "counts": "291"
     },
     {   
-        "name_en": "Tanger-T\u00e9touan-Al Hoce\u00efma",   
+        "name_en": "Tanger-T\u00e9touan-Al Hoce\u00efma",    
         "code": "MA01", 
         "name_ar": "\u0637\u0646\u062c\u0629 - \u062a\u0637\u0648\u0627\u0646 - \u0627\u0644\u062d\u0633\u064a\u0645\u0629", 
         "latitude": "35.50926", 
         "longitude": "-5.4037",
         "counts": "252"
     }, 
-    {  
+    {   
         "name_en": "l'Oriental", 
         "code": "MA02", 
         "name_ar": "\u0627\u0644\u062c\u0647\u0629 \u0627\u0644\u0634\u0631\u0642\u064a\u0629",
@@ -51,7 +51,7 @@
         "name_en": "Souss-Massa", 
         "code": "MA09", 
         "name_ar": "\u0633\u0648\u0633 - \u0645\u0627\u0633\u0629", 
-        "latitude": "30.2751",  
+        "latitude": "30.2751",   
         "longitude": "-8.1339",
         "counts": "231"  
     },   
@@ -84,11 +84,11 @@
         "code": "MA11",
         "name_ar": "\u0627\u0644\u0639\u064a\u0648\u0646 - \u0627\u0644\u0633\u0627\u0642\u064a\u0629 \u0627\u0644\u062d\u0645\u0631\u0627\u0621", 
         "latitude": "27.8683", 
-        "longitude": "-11.9805",
+        "longitude": "-11.9805", 
         "counts": "70"
     },
     { 
-        "name_en": "Dakhla-Oued Ed-Dahab",  
+        "name_en": "Dakhla-Oued Ed-Dahab",   
         "code": "MA12", 
         "name_ar": "\u0627\u0644\u062f\u0627\u062e\u0644\u0629 - \u0648\u0627\u062f\u064a \u0627\u0644\u0630\u0647\u0628", 
         "latitude": "22.7338", 

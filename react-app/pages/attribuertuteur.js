@@ -7,7 +7,7 @@ import MenuAdmin from '../components/MenuAdmin'
       
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {   
-        // console.log(tutor, selectedGroupId)    
+        // console.log(tutor, selectedGroupId)     
         await fetch('/api/mongodb', {      
             method: 'post',       
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
@@ -23,7 +23,7 @@ const InputGroupId = ({ tutor }) => {
             id="group_id" 
             name="group_id"    
             value={selectedGroupId}    
-            onChange={event => setSelectedGroupId(parseInt(event.target.value))}   
+            onChange={event => setSelectedGroupId(parseInt(event.target.value))}    
         />        
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}    
     </div>)  
@@ -37,7 +37,7 @@ const Reports = () => {
         Object.assign(user, json)      
         res = await fetch('/api/mongodb?getAwaitingTutors=true')      
         const new_awaitingtutors = await res.json()       
-     
+      
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
         const awaitingStudents = await res.json()    
       
@@ -53,8 +53,8 @@ const Reports = () => {
         }    
    
         const res = await fetch('/api/mongodb', {       
-            method: 'post',    
-            body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })    
+            method: 'post',     
+            body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })     
         })    
         setRefresh(!refresh)     
     } 
@@ -63,7 +63,7 @@ const Reports = () => {
     const [awaitingtutors, setAwaitingTutors] = useState([])  
     const [awaitingStudents, setAwaitingStudents] = useState([])       
     const [refresh, setRefresh] = useState(true)   
-    
+     
     useEffect(() => {      
         // {console.log("useEffect", user, loading)}         
         if (user && !loading) {      
@@ -75,7 +75,7 @@ const Reports = () => {
         <>  
             {/* {console.log(user)} */}   
             {!loading && <Layout user={user} loading={loading}>     
-                <Head>  
+                <Head>   
                     <title>Tuteurs en attente</title>    
                     <meta name="description" content="Tuteurs en attente" />    
                 </Head>       
@@ -110,13 +110,13 @@ const Reports = () => {
                                                 <td>{tutor.matieres}</td>    
                                                 <td>{tutor.whatsapp}</td>     
                                                 <td>{tutor.mail}</td>    
-                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>    
+                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>     
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>    
-                                            </tr>       
+                                            </tr>        
                                         )     
                                         )}    
                                     </tbody>  
-                                </table>       
+                                </table>        
                             </div>           
                         </div>      
                     </div>   

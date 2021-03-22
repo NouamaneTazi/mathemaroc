@@ -7,7 +7,7 @@ const handler = nextConnect();
 handler.use(middleware);
 
 // const transporter = nodemailer.createTransport({
-//     host: 'smtp.ethereal.email',
+//     host: 'smtp.ethereal.email', 
 //     port: 587,
 //     auth: {
 //         user: 'edna77@ethereal.email',
@@ -15,7 +15,7 @@ handler.use(middleware);
 //     }
 // });
 
-const MAX_RECIPIENTS = 100
+const MAX_RECIPIENTS = 100 
 
 var transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -55,14 +55,14 @@ const html_tutorWithStudents = `
 <div>
 <table class="row aw-stack" style="width: 100%; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation">
 <tbody>
-<tr style="border-spacing: 0px;">
+<tr style="border-spacing: 0px;"> 
 <td class="container" style="padding: 0px; width: 100%; border-spacing: 0px;" valign="top" bgcolor="#E7E3D7" width="100%">
 <div class="definition-parent">
 <table class="floated-none" style="float: none; text-align: center; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation" width="100%" align="center">
 <tbody>
 <tr style="border-spacing: 0px;">
 <td style="padding: 0px; border-spacing: 0px;"><a class="aw-image-link" style="color: #3498db;" href="https://www.chrisvqz.com" rel="nofollow"> <img class="model" style="object-position: top; object-fit: cover; display: block; margin: auto; width: 100%; height: 278px; border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: none; text-decoration: none; transform: trans;" src="https://i.imgur.com/hnNqs5o.jpg" alt="Image" width="600" height="290" /> </a></td>
-</tr>
+</tr> 
 </tbody>
 </table>
 </div>
@@ -258,16 +258,16 @@ handler.get(async (req, res) => {
     //         mails = mails.split('\n            ').splice(0, 10).join()
 
     //         const tutorsWithStudents = contacted_tutors.filter(t => t.hasStudents).slice(0, MAX_RECIPIENTS)
-    //         const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents).slice(0, MAX_RECIPIENTS)
+    //         const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents).slice(0, MAX_RECIPIENTS) 
     //         console.log(tutorsWithStudents.length, tutorsWithoutStudents.length)
 
-    //         // console.log(tutorsWithStudents.map(t => ({firstname:t.firstname, lastname:t.lastname, to:t.to})))
+    //         // console.log(tutorsWithStudents.map(t => ({firstname:t.firstname, lastname:t.lastname, to:t.to}))) 
     //         // TUTORS WITH STUDENTS
     //         message.bcc = tutorsWithStudents.map(t => t.to)
     //         // message.bcc = mails
     //         message.html = html_tutorWithStudents
     //         console.log("Destinataires avec élèves : ", message.bcc)
-    //         let log = { 'Total': `${tutorsWithStudents.length} + ${tutorsWithoutStudents.length} = ${tutorsWithStudents.length + tutorsWithoutStudents.length}` }
+    //         let log = { 'Total': `${tutorsWithStudents.length} + ${tutorsWithoutStudents.length} = ${tutorsWithStudents.length + tutorsWithoutStudents.length}` } 
 
     //         transporter.sendMail(message, function (error, info) {
     //             if (error) {

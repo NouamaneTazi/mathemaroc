@@ -1,13 +1,13 @@
 import Head from "next/head"    
-import { useState, useEffect } from "react"      
+import { useState, useEffect } from "react"       
 import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'   
 import Router from "next/router"      
-import MenuAdmin from '../components/MenuAdmin'        
+import MenuAdmin from '../components/MenuAdmin'         
       
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {   
-        // console.log(tutor, selectedGroupId)     
+        // console.log(tutor, selectedGroupId)      
         await fetch('/api/mongodb', {      
             method: 'post',       
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
@@ -28,8 +28,8 @@ const InputGroupId = ({ tutor }) => {
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}    
     </div>)  
 }   
-      
-const Reports = () => { 
+       
+const Reports = () => {  
     const getUserData = async (user) => {        
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
         let json = await res.json()   
@@ -49,12 +49,12 @@ const Reports = () => {
         if (tutor.reports[report_id].mod) {       
             delete tutor.reports[report_id].mod      
         } else {    
-            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }   
+            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }    
         }      
    
         const res = await fetch('/api/mongodb', {       
             method: 'post',     
-            body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })      
+            body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })       
         })    
         setRefresh(!refresh)     
     } 
@@ -67,7 +67,7 @@ const Reports = () => {
     useEffect(() => {      
         // {console.log("useEffect", user, loading)}         
         if (user && !loading) {       
-            getUserData(user)     
+            getUserData(user)      
         }     
     }, [user, loading])     
          
@@ -75,7 +75,7 @@ const Reports = () => {
         <>  
             {/* {console.log(user)} */}   
             {!loading && <Layout user={user} loading={loading}>     
-                <Head>   
+                <Head>    
                     <title>Tuteurs en attente</title>    
                     <meta name="description" content="Tuteurs en attente" />    
                 </Head>       
@@ -94,7 +94,7 @@ const Reports = () => {
                                         <tr>       
                                             <th>Tuteur</th>      
                                             <th>Statut</th>       
-                                            <th>Matières</th>     
+                                            <th>Matières</th>      
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>   
@@ -117,7 +117,7 @@ const Reports = () => {
                                         )}    
                                     </tbody>  
                                 </table>        
-                            </div>           
+                            </div>            
                         </div>      
                     </div>   
        
@@ -129,4 +129,4 @@ const Reports = () => {
 }   
      
     
-export default Reports        
+export default Reports         

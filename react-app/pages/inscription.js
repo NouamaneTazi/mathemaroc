@@ -30,7 +30,7 @@ const Signup = () => {
         else if (inputFields.matieres.length < 3) {
             setInputFields({ ...inputFields, matieres: inputFields.matieres.concat([val]) })
         } else {
-            let inputs = inputFields
+            let inputs = inputFields 
             inputs.matieres.shift() 
             inputs.matieres.push(val)
             setInputFields(inputs)
@@ -64,7 +64,7 @@ const Signup = () => {
                 Router.push('/profile') 
                 // console.log("res",user)
             }
-        }
+        } 
         else {
             let errors = {}
             requiredFields.map(x => (x in inputFields && inputFields[x] !== '') ? null : errors[x] = true)
@@ -72,7 +72,7 @@ const Signup = () => {
             setShowError(true) 
         }
         // console.log("error", error)
-    }
+    } 
 
     const getUserData = async (user) => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
@@ -129,7 +129,7 @@ const Signup = () => {
                                     </div> 
                                     <div className="6u" style={{ textAlign: 'center' }}>
                                         <a style={{ borderBottom: "none", cursor: "pointer" }} onClick={() => setRole("student")}><span>
-                                            <i style={{ fontSize: "9em" }} class="fas fa-book-reader"></i>
+                                            <i style={{ fontSize: "9em" }} class="fas fa-book-reader"></i> 
                                             <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Élève</p>  
                                         </span></a>
                                     </div>
@@ -143,7 +143,7 @@ const Signup = () => {
                                             <p style={{ fontWeight: 600, fontSize: "2em", marginBottom: "1em" }}>Tuteur</p>
                                         </div>
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
-                                            <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
+                                            <span style={{ width: "16em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span> 
                                             <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname: capitalize(e.target.value) })} placeholder="Prénom" />
                                         </div> 
                                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
@@ -241,9 +241,9 @@ const Signup = () => {
                                                 </div>
                                             </div> 
 
-                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
-                                                <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Chapitres (*) :</span>
-                                                <div style={{ width: "100%", padding: 0 }}>
+                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
+                                                <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Chapitres (*) :</span> 
+                                                <div style={{ width: "100%", padding: 0 }}> 
                                                     <textarea className={error.wishes ? "invalid" : null} value={inputFields.wishes} onChange={e => setInputFields({ ...inputFields, wishes: e.target.value })} placeholder="Spécifiez les chapitres pour lesquels vous avez besoin d'aide" rows="6" />
                                                 </div>
                                             </div> 

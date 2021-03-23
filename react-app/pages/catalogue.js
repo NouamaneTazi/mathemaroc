@@ -6,7 +6,7 @@ import moment from 'moment'
 import Icon from '@material-ui/core/Icon'; 
 import Divider from '@material-ui/core/Divider';   
 import SearchInput, { createFilter } from 'react-search-input' 
-import Router from 'next/router'   
+import Router from 'next/router'    
 import Link from 'next/link' 
 import Backdrop from '@material-ui/core/Backdrop'; 
 import CircularProgress from '@material-ui/core/CircularProgress'; 
@@ -33,7 +33,7 @@ const Reports = () => {
         setAwaitingStudents(awaitingStudents) 
         setLoading(false)
     }  
- 
+  
     const handleSelectStudent = (student) => {    
         let value = selectedStudents 
         value.push(student)
@@ -45,12 +45,12 @@ const Reports = () => {
             setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' }) 
         }   
         else {
-            for (let student of selectedStudents) {
+            for (let student of selectedStudents) { 
                 await fetch('/api/mongodb', { 
                     method: 'post',
                     body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } }) 
                 })
-            } 
+            }  
             let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : [] 
             catalogue_logs.push({  
                 time: new Date(Date.now()).toLocaleString("en-US"),
@@ -63,7 +63,7 @@ const Reports = () => {
                     data: { "catalogue_logs": catalogue_logs }  
                 })
             })  
-            Router.push('/profile')  
+            Router.push('/profile')   
         }
         setLoading(false) 
     } 
@@ -83,7 +83,7 @@ const Reports = () => {
     const [userHasNoStudents, setUserHasNoStudents] = useState(false)   
  
     useEffect(() => { 
-        // { console.log("useEffect", user, userLoading) }  
+        // { console.log("useEffect", user, userLoading) }   
         if (user && !userLoading) {
             setLoading(true)
             getUserData(user)   
@@ -113,7 +113,7 @@ const Reports = () => {
             </Backdrop>  
             {!loading && user && <Layout user={user} loading={userLoading}>
                 <Head>
-                    <title>Catalogue à élèves</title> 
+                    <title>Catalogue à élèves</title>  
                     <meta name="description" content="Catalogue des élèves" />  
                 </Head> 
  
@@ -149,7 +149,7 @@ const Reports = () => {
                                 </Link> 
                             </div>   
                         } 
-                        <header className="major">  
+                        <header className="major">   
                             <h1>Catalogue des élèves</h1>  
                         </header>  
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />   
@@ -187,7 +187,7 @@ const Reports = () => {
                                         }   
                                     </tbody>  
                                 </table> 
-                            </div>   
+                            </div>    
                             {error && <Alert severity="error">{error.message}</Alert>}  
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>  
@@ -220,7 +220,7 @@ const Reports = () => {
                                             </div> 
                                         </th> 
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th> 
-                                        <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>  
+                                        <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>   
                                         <th>Selectionné</th> 
                                     </tr>  
                                 </thead>

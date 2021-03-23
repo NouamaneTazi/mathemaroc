@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'   
 import Router from "next/router"      
-import MenuAdmin from '../components/MenuAdmin'       
+import MenuAdmin from '../components/MenuAdmin'        
       
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {   
@@ -38,7 +38,7 @@ const Reports = () => {
         res = await fetch('/api/mongodb?getAwaitingTutors=true')      
         const new_awaitingtutors = await res.json()       
       
-        res = await fetch('/api/mongodb?getAwaitingStudents=true')  
+        res = await fetch('/api/mongodb?getAwaitingStudents=true')   
         const awaitingStudents = await res.json()    
       
         setAwaitingTutors(new_awaitingtutors)  
@@ -48,13 +48,13 @@ const Reports = () => {
     const handleModClick = async (tutor, report_id) => {   
         if (tutor.reports[report_id].mod) {       
             delete tutor.reports[report_id].mod      
-        } else {   
+        } else {    
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }   
-        }     
+        }      
    
         const res = await fetch('/api/mongodb', {       
             method: 'post',     
-            body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })     
+            body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })      
         })    
         setRefresh(!refresh)     
     } 
@@ -66,10 +66,10 @@ const Reports = () => {
      
     useEffect(() => {      
         // {console.log("useEffect", user, loading)}         
-        if (user && !loading) {      
+        if (user && !loading) {       
             getUserData(user)     
         }     
-    }, [user, loading])    
+    }, [user, loading])     
          
     return (         
         <>  
@@ -91,7 +91,7 @@ const Reports = () => {
                             <div className="table-wrapper">    
                                 <table>  
                                     <thead>     
-                                        <tr>      
+                                        <tr>       
                                             <th>Tuteur</th>      
                                             <th>Statut</th>       
                                             <th>Matières</th>     
@@ -106,7 +106,7 @@ const Reports = () => {
                                         {awaitingtutors.map(tutor => (  
                                             <tr key={`${tutor._id}`}>    
                                                 <td>{tutor.firstname} {tutor.lastname}</td>         
-                                                <td>{tutor.statut}</td>  
+                                                <td>{tutor.statut}</td>   
                                                 <td>{tutor.matieres}</td>    
                                                 <td>{tutor.whatsapp}</td>     
                                                 <td>{tutor.mail}</td>    
@@ -125,7 +125,7 @@ const Reports = () => {
             </Layout>     
             }       
         </>   
-    )    
+    )     
 }   
      
     

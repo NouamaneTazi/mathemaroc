@@ -16,14 +16,14 @@ const InputGroupId = ({ tutor }) => {
     }   
           
     const [selectedGroupId, setSelectedGroupId] = useState("")    
-
+ 
     return (<div className="12u 12u(small)" >     
         <input        
             type="text"    
             id="group_id" 
             name="group_id"    
             value={selectedGroupId}    
-            onChange={event => setSelectedGroupId(parseInt(event.target.value))}    
+            onChange={event => setSelectedGroupId(parseInt(event.target.value))}     
         />        
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}    
     </div>)  
@@ -50,7 +50,7 @@ const Reports = () => {
             delete tutor.reports[report_id].mod      
         } else {   
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }   
-        }    
+        }     
    
         const res = await fetch('/api/mongodb', {       
             method: 'post',     
@@ -58,7 +58,7 @@ const Reports = () => {
         })    
         setRefresh(!refresh)     
     } 
-        
+         
     let { user, loading } = useFetchUser()    
     const [awaitingtutors, setAwaitingTutors] = useState([])  
     const [awaitingStudents, setAwaitingStudents] = useState([])       
@@ -70,7 +70,7 @@ const Reports = () => {
             getUserData(user)     
         }     
     }, [user, loading])    
-        
+         
     return (         
         <>  
             {/* {console.log(user)} */}   
@@ -87,11 +87,11 @@ const Reports = () => {
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>    
        
-                        <div className="12u 12u(medium)">     
+                        <div className="12u 12u(medium)">      
                             <div className="table-wrapper">    
                                 <table>  
                                     <thead>     
-                                        <tr>     
+                                        <tr>      
                                             <th>Tuteur</th>      
                                             <th>Statut</th>       
                                             <th>Matières</th>     
@@ -129,4 +129,4 @@ const Reports = () => {
 }   
      
     
-export default Reports       
+export default Reports        

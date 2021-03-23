@@ -5,15 +5,15 @@ import { useFetchUser } from '../lib/user'
 import SearchAndReplaceStudent from '../components/demandeseleves/SearchAndReplaceStudent'
   
    
-const Reports = () => {   
+const Reports = () => {    
     const getUserData = async (user) => {    
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)   
         let json = await res.json()  
-        Object.assign(user, json)
+        Object.assign(user, json) 
         res = await fetch('/api/mongodb?getDemandesDeleves=true')   
         const new_tutors = await res.json()
         res = await fetch('/api/mongodb?getAwaitingStudents=true')  
-        const awaitingStudents = await res.json()  
+        const awaitingStudents = await res.json()   
     
         setTutors(new_tutors)  
         setAwaitingStudents(awaitingStudents)  
@@ -29,12 +29,12 @@ const Reports = () => {
         const res = await fetch('/api/mongodb', { 
             method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } }) 
-        })
+        }) 
         setRefresh(!refresh)   
     }   
-    
+     
     let { user, loading } = useFetchUser() 
-    const [tutors, setTutors] = useState([])   
+    const [tutors, setTutors] = useState([])    
     const [awaitingStudents, setAwaitingStudents] = useState([]) 
     const [refresh, setRefresh] = useState(true)     
     const [replacingStudent, setReplacingStudent] = useState(false)
@@ -54,12 +54,12 @@ const Reports = () => {
                     <meta name="description" content="Demandes élèves" />  
                 </Head>    
                 <MenuAdmin user={user}/> 
-                <section id="one">
+                <section id="one"> 
                     <div className="inner" style={{ maxWidth: "90%", width: "100%" }}>
                         <header className="major"> 
                             {user ? <h1>Demandes d'élèves</h1> : <h1>Vous n'êtes pas connectés</h1>}  
                         </header>  
-                        <p><b>Attention : </b> Fach tkhtaru TOUS les élèves à attribuer wdiru confirmer cava actualiser la page automatiquement wmaghatbqawch tlqaw le prof fhad la page. Donc faites attention avant de cliquer confirmer de bien selectionner tous les élèves concernés.</p>
+                        <p><b>Attention : </b> Fach tkhtaru TOUS les élèves à attribuer wdiru confirmer cava actualiser la page automatiquement wmaghatbqawch tlqaw le prof fhad la page. Donc faites attention avant de cliquer confirmer de bien selectionner tous les élèves concernés.</p> 
  
                         {/* <p>Demandes en attente : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => !("mod" in report)).length, 0)} <br />
                         Demandes traités : {tutors.reduce((s, tutor) => s + tutor.reports.filter(report => "mod" in report).length, 0)}</p> */}    
@@ -76,10 +76,10 @@ const Reports = () => {
                                         </tr>   
                                     </thead>  
                                     <tbody>    
-  
+   
                                         {tutors.map(tutor => {  
                                             const asked_more_students = tutor.asked_more_students    
-                                            return (    
+                                            return (     
                                                 <tr key={`${tutor._id}`}>   
                                                     <td>{asked_more_students.time}</td>   
                                                     <td>{tutor.firstname} {tutor.lastname}</td>  
@@ -91,7 +91,7 @@ const Reports = () => {
                                                     </td>  
                                                 </tr>)    
                                         }  
-                                        )} 
+                                        )}  
                                     </tbody>
                                 </table> 
                             </div> 

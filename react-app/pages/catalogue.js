@@ -1,12 +1,12 @@
-import Head from "next/head"
+import Head from "next/head" 
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'
 import moment from 'moment'
 import Icon from '@material-ui/core/Icon'; 
 import Divider from '@material-ui/core/Divider';   
-import SearchInput, { createFilter } from 'react-search-input' 
-import Router from 'next/router'    
+import SearchInput, { createFilter } from 'react-search-input'  
+import Router from 'next/router'     
 import Link from 'next/link' 
 import Backdrop from '@material-ui/core/Backdrop'; 
 import CircularProgress from '@material-ui/core/CircularProgress'; 
@@ -47,7 +47,7 @@ const Reports = () => {
         else {
             for (let student of selectedStudents) { 
                 await fetch('/api/mongodb', { 
-                    method: 'post',
+                    method: 'post', 
                     body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } }) 
                 })
             }  
@@ -70,7 +70,7 @@ const Reports = () => {
   
     let { user, loading: userLoading } = useFetchUser() 
     const [loading, setLoading] = useState(false) 
-    const [error, setError] = useState() 
+    const [error, setError] = useState()  
     const [awaitingStudents, setAwaitingStudents] = useState([])   
     const [filiereTerm, setFiliereTerm] = useState("")   
     const [matiereTerm, setMatiereTerm] = useState("") 
@@ -78,20 +78,20 @@ const Reports = () => {
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere'])) 
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes'])) 
-    const [selectedStudents, setSelectedStudents] = useState([]) 
-    const [maxRows, setMaxRows] = useState(10)
+    const [selectedStudents, setSelectedStudents] = useState([])  
+    const [maxRows, setMaxRows] = useState(10) 
     const [userHasNoStudents, setUserHasNoStudents] = useState(false)   
- 
+  
     useEffect(() => { 
         // { console.log("useEffect", user, userLoading) }   
         if (user && !userLoading) {
             setLoading(true)
             getUserData(user)   
-            getAwaitingStudentsData() 
+            getAwaitingStudentsData()  
         } 
         else if (!userLoading && !user) {   
             Router.push('/profile')  
-        }
+        } 
     }, [user, userLoading])
  
   
@@ -192,7 +192,7 @@ const Reports = () => {
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>  
                         </div> 
-                        <Divider style={{ marginBottom: "3em" }} />   
+                        <Divider style={{ marginBottom: "3em" }} />    
                     </>} 
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
@@ -222,7 +222,7 @@ const Reports = () => {
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th> 
                                         <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>   
                                         <th>Selectionné</th> 
-                                    </tr>  
+                                    </tr>   
                                 </thead>
                                 <tbody>  
                                     {filteredWishesStudents.slice(0, maxRows).map(student => (  
@@ -244,9 +244,9 @@ const Reports = () => {
                     </div> 
                 </section>  
             </Layout> 
-            }
+            } 
         </> 
     )
-}  
+}   
  
 export default Reports    

@@ -13,7 +13,7 @@ import normalizeEmail from 'validator/lib/normalizeEmail';
 
 const Signup = () => {
     const CustomizedTooltip = withStyles(theme => ({
-        tooltip: {
+        tooltip: { 
             backgroundColor: theme.palette.common.white,
             color: '#3e467f',
             boxShadow: theme.shadows[1],
@@ -28,7 +28,7 @@ const Signup = () => {
             setInputFields({ ...inputFields, matieres: inputFields.matieres.filter(mat => mat !== val) })
         } 
         else if (inputFields.matieres.length < 3) {
-            setInputFields({ ...inputFields, matieres: inputFields.matieres.concat([val]) })
+            setInputFields({ ...inputFields, matieres: inputFields.matieres.concat([val]) }) 
         } else {
             let inputs = inputFields 
             inputs.matieres.shift() 
@@ -46,7 +46,7 @@ const Signup = () => {
             } else { 
                 setLoading(true)
                 if (role === "student") { 
-                    inputFields.matiere = inputFields.matieres.join(', ') 
+                    inputFields.matiere = inputFields.matieres.join(', ')  
                 } 
                 delete inputFields.matieres
                 Object.entries(inputFields).map(([k, v]) => inputFields[k] = trim(v))
@@ -102,7 +102,7 @@ const Signup = () => {
         }
     }, [user, userLoading]) 
     return ( 
-        <>
+        <> 
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
             </Backdrop>
@@ -132,7 +132,7 @@ const Signup = () => {
                                             <i style={{ fontSize: "9em" }} class="fas fa-book-reader"></i> 
                                             <p style={{ fontWeight: 600, fontSize: "3em", marginBottom: 0 }}>Élève</p>  
                                         </span></a>
-                                    </div>
+                                    </div> 
                                 </div> 
                             </>
                             : role == "tutor" ?
@@ -169,14 +169,14 @@ const Signup = () => {
                                 : role == "student" ? 
                                     <>
                                         <div className="6u 12u(medium)" style={{ margin: 'auto' }}>
-                                            <div className="6u" style={{ textAlign: 'center', margin: 'auto' }}>
+                                            <div className="6u" style={{ textAlign: 'center', margin: 'auto' }}> 
                                                 <i style={{ fontSize: "5em" }} class="fas fa-book-reader"></i>
                                                 <p style={{ fontWeight: 600, fontSize: "2em", marginBottom: "1em" }}>Élève</p>
                                             </div>
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Prénom (*) :</span>
                                                 <input className={error.firstname ? "invalid" : null} type="text" value={inputFields.firstname} onChange={e => setInputFields({ ...inputFields, firstname:capitalize(e.target.value) })} placeholder="Prénom" /> 
-                                            </div>
+                                            </div> 
                                             <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Nom (*) :</span>
                                                 <input className={error.lastname ? "invalid" : null} type="text" value={inputFields.lastname} onChange={e => setInputFields({ ...inputFields, lastname: capitalize(e.target.value)})} placeholder="Nom" /> 
@@ -232,7 +232,7 @@ const Signup = () => {
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Matières (*) :</span>
                                                 <div style={{ display: 'flex', flexDirection: 'column' }}> 
                                                     {['MATHÉMATIQUES', 'PHYSIQUE-CHIMIE', 'SVT', 'SI', 'ARABE', 'FRANÇAIS', 'ANGLAIS', 'PHILOSOPHIE', 'EDUCATION ISLAMIQUE', 'HISTOIRE GÉOGRAPHIE', 'COMPTABILITÉ', 'ECONOMIE GÉNÉRALE', 'ORGANISATION ADMINISTRATIVE DES ENTREPRISES'] 
-                                                        .map(matiere => (
+                                                        .map(matiere => ( 
                                                             <>
                                                                 <input type="checkbox" id={matiere} checked={inputFields.matieres && inputFields.matieres.includes(matiere)} onClick={(e) => handleMatieresSelect(e.target.id)} />
                                                                 <label htmlFor={matiere}>{matiere}</label>
@@ -241,7 +241,7 @@ const Signup = () => {
                                                 </div>
                                             </div> 
 
-                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}> 
+                                            <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>  
                                                 <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Chapitres (*) :</span> 
                                                 <div style={{ width: "100%", padding: 0 }}> 
                                                     <textarea className={error.wishes ? "invalid" : null} value={inputFields.wishes} onChange={e => setInputFields({ ...inputFields, wishes: e.target.value })} placeholder="Spécifiez les chapitres pour lesquels vous avez besoin d'aide" rows="6" />
@@ -256,7 +256,7 @@ const Signup = () => {
                 </section>
             </Layout>} 
         </>
-    )
+    ) 
 }
 
 export default Signup

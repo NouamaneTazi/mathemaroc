@@ -1,6 +1,6 @@
 import Head from "next/head"    
 import { useState, useEffect } from "react"       
-import Layout from '../components/Layout'  
+import Layout from '../components/Layout'   
 import { useFetchUser } from '../lib/user'   
 import Router from "next/router"      
 import MenuAdmin from '../components/MenuAdmin'         
@@ -13,21 +13,21 @@ const InputGroupId = ({ tutor }) => {
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
         })    
         window.location.reload(false)   
-    }   
+    }    
           
-    const [selectedGroupId, setSelectedGroupId] = useState("")    
+    const [selectedGroupId, setSelectedGroupId] = useState("")     
   
     return (<div className="12u 12u(small)" >     
         <input        
             type="text"    
-            id="group_id" 
+            id="group_id"  
             name="group_id"    
             value={selectedGroupId}    
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}     
         />        
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}    
     </div>)  
-}   
+}    
        
 const Reports = () => {  
     const getUserData = async (user) => {        
@@ -78,7 +78,7 @@ const Reports = () => {
                 <Head>    
                     <title>Tuteurs en attente</title>    
                     <meta name="description" content="Tuteurs en attente" />    
-                </Head>       
+                </Head>        
                 <MenuAdmin user={user}/>     
                 <section id="one">  
                     <div className="inner" style={{maxWidth:"75em"}}>     
@@ -86,7 +86,7 @@ const Reports = () => {
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>      
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>    
-       
+        
                         <div className="12u 12u(medium)">      
                             <div className="table-wrapper">     
                                 <table>  
@@ -110,14 +110,14 @@ const Reports = () => {
                                                 <td>{tutor.matieres}</td>    
                                                 <td>{tutor.whatsapp}</td>     
                                                 <td>{tutor.mail}</td>    
-                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>     
+                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>      
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>    
                                             </tr>        
                                         )     
                                         )}     
                                     </tbody>  
                                 </table>        
-                            </div>            
+                            </div>             
                         </div>       
                     </div>   
        

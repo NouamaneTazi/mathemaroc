@@ -68,7 +68,7 @@ const Reports = () => {
         setLoading(false) 
     } 
   
-    let { user, loading: userLoading } = useFetchUser() 
+    let { user, loading: userLoading } = useFetchUser()  
     const [loading, setLoading] = useState(false) 
     const [error, setError] = useState()  
     const [awaitingStudents, setAwaitingStudents] = useState([])   
@@ -83,7 +83,7 @@ const Reports = () => {
     const [userHasNoStudents, setUserHasNoStudents] = useState(false)   
   
     useEffect(() => { 
-        // { console.log("useEffect", user, userLoading) }   
+        // { console.log("useEffect", user, userLoading) }    
         if (user && !userLoading) {
             setLoading(true)
             getUserData(user)   
@@ -111,9 +111,9 @@ const Reports = () => {
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" /> 
             </Backdrop>  
-            {!loading && user && <Layout user={user} loading={userLoading}>
+            {!loading && user && <Layout user={user} loading={userLoading}> 
                 <Head>
-                    <title>Catalogue à élèves</title>  
+                    <title>Catalogue à élèves</title>   
                     <meta name="description" content="Catalogue des élèves" />  
                 </Head> 
  
@@ -136,7 +136,7 @@ const Reports = () => {
  
                     <Button autoFocus onClick={() => setUserHasNoStudents(false)} color="primary"> 
                         Fermer
-                        </Button> 
+                        </Button>  
                 </Dialog>
    
 
@@ -154,8 +154,8 @@ const Reports = () => {
                         </header>  
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />   
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>    
-  
-                    </div> 
+   
+                    </div>  
 
                     {selectedStudents.length > 0 && <> 
                         <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
@@ -211,12 +211,12 @@ const Reports = () => {
                                                     <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>   
                                                     <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option> 
                                                     <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
-                                                    <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option>
+                                                    <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option> 
                                                     <option value="ECONOMIE">ECONOMIE</option>  
                                                     <option value="SCIENCES TECH">SCIENCES TECH</option>
                                                     <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>   
                                                     <option value="Bac Pro">BAC PRO</option>  
-                                                </select>
+                                                </select> 
                                             </div> 
                                         </th> 
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th> 
@@ -241,12 +241,12 @@ const Reports = () => {
                             </table>   
                             <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
                         </div> 
-                    </div> 
+                    </div>  
                 </section>  
             </Layout> 
             } 
         </> 
-    )
+    ) 
 }   
  
 export default Reports    

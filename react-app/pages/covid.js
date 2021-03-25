@@ -1,16 +1,16 @@
-import Head from "next/head"     
-import Link from 'next/link'         
+import Head from "next/head"      
+import Link from 'next/link'          
          
 import Layout from '../components/Layout'           
 import BannerCovid from '../components/BannerCovid'        
       
-export default () => (          
+export default () => (           
     <Layout>       
         <Head>        
             <title>Covid</title>     
-            <meta name="description" content="Covid" />         
+            <meta name="description" content="Covid" />          
         </Head>         
-      
+       
         <div>          
             <BannerCovid />         
       
@@ -30,8 +30,8 @@ export default () => (
                         We are having daily (weekdays) 9am PST/12 EST live streams on Facebook, YouTube and Twitter for students, parents and teachers navigating school closures.<br />      
           
                         Here are guides we’ve created for you:</p>         
-                    </div>       
-                </section>      
+                    </div>        
+                </section>       
             </div>     
    
         </div>      

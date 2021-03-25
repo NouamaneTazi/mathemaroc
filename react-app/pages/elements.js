@@ -53,7 +53,7 @@ export default () => (
                                 This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
                                 This is <u>underlined</u> and this is code: <code>for (;;)</code>.
                                 Finally, this is a <a href="#">link</a>.</p>
-                                <hr />
+                                <hr /> 
                                 <h2>Heading Level 2</h2> 
                                 <h3>Heading Level 3</h3>
                                 <h4>Heading Level 4</h4>
@@ -75,7 +75,7 @@ export default () => (
                                         <ul className="alt">
                                             <li>Dolor etiam magna etiam.</li>
                                             <li>Sagittis lorem eleifend.</li>
-                                            <li>Felis feugiat viverra.</li>
+                                            <li>Felis feugiat viverra.</li> 
                                         </ul>
  
                                     </div>
@@ -164,7 +164,7 @@ export default () => (
                                 <ul className="pagination">
                                     <li><span className="button small disabled">Prev</span></li> 
                                     <li><a href="#" className="page active">1</a></li>
-                                    <li><a href="#" className="page">2</a></li>
+                                    <li><a href="#" className="page">2</a></li> 
                                     <li><a href="#" className="page">3</a></li>
                                     <li><span>&hellip;</span></li>
                                     <li><a href="#" className="page">8</a></li>
@@ -288,7 +288,7 @@ export default () => (
                                     <li><a href="#" className="button special">Default</a></li>
                                     <li><a href="#" className="button special small">Small</a></li>
                                 </ul>
-                                <ul className="actions fit">
+                                <ul className="actions fit"> 
                                     <li><a href="#" className="button special fit">Fit</a></li>
                                     <li><a href="#" className="button fit">Fit</a></li> 
                                 </ul>
@@ -300,7 +300,7 @@ export default () => (
                                     <li><a href="#" className="button special icon fa-search">Icon</a></li>
                                     <li><a href="#" className="button icon fa-download">Icon</a></li>
                                 </ul> 
-                                <ul className="actions">
+                                <ul className="actions"> 
                                     <li><span className="button special disabled">Special</span></li>
                                     <li><span className="button disabled">Default</span></li>
                                 </ul> 
@@ -325,11 +325,11 @@ export default () => (
                                                     <option value="1">Human Resources</option>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> 
                                         <div className="4u 12u(small)"> 
                                             <input type="radio" id="demo-priority-low" name="demo-priority" />
                                             <label htmlFor="demo-priority-low">Low</label>
-                                        </div>
+                                        </div> 
                                         <div className="4u 12u(small)">
                                             <input type="radio" id="demo-priority-normal" name="demo-priority" />
                                             <label htmlFor="demo-priority-normal">Normal</label>
@@ -345,7 +345,7 @@ export default () => (
                                         <div className="6u 12u(small)">
                                             <input type="checkbox" id="demo-human" name="demo-human" />
                                             <label htmlFor="demo-human">I am a human</label>
-                                        </div>
+                                        </div> 
                                         <div className="12u">
                                             <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
                                         </div>
@@ -365,7 +365,7 @@ export default () => (
                                 <div className="box alt">
                                     <div className="row 50% uniform">
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div>
-                                        <div className="4u"><span className="image fit"><img src="/static/images/pic09.jpg" alt="" /></span></div> 
+                                        <div className="4u"><span className="image fit"><img src="/static/images/pic09.jpg" alt="" /></span></div>  
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic10.jpg" alt="" /></span></div>
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic10.jpg" alt="" /></span></div>
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div>
@@ -376,7 +376,7 @@ export default () => (
                                     </div>
                                 </div> 
 
-                                <h4>Left &amp; Right</h4>
+                                <h4>Left &amp; Right</h4> 
                                 <p><span className="image left"><img src="/static/images/pic09.jpg" alt="" /></span>Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget tempus vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.</p>
                                 <p><span className="image right"><img src="/static/images/pic10.jpg" alt="" /></span>Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget tempus vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.</p>
 
@@ -385,7 +385,7 @@ export default () => (
                                     <p>Felis sagittis eget tempus primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Magna sed etiam ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus lorem ipsum.</p>
                                 </div>
 
-                                <h3>Preformatted</h3>
+                                <h3>Preformatted</h3> 
                                 <pre><code>i = 0;
 
                                 print 'It took ' + i + ' iterations to sort the deck.';

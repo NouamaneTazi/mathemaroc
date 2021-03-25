@@ -32,7 +32,7 @@ const Profile = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json() 
         if (json._id && user.email){
-            await fetch('/api/mongodb', { 
+            await fetch('/api/mongodb', {  
                 method: 'post',
                 body: JSON.stringify({ _id: json._id, data: {email:user.email} })
             })
@@ -40,7 +40,7 @@ const Profile = () => {
        
         // console.log("json", json) 
         if (json.notYetSetUp) {
-            Router.push('/inscription')
+            Router.push('/inscription') 
         } 
         else if (json.role == "tutor" && (!json.students || json.students.length === 0)) {
             Router.push('/catalogue')
@@ -60,7 +60,7 @@ const Profile = () => {
     const [confettis, setConfettis] = useState(false)
 
     useEffect(() => { 
-        // {console.log("useEffect", user, userLoading)}
+        // {console.log("useEffect", user, userLoading)} 
         if (user && !userLoading) {
             setLoading(true) 
             getUserData(user)
@@ -68,7 +68,7 @@ const Profile = () => {
             Router.push('/api/login')
         } 
 
-    }, [userLoading, openReportDialog])
+    }, [userLoading, openReportDialog]) 
 
     const { width, height } = useWindowSize()
     return (
@@ -111,7 +111,7 @@ const Profile = () => {
                                         <table>
                                             <thead> 
                                                 <tr>
-                                                    <th>Nom</th>
+                                                    <th>Nom</th> 
                                                     <th>Lycée</th>
                                                     <th>Ville</th>
                                                     <th>Filière</th>
@@ -142,7 +142,7 @@ const Profile = () => {
                                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", cursor: "pointer" }} onClick={() => setOpenReportDialog(student)}>warning</Icon> 
                                                             </CustomizedTooltip>}</td> 
                                                         <ReportStudentDialog student={openReportDialog} setOpen={setOpenReportDialog} tutor={user} />
-                                                    </tr>
+                                                    </tr> 
 
                                                 ))}
                                             </tbody> 
@@ -157,7 +157,7 @@ const Profile = () => {
                             <SeancesForm user={user} />
                             <ProfileSeancesTutors setConfettis={setConfettis} />
  
-                        </section>
+                        </section> 
                     </div>
                         // user not associated 
                         // : user && user.needsSetup && !loading ? 
@@ -167,7 +167,7 @@ const Profile = () => {
                 }
 
  
-            </Layout>} 
+            </Layout>}  
         </>
     ) 
 }

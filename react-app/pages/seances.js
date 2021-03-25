@@ -25,7 +25,7 @@ const Admin = () => {
 
     const handleModClick = async (tutor, seance_id) => {
         if (tutor.seances[seance_id].mod) { 
-            delete tutor.seances[seance_id].mod
+            delete tutor.seances[seance_id].mod 
         } else {
             tutor.seances[seance_id].mod = { "id": user.sub, "name": user.name }
         }
@@ -51,8 +51,8 @@ const Admin = () => {
     return (
         <>
             {/* {console.log(user)} */} 
-            {!loading && <Layout user={user} loading={loading}>
-                <Head>
+            {!loading && <Layout user={user} loading={loading}> 
+                <Head> 
                     <title>Admin Page</title>
                     <meta name="description" content="Admin Page" />
                 </Head>
@@ -68,7 +68,7 @@ const Admin = () => {
                                 <h3>Compteur de séances données :</h3>
                                 <div className="box" style={{ textAlign: "center" }}> 
                                     <h1>{getNumberSeances(tutors)}</h1>
-                                </div>
+                                </div> 
  
                             </div>
                         } 
@@ -95,7 +95,7 @@ const Admin = () => {
                                         return ( 
                                             <>
                                                 {tutor.seances && tutor.seances.map((seance, index) => (
-                                                    <tr key={`${tutor._id}~${index}`}>
+                                                    <tr key={`${tutor._id}~${index}`}> 
                                                         {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{tutor.firstname} {tutor.lastname}</th>}
                                                         {index == 0 && <th rowSpan={tutor.seances.length} style={{ verticalAlign: "middle" }}>{moment(tutor.last_updated).format('DD/MM/YYYY HH:mm:ss')}</th>}
                                                         <td>{seance.date}</td>
@@ -135,9 +135,9 @@ const Admin = () => {
                                                 {tutor.seances.length > 0 && <tr style={{ height: "50px" }}></tr>}
                                             </> 
                                         )
-                                    })} 
+                                    })}  
                                 </tbody> 
-                            </table> 
+                            </table>  
                         </div>
 
 

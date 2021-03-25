@@ -1,4 +1,4 @@
-import Head from "next/head"   
+import Head from "next/head"    
 import { useState, useEffect } from "react"  
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user' 
@@ -26,10 +26,10 @@ const Reports = () => {
 
     useEffect(() => {  
         // {console.log("useEffect", user, loading)}
-        if (user && !loading) { 
+        if (user && !loading) {  
             getUserData(user)
         }
-    }, [user, loading])
+    }, [user, loading]) 
  
     return ( 
         <> 
@@ -37,17 +37,17 @@ const Reports = () => {
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
                     <title>Reports Page</title>
-                    <meta name="description" content="Reports Page" />  
+                    <meta name="description" content="Reports Page" />   
                 </Head>
-                <section id="one">
-                    <div className="inner"> 
+                <section id="one"> 
+                    <div className="inner">  
                         <header className="major"> 
-                            {user ? <h1>Élèves signalés ({students.length})</h1> : <h1>Vous n'êtes pas connectés</h1>} 
+                            {user ? <h1>Élèves signalés ({students.length})</h1> : <h1>Vous n'êtes pas connectés</h1>}  
                         </header> 
-  
+   
                         <div className="12u 12u(medium)"> 
                             <div className="table-wrapper">
-                                <table>
+                                <table> 
                                     <thead> 
                                         <tr>
                                             <th>Groupe</th> 
@@ -62,16 +62,16 @@ const Reports = () => {
                                         {students.map(student => (  
                                             <tr key={`${student._id}`}> 
                                                 <td>{student.groupId}</td> 
-                                                <td>{student.report.tutor.name}</td>
+                                                <td>{student.report.tutor.name}</td> 
                                                 <td>{student.fullname}</td>
                                                 <td>{student.report.text}</td> 
                                                 <td><SearchAndReplaceStudent2 reportedStudent={student} groupId={student.groupId} awaitingStudents={awaitingStudents} /></td>
                                             </tr> 
                                         )) 
-
+ 
                                         }
                                     </tbody>
-                                </table>
+                                </table> 
                             </div> 
                         </div>
 

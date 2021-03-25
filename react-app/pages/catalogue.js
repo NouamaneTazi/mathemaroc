@@ -5,7 +5,7 @@ import { useFetchUser } from '../lib/user'
 import moment from 'moment'
 import Icon from '@material-ui/core/Icon'; 
 import Divider from '@material-ui/core/Divider';   
-import SearchInput, { createFilter } from 'react-search-input'  
+import SearchInput, { createFilter } from 'react-search-input'   
 import Router from 'next/router'     
 import Link from 'next/link' 
 import Backdrop from '@material-ui/core/Backdrop'; 
@@ -17,7 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
 
 const Reports = () => { 
-    const getUserData = async (user) => { 
+    const getUserData = async (user) => {  
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
         let json = await res.json()
         Object.assign(user, json)  
@@ -32,7 +32,7 @@ const Reports = () => {
         const awaitingStudents = await res.json()  
         setAwaitingStudents(awaitingStudents) 
         setLoading(false)
-    }  
+    }   
   
     const handleSelectStudent = (student) => {    
         let value = selectedStudents 
@@ -53,7 +53,7 @@ const Reports = () => {
             }  
             let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : [] 
             catalogue_logs.push({  
-                time: new Date(Date.now()).toLocaleString("en-US"),
+                time: new Date(Date.now()).toLocaleString("en-US"), 
                 students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname })) 
             })
             await fetch('/api/mongodb', { 
@@ -84,27 +84,27 @@ const Reports = () => {
   
     useEffect(() => { 
         // { console.log("useEffect", user, userLoading) }    
-        if (user && !userLoading) {
+        if (user && !userLoading) { 
             setLoading(true)
             getUserData(user)   
             getAwaitingStudentsData()  
         } 
         else if (!userLoading && !user) {   
-            Router.push('/profile')  
+            Router.push('/profile')   
         } 
-    }, [user, userLoading])
+    }, [user, userLoading]) 
  
   
     useEffect(() => { 
         // {console.log("useEffect", user, userLoading)}
         const timer = setTimeout(() => {
             if (!userLoading && user) {
-                getAwaitingStudentsData()
+                getAwaitingStudentsData() 
             }  
         }, 1000);  
  
         return () => clearTimeout(timer); 
-    }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
+    }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm]) 
    
     return (  
         <>   
@@ -128,7 +128,7 @@ const Reports = () => {
                                 <li>
                                     Commence par sélectionner un groupe homogène d'élèves que tu veux travailler avec ! </li>  
                                 <li>Ça sera à toi de choisir le format des séances que tu veux faire avec les élèves choisis. Cela pourrait être des appels par Skype / Whatsapp / Zoom, ou juste des exos corrigés sur Whatsapp !</li>   
-                                <li>Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! </li>
+                                <li>Il nous reste plus de 500 élèves en attente, donc nous te prions de prendre 5 élèves au minimum ! </li> 
                             </ul>
                         </Typography>
  

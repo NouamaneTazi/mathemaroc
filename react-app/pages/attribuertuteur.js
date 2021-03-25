@@ -22,12 +22,12 @@ const InputGroupId = ({ tutor }) => {
             type="text"    
             id="group_id"  
             name="group_id"    
-            value={selectedGroupId}    
+            value={selectedGroupId}     
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}     
         />        
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}    
     </div>)  
-}    
+}     
        
 const Reports = () => {  
     const getUserData = async (user) => {        
@@ -40,10 +40,10 @@ const Reports = () => {
       
         res = await fetch('/api/mongodb?getAwaitingStudents=true')   
         const awaitingStudents = await res.json()      
-      
+       
         setAwaitingTutors(new_awaitingtutors)   
         setAwaitingStudents(awaitingStudents)        
-    }    
+    }     
     
     const handleModClick = async (tutor, report_id) => {   
         if (tutor.reports[report_id].mod) {       
@@ -55,9 +55,9 @@ const Reports = () => {
         const res = await fetch('/api/mongodb', {       
             method: 'post',      
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })       
-        })    
+        })     
         setRefresh(!refresh)     
-    } 
+    }  
          
     let { user, loading } = useFetchUser()     
     const [awaitingtutors, setAwaitingTutors] = useState([])   
@@ -67,7 +67,7 @@ const Reports = () => {
     useEffect(() => {      
         // {console.log("useEffect", user, loading)}         
         if (user && !loading) {       
-            getUserData(user)      
+            getUserData(user)       
         }     
     }, [user, loading])     
          
@@ -87,7 +87,7 @@ const Reports = () => {
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>    
         
-                        <div className="12u 12u(medium)">      
+                        <div className="12u 12u(medium)">       
                             <div className="table-wrapper">     
                                 <table>  
                                     <thead>     
@@ -110,14 +110,14 @@ const Reports = () => {
                                                 <td>{tutor.matieres}</td>    
                                                 <td>{tutor.whatsapp}</td>     
                                                 <td>{tutor.mail}</td>    
-                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>      
+                                                <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>       
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>     
                                             </tr>        
                                         )     
                                         )}     
                                     </tbody>  
                                 </table>        
-                            </div>             
+                            </div>              
                         </div>       
                     </div>   
         

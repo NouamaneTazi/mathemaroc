@@ -2,12 +2,12 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'
-import moment from 'moment'
+import moment from 'moment' 
 import Icon from '@material-ui/core/Icon'; 
 import Divider from '@material-ui/core/Divider';   
 import SearchInput, { createFilter } from 'react-search-input'   
 import Router from 'next/router'     
-import Link from 'next/link' 
+import Link from 'next/link'  
 import Backdrop from '@material-ui/core/Backdrop'; 
 import CircularProgress from '@material-ui/core/CircularProgress'; 
 import Button from '@material-ui/core/Button';  
@@ -22,7 +22,7 @@ const Reports = () => {
         let json = await res.json()
         Object.assign(user, json)  
         if (!user.students || user.students.length === 0) {   
-            setUserHasNoStudents(true) 
+            setUserHasNoStudents(true)  
         }  
         // console.log("u",user) 
     }
@@ -75,7 +75,7 @@ const Reports = () => {
     const [filiereTerm, setFiliereTerm] = useState("")   
     const [matiereTerm, setMatiereTerm] = useState("") 
     const [wishesTerm, setWishesTerm] = useState("")  
-    const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere'])) 
+    const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere']))  
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes'])) 
     const [selectedStudents, setSelectedStudents] = useState([])  
@@ -83,7 +83,7 @@ const Reports = () => {
     const [userHasNoStudents, setUserHasNoStudents] = useState(false)   
   
     useEffect(() => { 
-        // { console.log("useEffect", user, userLoading) }    
+        // { console.log("useEffect", user, userLoading) }     
         if (user && !userLoading) { 
             setLoading(true)
             getUserData(user)   
@@ -100,7 +100,7 @@ const Reports = () => {
         const timer = setTimeout(() => {
             if (!userLoading && user) {
                 getAwaitingStudentsData() 
-            }  
+            }   
         }, 1000);  
  
         return () => clearTimeout(timer); 
@@ -143,7 +143,7 @@ const Reports = () => {
                 <section id="one"> 
                     <div className="inner"> 
                         {(user.students && user.students.length !== 0) && 
-                            <div style={{ marginBottom: "2em" }}> 
+                            <div style={{ marginBottom: "2em" }}>  
                                 <Link href="/profile"> 
                                     <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a> 
                                 </Link> 
@@ -168,7 +168,7 @@ const Reports = () => {
                                             <th>Matières</th> 
                                             <th>Demandes</th> 
                                             <th style={{ textAlign: 'center', verticalAlign: 'middle' }}>Selectionné</th> 
-                                        </tr> 
+                                        </tr>  
                                     </thead>
                                     <tbody> 
                                         {selectedStudents.map(student => (  
@@ -190,22 +190,22 @@ const Reports = () => {
                             </div>    
                             {error && <Alert severity="error">{error.message}</Alert>}  
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
-                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>  
+                            <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>   
                         </div> 
                         <Divider style={{ marginBottom: "3em" }} />    
                     </>} 
 
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
    
-  
+   
                         <div className="table-wrapper">   
                             <table>
-                                <thead>
+                                <thead> 
                                     <tr>   
                                         <th>Date de demande</th>
                                         <th>Filière   
                                             <div className="select-wrapper" >
-                                                <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>  
+                                                <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>   
                                                     <option value="">- Filière -</option>  
                                                     <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>  
                                                     <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>   

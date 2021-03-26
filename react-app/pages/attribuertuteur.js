@@ -16,7 +16,7 @@ const InputGroupId = ({ tutor }) => {
     }    
            
     const [selectedGroupId, setSelectedGroupId] = useState("")     
-  
+   
     return (<div className="12u 12u(small)" >     
         <input        
             type="text"    
@@ -31,7 +31,7 @@ const InputGroupId = ({ tutor }) => {
        
 const Reports = () => {  
     const getUserData = async (user) => {        
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub)     
         let json = await res.json()    
         if (!json.is_admin) Router.push('/profile')       
         Object.assign(user, json)      
@@ -60,8 +60,8 @@ const Reports = () => {
     }  
          
     let { user, loading } = useFetchUser()     
-    const [awaitingtutors, setAwaitingTutors] = useState([])   
-    const [awaitingStudents, setAwaitingStudents] = useState([])        
+    const [awaitingtutors, setAwaitingTutors] = useState([])    
+    const [awaitingStudents, setAwaitingStudents] = useState([])         
     const [refresh, setRefresh] = useState(true)   
       
     useEffect(() => {      
@@ -71,7 +71,7 @@ const Reports = () => {
         }     
     }, [user, loading])     
          
-    return (         
+    return (          
         <>  
             {/* {console.log(user)} */}   
             {!loading && <Layout user={user} loading={loading}>     
@@ -91,7 +91,7 @@ const Reports = () => {
                             <div className="table-wrapper">     
                                 <table>  
                                     <thead>     
-                                        <tr>       
+                                        <tr>        
                                             <th>Tuteur</th>       
                                             <th>Statut</th>       
                                             <th>Matières</th>      
@@ -100,9 +100,9 @@ const Reports = () => {
                                             <th>Veut encadrer groupe ?</th>   
                                             <th>Groupe</th>           
                                         </tr>     
-                                    </thead>  
+                                    </thead>   
                                     <tbody>    
-  
+   
                                         {awaitingtutors.map(tutor => (  
                                             <tr key={`${tutor._id}`}>    
                                                 <td>{tutor.firstname} {tutor.lastname}</td>          
@@ -118,7 +118,7 @@ const Reports = () => {
                                     </tbody>  
                                 </table>        
                             </div>              
-                        </div>       
+                        </div>        
                     </div>   
         
                 </section>    

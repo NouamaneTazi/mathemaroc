@@ -1,15 +1,15 @@
 const BannerLanding = (props) => (                        
-    <section id="banner" className="style2">                         
+    <section id="banner" className="style2">                          
         <div className="inner">                           
             <header className="major">                           
-                <h1>Landing</h1>                         
+                <h1>Landing</h1>                          
             </header>                         
-            <div className="content">                         
-                <p>Lorem ipsum dolor sit amet nullam consequat<br />                         
+            <div className="content">                          
+                <p>Lorem ipsum dolor sit amet nullam consequat<br />                          
                 sed veroeros. tempus adipiscing nulla.</p>                      
-            </div>                     
-        </div>                         
-    </section>                        
+            </div>                      
+        </div>                          
+    </section>                         
 )                        
                          
-export default BannerLanding                     
+export default BannerLanding                      

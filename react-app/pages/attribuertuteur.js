@@ -8,13 +8,13 @@ import MenuAdmin from '../components/MenuAdmin'
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {   
         // console.log(tutor, selectedGroupId)       
-        await fetch('/api/mongodb', {      
+        await fetch('/api/mongodb', {       
             method: 'post',        
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
         })    
         window.location.reload(false)   
     }    
-           
+            
     const [selectedGroupId, setSelectedGroupId] = useState("")     
    
     return (<div className="12u 12u(small)" >     
@@ -29,7 +29,7 @@ const InputGroupId = ({ tutor }) => {
     </div>)  
 }     
        
-const Reports = () => {  
+const Reports = () => {   
     const getUserData = async (user) => {        
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)     
         let json = await res.json()    
@@ -49,23 +49,23 @@ const Reports = () => {
         if (tutor.reports[report_id].mod) {       
             delete tutor.reports[report_id].mod      
         } else {    
-            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }    
+            tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }     
         }      
    
         const res = await fetch('/api/mongodb', {       
             method: 'post',      
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })       
         })     
-        setRefresh(!refresh)     
+        setRefresh(!refresh)      
     }  
          
     let { user, loading } = useFetchUser()     
     const [awaitingtutors, setAwaitingTutors] = useState([])    
     const [awaitingStudents, setAwaitingStudents] = useState([])          
     const [refresh, setRefresh] = useState(true)   
-      
+       
     useEffect(() => {      
-        // {console.log("useEffect", user, loading)}         
+        // {console.log("useEffect", user, loading)}          
         if (user && !loading) {       
             getUserData(user)       
         }     
@@ -92,7 +92,7 @@ const Reports = () => {
                                 <table>  
                                     <thead>     
                                         <tr>        
-                                            <th>Tuteur</th>        
+                                            <th>Tuteur</th>         
                                             <th>Statut</th>       
                                             <th>Matières</th>      
                                             <th>Whatsapp</th>   
@@ -101,7 +101,7 @@ const Reports = () => {
                                             <th>Groupe</th>           
                                         </tr>     
                                     </thead>   
-                                    <tbody>    
+                                    <tbody>     
    
                                         {awaitingtutors.map(tutor => (   
                                             <tr key={`${tutor._id}`}>    
@@ -114,7 +114,7 @@ const Reports = () => {
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>     
                                             </tr>        
                                         )     
-                                        )}     
+                                        )}      
                                     </tbody>  
                                 </table>        
                             </div>              

@@ -1,6 +1,6 @@
 import Head from "next/head"    
-import { useState, useEffect } from "react"       
-import Layout from '../components/Layout'   
+import { useState, useEffect } from "react"        
+import Layout from '../components/Layout'    
 import { useFetchUser } from '../lib/user'   
 import Router from "next/router"      
 import MenuAdmin from '../components/MenuAdmin'         
@@ -18,11 +18,11 @@ const InputGroupId = ({ tutor }) => {
     const [selectedGroupId, setSelectedGroupId] = useState("")     
    
     return (<div className="12u 12u(small)" >     
-        <input        
+        <input         
             type="text"    
             id="group_id"  
             name="group_id"    
-            value={selectedGroupId}     
+            value={selectedGroupId}      
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}     
         />        
         {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}    
@@ -61,7 +61,7 @@ const Reports = () => {
          
     let { user, loading } = useFetchUser()     
     const [awaitingtutors, setAwaitingTutors] = useState([])    
-    const [awaitingStudents, setAwaitingStudents] = useState([])         
+    const [awaitingStudents, setAwaitingStudents] = useState([])          
     const [refresh, setRefresh] = useState(true)   
       
     useEffect(() => {      
@@ -86,13 +86,13 @@ const Reports = () => {
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>      
                                 : <h1>Vous n'êtes pas connectés</h1>}    
                         </header>    
-        
+         
                         <div className="12u 12u(medium)">       
                             <div className="table-wrapper">     
                                 <table>  
                                     <thead>     
                                         <tr>        
-                                            <th>Tuteur</th>       
+                                            <th>Tuteur</th>        
                                             <th>Statut</th>       
                                             <th>Matières</th>      
                                             <th>Whatsapp</th>   
@@ -103,7 +103,7 @@ const Reports = () => {
                                     </thead>   
                                     <tbody>    
    
-                                        {awaitingtutors.map(tutor => (  
+                                        {awaitingtutors.map(tutor => (   
                                             <tr key={`${tutor._id}`}>    
                                                 <td>{tutor.firstname} {tutor.lastname}</td>          
                                                 <td>{tutor.statut}</td>   

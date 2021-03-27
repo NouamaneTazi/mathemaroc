@@ -3,7 +3,7 @@
         "name": "Benslimane", 
         "longitude": -7.18859,
         "latitude": 33.6193,
-        "counts": "16" 
+        "counts": "16"  
     },  
     {
         "name": "Khouribga",
@@ -27,7 +27,7 @@
         "name": "Safi",
         "longitude": -9.23162,
         "latitude": 32.29176, 
-        "counts": "46"
+        "counts": "46" 
     },
     {
         "name": "Kenitra",
@@ -35,7 +35,7 @@
         "latitude": 34.26165, 
         "counts": "53" 
     }, 
-    {
+    { 
         "name": "Sidi-Kacem",
         "longitude": -5.712916,
         "latitude": 34.226017,
@@ -131,7 +131,7 @@
         "latitude": 32.12033,
         "counts": "5"
     },
-    {
+    { 
         "name": "Jerada",
         "longitude": -2.158166034,  
         "latitude": 34.306998772, 
@@ -208,7 +208,7 @@
         "longitude": -5.65383,
         "latitude": 32.93877,  
         "counts": "13"
-    },   
+    },    
     {
         "name": "Meknes",
         "longitude": -5.55059,
@@ -231,7 +231,7 @@
         "name": "Sale",
         "longitude": -6.78783,
         "latitude": 34.04493, 
-        "counts": "118" 
+        "counts": "118"  
     },
     {
         "name": "Skhirate-Temara",
@@ -322,7 +322,7 @@
         "longitude": -7.5204, 
         "latitude": 33.44251,
         "counts": "16" 
-    },  
+    },   
     { 
         "name": "Mohammedia",  
         "longitude": -7.38491, 
@@ -334,7 +334,7 @@
         "longitude": -7.54085,
         "latitude": 33.38113,
         "counts": "3"
-    },
+    }, 
     {
         "name": "Azilal",
         "longitude": -6.57037, 
@@ -359,7 +359,7 @@
         "latitude": 34.5369,  
         "counts": "34"
     }, 
-    {  
+    {   
         "name": "Taza",
         "longitude": -4.00875,
         "latitude": 34.22619,

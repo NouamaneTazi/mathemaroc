@@ -1,5 +1,5 @@
 import { PureComponent } from 'react';
-import Paper from '@material-ui/core/Paper';
+import Paper from '@material-ui/core/Paper'; 
 import {
     Chart,
     ArgumentAxis,
@@ -7,7 +7,7 @@ import {
     LineSeries,
     Title,
     Legend, Tooltip
-} from '@devexpress/dx-react-chart-material-ui';
+} from '@devexpress/dx-react-chart-material-ui'; 
 import { withStyles } from '@material-ui/core/styles';
 import {
     ArgumentScale,
@@ -24,7 +24,7 @@ const legendStyles = () => ({
         margin: 'auto',
         flexDirection: 'row',
     },
-}); 
+});  
 const legendLabelStyles = theme => ({ 
     label: {
         paddingTop: theme.spacing(1),
@@ -38,7 +38,7 @@ const legendItemStyles = () => ({
 });
 
 const legendRootBase = ({ classes, ...restProps }) => ( 
-    <Legend.Root {...restProps} className={classes.root} />
+    <Legend.Root {...restProps} className={classes.root} /> 
 );
 const legendLabelBase = ({ classes, ...restProps }) => (
     <Legend.Label className={classes.label} {...restProps} />
@@ -83,18 +83,18 @@ const titleStyles = {
         whiteSpace: 'pre',
         color: "#3e467f"
     },
-}; 
+};  
 const TitleText = withStyles(titleStyles)(({ classes, ...props }) => (
     <Title.Text {...props} className={classes.title} />
 ));
 
 const getData = (tutors) => {
     let data = []
-    let seances = []
+    let seances = [] 
     tutors.map(tutor => { 
         tutor.seances.map(seance => {
             if ("date" in seance) {
-                let date = moment(seance.date).format('L') 
+                let date = moment(seance.date).format('L')  
                 date in seances ? seances[date].push(seance) : seances[date] = [seance]
             }
         })
@@ -111,7 +111,7 @@ const getData = (tutors) => {
         while (date <= endDate) {
             // console.log(date.format('L'), dates)
             dates.includes(date.format('L')) ? null : seances[moment(date).format('L')] = []
-            date = date.add(1, 'd')
+            date = date.add(1, 'd') 
         }
         // console.log(seances)
 
@@ -122,7 +122,7 @@ const getData = (tutors) => {
                 "day": moment(date).format('DD/MM/YYYY'),
                 "seances": arr.length
             })
-        }) 
+        })  
     } 
 
     return data
@@ -141,7 +141,7 @@ const demoStyles = () => ({
     },
     title: {
         whiteSpace: 'pre',
-    },
+    }, 
     white: {
         color: 'white' 
     },
@@ -171,7 +171,7 @@ class Demo extends PureComponent {
     render() {
         const { classes, tutors } = this.props;
 
-        return (
+        return ( 
             <Paper className={classes.paper}>
                 <Chart
                     data={this.state.data}

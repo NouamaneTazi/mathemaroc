@@ -37,7 +37,7 @@
     }, 
     { 
         "name": "Sidi-Kacem",
-        "longitude": -5.712916,
+        "longitude": -5.712916, 
         "latitude": 34.226017,
         "counts": "25"
     },
@@ -47,7 +47,7 @@
         "latitude": 28.16667,  
         "counts": "3"
     }, 
-    {
+    { 
         "name": "Es-Semara", 
         "longitude": -11.67194,
         "latitude": 26.73841, 
@@ -80,7 +80,7 @@
     {
         "name": "Laayoune", 
         "longitude": -13.18797,
-        "latitude": 27.1418, 
+        "latitude": 27.1418,  
         "counts": "31"
     }, 
     { 
@@ -94,21 +94,21 @@
         "longitude": -8.764639,
         "latitude": 31.538358,
         "counts": "5"
-    },
+    }, 
     {
         "name": "El Kelaa", 
         "longitude": -7.40499838,
         "latitude": 32.042166498,  
         "counts": "24" 
     },
-    {
+    { 
         "name": "Essaouira",
         "longitude": -9.76448,
         "latitude": 31.51141,
         "counts": "22"
     },  
     {
-        "name": "Kelaa-Des-Sraghna",
+        "name": "Kelaa-Des-Sraghna", 
         "longitude": -7.40499838, 
         "latitude": 32.042166498,
         "counts": "17"
@@ -153,19 +153,19 @@
         "name": "Aousserd",
         "longitude": -15.02068,
         "latitude": 21.91977,
-        "counts": "4"   
+        "counts": "4"    
     },
     {
         "name": "Oued-Ed-Dahab", 
         "longitude": -14.44934, 
         "latitude": 23.64201,
-        "counts": "16"
+        "counts": "16" 
     },
     {
         "name": "Boulemane",
         "longitude": -4.7303, 
         "latitude": 33.16667,
-        "counts": "25" 
+        "counts": "25"  
     },
     { 
         "name": "Fes",
@@ -183,7 +183,7 @@
         "name": "Sefrou", 
         "longitude": -4.83322,
         "latitude": 33.83059, 
-        "counts": "16" 
+        "counts": "16"  
     }, 
     {
         "name": "El-Hajeb",
@@ -232,7 +232,7 @@
         "longitude": -6.78783,
         "latitude": 34.04493, 
         "counts": "118"  
-    },
+    }, 
     {
         "name": "Skhirate-Temara",
         "longitude": -6.9029,
@@ -254,7 +254,7 @@
     {
         "name": "Inezgane-Ait Mellou",
         "longitude": -9.53662,
-        "latitude": 30.35403,  
+        "latitude": 30.35403,   
         "counts": "15" 
     }, 
     {
@@ -313,7 +313,7 @@
     }, 
     {
         "name": "Casablanca", 
-        "longitude": -7.62462,
+        "longitude": -7.62462, 
         "latitude": 33.58398,
         "counts": "368"
     },
@@ -340,7 +340,7 @@
         "longitude": -6.57037, 
         "latitude": 31.9623, 
         "counts": "11"
-    },
+    }, 
     {
         "name": "Beni-Mellal",
         "longitude": -6.3758, 

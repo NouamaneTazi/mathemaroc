@@ -5,7 +5,7 @@ import {
     ArgumentAxis,
     ValueAxis,
     LineSeries,
-    Title,
+    Title, 
     Legend, Tooltip
 } from '@devexpress/dx-react-chart-material-ui'; 
 import { withStyles } from '@material-ui/core/styles';
@@ -46,7 +46,7 @@ const legendLabelBase = ({ classes, ...restProps }) => (
 const legendItemBase = ({ classes, ...restProps }) => (
     <Legend.Item className={classes.item} {...restProps} />
 );
-const Root = withStyles(legendStyles, { name: 'LegendRoot' })(legendRootBase);
+const Root = withStyles(legendStyles, { name: 'LegendRoot' })(legendRootBase); 
 const Label = withStyles(legendLabelStyles, { name: 'LegendLabel' })(legendLabelBase); 
 const Item = withStyles(legendItemStyles, { name: 'LegendItem' })(legendItemBase);
 
@@ -63,15 +63,15 @@ const ValueLabel = (props) => {
 };
 
 const ArgumentLabel = (props) => { 
-    const { text } = props;
+    const { text } = props; 
     return (
         <ArgumentAxis.Label
             {...props}
             text={`${text}`}
-            style={{
+            style={{ 
                 fill: "white",
                 transform: "rotate(45deg) translate(20px, -20px)",
-                transformBox: "fill-box"
+                transformBox: "fill-box" 
             }}
 
         />
@@ -108,7 +108,7 @@ const getData = (tutors) => {
         let startDate = moment(dates[0]).subtract(1, 'd')
         const endDate = new Date(dates.slice(-1)[0])
         let date = startDate 
-        while (date <= endDate) {
+        while (date <= endDate) { 
             // console.log(date.format('L'), dates)
             dates.includes(date.format('L')) ? null : seances[moment(date).format('L')] = []
             date = date.add(1, 'd') 
@@ -144,13 +144,13 @@ const demoStyles = () => ({
     }, 
     white: {
         color: 'white' 
-    },
+    }, 
     paper: {
         backgroundColor: "transparent",
         // width:"6u 12u(medium)",
         // margin:"auto"
         marginBottom: '1em'
-    }
+    } 
 }); 
 
 class Demo extends PureComponent {
@@ -169,7 +169,7 @@ class Demo extends PureComponent {
     }
 
     render() {
-        const { classes, tutors } = this.props;
+        const { classes, tutors } = this.props; 
 
         return ( 
             <Paper className={classes.paper}>
@@ -188,7 +188,7 @@ class Demo extends PureComponent {
                         valueField="seances"
                         argumentField="day"
                     /> 
-                    {/* <Legend position="right" rootComponent={Root} itemComponent={Item} labelComponent={Label} /> */} 
+                    {/* <Legend position="right" rootComponent={Root} itemComponent={Item} labelComponent={Label} /> */}  
                     <Title
                         textComponent={TitleText}
                         text={`Nombre de séances données par jour`} 

@@ -4,7 +4,7 @@
         "longitude": -7.18859,
         "latitude": 33.6193,
         "counts": "16"  
-    },  
+    },   
     {
         "name": "Khouribga",
         "longitude": -6.89451,
@@ -56,7 +56,7 @@
     {
         "name": "Guelmim",
         "longitude": -10.05738,
-        "latitude": 28.98696,
+        "latitude": 28.98696, 
         "counts": "21"
     },
     {
@@ -67,7 +67,7 @@
     }, 
     {
         "name": "Tata", 
-        "longitude": -7.96935,
+        "longitude": -7.96935, 
         "latitude": 29.74378,
         "counts": "22"
     }, 
@@ -111,7 +111,7 @@
         "name": "Kelaa-Des-Sraghna", 
         "longitude": -7.40499838, 
         "latitude": 32.042166498,
-        "counts": "17"
+        "counts": "17" 
     },
     {
         "name": "Marrakech", 
@@ -175,7 +175,7 @@
     },
     {
         "name": "Moulay-Yacoub",
-        "longitude": -5.1811,
+        "longitude": -5.1811, 
         "latitude": 34.0878,
         "counts": "2"
     },
@@ -258,7 +258,7 @@
         "counts": "15" 
     }, 
     {
-        "name": "Ouarzazate",
+        "name": "Ouarzazate", 
         "longitude": -6.93417,
         "latitude": 30.89397,
         "counts": "19"
@@ -279,13 +279,13 @@
         "name": "Zagora",
         "longitude": -5.81686,
         "latitude": 30.34897,
-        "counts": "7" 
+        "counts": "7"  
     },
     { 
         "name": "Chefchaouen",
         "longitude": -5.26922,
         "latitude": 35.17102,
-        "counts": "8"
+        "counts": "8" 
     },
     {
         "name": "Fahs-Anjra",
@@ -311,7 +311,7 @@
         "latitude": 35.57785,
         "counts": "97"
     }, 
-    {
+    { 
         "name": "Casablanca", 
         "longitude": -7.62462, 
         "latitude": 33.58398,
@@ -351,7 +351,7 @@
         "name": "Al-Hoceima",  
         "longitude": -3.93054,
         "latitude": 35.24214, 
-        "counts": "22"
+        "counts": "22" 
     },
     { 
         "name": "Taounate", 

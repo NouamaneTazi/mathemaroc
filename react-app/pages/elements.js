@@ -27,7 +27,7 @@ export default () => (
                         <div className="6u 12u$(small)">
                             <h3>Magna odio tempus commodo</h3>
                             <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor. Ante commodo blandit adipiscing integer semper orci eget. Faucibus commodo adipiscing mi eu nullam accumsan morbi arcu ornare odio mi adipiscing nascetur lacus ac interdum morbi accumsan vis mi accumsan ac praesent.</p> 
-                        </div>
+                        </div> 
                         <div className="4u 12u$(medium)">
                             <h3>Interdum sapien gravida</h3>
                             <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
@@ -53,7 +53,7 @@ export default () => (
                                 This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
                                 This is <u>underlined</u> and this is code: <code>for (;;)</code>.
                                 Finally, this is a <a href="#">link</a>.</p>
-                                <hr /> 
+                                <hr />  
                                 <h2>Heading Level 2</h2> 
                                 <h3>Heading Level 3</h3>
                                 <h4>Heading Level 4</h4>
@@ -96,7 +96,7 @@ export default () => (
                                             <li><a href="#" className="icon fa-twitter"><span className="label">Twitter</span></a></li>
                                             <li><a href="#" className="icon fa-facebook"><span className="label">Facebook</span></a></li> 
                                             <li><a href="#" className="icon fa-instagram"><span className="label">Instagram</span></a></li> 
-                                            <li><a href="#" className="icon fa-github"><span className="label">Github</span></a></li>
+                                            <li><a href="#" className="icon fa-github"><span className="label">Github</span></a></li> 
                                             <li><a href="#" className="icon fa-dribbble"><span className="label">Dribbble</span></a></li>
                                             <li><a href="#" className="icon fa-tumblr"><span className="label">Tumblr</span></a></li> 
                                         </ul>
@@ -118,7 +118,7 @@ export default () => (
                                     <dd>
                                         <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p>
                                     </dd>
-                                    <dt>Item3</dt>
+                                    <dt>Item3</dt> 
                                     <dd>
                                         <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p> 
                                     </dd>
@@ -148,7 +148,7 @@ export default () => (
                                     </div>
                                     <div className="6u 12u(small)">
                                         <ul className="actions vertical">
-                                            <li><a href="#" className="button special fit">Default</a></li>
+                                            <li><a href="#" className="button special fit">Default</a></li> 
                                             <li><a href="#" className="button fit">Default</a></li>
                                         </ul>
                                     </div>
@@ -265,7 +265,7 @@ export default () => (
                                             <tr>
                                                 <td colSpan="2"></td>
                                                 <td>100.00</td>
-                                            </tr>
+                                            </tr> 
                                         </tfoot>
                                     </table>
                                 </div>
@@ -293,7 +293,7 @@ export default () => (
                                     <li><a href="#" className="button fit">Fit</a></li> 
                                 </ul>
                                 <ul className="actions fit small">
-                                    <li><a href="#" className="button special fit small">Fit + Small</a></li>
+                                    <li><a href="#" className="button special fit small">Fit + Small</a></li> 
                                     <li><a href="#" className="button fit small">Fit + Small</a></li>
                                 </ul>
                                 <ul className="actions">
@@ -357,7 +357,7 @@ export default () => (
                                         </div>
                                     </div>
                                 </form>
-
+ 
                                 <h3>Image</h3>
 
                                 <h4>Fit</h4>

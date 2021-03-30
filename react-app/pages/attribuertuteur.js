@@ -1,7 +1,7 @@
 import Head from "next/head"    
 import { useState, useEffect } from "react"        
 import Layout from '../components/Layout'    
-import { useFetchUser } from '../lib/user'   
+import { useFetchUser } from '../lib/user'    
 import Router from "next/router"      
 import MenuAdmin from '../components/MenuAdmin'         
       
@@ -31,13 +31,13 @@ const InputGroupId = ({ tutor }) => {
        
 const Reports = () => {   
     const getUserData = async (user) => {        
-        let res = await fetch('/api/mongodb?auth0id=' + user.sub)     
+        let res = await fetch('/api/mongodb?auth0id=' + user.sub)      
         let json = await res.json()    
         if (!json.is_admin) Router.push('/profile')       
         Object.assign(user, json)       
         res = await fetch('/api/mongodb?getAwaitingTutors=true')       
         const new_awaitingtutors = await res.json()        
-      
+       
         res = await fetch('/api/mongodb?getAwaitingStudents=true')    
         const awaitingStudents = await res.json()      
        
@@ -58,11 +58,11 @@ const Reports = () => {
         })     
         setRefresh(!refresh)      
     }  
-         
+          
     let { user, loading } = useFetchUser()     
-    const [awaitingtutors, setAwaitingTutors] = useState([])    
+    const [awaitingtutors, setAwaitingTutors] = useState([])     
     const [awaitingStudents, setAwaitingStudents] = useState([])           
-    const [refresh, setRefresh] = useState(true)   
+    const [refresh, setRefresh] = useState(true)    
        
     useEffect(() => {      
         // {console.log("useEffect", user, loading)}          
@@ -71,7 +71,7 @@ const Reports = () => {
         }     
     }, [user, loading])     
          
-    return (           
+    return (            
         <>  
             {/* {console.log(user)} */}    
             {!loading && <Layout user={user} loading={loading}>     
@@ -94,11 +94,11 @@ const Reports = () => {
                                         <tr>         
                                             <th>Tuteur</th>         
                                             <th>Statut</th>       
-                                            <th>Matières</th>      
+                                            <th>Matières</th>       
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>   
-                                            <th>Groupe</th>           
+                                            <th>Groupe</th>            
                                         </tr>     
                                     </thead>   
                                     <tbody>     
@@ -115,18 +115,18 @@ const Reports = () => {
                                             </tr>        
                                         )     
                                         )}       
-                                    </tbody>  
+                                    </tbody>   
                                 </table>        
                             </div>              
                         </div>        
                     </div>    
-        
-                </section>    
+         
+                </section>     
             </Layout>     
-            }        
+            }         
         </>   
     )      
 }   
      
      
-export default Reports         
+export default Reports          

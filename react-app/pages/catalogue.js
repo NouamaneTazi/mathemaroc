@@ -21,7 +21,7 @@ const Reports = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
         let json = await res.json()
         Object.assign(user, json)  
-        if (!user.students || user.students.length === 0) {    
+        if (!user.students || user.students.length === 0) {     
             setUserHasNoStudents(true)  
         }  
         // console.log("u",user) 
@@ -37,7 +37,7 @@ const Reports = () => {
     const handleSelectStudent = (student) => {    
         let value = selectedStudents 
         value.push(student) 
-        setSelectedStudents([...value])
+        setSelectedStudents([...value]) 
     }
  
     const handleSubmit = async () => {
@@ -71,7 +71,7 @@ const Reports = () => {
     let { user, loading: userLoading } = useFetchUser()  
     const [loading, setLoading] = useState(false) 
     const [error, setError] = useState()  
-    const [awaitingStudents, setAwaitingStudents] = useState([])   
+    const [awaitingStudents, setAwaitingStudents] = useState([])    
     const [filiereTerm, setFiliereTerm] = useState("")   
     const [matiereTerm, setMatiereTerm] = useState("")   
     const [wishesTerm, setWishesTerm] = useState("")  
@@ -83,15 +83,15 @@ const Reports = () => {
     const [userHasNoStudents, setUserHasNoStudents] = useState(false)   
   
     useEffect(() => { 
-        // { console.log("useEffect", user, userLoading) }     
+        // { console.log("useEffect", user, userLoading) }      
         if (user && !userLoading) { 
             setLoading(true)
             getUserData(user)   
             getAwaitingStudentsData()  
         } 
-        else if (!userLoading && !user) {   
+        else if (!userLoading && !user) {    
             Router.push('/profile')   
-        } 
+        }  
     }, [user, userLoading]) 
  
   
@@ -135,7 +135,7 @@ const Reports = () => {
                     </MuiDialogContent>  
  
                     <Button autoFocus onClick={() => setUserHasNoStudents(false)} color="primary"> 
-                        Fermer
+                        Fermer 
                         </Button>  
                 </Dialog>
    
@@ -163,7 +163,7 @@ const Reports = () => {
                                 <table> 
                                     <thead> 
                                         <tr>
-                                            <th>Date de demande</th>  
+                                            <th>Date de demande</th>   
                                             <th>Filière</th>
                                             <th>Matières</th> 
                                             <th>Demandes</th> 
@@ -172,15 +172,15 @@ const Reports = () => {
                                     </thead>
                                     <tbody> 
                                         {selectedStudents.map(student => (  
-                                            <tr key={`${student._id}`}>  
+                                            <tr key={`${student._id}`}>   
                                                 <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td> 
                                                 <td>{student.filiere}</td>  
                                                 <td>{student.matiere}</td>  
                                                 <td>{student.wishes}</td>
                                                 <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.includes(student) ?  
-                                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
+                                                    <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>  
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
-                                                }</td>   
+                                                }</td>    
                                             </tr>  
                                         ))  
  
@@ -198,9 +198,9 @@ const Reports = () => {
                     <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>  
    
    
-                        <div className="table-wrapper">   
+                        <div className="table-wrapper">    
                             <table>
-                                <thead> 
+                                <thead>  
                                     <tr>   
                                         <th>Date de demande</th>
                                         <th>Filière   
@@ -217,8 +217,8 @@ const Reports = () => {
                                                     <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>   
                                                     <option value="Bac Pro">BAC PRO</option>  
                                                 </select> 
-                                            </div>  
-                                        </th> 
+                                            </div>   
+                                        </th>  
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th> 
                                         <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>   
                                         <th>Selectionné</th> 

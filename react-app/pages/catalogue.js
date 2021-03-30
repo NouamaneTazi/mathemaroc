@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'  
 import { useFetchUser } from '../lib/user'
-import moment from 'moment' 
+import moment from 'moment'  
 import Icon from '@material-ui/core/Icon'; 
 import Divider from '@material-ui/core/Divider';   
 import SearchInput, { createFilter } from 'react-search-input'   
@@ -21,7 +21,7 @@ const Reports = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)    
         let json = await res.json()
         Object.assign(user, json)  
-        if (!user.students || user.students.length === 0) {   
+        if (!user.students || user.students.length === 0) {    
             setUserHasNoStudents(true)  
         }  
         // console.log("u",user) 
@@ -45,12 +45,12 @@ const Reports = () => {
             setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' }) 
         }   
         else {
-            for (let student of selectedStudents) { 
+            for (let student of selectedStudents) {  
                 await fetch('/api/mongodb', { 
                     method: 'post', 
                     body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } }) 
                 })
-            }  
+            }   
             let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : [] 
             catalogue_logs.push({  
                 time: new Date(Date.now()).toLocaleString("en-US"), 
@@ -73,7 +73,7 @@ const Reports = () => {
     const [error, setError] = useState()  
     const [awaitingStudents, setAwaitingStudents] = useState([])   
     const [filiereTerm, setFiliereTerm] = useState("")   
-    const [matiereTerm, setMatiereTerm] = useState("") 
+    const [matiereTerm, setMatiereTerm] = useState("")  
     const [wishesTerm, setWishesTerm] = useState("")  
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere']))  
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
@@ -151,7 +151,7 @@ const Reports = () => {
                         } 
                         <header className="major">   
                             <h1>Catalogue des élèves</h1>  
-                        </header>  
+                        </header>   
                         <p>Tu peux prendre autant d'élèves que tu veux mais à seule condition, que tu t'engages à les enseigner ! Si cela se trouve que t'as des empêchements qui ne te permettent pas de continuer à tutorer tes élèves, tu pourras facilement les remettre dans la liste d'attente après !<br />   
                             Et pour nous permettre d'assurer le suivi de tous les élèves, nous te prions de remplir les séances que tu vas donner aux élèves sur ton profil.</p>    
    
@@ -187,7 +187,7 @@ const Reports = () => {
                                         }   
                                     </tbody>  
                                 </table> 
-                            </div>    
+                            </div>     
                             {error && <Alert severity="error">{error.message}</Alert>}  
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p> 
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>   
@@ -213,7 +213,7 @@ const Reports = () => {
                                                     <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
                                                     <option value="SCIENCES DE LA VIE ET DE LA TERRE">SCIENCES DE LA VIE ET DE LA TERRE</option> 
                                                     <option value="ECONOMIE">ECONOMIE</option>  
-                                                    <option value="SCIENCES TECH">SCIENCES TECH</option>
+                                                    <option value="SCIENCES TECH">SCIENCES TECH</option> 
                                                     <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>   
                                                     <option value="Bac Pro">BAC PRO</option>  
                                                 </select> 

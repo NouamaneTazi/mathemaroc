@@ -11,11 +11,11 @@ const InputGroupId = ({ tutor }) => {
         await fetch('/api/mongodb', {       
             method: 'post',        
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
-        })    
+        })     
         window.location.reload(false)   
     }    
             
-    const [selectedGroupId, setSelectedGroupId] = useState("")     
+    const [selectedGroupId, setSelectedGroupId] = useState("")      
    
     return (<div className="12u 12u(small)" >     
         <input         
@@ -34,11 +34,11 @@ const Reports = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)     
         let json = await res.json()    
         if (!json.is_admin) Router.push('/profile')       
-        Object.assign(user, json)      
+        Object.assign(user, json)       
         res = await fetch('/api/mongodb?getAwaitingTutors=true')       
         const new_awaitingtutors = await res.json()        
       
-        res = await fetch('/api/mongodb?getAwaitingStudents=true')   
+        res = await fetch('/api/mongodb?getAwaitingStudents=true')    
         const awaitingStudents = await res.json()      
        
         setAwaitingTutors(new_awaitingtutors)   
@@ -48,11 +48,11 @@ const Reports = () => {
     const handleModClick = async (tutor, report_id) => {   
         if (tutor.reports[report_id].mod) {       
             delete tutor.reports[report_id].mod      
-        } else {    
+        } else {     
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }     
         }      
    
-        const res = await fetch('/api/mongodb', {       
+        const res = await fetch('/api/mongodb', {        
             method: 'post',      
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })       
         })     
@@ -73,25 +73,25 @@ const Reports = () => {
          
     return (          
         <>  
-            {/* {console.log(user)} */}   
+            {/* {console.log(user)} */}    
             {!loading && <Layout user={user} loading={loading}>     
                 <Head>    
-                    <title>Tuteurs en attente</title>    
+                    <title>Tuteurs en attente</title>     
                     <meta name="description" content="Tuteurs en attente" />    
                 </Head>        
-                <MenuAdmin user={user}/>     
+                <MenuAdmin user={user}/>      
                 <section id="one">   
                     <div className="inner" style={{maxWidth:"75em"}}>     
                         <header className="major">      
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>      
-                                : <h1>Vous n'êtes pas connectés</h1>}    
+                                : <h1>Vous n'êtes pas connectés</h1>}     
                         </header>    
          
-                        <div className="12u 12u(medium)">       
+                        <div className="12u 12u(medium)">        
                             <div className="table-wrapper">     
                                 <table>  
                                     <thead>     
-                                        <tr>        
+                                        <tr>         
                                             <th>Tuteur</th>         
                                             <th>Statut</th>       
                                             <th>Matières</th>      
@@ -105,9 +105,9 @@ const Reports = () => {
    
                                         {awaitingtutors.map(tutor => (   
                                             <tr key={`${tutor._id}`}>    
-                                                <td>{tutor.firstname} {tutor.lastname}</td>          
+                                                <td>{tutor.firstname} {tutor.lastname}</td>           
                                                 <td>{tutor.statut}</td>   
-                                                <td>{tutor.matieres}</td>    
+                                                <td>{tutor.matieres}</td>     
                                                 <td>{tutor.whatsapp}</td>     
                                                 <td>{tutor.mail}</td>    
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>       

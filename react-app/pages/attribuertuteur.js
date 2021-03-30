@@ -6,7 +6,7 @@ import Router from "next/router"
 import MenuAdmin from '../components/MenuAdmin'         
       
 const InputGroupId = ({ tutor }) => {    
-    const setGroupId = async (tutor) => {   
+    const setGroupId = async (tutor) => {    
         // console.log(tutor, selectedGroupId)       
         await fetch('/api/mongodb', {       
             method: 'post',        
@@ -42,7 +42,7 @@ const Reports = () => {
         const awaitingStudents = await res.json()      
        
         setAwaitingTutors(new_awaitingtutors)   
-        setAwaitingStudents(awaitingStudents)        
+        setAwaitingStudents(awaitingStudents)         
     }     
     
     const handleModClick = async (tutor, report_id) => {   
@@ -61,7 +61,7 @@ const Reports = () => {
          
     let { user, loading } = useFetchUser()     
     const [awaitingtutors, setAwaitingTutors] = useState([])    
-    const [awaitingStudents, setAwaitingStudents] = useState([])          
+    const [awaitingStudents, setAwaitingStudents] = useState([])           
     const [refresh, setRefresh] = useState(true)   
        
     useEffect(() => {      
@@ -71,7 +71,7 @@ const Reports = () => {
         }     
     }, [user, loading])     
          
-    return (          
+    return (           
         <>  
             {/* {console.log(user)} */}    
             {!loading && <Layout user={user} loading={loading}>     
@@ -83,14 +83,14 @@ const Reports = () => {
                 <section id="one">   
                     <div className="inner" style={{maxWidth:"75em"}}>     
                         <header className="major">      
-                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>      
+                            {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>       
                                 : <h1>Vous n'êtes pas connectés</h1>}     
                         </header>    
-         
+          
                         <div className="12u 12u(medium)">        
                             <div className="table-wrapper">     
                                 <table>  
-                                    <thead>     
+                                    <thead>      
                                         <tr>         
                                             <th>Tuteur</th>         
                                             <th>Statut</th>       
@@ -114,12 +114,12 @@ const Reports = () => {
                                                 <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>     
                                             </tr>        
                                         )     
-                                        )}      
+                                        )}       
                                     </tbody>  
                                 </table>        
                             </div>              
                         </div>        
-                    </div>   
+                    </div>    
         
                 </section>    
             </Layout>     

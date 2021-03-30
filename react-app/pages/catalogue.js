@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import SearchInput, { createFilter } from 'react-search-input'   
 import Router from 'next/router'     
 import Link from 'next/link'  
-import Backdrop from '@material-ui/core/Backdrop'; 
+import Backdrop from '@material-ui/core/Backdrop';  
 import CircularProgress from '@material-ui/core/CircularProgress'; 
 import Button from '@material-ui/core/Button';  
 import Dialog from '@material-ui/core/Dialog';  
@@ -27,7 +27,7 @@ const Reports = () => {
         // console.log("u",user) 
     }
  
-    const getAwaitingStudentsData = async () => {
+    const getAwaitingStudentsData = async () => { 
         let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits    
         const awaitingStudents = await res.json()  
         setAwaitingStudents(awaitingStudents) 
@@ -36,7 +36,7 @@ const Reports = () => {
   
     const handleSelectStudent = (student) => {    
         let value = selectedStudents 
-        value.push(student)
+        value.push(student) 
         setSelectedStudents([...value])
     }
  
@@ -48,7 +48,7 @@ const Reports = () => {
             for (let student of selectedStudents) {  
                 await fetch('/api/mongodb', { 
                     method: 'post', 
-                    body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } }) 
+                    body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } })  
                 })
             }   
             let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : [] 
@@ -73,7 +73,7 @@ const Reports = () => {
     const [error, setError] = useState()  
     const [awaitingStudents, setAwaitingStudents] = useState([])   
     const [filiereTerm, setFiliereTerm] = useState("")   
-    const [matiereTerm, setMatiereTerm] = useState("")  
+    const [matiereTerm, setMatiereTerm] = useState("")   
     const [wishesTerm, setWishesTerm] = useState("")  
     const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere']))  
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
@@ -111,7 +111,7 @@ const Reports = () => {
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" /> 
             </Backdrop>  
-            {!loading && user && <Layout user={user} loading={userLoading}> 
+            {!loading && user && <Layout user={user} loading={userLoading}>  
                 <Head>
                     <title>Catalogue à élèves</title>   
                     <meta name="description" content="Catalogue des élèves" />  
@@ -145,7 +145,7 @@ const Reports = () => {
                         {(user.students && user.students.length !== 0) && 
                             <div style={{ marginBottom: "2em" }}>  
                                 <Link href="/profile"> 
-                                    <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a> 
+                                    <a style={{ borderBottom: "none" }}><div style={{ display: "inline", marginRight: " 0.5em" }} className="icon fa-chevron-left"></div><span style={{ fontSize: "30px", fontWeight: 600 }}>Profil</span></a>  
                                 </Link> 
                             </div>   
                         } 
@@ -217,7 +217,7 @@ const Reports = () => {
                                                     <option value="LITTERATURE - SCIENCES HUMAINES">LITTERATURE - SCIENCES HUMAINES</option>   
                                                     <option value="Bac Pro">BAC PRO</option>  
                                                 </select> 
-                                            </div> 
+                                            </div>  
                                         </th> 
                                         <th>Matières<SearchInput className="search-input" placeholder="Filtrer par matière..." onChange={(term) => { setMatiereTerm(term) }} /></th> 
                                         <th>Demandes<SearchInput className="search-input" placeholder="Filtrer par chapitres..." onChange={(term) => { setWishesTerm(term) }} /></th>   
@@ -229,7 +229,7 @@ const Reports = () => {
                                         <tr key={`${student._id}`}> 
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>   
                                             <td>{student.filiere}</td>  
-                                            <td style={{ width: "50%" }}>{student.matiere}</td> 
+                                            <td style={{ width: "50%" }}>{student.matiere}</td>  
                                             <td style={{ width: "40%" }}>{student.wishes}</td>    
                                             <td style={{ textAlign: 'center', verticalAlign: 'middle' }}>{selectedStudents.filter(s => s._id === student._id).length > 0 ?   
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon> 
@@ -243,7 +243,7 @@ const Reports = () => {
                         </div> 
                     </div>  
                 </section>  
-            </Layout> 
+            </Layout>  
             } 
         </> 
     ) 

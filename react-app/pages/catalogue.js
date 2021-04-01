@@ -29,7 +29,7 @@ const Reports = () => {
  
     const getAwaitingStudentsData = async () => { 
         let res = await fetch('/api/mongodb?getAwaitingStudents=true&limit=true') //TODO: Add limits    
-        const awaitingStudents = await res.json()  
+        const awaitingStudents = await res.json()   
         setAwaitingStudents(awaitingStudents) 
         setLoading(false)
     }   
@@ -58,7 +58,7 @@ const Reports = () => {
             })
             await fetch('/api/mongodb', { 
                 method: 'post',  
-                body: JSON.stringify({
+                body: JSON.stringify({ 
                     _id: user._id,  
                     data: { "catalogue_logs": catalogue_logs }  
                 })
@@ -75,7 +75,7 @@ const Reports = () => {
     const [filiereTerm, setFiliereTerm] = useState("")   
     const [matiereTerm, setMatiereTerm] = useState("")   
     const [wishesTerm, setWishesTerm] = useState("")  
-    const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere']))  
+    const filteredFiliereStudents = awaitingStudents.filter(createFilter(filiereTerm, ['filiere']))   
     const filteredMatiereStudents = filteredFiliereStudents.filter(createFilter(matiereTerm, ['matiere']))
     const filteredWishesStudents = filteredMatiereStudents.filter(createFilter(wishesTerm, ['wishes'])) 
     const [selectedStudents, setSelectedStudents] = useState([])  
@@ -93,7 +93,7 @@ const Reports = () => {
             Router.push('/profile')   
         }  
     }, [user, userLoading]) 
- 
+  
   
     useEffect(() => { 
         // {console.log("useEffect", user, userLoading)}
@@ -116,7 +116,7 @@ const Reports = () => {
                     <title>Catalogue à élèves</title>   
                     <meta name="description" content="Catalogue des élèves" />  
                 </Head> 
- 
+  
                 <Dialog aria-labelledby="customized-dialog-title" open={userHasNoStudents} fullWidth>  
                     <MuiDialogContent dividers> 
                         <Typography variant="h5" color="primary" align="center"> 
@@ -161,10 +161,10 @@ const Reports = () => {
                         <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
                             <div className="table-wrapper"> 
                                 <table> 
-                                    <thead> 
-                                        <tr>
+                                    <thead>  
+                                        <tr> 
                                             <th>Date de demande</th>   
-                                            <th>Filière</th>
+                                            <th>Filière</th> 
                                             <th>Matières</th> 
                                             <th>Demandes</th> 
                                             <th style={{ textAlign: 'center', verticalAlign: 'middle' }}>Selectionné</th> 
@@ -181,7 +181,7 @@ const Reports = () => {
                                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>  
                                                     : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                                 }</td>    
-                                            </tr>  
+                                            </tr>   
                                         ))  
  
                                         }   
@@ -226,7 +226,7 @@ const Reports = () => {
                                 </thead>
                                 <tbody>  
                                     {filteredWishesStudents.slice(0, maxRows).map(student => (  
-                                        <tr key={`${student._id}`}> 
+                                        <tr key={`${student._id}`}>  
                                             <td>{moment(student.timestamp).format('DD/MM/YYYY HH:mm:ss')}</td>   
                                             <td>{student.filiere}</td>  
                                             <td style={{ width: "50%" }}>{student.matiere}</td>  
@@ -239,7 +239,7 @@ const Reports = () => {
                                     ))}  
                                 </tbody>   
                             </table>   
-                            <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p> 
+                            <p style={{ textAlign: "center", cursor: "pointer" }} onClick={() => setMaxRows(maxRows + 10)}><b>Voir plus...</b></p>  
                         </div> 
                     </div>  
                 </section>  
@@ -249,4 +249,4 @@ const Reports = () => {
     ) 
 }   
  
-export default Reports    
+export default Reports     

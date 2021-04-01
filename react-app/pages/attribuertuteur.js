@@ -1,7 +1,7 @@
 import Head from "next/head"    
 import { useState, useEffect } from "react"        
 import Layout from '../components/Layout'    
-import { useFetchUser } from '../lib/user'    
+import { useFetchUser } from '../lib/user'     
 import Router from "next/router"      
 import MenuAdmin from '../components/MenuAdmin'         
       
@@ -12,25 +12,25 @@ const InputGroupId = ({ tutor }) => {
             method: 'post',        
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
         })     
-        window.location.reload(false)   
+        window.location.reload(false)    
     }    
-            
-    const [selectedGroupId, setSelectedGroupId] = useState("")      
-   
+             
+    const [selectedGroupId, setSelectedGroupId] = useState("")       
+    
     return (<div className="12u 12u(small)" >     
         <input         
             type="text"    
-            id="group_id"  
+            id="group_id"   
             name="group_id"    
             value={selectedGroupId}      
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}     
         />        
-        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}    
+        {selectedGroupId && <div className="button special" onClick={() => setGroupId(tutor)}>Confimer</div>}     
     </div>)  
 }     
        
 const Reports = () => {   
-    const getUserData = async (user) => {        
+    const getUserData = async (user) => {         
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)      
         let json = await res.json()    
         if (!json.is_admin) Router.push('/profile')       
@@ -39,7 +39,7 @@ const Reports = () => {
         const new_awaitingtutors = await res.json()        
        
         res = await fetch('/api/mongodb?getAwaitingStudents=true')    
-        const awaitingStudents = await res.json()      
+        const awaitingStudents = await res.json()       
        
         setAwaitingTutors(new_awaitingtutors)   
         setAwaitingStudents(awaitingStudents)         
@@ -51,9 +51,9 @@ const Reports = () => {
         } else {     
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }     
         }      
-   
+    
         const res = await fetch('/api/mongodb', {        
-            method: 'post',      
+            method: 'post',       
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })       
         })     
         setRefresh(!refresh)      
@@ -64,10 +64,10 @@ const Reports = () => {
     const [awaitingStudents, setAwaitingStudents] = useState([])           
     const [refresh, setRefresh] = useState(true)    
        
-    useEffect(() => {      
+    useEffect(() => {       
         // {console.log("useEffect", user, loading)}          
         if (user && !loading) {       
-            getUserData(user)       
+            getUserData(user)        
         }     
     }, [user, loading])     
          
@@ -98,7 +98,7 @@ const Reports = () => {
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
                                             <th>Veut encadrer groupe ?</th>   
-                                            <th>Groupe</th>            
+                                            <th>Groupe</th>             
                                         </tr>     
                                     </thead>   
                                     <tbody>     
@@ -117,7 +117,7 @@ const Reports = () => {
                                         )}       
                                     </tbody>   
                                 </table>        
-                            </div>              
+                            </div>               
                         </div>        
                     </div>    
          

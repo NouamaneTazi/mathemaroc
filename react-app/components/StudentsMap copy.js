@@ -12,7 +12,7 @@ const MAPBOX_TOKEN = ''; // Set your mapbox token here
 export default class App extends Component {
   state = { 
     year: 2015,  
-    data: null,
+    data: null, 
     hoveredFeature: null, 
     viewport: {
       latitude: 40,  
@@ -26,7 +26,7 @@ export default class App extends Component {
   componentDidMount() { 
     requestJson(
       'https://raw.githubusercontent.com/uber/react-map-gl/master/examples/.data/us-income.geojson', 
-      (error, response) => {
+      (error, response) => { 
         if (!error) {
           this._loadData(response); 
         }
@@ -36,7 +36,7 @@ export default class App extends Component {
 
   _loadData = data => {
     this.setState({
-      data: updatePercentiles(data, f => f.properties.income[this.state.year]) 
+      data: updatePercentiles(data, f => f.properties.income[this.state.year])  
     });
   };
 
@@ -56,9 +56,9 @@ export default class App extends Component {
 
   _onViewportChange = viewport => this.setState({viewport});  
 
-  _onHover = event => { 
+  _onHover = event => {  
     const { 
-      features,
+      features, 
       srcEvent: {offsetX, offsetY} 
     } = event;
     const hoveredFeature = features && features.find(f => f.layer.id === 'data');
@@ -67,33 +67,33 @@ export default class App extends Component {
   };  
 
   _renderTooltip() { 
-    const {hoveredFeature, x, y} = this.state; 
+    const {hoveredFeature, x, y} = this.state;  
 
     return (
       hoveredFeature && (
         <div className="tooltip" 
         // style={{left: x, top: y}}
-        >   
+        >    
           <div>State: {hoveredFeature.properties.name}</div> 
         </div>
       )
     ); 
   } 
- 
+  
   render() {
     const {viewport, data} = this.state;   
  
-    return (
+    return ( 
       <div style={{height: '100%', position: 'relative'}}>
         <MapGL
           {...viewport}
           width="100%"
-          height="100%"
+          height="100%" 
           mapStyle="mapbox://styles/mapbox/light-v9" 
           onViewportChange={this._onViewportChange}
           mapboxApiAccessToken={MAPBOX_TOKEN}
           onHover={this._onHover}
-        >
+        > 
           <Source type="geojson" data={data}> 
             <Layer {...dataLayer} />
           </Source> 
@@ -103,11 +103,11 @@ export default class App extends Component {
         <ControlPanel
           containerComponent={this.props.containerComponent} 
           settings={this.state}
-          onChange={this._updateSettings} 
+          onChange={this._updateSettings}  
         />
       </div>
     );
-  }
+  } 
 } 
 
 export function renderToDom(container) {

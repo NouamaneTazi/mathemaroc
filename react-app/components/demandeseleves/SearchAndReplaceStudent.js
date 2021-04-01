@@ -6,8 +6,8 @@ const SearchAndReplaceStudent = ({ awaitingStudents, tutor }) => {
         for (let student of selectedStudents) {
             await fetch('/api/mongodb', {
                 method: 'post', 
-                body: JSON.stringify({ _id: student._id, data: { "groupId": tutor.groupId } }) 
-            }) 
+                body: JSON.stringify({ _id: student._id, data: { "groupId": tutor.groupId } })  
+            })  
         }
         await fetch('/api/mongodb?unset=true', {
             method: 'post',  
@@ -17,7 +17,7 @@ const SearchAndReplaceStudent = ({ awaitingStudents, tutor }) => {
     } 
     const handleSelectingStudent = student => { 
         if (!selectedStudents.includes(student)) { 
-            let value = selectedStudents
+            let value = selectedStudents 
             value.push(student)
             setSelectedStudents([...value])
         } 
@@ -37,17 +37,17 @@ const SearchAndReplaceStudent = ({ awaitingStudents, tutor }) => {
                         onClick={() => setSelectedStudents(selectedStudents.filter(e => e._id != student._id))}
                     >{student.fullname}</button>  
                 </Fragment>  
-            ))} 
+            ))}  
         </div>
         <SearchInput className="search-input" placeholder="Tapez nom ou prénom ou numéro de l'élève..." onChange={(term) => { setSearchTerm(term) }} />
         <br />
-        {
+        { 
             searchTerm !== "" && <>
                 {filteredAwaitingStudents.slice(0, 3).map(student => (
                     <Fragment key={student._id}>
                         <input type="checkbox" id={`${student.firstname}-${student.lastname}`} name="demo-priority" onChange={() => { handleSelectingStudent(student) }} /> 
-                        <label htmlFor={`${student.firstname}-${student.lastname}`}>{student.lastname} {student.firstname}</label> 
-                    </Fragment>  
+                        <label htmlFor={`${student.firstname}-${student.lastname}`}>{student.lastname} {student.firstname}</label>  
+                    </Fragment>   
                 ))} 
                 {selectedStudents.length > 0 && <div className="button special" onClick={() => giveStudents()}>Confimer</div>}  
             </>

@@ -65,7 +65,7 @@
         "latitude": 28.43799,
         "counts": "21"
     }, 
-    {
+    { 
         "name": "Tata", 
         "longitude": -7.96935, 
         "latitude": 29.74378,
@@ -84,7 +84,7 @@
         "counts": "31"
     }, 
     { 
-        "name": "Al-Haouz", 
+        "name": "Al-Haouz",  
         "longitude": -7.91076, 
         "latitude": 31.34083,
         "counts": "4" 
@@ -112,7 +112,7 @@
         "longitude": -7.40499838, 
         "latitude": 32.042166498,
         "counts": "17" 
-    },
+    }, 
     {
         "name": "Marrakech", 
         "longitude": -7.99675,
@@ -177,13 +177,13 @@
         "name": "Moulay-Yacoub",
         "longitude": -5.1811, 
         "latitude": 34.0878,
-        "counts": "2"
+        "counts": "2" 
     },
     {
         "name": "Sefrou", 
         "longitude": -4.83322,
         "latitude": 33.83059, 
-        "counts": "16"  
+        "counts": "16"   
     }, 
     {
         "name": "El-Hajeb",
@@ -193,7 +193,7 @@
     }, 
     { 
         "name": "Errachidia", 
-        "longitude": -4.45363,
+        "longitude": -4.45363, 
         "latitude": 31.94102,  
         "counts": "55" 
     }, 
@@ -208,8 +208,8 @@
         "longitude": -5.65383,
         "latitude": 32.93877,  
         "counts": "13"
-    },    
-    {
+    },     
+    { 
         "name": "Meknes",
         "longitude": -5.55059,
         "latitude": 33.89157,
@@ -222,7 +222,7 @@
         "counts": "27"
     },
     {
-        "name": "Rabat",
+        "name": "Rabat", 
         "longitude": -6.84571, 
         "latitude": 34.00131,
         "counts": "79"
@@ -249,7 +249,7 @@
         "name": "Chtouka-Ait-Baha",
         "longitude": -8.17603,
         "latitude": 33.29982,
-        "counts": "12"
+        "counts": "12" 
     },  
     {
         "name": "Inezgane-Ait Mellou",
@@ -264,8 +264,8 @@
         "counts": "19"
     },
     {
-        "name": "Taroudannt", 
-        "longitude": -8.87792,
+        "name": "Taroudannt",  
+        "longitude": -8.87792, 
         "latitude": 30.47065, 
         "counts": "26"
     },
@@ -276,7 +276,7 @@
         "counts": "25"
     }, 
     { 
-        "name": "Zagora",
+        "name": "Zagora", 
         "longitude": -5.81686,
         "latitude": 30.34897,
         "counts": "7"  
@@ -287,7 +287,7 @@
         "latitude": 35.17102,
         "counts": "8" 
     },
-    {
+    { 
         "name": "Fahs-Anjra",
         "longitude": -5.6668,
         "latitude": 35.7602,
@@ -311,7 +311,7 @@
         "latitude": 35.57785,
         "counts": "97"
     }, 
-    { 
+    {  
         "name": "Casablanca", 
         "longitude": -7.62462, 
         "latitude": 33.58398,

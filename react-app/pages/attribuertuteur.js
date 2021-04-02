@@ -3,13 +3,13 @@ import { useState, useEffect } from "react"
 import Layout from '../components/Layout'    
 import { useFetchUser } from '../lib/user'     
 import Router from "next/router"      
-import MenuAdmin from '../components/MenuAdmin'         
+import MenuAdmin from '../components/MenuAdmin'          
       
 const InputGroupId = ({ tutor }) => {    
     const setGroupId = async (tutor) => {    
         // console.log(tutor, selectedGroupId)       
         await fetch('/api/mongodb', {       
-            method: 'post',        
+            method: 'post',         
             body: JSON.stringify({ _id: tutor._id, data: { "groupId": selectedGroupId } })  
         })     
         window.location.reload(false)    
@@ -20,7 +20,7 @@ const InputGroupId = ({ tutor }) => {
     return (<div className="12u 12u(small)" >     
         <input         
             type="text"    
-            id="group_id"   
+            id="group_id"    
             name="group_id"    
             value={selectedGroupId}      
             onChange={event => setSelectedGroupId(parseInt(event.target.value))}     
@@ -30,12 +30,12 @@ const InputGroupId = ({ tutor }) => {
 }     
        
 const Reports = () => {   
-    const getUserData = async (user) => {         
+    const getUserData = async (user) => {          
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)      
         let json = await res.json()    
         if (!json.is_admin) Router.push('/profile')       
         Object.assign(user, json)       
-        res = await fetch('/api/mongodb?getAwaitingTutors=true')       
+        res = await fetch('/api/mongodb?getAwaitingTutors=true')        
         const new_awaitingtutors = await res.json()        
        
         res = await fetch('/api/mongodb?getAwaitingStudents=true')    
@@ -75,9 +75,9 @@ const Reports = () => {
         <>  
             {/* {console.log(user)} */}    
             {!loading && <Layout user={user} loading={loading}>     
-                <Head>    
-                    <title>Tuteurs en attente</title>     
-                    <meta name="description" content="Tuteurs en attente" />    
+                <Head>     
+                    <title>Tuteurs en attente</title>      
+                    <meta name="description" content="Tuteurs en attente" />     
                 </Head>        
                 <MenuAdmin user={user}/>      
                 <section id="one">   
@@ -89,15 +89,15 @@ const Reports = () => {
           
                         <div className="12u 12u(medium)">        
                             <div className="table-wrapper">     
-                                <table>  
+                                <table>   
                                     <thead>      
                                         <tr>         
-                                            <th>Tuteur</th>         
+                                            <th>Tuteur</th>          
                                             <th>Statut</th>       
                                             <th>Matières</th>       
                                             <th>Whatsapp</th>   
                                             <th>Mail</th>  
-                                            <th>Veut encadrer groupe ?</th>   
+                                            <th>Veut encadrer groupe ?</th>    
                                             <th>Groupe</th>             
                                         </tr>     
                                     </thead>   
@@ -123,10 +123,10 @@ const Reports = () => {
          
                 </section>     
             </Layout>     
-            }         
+            }          
         </>   
-    )      
+    )       
 }   
      
-     
+      
 export default Reports          

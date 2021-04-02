@@ -7,7 +7,7 @@ const handler = nextConnect();
 handler.use(middleware);
 
 // const transporter = nodemailer.createTransport({
-//     host: 'smtp.ethereal.email', 
+//     host: 'smtp.ethereal.email',  
 //     port: 587,
 //     auth: {
 //         user: 'edna77@ethereal.email',
@@ -54,7 +54,7 @@ const html_tutorWithStudents = `
 <div class="region">
 <div>
 <table class="row aw-stack" style="width: 100%; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation">
-<tbody>
+<tbody> 
 <tr style="border-spacing: 0px;"> 
 <td class="container" style="padding: 0px; width: 100%; border-spacing: 0px;" valign="top" bgcolor="#E7E3D7" width="100%">
 <div class="definition-parent">
@@ -79,7 +79,7 @@ const html_tutorWithStudents = `
 <div>
 <div><span style="color: #3e404f;"><span style="font-size: 36px;"><span style="font-family: Lora,Times,serif;"><strong style="font-weight: bold;">Bonjour,</strong></span></span></span></div>
 <div> </div>
-<div><span style="color: #3e404f;">Nous espérons que vous et votre famille vous portez bien en cette période de confinement. </span></div>
+<div><span style="color: #3e404f;">Nous espérons que vous et votre famille vous portez bien en cette période de confinement. </span></div> 
 <div> </div>
 <div><span style="color: #3e404f;">Nous avons remarqué que vous vous êtes récemment connectés sur la plateforme de Math&amp;Maroc pour donner des cours en ligne en tant que bénévole. Tout d'abord nous vous en remercions, cela fait toujours plaisir de voir des personnes donner de leur temps pour leur pays et leurs compatriotes en cette période particulièrement difficile.</span></div>
 <div> </div>
@@ -99,7 +99,7 @@ const html_tutorWithStudents = `
 <table class="row aw-stack" style="width: 100%; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation">
 <tbody>
 <tr style="border-spacing: 0px;">
-<td class="container" style="padding: 50px 0px 0px; width: 100%; border-spacing: 0px;" valign="top" width="100%"> </td>
+<td class="container" style="padding: 50px 0px 0px; width: 100%; border-spacing: 0px;" valign="top" width="100%"> </td> 
 </tr>
 </tbody>
 </table>
@@ -112,7 +112,7 @@ const html_tutorWithStudents = `
 </table>
 </td>
 </tr>
-</tbody>
+</tbody> 
 </table>
 </div>
 </div>
@@ -141,7 +141,7 @@ const html_tutorWithoutStudents = `<div class="aweber_message_body"><center>
 <td class="container" style="padding: 0px; width: 100%; border-spacing: 0px;" valign="top" bgcolor="#E7E3D7" width="100%">
 <div class="definition-parent">
 <table class="floated-none" style="float: none; text-align: center; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation" width="100%" align="center">
-<tbody>
+<tbody> 
 <tr style="border-spacing: 0px;">
 <td style="padding: 0px; border-spacing: 0px;"><a class="aw-image-link" style="color: #3498db;" href="https://www.chrisvqz.com" rel="nofollow"> <img class="model" style="object-position: top; object-fit: cover; display: block; margin: auto; width: 100%; height: 278px; border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: none; text-decoration: none; transform: trans;" src="https://i.imgur.com/hnNqs5o.jpg" alt="Image" width="600" height="290" /> </a></td>
 </tr>
@@ -150,7 +150,7 @@ const html_tutorWithoutStudents = `<div class="aweber_message_body"><center>
 </div>
 </td>
 </tr>
-</tbody>
+</tbody> 
 </table>
 <table class="row aw-stack" style="width: 100%; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation">
 <tbody>
@@ -176,7 +176,7 @@ const html_tutorWithoutStudents = `<div class="aweber_message_body"><center>
 </div>
 </td>
 </tr>
-</tbody>
+</tbody> 
 </table>
 <table class="row aw-stack" style="width: 100%; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation">
 <tbody>
@@ -189,7 +189,7 @@ const html_tutorWithoutStudents = `<div class="aweber_message_body"><center>
 </div>
 </div>
 </td>
-</tr>
+</tr> 
 </tbody>
 </table>
 </td>
@@ -217,7 +217,7 @@ handler.get(async (req, res) => {
 
     res.json({ message: "done" })
 
-    // req.db.collection('users').aggregate([
+    // req.db.collection('users').aggregate([ 
     //     {
     //         $group: {
     //             _id: '$groupId',
@@ -256,14 +256,14 @@ handler.get(async (req, res) => {
     //         let mails = `mathemaroccontact@gmail.com
     //         mathemarocc.on.ta.ct@gmail.com`
     //         mails = mails.split('\n            ').splice(0, 10).join()
-
+ 
     //         const tutorsWithStudents = contacted_tutors.filter(t => t.hasStudents).slice(0, MAX_RECIPIENTS)
     //         const tutorsWithoutStudents = contacted_tutors.filter(t => !t.hasStudents).slice(0, MAX_RECIPIENTS) 
     //         console.log(tutorsWithStudents.length, tutorsWithoutStudents.length)
 
     //         // console.log(tutorsWithStudents.map(t => ({firstname:t.firstname, lastname:t.lastname, to:t.to}))) 
     //         // TUTORS WITH STUDENTS
-    //         message.bcc = tutorsWithStudents.map(t => t.to)
+    //         message.bcc = tutorsWithStudents.map(t => t.to) 
     //         // message.bcc = mails
     //         message.html = html_tutorWithStudents
     //         console.log("Destinataires avec élèves : ", message.bcc)

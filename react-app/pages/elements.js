@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 
 export default () => (
     <Layout>
-        <Head> 
+        <Head>  
             <title>Elements Page</title>
             <meta name="description" content="Elements Page" />
         </Head>
@@ -27,7 +27,7 @@ export default () => (
                         <div className="6u 12u$(small)">
                             <h3>Magna odio tempus commodo</h3>
                             <p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor. Ante commodo blandit adipiscing integer semper orci eget. Faucibus commodo adipiscing mi eu nullam accumsan morbi arcu ornare odio mi adipiscing nascetur lacus ac interdum morbi accumsan vis mi accumsan ac praesent.</p> 
-                        </div> 
+                        </div>  
                         <div className="4u 12u$(medium)">
                             <h3>Interdum sapien gravida</h3>
                             <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
@@ -35,7 +35,7 @@ export default () => (
                         <div className="4u 12u$(medium)"> 
                             <h3>Faucibus consequat lorem</h3>
                             <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-                        </div>
+                        </div> 
                         <div className="4u 12u$(medium)">
                             <h3>Accumsan montes viverra</h3>
                             <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
@@ -43,7 +43,7 @@ export default () => (
                     </div> 
 
                     <hr className="major" />
-
+ 
                     <h2 id="elements">Elements</h2>
                     <div className="row 200%">
                         <div className="6u 12u(medium)">
@@ -120,7 +120,7 @@ export default () => (
                                     </dd>
                                     <dt>Item3</dt> 
                                     <dd>
-                                        <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p> 
+                                        <p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor.</p>  
                                     </dd>
                                 </dl>
 
@@ -183,7 +183,7 @@ export default () => (
                                     <table>
                                         <thead> 
                                             <tr>
-                                                <th>Name</th>
+                                                <th>Name</th> 
                                                 <th>Description</th> 
                                                 <th>Price</th>
                                             </tr>
@@ -202,7 +202,7 @@ export default () => (
                                             <tr>
                                                 <td>Item3</td>
                                                 <td> Morbi faucibus arcu accumsan lorem.</td> 
-                                                <td>29.99</td>
+                                                <td>29.99</td> 
                                             </tr> 
                                             <tr>
                                                 <td>Item4</td>
@@ -215,7 +215,7 @@ export default () => (
                                                 <td>29.99</td>
                                             </tr> 
                                         </tbody>
-                                        <tfoot>
+                                        <tfoot> 
                                             <tr>
                                                 <td colSpan="2"></td> 
                                                 <td>100.00</td>
@@ -224,7 +224,7 @@ export default () => (
                                     </table>
                                 </div> 
 
-                                <h4>Alternate</h4>
+                                <h4>Alternate</h4> 
                                 <div className="table-wrapper">
                                     <table className="alt">
                                         <thead>
@@ -263,7 +263,7 @@ export default () => (
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td colSpan="2"></td>
+                                                <td colSpan="2"></td> 
                                                 <td>100.00</td>
                                             </tr> 
                                         </tfoot>
@@ -302,9 +302,9 @@ export default () => (
                                 </ul> 
                                 <ul className="actions"> 
                                     <li><span className="button special disabled">Special</span></li>
-                                    <li><span className="button disabled">Default</span></li>
+                                    <li><span className="button disabled">Default</span></li> 
                                 </ul> 
-
+ 
                                 <h3>Form</h3>
 
                                 <form method="post" action="#">
@@ -360,11 +360,11 @@ export default () => (
  
                                 <h3>Image</h3>
 
-                                <h4>Fit</h4>
+                                <h4>Fit</h4> 
                                 <span className="image fit"><img src="/static/images/pic03.jpg" alt="" /></span>
                                 <div className="box alt">
                                     <div className="row 50% uniform">
-                                        <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div>
+                                        <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div> 
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic09.jpg" alt="" /></span></div>  
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic10.jpg" alt="" /></span></div>
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic10.jpg" alt="" /></span></div>
@@ -375,7 +375,7 @@ export default () => (
                                         <div className="4u"><span className="image fit"><img src="/static/images/pic08.jpg" alt="" /></span></div>
                                     </div>
                                 </div> 
-
+ 
                                 <h4>Left &amp; Right</h4> 
                                 <p><span className="image left"><img src="/static/images/pic09.jpg" alt="" /></span>Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget tempus vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.</p>
                                 <p><span className="image right"><img src="/static/images/pic10.jpg" alt="" /></span>Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget tempus vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.</p>

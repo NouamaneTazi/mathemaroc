@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { useState, useEffect } from "react"
-import Layout from '../components/Layout'
+import Layout from '../components/Layout' 
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
 
@@ -53,22 +53,22 @@ const Admin = () => {
                         } */}
                     </div>
                     <div className="inner" style={{ maxWidth: "95%", width: "100%" }}>
-
-                        <div className="table-wrapper">
+ 
+                        <div className="table-wrapper"> 
                             <table className="alt dense">
                                 <thead>
                                     <tr>
                                         <th>Élève</th>
                                         <th>Date</th>
-                                        <th>Téléphone</th>
+                                        <th>Téléphone</th> 
                                         <th>Facebook</th>
                                         <th>Mail</th>
                                         <th>Lycée</th>
                                         <th>Ville</th>
                                         <th>Filière</th>
                                         <th>Matières</th>
-                                        <th>Demandes</th>
-                                    </tr>
+                                        <th>Demandes</th> 
+                                    </tr> 
                                 </thead>
                                 <tbody>
                                     {students && students.length > 0 && students.map((student) => {
@@ -86,7 +86,7 @@ const Admin = () => {
                                                     <td>{student.matiere}</td>
                                                     <td>{student.wishes}</td>
                                                 </tr>
-                                            </>
+                                            </> 
                                         )
                                     })}
                                 </tbody>
@@ -97,7 +97,7 @@ const Admin = () => {
                     </div>
                 </section >
             </Layout >
-            }
+            } 
         </>
     )
 }

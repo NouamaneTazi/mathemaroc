@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react" 
+import { useState, useEffect } from "react"  
 import SearchInput, { createFilter } from 'react-search-input'
 
 const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, groupId}) => {
-    const replaceStudent = async (reportedStudent, selectedReplacement) => {  
+    const replaceStudent = async (reportedStudent, selectedReplacement) => {   
         await fetch('/api/mongodb', {
-            method: 'post',  
+            method: 'post',   
             body: JSON.stringify({ _id: reportedStudent._id, data: {"groupId":-1} })
         })
-        if (selectedReplacement.firstname!=="--"){ 
+        if (selectedReplacement.firstname!=="--"){  
             await fetch('/api/mongodb', { 
                 method: 'post',
                 body: JSON.stringify({ _id: selectedReplacement._id, data: {"groupId":groupId} })
@@ -20,10 +20,10 @@ const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, groupId}) 
     let selectedReplacement = "" 
   
     return (<div className="12u 12u(small)" >
-        <SearchInput className="search-input" placeholder="Tapez nom ou prénom ou numéro de l'élève..." onChange={(term) => { setSearchTerm(term) }} />  
-        <br />  
+        <SearchInput className="search-input" placeholder="Tapez nom ou prénom ou numéro de l'élève..." onChange={(term) => { setSearchTerm(term) }} />   
+        <br />   
         { 
-            searchTerm !== "" ? <> 
+            searchTerm !== "" ? <>  
                 {filteredAwaitingStudents.slice(0, 3).map(student => (
                     <> 
                         <input type="radio" id={`${student.firstname}-${student.lastname}`} name="demo-priority" onChange={() => { selectedReplacement = student }} />
@@ -32,8 +32,8 @@ const SearchAndReplaceStudent = ({ reportedStudent, awaitingStudents, groupId}) 
                 ))}
                 <div className="button special" onClick={() => replaceStudent(reportedStudent, selectedReplacement)}>Confimer</div>
             </> : null
-        }  
+        }   
     </div>)  
 }  
-    
+     
 export default SearchAndReplaceStudent 

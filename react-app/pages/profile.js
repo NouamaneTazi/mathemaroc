@@ -1,4 +1,4 @@
-import Head from "next/head"
+import Head from "next/head" 
 import { useState, useEffect } from "react"
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
@@ -21,10 +21,10 @@ const Profile = () => {
 
     const CustomizedTooltip = withStyles(theme => ({
         tooltip: {
-            backgroundColor: theme.palette.common.white,
-            color: '#3e467f',
+            backgroundColor: theme.palette.common.white, 
+            color: '#3e467f', 
             boxShadow: theme.shadows[1],
-            fontSize: 16,
+            fontSize: 16,  
         },
     }))(Tooltip)
 
@@ -32,24 +32,24 @@ const Profile = () => {
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         if (json._id && user.email){
-            await fetch('/api/mongodb', {
+            await fetch('/api/mongodb', { 
                 method: 'post',
                 body: JSON.stringify({ _id: json._id, data: {email:user.email} })
             })
         }
        
-        // console.log("json", json)
+        // console.log("json", json) 
         if (json.notYetSetUp) {
             Router.push('/inscription')
-        }
+        } 
         else if (json.role == "tutor" && (!json.students || json.students.length === 0)) {
             Router.push('/catalogue')
-        }
-        Object.assign(user, json);
-        await fetch('/api/mongodb', {
+        } 
+        Object.assign(user, json); 
+        await fetch('/api/mongodb', { 
             method: 'post',
-            body: JSON.stringify({ _id: json._id, data: {email:user.email} })
-        })
+            body: JSON.stringify({ _id: json._id, data: {email:user.email} }) 
+        }) 
         // console.log("user", user)
         setLoading(false)
     }
@@ -59,12 +59,12 @@ const Profile = () => {
     const [openReportDialog, setOpenReportDialog] = useState(false)
     const [confettis, setConfettis] = useState(false)
 
-    useEffect(() => {
+    useEffect(() => { 
         // {console.log("useEffect", user, userLoading)}
         if (user && !userLoading) {
-            setLoading(true)
+            setLoading(true) 
             getUserData(user)
-        } else if (!user && !userLoading) {
+        } else if (!user && !userLoading) { 
             Router.push('/api/login')
         }
 
@@ -72,7 +72,7 @@ const Profile = () => {
 
     const { width, height } = useWindowSize()
     return (
-        <>
+        <> 
             {/* {console.log("user", user, userLoading)} */}
             <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
                 <CircularProgress color="inherit" />
@@ -82,18 +82,18 @@ const Profile = () => {
 
                 <Head>
                     <title>Profil</title>
-                    <meta name="description" content="Profil" />
+                    <meta name="description" content="Profil" /> 
                 </Head>
 
                 {user && user.role === "student" ? <StudentProfile user={user} />
                     : user && user.role === "tutor" ? <div id="main" className="alt">
                         {confettis && <Confetti width={width} height={height} />}
-                        <section id="one">
+                        <section id="one"> 
                             <div className="inner">
                                 <header className="major">
-                                    <h1>Profil</h1>
+                                    <h1>Profil</h1> 
                                 </header>
-
+ 
                                 <div className="row 200%">
                                     <div className="12u 12u(medium)">
                                         {confettis && <p><b>Nouveauté : </b> On a atteint <b style={{ fontSize: "30px" }}>500</b> séances grâce à tous vos efforts ! Toute l'équipe de Math&Maroc vous remercie pour votre contribution qui encourage la solidarité entre frères marocains et qui donne une aide précieuse à un très grand nombre d'élèves ! On compte sur vous pour continuer comme ça !</p>}
@@ -103,13 +103,13 @@ const Profile = () => {
                                             <br /><br />Si tu rencontres un quelconque souci avec le site ou autre, nous te prions de nous contacter à l'aide de l'adresse suivante: <strong>mathemaroc.contact@gmail.com</strong> (Un screen expliquant la situation sera préférable)
 </p>
 
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div className="12u 12u(medium)">
                                     <h2>Liste des élèves</h2>
                                     <div className="table-wrapper">
                                         <table>
-                                            <thead>
+                                            <thead> 
                                                 <tr>
                                                     <th>Nom</th>
                                                     <th>Lycée</th>
@@ -120,18 +120,18 @@ const Profile = () => {
                                                     <th>Whatsapp</th>
                                                     <th>Facebook</th>
                                                     <th>Signaler</th>
-                                                </tr>
+                                                </tr> 
                                             </thead>
                                             <tbody>
                                                 {user.students && user.students.map(student => (
 
-                                                    <tr key={student._id} onMouseEnter={() => null}>
+                                                    <tr key={student._id} onMouseEnter={() => null}> 
                                                         <td>{student.firstname} {student.lastname}</td>
                                                         <td>{student.lycee}</td>
                                                         <td>{student.ville}</td>
                                                         <td>{student.filiere}</td>
                                                         <td>{student.matiere}</td>
-                                                        <td>{student.wishes}</td>
+                                                        <td>{student.wishes}</td> 
                                                         <td>{student.whatsapp}</td>
                                                         <td>{student.facebook}</td>
                                                         <td style={{ textAlign: "center" }}> {student.reported ?
@@ -139,7 +139,7 @@ const Profile = () => {
                                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "red", cursor: "pointer" }} onClick={() => setOpenReportDialog(student)}>warning</Icon>
                                                             </CustomizedTooltip> :
                                                             <CustomizedTooltip title="Signaler doublon, élève injoignable, comportement inapproprié ou juste élève à remplacer !" placement="left">
-                                                                <Icon style={{ fontSize: 30, verticalAlign: "text-top", cursor: "pointer" }} onClick={() => setOpenReportDialog(student)}>warning</Icon>
+                                                                <Icon style={{ fontSize: 30, verticalAlign: "text-top", cursor: "pointer" }} onClick={() => setOpenReportDialog(student)}>warning</Icon> 
                                                             </CustomizedTooltip>}</td>
                                                         <ReportStudentDialog student={openReportDialog} setOpen={setOpenReportDialog} tutor={user} />
                                                     </tr>
@@ -152,7 +152,7 @@ const Profile = () => {
                                     <Link href={'/catalogue'}><button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }}>{"Ajouter plus d'élèves"}</button></Link>
 
                                 </div>
-                            </div>
+                            </div> 
 
                             <SeancesForm user={user} />
                             <ProfileSeancesTutors setConfettis={setConfettis} />
@@ -161,15 +161,15 @@ const Profile = () => {
                     </div>
                         // user not associated
                         // : user && user.needsSetup && !loading ? 
-                        //     <AssociateUser user={user} />
+                        //     <AssociateUser user={user} /> 
                         // Not yet connected
                         : null
                 }
 
-
-            </Layout>}
+ 
+            </Layout>} 
         </>
-    )
+    ) 
 }
 
 export default Profile

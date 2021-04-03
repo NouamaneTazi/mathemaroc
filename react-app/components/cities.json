@@ -1,17 +1,17 @@
 [
     {
-        "name": "Benslimane",
+        "name": "Benslimane", 
         "longitude": -7.18859,
         "latitude": 33.6193,
-        "counts": "16"
-    },
+        "counts": "16" 
+    },  
     {
         "name": "Khouribga",
         "longitude": -6.89451,
-        "latitude": 32.87446,
+        "latitude": 32.87446, 
         "counts": "30"
     },
-    {
+    { 
         "name": "Settat",
         "longitude": -7.61461,
         "latitude": 33.00456,
@@ -21,20 +21,20 @@
         "name": "El-Jadida",
         "longitude": -8.5007116,
         "latitude": 33.2316326,
-        "counts": "52"
+        "counts": "52" 
     },
     {
         "name": "Safi",
         "longitude": -9.23162,
-        "latitude": 32.29176,
+        "latitude": 32.29176, 
         "counts": "46"
     },
     {
         "name": "Kenitra",
         "longitude": -6.56309,
-        "latitude": 34.26165,
+        "latitude": 34.26165, 
         "counts": "53"
-    },
+    }, 
     {
         "name": "Sidi-Kacem",
         "longitude": -5.712916,
@@ -42,17 +42,17 @@
         "counts": "25"
     },
     {
-        "name": "Assa-Zag",
+        "name": "Assa-Zag", 
         "longitude": -9.41667,
-        "latitude": 28.16667,
+        "latitude": 28.16667, 
         "counts": "3"
     },
     {
         "name": "Es-Semara",
         "longitude": -11.67194,
-        "latitude": 26.73841,
+        "latitude": 26.73841, 
         "counts": "20"
-    },
+    }, 
     {
         "name": "Guelmim",
         "longitude": -10.05738,
@@ -64,9 +64,9 @@
         "longitude": -11.10321,
         "latitude": 28.43799,
         "counts": "21"
-    },
+    }, 
     {
-        "name": "Tata",
+        "name": "Tata", 
         "longitude": -7.96935,
         "latitude": 29.74378,
         "counts": "22"
@@ -75,19 +75,19 @@
         "name": "Boujdour",
         "longitude": -14.499998,
         "latitude": 26.1333328,
-        "counts": "19"
-    },
+        "counts": "19" 
+    }, 
     {
-        "name": "Laayoune",
+        "name": "Laayoune", 
         "longitude": -13.18797,
-        "latitude": 27.1418,
+        "latitude": 27.1418, 
         "counts": "31"
-    },
-    {
-        "name": "Al-Haouz",
-        "longitude": -7.91076,
+    }, 
+    { 
+        "name": "Al-Haouz", 
+        "longitude": -7.91076, 
         "latitude": 31.34083,
-        "counts": "4"
+        "counts": "4" 
     },
     {
         "name": "Chichaoua",
@@ -96,17 +96,17 @@
         "counts": "5"
     },
     {
-        "name": "El Kelaa",
+        "name": "El Kelaa", 
         "longitude": -7.40499838,
-        "latitude": 32.042166498,
-        "counts": "24"
+        "latitude": 32.042166498,  
+        "counts": "24" 
     },
     {
         "name": "Essaouira",
         "longitude": -9.76448,
         "latitude": 31.51141,
         "counts": "22"
-    },
+    }, 
     {
         "name": "Kelaa-Des-Sraghna",
         "longitude": -7.40499838,
@@ -114,46 +114,46 @@
         "counts": "17"
     },
     {
-        "name": "Marrakech",
+        "name": "Marrakech", 
         "longitude": -7.99675,
         "latitude": 31.63278,
         "counts": "143"
     },
     {
         "name": "Berkane-Taourirt",
-        "longitude": -2.31523,
-        "latitude": 34.91677,
+        "longitude": -2.31523, 
+        "latitude": 34.91677, 
         "counts": "27"
-    },
+    }, 
     {
-        "name": "Figuig",
+        "name": "Figuig", 
         "longitude": -1.23827,
         "latitude": 32.12033,
         "counts": "5"
     },
     {
         "name": "Jerada",
-        "longitude": -2.158166034,
-        "latitude": 34.306998772,
+        "longitude": -2.158166034,  
+        "latitude": 34.306998772, 
         "counts": "1"
-    },
-    {
-        "name": "Nador",
+    }, 
+    { 
+        "name": "Nador", 
         "longitude": -2.9241,
         "latitude": 35.17401,
-        "counts": "14"
+        "counts": "14" 
     },
     {
-        "name": "Oujda-Angad",
-        "longitude": -2.0273,
+        "name": "Oujda-Angad", 
+        "longitude": -2.0273, 
         "latitude": 34.67935,
         "counts": "43"
     },
-    {
+    { 
         "name": "Aousserd",
         "longitude": -15.02068,
         "latitude": 21.91977,
-        "counts": "4"
+        "counts": "4"  
     },
     {
         "name": "Oued-Ed-Dahab",
@@ -165,11 +165,11 @@
         "name": "Boulemane",
         "longitude": -4.7303,
         "latitude": 33.16667,
-        "counts": "25"
+        "counts": "25" 
     },
-    {
+    { 
         "name": "Fes",
-        "longitude": -5.00218,
+        "longitude": -5.00218, 
         "latitude": 34.03748,
         "counts": "145"
     },
@@ -182,48 +182,48 @@
     {
         "name": "Sefrou",
         "longitude": -4.83322,
-        "latitude": 33.83059,
-        "counts": "16"
-    },
+        "latitude": 33.83059, 
+        "counts": "16" 
+    }, 
     {
         "name": "El-Hajeb",
         "longitude": -5.3678,
         "latitude": 33.6857,
-        "counts": "15"
-    },
-    {
-        "name": "Errachidia",
+        "counts": "15" 
+    }, 
+    { 
+        "name": "Errachidia", 
         "longitude": -4.45363,
-        "latitude": 31.94102,
-        "counts": "55"
-    },
+        "latitude": 31.94102,  
+        "counts": "55" 
+    }, 
     {
         "name": "Ifrane",
         "longitude": -5.11274,
-        "latitude": 33.52769,
+        "latitude": 33.52769, 
         "counts": "12"
-    },
-    {
+    }, 
+    { 
         "name": "Khenifra",
         "longitude": -5.65383,
-        "latitude": 32.93877,
+        "latitude": 32.93877,  
         "counts": "13"
-    },
+    },  
     {
         "name": "Meknes",
         "longitude": -5.55059,
         "latitude": 33.89157,
         "counts": "63"
-    },
-    {
-        "name": "Khemisset",
+    }, 
+    { 
+        "name": "Khemisset", 
         "longitude": -6.0573,
         "latitude": 33.8154,
         "counts": "27"
     },
     {
         "name": "Rabat",
-        "longitude": -6.84571,
+        "longitude": -6.84571, 
         "latitude": 34.00131,
         "counts": "79"
     },
@@ -239,8 +239,8 @@
         "latitude": 33.93773,
         "counts": "29"
     },
-    {
-        "name": "Agadir-Ida-ou-Tnan",
+    { 
+        "name": "Agadir-Ida-ou-Tnan", 
         "longitude": -9.58009,
         "latitude": 30.41662,
         "counts": "122"
@@ -250,13 +250,13 @@
         "longitude": -8.17603,
         "latitude": 33.29982,
         "counts": "12"
-    },
+    },  
     {
         "name": "Inezgane-Ait Mellou",
         "longitude": -9.53662,
-        "latitude": 30.35403,
+        "latitude": 30.35403, 
         "counts": "15"
-    },
+    }, 
     {
         "name": "Ouarzazate",
         "longitude": -6.93417,
@@ -264,9 +264,9 @@
         "counts": "19"
     },
     {
-        "name": "Taroudannt",
+        "name": "Taroudannt", 
         "longitude": -8.87792,
-        "latitude": 30.47065,
+        "latitude": 30.47065, 
         "counts": "26"
     },
     {
@@ -274,14 +274,14 @@
         "longitude": -9.7312,
         "latitude": 29.69647,
         "counts": "25"
-    },
-    {
+    }, 
+    { 
         "name": "Zagora",
         "longitude": -5.81686,
         "latitude": 30.34897,
-        "counts": "7"
+        "counts": "7" 
     },
-    {
+    { 
         "name": "Chefchaouen",
         "longitude": -5.26922,
         "latitude": 35.17102,
@@ -293,39 +293,39 @@
         "latitude": 35.7602,
         "counts": "4"
     },
-    {
-        "name": "Larache",
+    { 
+        "name": "Larache", 
         "longitude": -6.15163,
         "latitude": 35.19436,
         "counts": "6"
-    },
+    }, 
     {
-        "name": "Tanger-Assilah",
+        "name": "Tanger-Assilah",  
         "longitude": -5.99989,
         "latitude": 35.47219,
         "counts": "136"
-    },
+    }, 
     {
         "name": "Tetouan",
-        "longitude": -5.35736,
+        "longitude": -5.35736, 
         "latitude": 35.57785,
         "counts": "97"
-    },
+    }, 
     {
         "name": "Casablanca",
         "longitude": -7.62462,
         "latitude": 33.58398,
         "counts": "368"
     },
-    {
+    {  
         "name": "Mediouna",
         "longitude": -7.5204,
         "latitude": 33.44251,
-        "counts": "16"
-    },
+        "counts": "16" 
+    },  
     {
-        "name": "Mohammedia",
-        "longitude": -7.38491,
+        "name": "Mohammedia", 
+        "longitude": -7.38491, 
         "latitude": 33.69241,
         "counts": "26"
     },
@@ -348,21 +348,21 @@
         "counts": "25"
     },
     {
-        "name": "Al-Hoceima",
+        "name": "Al-Hoceima", 
         "longitude": -3.93054,
-        "latitude": 35.24214,
+        "latitude": 35.24214, 
         "counts": "22"
     },
     {
-        "name": "Taounate",
+        "name": "Taounate", 
         "longitude": -4.6399,
-        "latitude": 34.5369,
+        "latitude": 34.5369,  
         "counts": "34"
-    },
-    {
+    }, 
+    { 
         "name": "Taza",
         "longitude": -4.00875,
         "latitude": 34.22619,
         "counts": "17"
     }
-]
+] 

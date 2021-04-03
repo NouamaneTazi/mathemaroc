@@ -8,16 +8,16 @@ import moment from 'moment'
 import useWindowSize from "react-use/lib/useWindowSize"
 
 const Admin = () => {
-    const getGroupUsers = async () => {
+    const getGroupUsers = async () => { 
         setLoading(true)
         let res = await fetch('/api/mongodb?auth0id=' + user.sub)
         let json = await res.json()
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getUsersByGroupId=' + groupId)
-        const users = await res.json()
+        const users = await res.json() 
         let students = []
         let tutor = undefined
-        users.map(user => user.role == "tutor" ? tutor = user : user.role == "student" ? students.push(user) : null)
+        users.map(user => user.role == "tutor" ? tutor = user : user.role == "student" ? students.push(user) : null) 
         setTutor(tutor)
         setStudents(students)
         setLoading(false)
@@ -25,8 +25,8 @@ const Admin = () => {
 
     const handeRetourListeAttente = async () => {
         for (let student of students) {
-            await fetch('/api/mongodb?unset=true', {
-                method: 'post',
+            await fetch('/api/mongodb?unset=true', {  
+                method: 'post', 
                 body: JSON.stringify({ _id: student._id, data: { groupId: "" } })
             })
         }
@@ -41,14 +41,14 @@ const Admin = () => {
     const [students, setStudents] = useState([])
 
     return (
-        <>
+        <> 
             {/* {console.log(user)} */}
             {!userLoading && <Layout user={user} loading={userLoading}>
                 <Head>
                     <title>Suivi du catalogue</title>
                     <meta name="description" content="Suivi du catalogue" />
                 </Head>
-                
+                 
                 <section id="one">
                     <div className="inner">
                         <header className="major">
@@ -61,36 +61,36 @@ const Admin = () => {
                                 <div className="box" style={{ textAlign: "center" }}>
                                     <h1>{getNumberSeances(groupUsers)}</h1>
                                 </div>
-
+ 
                             </div>
                         } */}
                         <div className="row" style={{ display: 'flex', alignItems: 'center', marginBottom: '1em' }}>
                             <span style={{ width: "20em", fontSize: 'large', fontWeight: 600 }}>Entrez le numéro du groupe :</span>
-                            <input type="text" value={groupId} onChange={e => setGroupId(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? getGroupUsers() : null} />
+                            <input type="text" value={groupId} onChange={e => setGroupId(e.target.value)} onKeyPress={(e) => e.key === 'Enter' ? getGroupUsers() : null} /> 
                             <button className="button special" onClick={() => getGroupUsers()}>Confirmer</button>
                         </div>
-
+ 
                     </div>
                     <div className="inner" style={{ maxWidth: "95%", width: "100%" }}>
 
                         <div className="table-wrapper">
                             <h2>Tuteur :</h2>
                             <table className="alt dense">
-                                <thead>
+                                <thead> 
                                     <tr>
                                         <th>Groupe</th>
                                         <th>Tuteur</th>
                                         <th>Date d'inscription</th>
                                         <th>Dernière modification</th>
                                         <th>Statut</th>
-                                        <th>Téléphone</th>
+                                        <th>Téléphone</th> 
                                         <th>Mail</th>
                                         <th>Nombre de séances</th>
-                                    </tr>
+                                    </tr> 
                                 </thead>
                                 <tbody>
                                     {tutor && <>
-                                        <tr>
+                                        <tr> 
                                             <td>{tutor.groupId}</td>
                                             <td>{tutor.fullname}</td>
                                             <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
@@ -110,14 +110,14 @@ const Admin = () => {
                         <div className="table-wrapper">
                             <table>
                                 <thead>
-                                    <tr>
+                                    <tr> 
                                         <th>Nom</th>
                                         <th>Lycée</th>
                                         <th>Ville</th>
                                         <th>Filière</th>
                                         <th>Matières</th>
                                         <th>Demandes</th>
-                                        <th>Whatsapp</th>
+                                        <th>Whatsapp</th> 
                                         <th>Facebook</th>
                                         <th>Signalé</th>
                                     </tr>
@@ -129,7 +129,7 @@ const Admin = () => {
                                             <td>{student.fullname}</td>
                                             <td>{student.lycee}</td>
                                             <td>{student.ville}</td>
-                                            <td>{student.filiere}</td>
+                                            <td>{student.filiere}</td> 
                                             <td>{student.matiere}</td>
                                             <td>{student.wishes}</td>
                                             <td>{student.whatsapp}</td>
@@ -148,7 +148,7 @@ const Admin = () => {
                                 <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Durée</th>
+                                        <th>Durée</th> 
                                         <th>Chapitres traités</th>
                                         <th>Élèves absents</th>
                                         <th>Remarques</th>

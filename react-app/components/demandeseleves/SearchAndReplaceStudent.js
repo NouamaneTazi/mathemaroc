@@ -10,13 +10,13 @@ const SearchAndReplaceStudent = ({ awaitingStudents, tutor }) => {
             })
         }
         await fetch('/api/mongodb?unset=true', {
-            method: 'post',
+            method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { asked_more_students: "" } })
-        })
+        }) 
         window.location.reload(false);
     }
     const handleSelectingStudent = student => {
-        if (!selectedStudents.includes(student)) {
+        if (!selectedStudents.includes(student)) { 
             let value = selectedStudents
             value.push(student)
             setSelectedStudents([...value])
@@ -24,9 +24,9 @@ const SearchAndReplaceStudent = ({ awaitingStudents, tutor }) => {
     }
 
     const [searchTerm, setSearchTerm] = useState("")
-    const [selectedStudents, setSelectedStudents] = useState([])
+    const [selectedStudents, setSelectedStudents] = useState([]) 
     const filteredAwaitingStudents = awaitingStudents.filter(createFilter(searchTerm, ['firstname', 'lastname', 'whatsapp']))
-
+ 
     return (<div className="12u 12u(small)" >
         <div className="row" style={{ display: "contents" }}>
             {selectedStudents.map(student => (
@@ -45,11 +45,11 @@ const SearchAndReplaceStudent = ({ awaitingStudents, tutor }) => {
             searchTerm !== "" && <>
                 {filteredAwaitingStudents.slice(0, 3).map(student => (
                     <Fragment key={student._id}>
-                        <input type="checkbox" id={`${student.firstname}-${student.lastname}`} name="demo-priority" onChange={() => { handleSelectingStudent(student) }} />
-                        <label htmlFor={`${student.firstname}-${student.lastname}`}>{student.lastname} {student.firstname}</label>
+                        <input type="checkbox" id={`${student.firstname}-${student.lastname}`} name="demo-priority" onChange={() => { handleSelectingStudent(student) }} /> 
+                        <label htmlFor={`${student.firstname}-${student.lastname}`}>{student.lastname} {student.firstname}</label> 
                     </Fragment>
                 ))}
-                {selectedStudents.length > 0 && <div className="button special" onClick={() => giveStudents()}>Confimer</div>}
+                {selectedStudents.length > 0 && <div className="button special" onClick={() => giveStudents()}>Confimer</div>} 
             </>
         }
     </div >)

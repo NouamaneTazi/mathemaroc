@@ -11,7 +11,8 @@ if (typeof window === 'undefined') {
     POST_LOGOUT_REDIRECT_URI: process.env.POST_LOGOUT_REDIRECT_URI,
     SESSION_COOKIE_SECRET: process.env.SESSION_COOKIE_SECRET,
     SESSION_COOKIE_LIFETIME: process.env.SESSION_COOKIE_LIFETIME,
-    ATLAS_URI: process.env.ATLAS_URI
+    ATLAS_URI: process.env.ATLAS_URI,
+    SENDGRID_API_KEY: process.env.SENDGRID_API_KEY
   }
 } else {
   /**

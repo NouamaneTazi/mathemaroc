@@ -1,31 +1,165 @@
 import nextConnect from 'next-connect';
 import middleware from '../../lib/database';
+var ObjectID = require('mongodb').ObjectID;
 
 const handler = nextConnect();
 
 handler.use(middleware);
 
 handler.get(async (req, res) => {
-    // console.log(req.query)
-    let { groupId, id } = req.query
+    console.log("query", req.query)
+    let { groupId, auth0id, role, getAllSeances, getAllReports, getDemandesDeleves, getAwaitingStudents, getAwaitingTutors, getAllReportsFromStudents } = req.query
     if (groupId) {
         req.db.collection('users').find({ groupId: parseInt(groupId) }).toArray(function (err, result) {
-            if (err || !result) res.json({ err });
+            if (err) res.json({ err: true })
             else {
                 // console.log(result);
                 res.json(result);
             }
         });
-    } else {
-        req.db.collection('users').findOne({ id }, function (err, result) {
-            if (err || !result) res.json({ err:true });
+    } else if (auth0id) {
+        req.db.collection('users').findOne({ auth0id }, function (err, user) {
+            if (err) res.json({ err: true })
+            else if (!user) {
+                console.log("Not Yet Setup")
+                res.json({ notYetSetUp: true })
+            }
+            else if (user.role === "tutor") {
+                req.db.collection('users').find({ groupId: parseInt(user.groupId), role: "student"}).toArray(function (err, students) {
+                    if (err) res.json({ err: true })
+                    else {
+                        user.students = students ? students : []
+                        // console.log("uu",user)
+                        res.json(user);
+                    }
+                });
+            } else {
+                res.json(user);
+            }
+        });
+    } else if (role) {
+        req.db.collection('users').find({ role }).sort({ lastname: 1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
             else {
                 // console.log(result);
                 res.json(result);
             }
-
         });
+    } else if (getAllSeances) {
+        req.db.collection('users').find({ role: "tutor", seances: { $exists: true } }).sort({ last_updated: -1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (req.query.getCatalogueLogs) {
+        req.db.collection('users').find({ catalogue_logs: { $exists: true } }).sort({ "catalogue_logs.time": -1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (req.query.getTutorsSignUps) {
+        req.db.collection('users').aggregate([
+            { $match: { groupId: { $gte: 4000, $lte: 5000 } } },
+            { $sort: { updated_at: -1 } },
+            { $group: { _id: "$groupId", users: { $push: "$$ROOT" } } }
+        ]).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (req.query.getStudentsSignUps) {
+        req.db.collection('users').find({ role: "student", auth0id: { $exists: true } }).sort({ updated_at: -1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (getAllReports) {
+        req.db.collection('users').find({ role: "tutor", reports: { $exists: true } }).sort({ "reports.time": -1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (getDemandesDeleves) {
+        req.db.collection('users').find({ role: "tutor", asked_more_students: { $exists: true } }).sort({ "asked_more_students.time": -1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (getAwaitingStudents && req.query.limit) {
+        req.db.collection('users').find({ role: "student", groupId: { "$exists": false } }).sort({ timestamp: 1, lastname: 1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (getAwaitingStudents) {
+        req.db.collection('users').find({ role: "student", groupId: { "$exists": false } }).sort({ lastname: 1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (getAwaitingTutors) {
+        req.db.collection('users').find({ role: "tutor", groupId: { $exists: false } }).sort({ lastname: 1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        });
+    } else if (getAllReportsFromStudents) {
+        req.db.collection('users').find({ reported: true, groupId: { $ne: -1 } }).sort({ "report.tutor.name": 1 }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        })
+    } else if (req.query.getUsersByGroupId) {
+        req.db.collection('users').find({ groupId: parseInt(req.query.getUsersByGroupId) }).toArray(function (err, result) {
+            if (err) res.json({ err: true })
+            else {
+                res.json(result);
+            }
+        })
+    } else if (req.query.count) {
+        let result = {}
+        result.supportedStudents = await req.db.collection('users').find({ role: 'student', groupId: { $exists: true } }).count()
+        result.students = await req.db.collection('users').find({ role: 'student' }).count()
+        res.json(result)
     }
 });
+
+handler.post(async (req, res) => {
+    let data = req.body;
+    const user = JSON.parse(data);
+    ['_id', 'needsSetup', 'isSetup', 'sub', 'notYetSetUp'].map(key => key in user.data ? delete user.data[key] : null)
+    console.log("query", req.query)
+    console.log("user", user)
+    if (req.query.insert) {
+        if (user.data.role === "tutor") {
+            const ret = await req.db.collection('counters').findOneAndUpdate({ _id: 'groupId' }, { $inc: { seq: 1 } })
+            user.data.groupId = ret.value.seq
+            await req.db.collection('users').insertOne(user.data)
+        } else if (user.data.role === "student") {
+            user.data.timestamp = new Date(Date.now())
+            if (user.data.whatsapp) {
+                await req.db.collection('users').updateOne({ whatsapp: user.data.whatsapp }, { $set: user.data }, true)
+            } else {
+                await req.db.collection('users').insertOne(user.data)
+            }
+        }
+
+    } else if (req.query.unset) {
+        await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $unset: user.data })
+    } else {
+        await req.db.collection('users').updateOne({ _id: ObjectID(user._id) }, { $set: user.data })
+    }
+    res.json({ message: 'ok' });
+})
 
 export default handler;

@@ -3,14 +3,19 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 import Banner from '../components/Banner'
 import { useFetchUser } from '../lib/user'
+import Router from 'next/router'
+import { useEffect } from 'react'
 
 export default () => {
 
     const { user, loading } = useFetchUser()
-
+    useEffect(() => {
+        Router.push('/profile')
+    })
+    
     return (
         <Layout user={user} loading={loading}>
-            {console.log("user",user)}
+            {/* {console.log("user", user)} */}
             <div>
                 <Banner />
                 <div id="main">

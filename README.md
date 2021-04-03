@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-To get started, simply clone the repository and run `npm install`
+To get started, simply clone the repository and run `npm install`.
 
 ```
 # Install npm packages

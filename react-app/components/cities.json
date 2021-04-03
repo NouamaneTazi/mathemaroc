@@ -5,7 +5,7 @@
         "latitude": 33.6193,
         "counts": "16"
     },
-    {
+    { 
         "name": "Khouribga",
         "longitude": -6.89451,
         "latitude": 32.87446,
@@ -49,7 +49,7 @@
     },
     {
         "name": "Es-Semara",
-        "longitude": -11.67194,
+        "longitude": -11.67194, 
         "latitude": 26.73841,
         "counts": "20"
     },
@@ -123,8 +123,8 @@
         "name": "Berkane-Taourirt",
         "longitude": -2.31523,
         "latitude": 34.91677,
-        "counts": "27"
-    },
+        "counts": "27" 
+    }, 
     {
         "name": "Figuig",
         "longitude": -1.23827,
@@ -177,9 +177,9 @@
         "name": "Moulay-Yacoub",
         "longitude": -5.1811,
         "latitude": 34.0878,
-        "counts": "2"
+        "counts": "2" 
     },
-    {
+    { 
         "name": "Sefrou",
         "longitude": -4.83322,
         "latitude": 33.83059,
@@ -203,7 +203,7 @@
         "latitude": 33.52769,
         "counts": "12"
     },
-    {
+    { 
         "name": "Khenifra",
         "longitude": -5.65383,
         "latitude": 32.93877,
@@ -240,7 +240,7 @@
         "counts": "29"
     },
     {
-        "name": "Agadir-Ida-ou-Tnan",
+        "name": "Agadir-Ida-ou-Tnan", 
         "longitude": -9.58009,
         "latitude": 30.41662,
         "counts": "122"
@@ -261,7 +261,7 @@
         "name": "Ouarzazate",
         "longitude": -6.93417,
         "latitude": 30.89397,
-        "counts": "19"
+        "counts": "19" 
     },
     {
         "name": "Taroudannt",
@@ -271,7 +271,7 @@
     },
     {
         "name": "Tiznit",
-        "longitude": -9.7312,
+        "longitude": -9.7312, 
         "latitude": 29.69647,
         "counts": "25"
     },
@@ -291,7 +291,7 @@
         "name": "Fahs-Anjra",
         "longitude": -5.6668,
         "latitude": 35.7602,
-        "counts": "4"
+        "counts": "4" 
     },
     {
         "name": "Larache",
@@ -318,7 +318,7 @@
         "counts": "368"
     },
     {
-        "name": "Mediouna",
+        "name": "Mediouna", 
         "longitude": -7.5204,
         "latitude": 33.44251,
         "counts": "16"
@@ -339,7 +339,7 @@
         "name": "Azilal",
         "longitude": -6.57037,
         "latitude": 31.9623,
-        "counts": "11"
+        "counts": "11" 
     },
     {
         "name": "Beni-Mellal",

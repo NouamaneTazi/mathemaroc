@@ -22,7 +22,7 @@ const Seances = ({ user }) => {
         values[index][event.target.name] = event.target.value
         setInputFields(values);
     };
-    console.log()
+    console.log() 
     const handleDateChange = (index, event) => {
         moment.locale('fr')
         let date = event.target.value
@@ -32,7 +32,7 @@ const Seances = ({ user }) => {
                 const values = [...inputFields];
                 values[index][event.target.name] = date.format('YYYY-MM-DD')
                 setInputFields(values)
-            }
+            } 
         }
     }
 
@@ -43,7 +43,7 @@ const Seances = ({ user }) => {
             values[index].absents[absentStudent._id] = `${absentStudent.firstname} ${absentStudent.lastname}`
             setInputFields(values);
         }
-    }
+    } 
 
     const handleSubmitSeances = async () => {
         let seances = inputFields.filter(input => input.date || input.duree || input.chapitres || input.remarques) // Keep non empty seances
@@ -70,7 +70,7 @@ const Seances = ({ user }) => {
                 <div className="table-wrapper">
                     <table>
                         <thead>
-                            <tr>
+                            <tr> 
                                 <th>Date</th>
                                 <th>Durée</th>
                                 <th>Chapitres traités</th>
@@ -97,19 +97,19 @@ const Seances = ({ user }) => {
                                     <td style={{ width: '10%' }}>
                                         <input
                                             type="text"
-                                            id="duree"
+                                            id="duree" 
                                             name="duree"
                                             value={inputField.duree}
                                             onChange={event => handleInputChange(index, event)}
                                         />
                                     </td>
                                     <td>
-                                        <textarea name="chapitres" id="chapitres-traites" placeholder="Enter your message" rows="7" value={inputField.chapitres} onChange={event => handleInputChange(index, event)}></textarea>
+                                        <textarea name="chapitres" id="chapitres-traites" placeholder="Enter your message" rows="7" value={inputField.chapitres} onChange={event => handleInputChange(index, event)}></textarea> 
 
                                     </td>
 
                                     <td>
-                                        {user.students.map((student) => (
+                                        {user.students.map((student) => ( 
                                             <div className="12u 12u(small)" key={student._id}>
                                                 {/* TODO: handle checked for absent students */}
                                                 <input type="checkbox" id={`${index}-${student._id}`} onChange={() => handleAbsentsChange(index, student)} />
@@ -125,7 +125,7 @@ const Seances = ({ user }) => {
                                     </td>
                                     <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
                                         <Rating
-                                            initialRating={inputFields[index].rating}
+                                            initialRating={inputFields[index].rating} 
                                             onChange={(val) => handleInputChange(index, { target: { name: 'rating', value: val } })}
                                             emptySymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30 }}>{x}</Icon>)}
                                             fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, color: "#2ea1d9" }}>{x}</Icon>)}
@@ -137,7 +137,7 @@ const Seances = ({ user }) => {
                                 </tr>
                             ))}
                             <tr><th></th><th></th><th></th><th></th><th></th><th></th>
-                                <th style={{ paddingBottom: 0 }}>
+                                <th style={{ paddingBottom: 0 }}> 
                                     <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleAddFields()}>add_circle</Icon>
                                 </th>
                             </tr>
@@ -153,13 +153,13 @@ const Seances = ({ user }) => {
                                         <td style={{ width: 180, paddingLeft: 0, paddingRight: 0 }}>
                                             <Rating
                                                 readonly
-                                                initialRating={inputFields[index].rating}
+                                                initialRating={inputFields[index].rating} 
                                                 onChange={(val) => handleInputChange(index, { target: { name: 'rating', value: val } })}
                                                 emptySymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white" }}>{x}</Icon>)}
                                                 fullSymbol={['sentiment_very_dissatisfied', 'sentiment_dissatisfied', 'sentiment_satisfied', 'sentiment_satisfied_alt', 'sentiment_very_satisfied'].map(x => <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "#2ea1d9" }}>{x}</Icon>)}
                                             />
                                         </td>
-                                    </tr>
+                                    </tr> 
                                 ))}
                             </tbody>}
                     </table>
@@ -167,8 +167,8 @@ const Seances = ({ user }) => {
                 {(!inputFields || inputFields.length === 0) && <p style={{ textAlign: 'center' }}>Tu peux remplir ici les comptes rendus de chaque séance que tu fais avec tes élèves pour qu'on sache que les élèves sont bien pris en charge</p>}
 
                 <div>
-                    {editMode ?
-                        <button className="button" onClick={() => handleSubmitSeances()}>Enregistrer</button>
+                    {editMode ? 
+                        <button className="button" onClick={() => handleSubmitSeances()}>Enregistrer</button> 
 
                         : <button className="button icon fa-pencil" onClick={() => {
                             setSavedSuccess(false)

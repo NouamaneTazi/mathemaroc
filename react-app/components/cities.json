@@ -82,7 +82,7 @@
         "longitude": -13.18797,
         "latitude": 27.1418,
         "counts": "31"
-    },
+    }, 
     {
         "name": "Al-Haouz",
         "longitude": -7.91076,
@@ -183,7 +183,7 @@
         "name": "Sefrou",
         "longitude": -4.83322,
         "latitude": 33.83059,
-        "counts": "16"
+        "counts": "16" 
     },
     {
         "name": "El-Hajeb",
@@ -194,7 +194,7 @@
     {
         "name": "Errachidia",
         "longitude": -4.45363,
-        "latitude": 31.94102,
+        "latitude": 31.94102, 
         "counts": "55"
     },
     {
@@ -281,7 +281,7 @@
         "latitude": 30.34897,
         "counts": "7"
     },
-    {
+    { 
         "name": "Chefchaouen",
         "longitude": -5.26922,
         "latitude": 35.17102,
@@ -298,7 +298,7 @@
         "longitude": -6.15163,
         "latitude": 35.19436,
         "counts": "6"
-    },
+    }, 
     {
         "name": "Tanger-Assilah",
         "longitude": -5.99989,
@@ -320,7 +320,7 @@
     {
         "name": "Mediouna", 
         "longitude": -7.5204,
-        "latitude": 33.44251,
+        "latitude": 33.44251, 
         "counts": "16"
     },
     {
@@ -340,7 +340,7 @@
         "longitude": -6.57037,
         "latitude": 31.9623,
         "counts": "11" 
-    },
+    }, 
     {
         "name": "Beni-Mellal",
         "longitude": -6.3758,
@@ -349,7 +349,7 @@
     },
     {
         "name": "Al-Hoceima",
-        "longitude": -3.93054,
+        "longitude": -3.93054, 
         "latitude": 35.24214,
         "counts": "22"
     },

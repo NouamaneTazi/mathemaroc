@@ -48,7 +48,7 @@ export default () => (
                     <div className="row 200%">
                         <div className="6u 12u(medium)">
 
-                                <h3>Text</h3>
+                                <h3>Text</h3> 
                                 <p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
                                 This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
                                 This is <u>underlined</u> and this is code: <code>for (;;)</code>.
@@ -62,7 +62,7 @@ export default () => (
 
                                 <h3>Lists</h3>
                                 <div className="row">
-                                    <div className="6u 12u(small)">
+                                    <div className="6u 12u(small)"> 
 
                                         <h4>Unordered</h4>
                                         <ul>
@@ -182,7 +182,7 @@ export default () => (
                                 <div className="table-wrapper">
                                     <table>
                                         <thead>
-                                            <tr>
+                                            <tr> 
                                                 <th>Name</th>
                                                 <th>Description</th>
                                                 <th>Price</th>
@@ -191,13 +191,13 @@ export default () => (
                                         <tbody>
                                             <tr>
                                                 <td>Item1</td>
-                                                <td>Ante turpis integer aliquet porttitor.</td>
+                                                <td>Ante turpis integer aliquet porttitor.</td> 
                                                 <td>29.99</td>
                                             </tr>
                                             <tr>
                                                 <td>Item2</td>
                                                 <td>Vis ac commodo adipiscing arcu aliquet.</td>
-                                                <td>19.99</td>
+                                                <td>19.99</td> 
                                             </tr>
                                             <tr>
                                                 <td>Item3</td>
@@ -244,7 +244,7 @@ export default () => (
                                                 <td>Item2</td>
                                                 <td>Vis ac commodo adipiscing arcu aliquet.</td>
                                                 <td>19.99</td>
-                                            </tr>
+                                            </tr> 
                                             <tr>
                                                 <td>Item3</td>
                                                 <td> Morbi faucibus arcu accumsan lorem.</td>
@@ -315,7 +315,7 @@ export default () => (
                                         <div className="6u 12u(xsmall)">
                                             <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
                                         </div>
-                                        <div className="12u">
+                                        <div className="12u"> 
                                             <div className="select-wrapper">
                                                 <select name="demo-category" id="demo-category">
                                                     <option value="">- Category -</option>
@@ -381,7 +381,7 @@ export default () => (
                                 <p><span className="image right"><img src="/static/images/pic10.jpg" alt="" /></span>Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget tempus vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis.</p>
 
                                 <h3>Box</h3>
-                                <div className="box">
+                                <div className="box"> 
                                     <p>Felis sagittis eget tempus primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Magna sed etiam ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus lorem ipsum.</p>
                                 </div>
 

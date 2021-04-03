@@ -14,8 +14,8 @@ export default () => (
         <div>
             <BannerLanding />
 
-            <div id="main">
-                <section id="one">
+            <div id="main"> 
+                <section id="one"> 
                     <div className="inner">
                         <header className="major">
                             <h2>Sed amet aliquam</h2>
@@ -24,16 +24,16 @@ export default () => (
                     </div>
                 </section>
                 <section id="two" className="spotlights">
-                    <section>
+                    <section> 
                         <Link href="/generic">
-                            <a className="image"><img src="/static/images/pic08.jpg" alt="" /></a>
+                            <a className="image"><img src="/static/images/pic08.jpg" alt="" /></a> 
                         </Link>
                         <div className="content">
                             <div className="inner">
                                 <header className="major">
                                     <h3>Orci maecenas</h3>
                                 </header>
-                                <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+                                <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p> 
                                 <ul className="actions">
                                     <li><Link href="/generic"><a className="button">Learn more</a></Link></li>
                                 </ul>
@@ -68,13 +68,13 @@ export default () => (
                                 <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
                                 <ul className="actions">
                                     <li><Link href="/generic"><a className="button">Learn more</a></Link></li>
-                                </ul>
+                                </ul> 
                             </div>
                         </div>
                     </section>
                 </section>
             </div>
 
-        </div>
+        </div> 
     </Layout>
 )

@@ -37,13 +37,13 @@ const Reports = () => {
         Object.assign(user, json)
         res = await fetch('/api/mongodb?getAwaitingTutors=true')
         const new_awaitingtutors = await res.json()
-
-        res = await fetch('/api/mongodb?getAwaitingStudents=true')
-        const awaitingStudents = await res.json()
+ 
+        res = await fetch('/api/mongodb?getAwaitingStudents=true') 
+        const awaitingStudents = await res.json() 
 
         setAwaitingTutors(new_awaitingtutors)
         setAwaitingStudents(awaitingStudents)
-    }
+    } 
 
     const handleModClick = async (tutor, report_id) => {
         if (tutor.reports[report_id].mod) {
@@ -66,7 +66,7 @@ const Reports = () => {
 
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
-        if (user && !loading) {
+        if (user && !loading) { 
             getUserData(user)
         }
     }, [user, loading])
@@ -76,7 +76,7 @@ const Reports = () => {
             {/* {console.log(user)} */}
             {!loading && <Layout user={user} loading={loading}>
                 <Head>
-                    <title>Tuteurs en attente</title>
+                    <title>Tuteurs en attente</title> 
                     <meta name="description" content="Tuteurs en attente" />
                 </Head>
                 <MenuAdmin user={user}/>
@@ -95,7 +95,7 @@ const Reports = () => {
                                             <th>Tuteur</th>
                                             <th>Statut</th>
                                             <th>Matières</th>
-                                            <th>Whatsapp</th>
+                                            <th>Whatsapp</th> 
                                             <th>Mail</th>
                                             <th>Veut encadrer groupe ?</th>
                                             <th>Groupe</th>
@@ -125,8 +125,8 @@ const Reports = () => {
             </Layout>
             }
         </>
-    )
+    ) 
 }
 
-
+ 
 export default Reports

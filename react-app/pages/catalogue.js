@@ -11,7 +11,7 @@ import Link from 'next/link'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
+import Dialog from '@material-ui/core/Dialog'; 
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
@@ -39,19 +39,19 @@ const Reports = () => {
         value.push(student)
         setSelectedStudents([...value])
     }
-
-    const handleSubmit = async () => {
+ 
+    const handleSubmit = async () => { 
         if ((user.students && user.students.length + selectedStudents.length > 20) || (selectedStudents.length > 20)) {
             setError({ message: 'Si vous voulez prendre plus que 20 élèves, veuillez nous contacter sur mathemaroc.contact@gmail.com' })
         }
-        else {
+        else { 
             for (let student of selectedStudents) {
                 await fetch('/api/mongodb', {
                     method: 'post',
                     body: JSON.stringify({ _id: student._id, data: { "groupId": user.groupId } })
                 })
             }
-            let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : []
+            let catalogue_logs = user.catalogue_logs ? user.catalogue_logs : [] 
             catalogue_logs.push({
                 time: new Date(Date.now()).toLocaleString("en-US"),
                 students: selectedStudents.map(student => ({ _id: student._id, name: student.fullname }))
@@ -65,7 +65,7 @@ const Reports = () => {
             })
             Router.push('/profile')
         }
-        setLoading(false)
+        setLoading(false) 
     }
 
     let { user, loading: userLoading } = useFetchUser()
@@ -81,7 +81,7 @@ const Reports = () => {
     const [selectedStudents, setSelectedStudents] = useState([])
     const [maxRows, setMaxRows] = useState(10)
     const [userHasNoStudents, setUserHasNoStudents] = useState(false)
-
+ 
     useEffect(() => {
         // { console.log("useEffect", user, userLoading) }
         if (user && !userLoading) {
@@ -90,7 +90,7 @@ const Reports = () => {
             getAwaitingStudentsData()
         }
         else if (!userLoading && !user) {
-            Router.push('/profile')
+            Router.push('/profile') 
         }
     }, [user, userLoading])
 
@@ -107,8 +107,8 @@ const Reports = () => {
     }, [maxRows, selectedStudents, filiereTerm, matiereTerm, wishesTerm])
 
     return (
-        <>
-            <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}>
+        <> 
+            <Backdrop className={{ zIndex: 9999, color: '#fff' }} open={loading}> 
                 <CircularProgress color="inherit" />
             </Backdrop>
             {!loading && user && <Layout user={user} loading={userLoading}>
@@ -134,7 +134,7 @@ const Reports = () => {
 
                     </MuiDialogContent>
 
-                    <Button autoFocus onClick={() => setUserHasNoStudents(false)} color="primary">
+                    <Button autoFocus onClick={() => setUserHasNoStudents(false)} color="primary"> 
                         Fermer
                         </Button>
                 </Dialog>
@@ -191,7 +191,7 @@ const Reports = () => {
                             {error && <Alert severity="error">{error.message}</Alert>}
                             <p style={{ marginBottom: '1em', textAlign: 'center' }}><b>Voulez vous prendre en charge ces élèves ?</b></p>
                             <button className="button special medium" style={{ margin: 'auto', display: 'block' }} onClick={() => { setLoading(true); handleSubmit() }}>Oui !</button>
-                        </div>
+                        </div> 
                         <Divider style={{ marginBottom: "3em" }} />
                     </>}
 
@@ -207,7 +207,7 @@ const Reports = () => {
                                             <div className="select-wrapper" >
                                                 <select style={{ backgroundColor: "#434b84" }} onChange={(e) => setFiliereTerm(e.target.value)}>
                                                     <option value="">- Filière -</option>
-                                                    <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option>
+                                                    <option value="SCIENCES MATHÉMATIQUES">SCIENCES MATHÉMATIQUES</option> 
                                                     <option value="SCIENCES MATHÉMATIQUES A">SCIENCES MATHÉMATIQUES A</option>
                                                     <option value="SCIENCES MATHÉMATIQUES B">SCIENCES MATHÉMATIQUES B</option>
                                                     <option value="SCIENCES PHYSIQUES">SCIENCES PHYSIQUES</option>
@@ -235,7 +235,7 @@ const Reports = () => {
                                                 <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => { setError(false); setSelectedStudents(selectedStudents.filter(s => s._id != student._id)) }}>check_box</Icon>
                                                 : <Icon style={{ fontSize: 30, verticalAlign: "text-top", color: "white", cursor: "pointer" }} onClick={() => handleSelectStudent(student)}>check_box_outline_blank</Icon>
                                             }</td>
-                                        </tr>
+                                        </tr> 
                                     ))}
                                 </tbody>
                             </table>

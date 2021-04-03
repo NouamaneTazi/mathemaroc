@@ -13,7 +13,7 @@ const Admin = () => {
         res = await fetch('/api/mongodb?getTutorsSignUps=true')
         const value = await res.json()
         setGroupUsers(value.map(group => group.users).sort((b, a) => moment(a[0].updated_at) - moment(b[0].updated_at)))
-    }
+    } 
 
     const handleModClick = async (tutor, seance_id) => {
         if (tutor.seances[seance_id].mod) {
@@ -23,7 +23,7 @@ const Admin = () => {
         }
 
         const res = await fetch('/api/mongodb', {
-            method: 'post',
+            method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { seances: tutor.seances } })
         })
         setRefresh(!refresh)
@@ -36,7 +36,7 @@ const Admin = () => {
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
-            getUserData(user)
+            getUserData(user) 
         }
     }, [user, loading])
 
@@ -47,7 +47,7 @@ const Admin = () => {
                 <Head>
                     <title>Suivi du catalogue</title>
                     <meta name="description" content="Suivi du catalogue" />
-                </Head>
+                </Head> 
                 
                 <section id="one">
                     <div className="inner">
@@ -65,8 +65,8 @@ const Admin = () => {
                             </div>
                         } */}
                     </div>
-                    <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}>
-
+                    <div style={{ maxWidth: "95%", width: "100%", margin: "auto" }}> 
+ 
                         <div className="table-wrapper">
                             <table className="alt dense">
                                 <thead>
@@ -92,7 +92,7 @@ const Admin = () => {
                                                     <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
                                                     <td>{tutor.statut}</td>
                                                     <td>{tutor.whatsapp}</td>
-                                                    <td>{tutor.mail}</td>
+                                                    <td>{tutor.mail}</td> 
                                                     <td>{users.length - 1}</td>
                                                     <td>{tutor.seances ? tutor.seances.length : 0}</td>
                                                 </tr>

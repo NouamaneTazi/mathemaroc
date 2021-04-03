@@ -4,10 +4,10 @@ const Contact = (props) => (
             <section>
                 <form method="post" action="#">
                     <div className="field half first">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name">Name</label> 
                         <input type="text" name="name" id="name" />
-                    </div>
-                    <div className="field half">
+                    </div> 
+                    <div className="field half"> 
                         <label htmlFor="email">Email</label>
                         <input type="text" name="email" id="email" />
                     </div>
@@ -17,7 +17,7 @@ const Contact = (props) => (
                     </div>
                     <ul className="actions">
                         <li><input type="submit" value="Send Message" className="special" /></li>
-                        <li><input type="reset" value="Clear" /></li>
+                        <li><input type="reset" value="Clear" /></li> 
                     </ul>
                 </form>
             </section>
@@ -27,26 +27,26 @@ const Contact = (props) => (
                         <span className="icon alt fa-envelope"></span>
                         <h3>Email</h3>
                         <a href="#">information@untitled.tld</a>
-                    </div>
+                    </div> 
                 </section>
                 <section>
                     <div className="contact-method">
                         <span className="icon alt fa-phone"></span>
-                        <h3>Phone</h3>
+                        <h3>Phone</h3> 
                         <span>(000) 000-0000 x12387</span>
                     </div>
                 </section>
                 <section>
-                    <div className="contact-method">
+                    <div className="contact-method"> 
                         <span className="icon alt fa-home"></span>
                         <h3>Address</h3>
                         <span>1234 Somewhere Road #5432<br />
-                        Nashville, TN 00000<br />
+                        Nashville, TN 00000<br /> 
                         United States of America</span>
                     </div>
                 </section>
-            </section>
-        </div>
+            </section> 
+        </div> 
     </section>
 )
 

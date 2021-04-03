@@ -2,7 +2,7 @@ import Head from "next/head"
 import stylesheet from 'styles/main.scss'
 
 import Header from './Header'
-import Menu from './Menu'
+import Menu from './Menu' 
 import Contact from './Contact'
 import Footer from './Footer'
 import Router from "next/router"
@@ -16,7 +16,7 @@ class Layout extends React.Component {
             loading: 'is-loading'
         }
         this.handleToggleMenu = this.handleToggleMenu.bind(this)
-    }
+    } 
 
     componentDidMount() {
         if (!this.props.loading && !this.props.user) {
@@ -27,23 +27,23 @@ class Layout extends React.Component {
         }, 100);
     }
 
-    componentWillUnmount() {
+    componentWillUnmount() { 
         if (this.timeoutId) {
             clearTimeout(this.timeoutId);
         }
     }
-
+ 
     handleToggleMenu() {
         this.setState({
             isMenuVisible: !this.state.isMenuVisible
-        })
+        }) 
     }
 
     render() {
         const {user} = this.props
         return (
-            <div className={`body ${this.props.loading ? 'is-loading' : this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
-                <Head>
+            <div className={`body ${this.props.loading ? 'is-loading' : this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}> 
+                <Head> 
                     <title>Math&Maroc</title>
                     <meta name="description" content="Le site de Math&Maroc" />
                     <link href="/static/css/skel.css" rel="stylesheet" />
@@ -55,8 +55,8 @@ class Layout extends React.Component {
                     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />    
                     <link
                         href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
-                        rel="stylesheet"
-                    />
+                        rel="stylesheet" 
+                    /> 
                 </Head>
                 <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
 
@@ -64,14 +64,14 @@ class Layout extends React.Component {
                     <Header onToggleMenu={this.handleToggleMenu} />
                    <MenuAdmin user={user} />
                     {this.props.children}
-                    {/* <Contact /> */}
+                    {/* <Contact /> */} 
                     <Footer />
                 </div>
                 <Menu onToggleMenu={this.handleToggleMenu} user={this.props.user} loading={this.props.loading} />
 
             </div>
         )
-    }
+    } 
 }
 
 export default Layout

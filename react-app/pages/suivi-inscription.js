@@ -1,5 +1,5 @@
 import Head from "next/head"
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react" 
 import Layout from '../components/Layout'
 import { useFetchUser } from '../lib/user'
 import SeancesLineChart from '../components/SeancesLineChart'
@@ -16,14 +16,14 @@ const Admin = () => {
     }
 
     const handleModClick = async (tutor, seance_id) => {
-        if (tutor.seances[seance_id].mod) {
+        if (tutor.seances[seance_id].mod) { 
             delete tutor.seances[seance_id].mod
         } else {
             tutor.seances[seance_id].mod = { "id": user.sub, "name": user.name }
         }
-
-        const res = await fetch('/api/mongodb', {
-            method: 'post',
+ 
+        const res = await fetch('/api/mongodb', { 
+            method: 'post', 
             body: JSON.stringify({ _id: tutor._id, data: { seances: tutor.seances } })
         })
         setRefresh(!refresh)
@@ -58,9 +58,9 @@ const Admin = () => {
                         {/* {groupUsers.length > 0 &&
                             <div className="12u 12u(medium)">
                                 <h3>Compteur de séances données :</h3>
-                                <div className="box" style={{ textAlign: "center" }}>
+                                <div className="box" style={{ textAlign: "center" }}> 
                                     <h1>{getNumberSeances(groupUsers)}</h1>
-                                </div>
+                                </div> 
 
                             </div>
                         } */}
@@ -92,8 +92,8 @@ const Admin = () => {
                                                     <td>{moment(tutor.updated_at).format('DD/MM/YYYY HH:mm:ss')}</td>
                                                     <td>{tutor.statut}</td>
                                                     <td>{tutor.whatsapp}</td>
-                                                    <td>{tutor.mail}</td>
-                                                    <td>{users.length - 1}</td>
+                                                    <td>{tutor.mail}</td> 
+                                                    <td>{users.length - 1}</td> 
                                                     <td>{tutor.seances ? tutor.seances.length : 0}</td>
                                                 </tr>
                                             </>

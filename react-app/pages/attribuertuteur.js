@@ -44,14 +44,14 @@ const Reports = () => {
         setAwaitingTutors(new_awaitingtutors)
         setAwaitingStudents(awaitingStudents)
     }
-
+ 
     const handleModClick = async (tutor, report_id) => {
         if (tutor.reports[report_id].mod) {
             delete tutor.reports[report_id].mod
-        } else {
+        } else { 
             tutor.reports[report_id].mod = { "id": user.sub, "name": user.name }
         }
-
+ 
         const res = await fetch('/api/mongodb', {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
@@ -67,7 +67,7 @@ const Reports = () => {
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
         if (user && !loading) {
-            getUserData(user)
+            getUserData(user) 
         }
     }, [user, loading])
 
@@ -85,11 +85,11 @@ const Reports = () => {
                         <header className="major">
                             {user ? <h1>Tuteurs en attente ({awaitingtutors.length})</h1>
                                 : <h1>Vous n'êtes pas connectés</h1>}
-                        </header>
+                        </header> 
 
                         <div className="12u 12u(medium)">
                             <div className="table-wrapper">
-                                <table>
+                                <table> 
                                     <thead>
                                         <tr>
                                             <th>Tuteur</th>
@@ -106,25 +106,25 @@ const Reports = () => {
                                         {awaitingtutors.map(tutor => (
                                             <tr key={`${tutor._id}`}>
                                                 <td>{tutor.firstname} {tutor.lastname}</td>
-                                                <td>{tutor.statut}</td>
+                                                <td>{tutor.statut}</td> 
                                                 <td>{tutor.matieres}</td>
                                                 <td>{tutor.whatsapp}</td>
                                                 <td>{tutor.mail}</td>
                                                 <td>{tutor.encadrer_groupe ? "Oui" : "Non"}</td>
-                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td>
+                                                <td style={{verticalAlign:"middle"}}><InputGroupId tutor={tutor} /></td> 
                                             </tr>
                                         )
                                         )}
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                        </div> 
                     </div>
 
                 </section>
             </Layout>
             }
-        </>
+        </> 
     )
 }
 

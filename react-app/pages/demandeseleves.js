@@ -30,18 +30,18 @@ const Reports = () => {
             method: 'post',
             body: JSON.stringify({ _id: tutor._id, data: { reports: tutor.reports } })
         })
-        setRefresh(!refresh)
+        setRefresh(!refresh) 
     }
 
     let { user, loading } = useFetchUser()
     const [tutors, setTutors] = useState([])
-    const [awaitingStudents, setAwaitingStudents] = useState([])
+    const [awaitingStudents, setAwaitingStudents] = useState([]) 
     const [refresh, setRefresh] = useState(true)
     const [replacingStudent, setReplacingStudent] = useState(false)
 
     useEffect(() => {
         // {console.log("useEffect", user, loading)}
-        if (user && !loading) {
+        if (user && !loading) { 
             getUserData(user)
         }
     }, [user, loading])
@@ -69,7 +69,7 @@ const Reports = () => {
                                     <thead>
                                         <tr>
                                             <th>Date</th>
-                                            <th>Tuteur</th>
+                                            <th>Tuteur</th> 
                                             <th>Groupe</th>
                                             <th>Nombre d'élèves demandés</th>
                                             <th>Élèves donnés</th>
@@ -77,21 +77,21 @@ const Reports = () => {
                                     </thead>
                                     <tbody>
 
-                                        {tutors.map(tutor => {
+                                        {tutors.map(tutor => { 
                                             const asked_more_students = tutor.asked_more_students
                                             return (
                                                 <tr key={`${tutor._id}`}>
                                                     <td>{asked_more_students.time}</td>
-                                                    <td>{tutor.firstname} {tutor.lastname}</td>
+                                                    <td>{tutor.firstname} {tutor.lastname}</td> 
                                                     <td>{tutor.groupId}</td>
-                                                    <td>{asked_more_students.number}</td>
-
+                                                    <td>{asked_more_students.number}</td> 
+ 
                                                     <td>
                                                         <SearchAndReplaceStudent tutor={tutor} awaitingStudents={awaitingStudents} />
                                                     </td>
                                                 </tr>)
                                         }
-                                        )}
+                                        )} 
                                     </tbody>
                                 </table>
                             </div>
@@ -100,7 +100,7 @@ const Reports = () => {
                     </div>
                 </section>
             </Layout>
-            }
+            } 
         </>
     )
 }

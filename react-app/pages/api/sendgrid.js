@@ -12,9 +12,9 @@ const MAX_RECIPIENTS = 100
 
 sgMail.setApiKey(config.SENDGRID_API_KEY); //https://www.twilio.com/blog/sending-bulk-emails-3-ways-sendgrid-nodejs
 
-const html_tutorWithStudents = `
+const html_tutorWithStudents = ` 
 <div class="aweber_message_body"><center>
-<div align="center">
+<div align="center"> 
 <div class="containerbox" style="width: 100%; font-family: Helvetica, Arial, sans-serif; background-color: #ffffff;">
 <div align="center">
 <table class="aw-bgc" style="width: 100%; font-family: Helvetica, Arial, sans-serif; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; background-color: #f7f7f7;" cellspacing="0" cellpadding="0">
@@ -27,7 +27,7 @@ const html_tutorWithStudents = `
 <td style="border-spacing: 0px;">
 <div class="mains" style="text-align: left;">
 <div class="region">
-<div>
+<div> 
 <table class="row aw-stack" style="width: 100%; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation">
 <tbody>
 <tr style="border-spacing: 0px;">
@@ -38,7 +38,7 @@ const html_tutorWithStudents = `
 <tr style="border-spacing: 0px;">
 <td style="padding: 0px; border-spacing: 0px;"><a class="aw-image-link" style="color: #3498db;" href="https://www.chrisvqz.com" rel="nofollow"> <img class="model" style="object-position: top; object-fit: cover; display: block; margin: auto; width: 100%; height: 278px; border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: none; text-decoration: none; transform: trans;" src="https://i.imgur.com/hnNqs5o.jpg" alt="Image" width="600" height="290" /> </a></td>
 </tr>
-</tbody>
+</tbody> 
 </table>
 </div>
 </td>
@@ -46,7 +46,7 @@ const html_tutorWithStudents = `
 </tbody>
 </table>
 <table class="row aw-stack" style="width: 100%; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation">
-<tbody>
+<tbody> 
 <tr style="border-spacing: 0px;">
 <td class="container" style="padding: 10px 25px 30px; width: 100%; border-spacing: 0px; background-color: #b3e5ff; border: solid 5px #028ed7; border-top: transparent;">
 <div class="definition-parent">
@@ -58,10 +58,10 @@ const html_tutorWithStudents = `
 <div> </div>
 <div><span style="color: #3e404f;">Nous avons remarqué que vous vous êtes récemment connectés sur la plateforme de Math&amp;Maroc pour donner des cours en ligne en tant que bénévole. Tout d'abord nous vous en remercions, cela fait toujours plaisir de voir des personnes donner de leur temps pour leur pays et leurs compatriotes en cette période particulièrement difficile.</span></div>
 <div> </div>
-<div><span style="color: #3e404f;">Cependant, vous n'avez à cette date renseigné aucune séance sur la dite plateforme. Ainsi, pour garder le contact, nous voulions savoir si cela était par oubli; dans ce cas, nous vous prions d'aller remplir au moins une première séance de rencontre avec les élèves sur <a style="color: #3498db;" href="https://mathemaroc.now.sh/profile" rel="nofollow">votre profil</a>; ou parce que vos occupations ne vous permettent plus de vous engager avec nos futurs bacheliers. <span style="text-decoration: underline;"><strong><em>(Dans l'absence d'une réponse de votre part dans les 7 prochains jours, vos élèves seront remis automatiquement dans la liste d'attente)</em></strong></span></span></div>
+<div><span style="color: #3e404f;">Cependant, vous n'avez à cette date renseigné aucune séance sur la dite plateforme. Ainsi, pour garder le contact, nous voulions savoir si cela était par oubli; dans ce cas, nous vous prions d'aller remplir au moins une première séance de rencontre avec les élèves sur <a style="color: #3498db;" href="https://mathemaroc.now.sh/profile" rel="nofollow">votre profil</a>; ou parce que vos occupations ne vous permettent plus de vous engager avec nos futurs bacheliers. <span style="text-decoration: underline;"><strong><em>(Dans l'absence d'une réponse de votre part dans les 7 prochains jours, vos élèves seront remis automatiquement dans la liste d'attente)</em></strong></span></span></div> 
 <div> </div>
 <div><span style="color: #3e404f;">Dans l'attente de votre réponse.</span></div>
-<div> </div>
+<div> </div> 
 <div><span style="color: #3e404f;">Bien cordialement,</span><br />  </div>
 <div>- L'équipe Math&amp;Maroc.</div>
 </div>
@@ -125,11 +125,11 @@ const html_tutorWithoutStudents = `<div class="aweber_message_body"><center>
 </div>
 </td>
 </tr>
-</tbody>
+</tbody> 
 </table>
 <table class="row aw-stack" style="width: 100%; border-spacing: 0px; border-collapse: collapse; border-width: medium; border-style: none; font-family: Helvetica, Arial, sans-serif;" role="presentation">
 <tbody>
-<tr style="border-spacing: 0px;">
+<tr style="border-spacing: 0px;"> 
 <td class="container" style="padding: 10px 25px 30px; width: 100%; border-spacing: 0px; background-color: #b3e5ff; border: solid 5px #028ed7; border-top: transparent;">
 <div class="definition-parent">
 <div class="paragraph" style="color: #393939; font-family: Helvetica, Arial, sans-serif; font-size: 18px; line-height: 1.5em; padding: 0px; margin: 0px;">
@@ -144,7 +144,7 @@ const html_tutorWithoutStudents = `<div class="aweber_message_body"><center>
 <div> </div>
 <div><span style="color: #3e404f;">Dans l'attente de votre réponse.</span></div>
 <div> </div>
-<div><span style="color: #3e404f;">Bien cordialement,</span><br />  </div>
+<div><span style="color: #3e404f;">Bien cordialement,</span><br />  </div> 
 <div>- L'équipe Math&amp;Maroc.</div>
 </div>
 </div>
@@ -189,7 +189,7 @@ handler.get(async (req, res) => {
     // req.db.collection('users').find({ role: "tutor", seances: { $exists: false }, sent_mails: { $exists: true }, updated_at: { $lte: moment().subtract(1, 'weeks').format() } }).toArray(function (err, result) {
     //     result.map(tutor => {
     //         req.db.collection('users').updateOne({ _id: ObjectID(tutor._id) }, { $unset: { sent_mails: "" } })
-    //     })
+    //     }) 
     // })
 
     // res.json({ message: "done" })
@@ -200,12 +200,12 @@ handler.get(async (req, res) => {
                 _id: '$groupId',
                 tutor: {
                     "$push": {
-                        $cond: {
+                        $cond: { 
                             if: { $eq: ["$role", "tutor"] },
                             then: "$$ROOT",
                             else: "$$REMOVE",
                         }
-                    }
+                    } 
                 },
                 count_users: { $sum: 1 }
             }
@@ -236,10 +236,10 @@ handler.get(async (req, res) => {
             // TUTORS WITH STUDENTS
             message.to = tutorsWithStudents.map(t => t.to)
             message.html = html_tutorWithStudents
-            console.log("Destinataires avec élèves : ", message.to)
+            console.log("Destinataires avec élèves : ", message.to) 
             let log = { 'Total': `${tutorsWithStudents.length} + ${tutorsWithoutStudents.length} = ${tutorsWithStudents.length + tutorsWithoutStudents.length}` }
 
-            sgMail.sendMultiple(message).then(() => {
+            sgMail.sendMultiple(message).then(() => { 
                 console.log('emails sent successfully!');
                 // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
                 tutorsWithStudents.map(tutor => {

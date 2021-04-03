@@ -10,14 +10,14 @@ import {
 } from '@devexpress/dx-react-chart-material-ui'; 
 import { withStyles } from '@material-ui/core/styles';
 import {
-    ArgumentScale,
+    ArgumentScale, 
     ValueScale,
     EventTracker,
     HoverState,
     Animation,
 } from '@devexpress/dx-react-chart';
 import moment from 'moment'
-
+ 
 const legendStyles = () => ({
     root: { 
         display: 'flex',
@@ -96,9 +96,9 @@ const getData = (tutors) => {
             if ("date" in seance) {
                 let date = moment(seance.date).format('L')  
                 date in seances ? seances[date].push(seance) : seances[date] = [seance]
-            }
+            } 
         })
-    })
+    }) 
 
     let dates = Object.keys(seances).map(date => moment(date).format('L')).sort((a, b) => moment(a) - moment(b))
 
@@ -112,7 +112,7 @@ const getData = (tutors) => {
             // console.log(date.format('L'), dates)
             dates.includes(date.format('L')) ? null : seances[moment(date).format('L')] = []
             date = date.add(1, 'd') 
-        }
+        } 
         // console.log(seances)
 
 
@@ -155,7 +155,7 @@ const demoStyles = () => ({
 
 class Demo extends PureComponent {
     constructor(props) {
-        super(props);
+        super(props); 
         this.state = {
             data: [] 
         }
@@ -183,7 +183,7 @@ class Demo extends PureComponent {
                         labelComponent={ValueLabel}
                     />
 
-                    <LineSeries
+                    <LineSeries 
                         name="Nombre de séances"
                         valueField="seances"
                         argumentField="day"

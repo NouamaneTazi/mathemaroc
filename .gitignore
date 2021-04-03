@@ -17,19 +17,19 @@ yarn-error.log*
 # python files
 python/
 
-### react-app
+### src
 
 # next.js
-react-app/.next/
-react-app/out/
+.next/
+out/
 
 # testing
-react-app/coverage
+coverage
 
 # production
-react-app/build
+build
 
 .vscode/
-react-app/package-lock.json
+package-lock.json
 
 psd/

@@ -3,13 +3,13 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import Typography from '@material-ui/core/Typography';
-import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogContent from '@material-ui/core/DialogContent'; 
 import MuiDialogActions from '@material-ui/core/DialogActions';
 
 const DialogContent = withStyles(theme => ({
     root: {
         padding: theme.spacing(2),
-    },
+    }, 
 }))(MuiDialogContent);
 
 const DialogActions = withStyles(theme => ({
@@ -37,7 +37,7 @@ const MoreSeances = ({ user }) => {
     const handleClose = () => {
         setNumberStudents("")
         setOpen(false)
-    }
+    } 
 
     const cancelAskedMoreStudents = async () => {
         delete user.asked_more_students
@@ -51,23 +51,23 @@ const MoreSeances = ({ user }) => {
     const [askedMoreStudents, setAskedMoreStudents] = useState(user.asked_more_students)
     const [numberStudents, setNumberStudents] = useState("")
     const [open, setOpen] = useState()
-
+ 
     return (
         <>
             {askedMoreStudents ? <>
-                <p style={{ display: "inline" }}>Vous avez demandé {user.asked_more_students.number} élèves de plus. </p>
+                <p style={{ display: "inline" }}>Vous avez demandé {user.asked_more_students.number} élèves de plus. </p> 
                 <button className="button special" style={{ fontSize: "11px", marginBottom: "2em" }} onClick={() => cancelAskedMoreStudents()}>Annuler la demande</button>
-            </>
-                : <button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }} onClick={() => setOpen(true)}>{"Demander plus d'élèves"}</button>
+            </> 
+                : <button className="button icon fa-plus" style={{ fontSize: "12px", marginBottom: "2em" }} onClick={() => setOpen(true)}>{"Demander plus d'élèves"}</button> 
             }
 
             <Dialog aria-labelledby="customized-dialog-title" open={open} fullWidth>
-                <DialogContent dividers>
+                <DialogContent dividers> 
                     <Typography variant="h5" gutterBottom style={{ color: "black" }}>
                         Demander plus d'élèves
                     </Typography>
                     <Typography>
-                        Vous voulez combien d'élèves de plus ?
+                        Vous voulez combien d'élèves de plus ? 
                     </Typography>
                 </DialogContent>
                 <DialogActions>
@@ -76,17 +76,17 @@ const MoreSeances = ({ user }) => {
                     </div>
                 </DialogActions>
                 <DialogActions>
-                    <Button autoFocus onClick={() => handleClose()} color="primary">
+                    <Button autoFocus onClick={() => handleClose()} color="primary"> 
                         Cancel
-                    </Button>
+                    </Button> 
 
-                    <Button autoFocus onClick={() => numberStudents ? handleAskedMoreStudents() : null} color="primary">
+                    <Button autoFocus onClick={() => numberStudents ? handleAskedMoreStudents() : null} color="primary"> 
                         Submit
                     </Button>
                 </DialogActions>
             </Dialog>
         </>
     )
-}
-
+} 
+ 
 export default MoreSeances

@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@auth0/nextjs-auth0": "^0.10.0",
+    "@auth0/nextjs-auth0": "^1.4.2",
     "@devexpress/dx-react-chart": "^2.6.0",
     "@devexpress/dx-react-chart-material-ui": "^2.6.0",
     "@devexpress/dx-react-core": "^2.6.0",

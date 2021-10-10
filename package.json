@@ -1,0 +1,26 @@
+{
+  "name": "next-auth-example",
+  "version": "0.0.0",
+  "private": true,
+  "description": "An example project for NextAuth.js",
+  "repository": "https://github.com/nextauthjs/next-auth-example.git",
+  "bugs": {
+    "url": "https://github.com/nextauthjs/next-auth/issues"
+  },
+  "homepage": "http://next-auth-example.now.sh",
+  "main": "",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Noauamane Tazi <nouamane98@gmail.com>",
+  "contributors": [],
+  "license": "ISC",
+  "dependencies": {
+    "next": "^11.0.0",
+    "next-auth": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

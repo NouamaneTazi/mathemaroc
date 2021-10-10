@@ -47,8 +47,8 @@ export const Footer: React.FC = () => {
           maxW="6xl"
           textAlign={{ base: "center", md: "initial" }}
         >
-          <Box pb={12}>
-            <Text>
+          <Box>
+            {/* <Text>
               Made with{" "}
               <Link fontWeight="bold" href="https://nextjs.org" isExternal>
                 Next.js
@@ -62,8 +62,8 @@ export const Footer: React.FC = () => {
                 Contentful
               </Link>
               .
-            </Text>
-            <HStack justify={{ base: "center", md: "flex-start" }} spacing={1}>
+            </Text> */}
+            {/* <HStack justify={{ base: "center", md: "flex-start" }} spacing={1}>
               <Text>Business inquiries at</Text>
               <EmailTooltip>
                 <Button
@@ -78,17 +78,16 @@ export const Footer: React.FC = () => {
                 </Button>
               </EmailTooltip>
               .
-            </HStack>
-            <br />
+            </HStack> */}
             <Text>
-              MIT License &copy; {new Date().getFullYear()}-present{" "}
+              &copy; {new Date().getFullYear()}-present{" "}
               <NextLink href="/" passHref>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <Link fontWeight="bold">{siteConfig.title}</Link>
               </NextLink>
               .
             </Text>
-            <br />
+            {/* <br />
             <Text>
               Powered by{" "}
               <Link
@@ -97,7 +96,7 @@ export const Footer: React.FC = () => {
               >
                 <VercelLogo h="auto" maxW={24} />
               </Link>
-            </Text>
+            </Text> */}
           </Box>
 
           <HStack

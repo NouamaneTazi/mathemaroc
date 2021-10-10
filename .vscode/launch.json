@@ -1,42 +1,29 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach by Process ID",
-            "processId": "${command:PickProcess}",
-            "skipFiles": [
-                "<node_internals>/**"
-            ]
-        },
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Next: Chrome",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Next: Node",
-            "cwd": "${workspaceFolder}/react-app",
-            "runtimeExecutable": "${workspaceFolder}/react-app/node_modules/.bin/next",
-            "runtimeArgs": ["-p", "3001"],
-            "port": 0,
-            "env": {
-                "NODE_OPTIONS": "--inspect=0"
-            }
+      {
+        "name": "Next.js: debug server-side",
+        "type": "node-terminal",
+        "request": "launch",
+        "command": "yarn dev"
+      },
+      {
+        "name": "Next.js: debug client-side",
+        "type": "pwa-chrome",
+        "request": "launch",
+        "url": "http://localhost:3000"
+      },
+      {
+        "name": "Next.js: debug full stack",
+        "type": "node-terminal",
+        "request": "launch",
+        "command": "yarn dev",
+        "console": "integratedTerminal",
+        "serverReadyAction": {
+          "pattern": "started server on .+, url: (https?://.+)",
+          "uriFormat": "%s",
+          // "action": "debugWithChrome"
         }
-    ],
-    "compounds": [
-        {
-            "name": "Next: Full",
-            "configurations": [
-                "Next: Node",
-                "Next: Chrome"
-            ]
-        }
+      }
     ]
-}
+  }

@@ -49,6 +49,8 @@ module.exports = {
     "one-var": "off",
     "require-await": "off",
 
+    "prettier/prettier": 0, // TODO: enable back
+
     // react rules
     "jsx-a11y/accessible-emoji": "off",
     "react/jsx-sort-props": [

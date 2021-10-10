@@ -14,7 +14,7 @@ Berikut merupakan kode etika (code of conduct) komunitas SurabayaJS. Kode etika 
 - **Pertimbangkan apapun.** Pikirkan tentang bagaimana kontribusi Anda akan memengaruhi orang lain di komunitas.
 - **Be open minded**. Merangkul orang-orang baru dan ide-ide baru. Komunitas kami terus berkembang dan kami menyambut perubahan positif.
 
-Jika Anda yakin seseorang melanggar kode etik, kami meminta Anda melaporkannya melalui email hello@surabayajs.org. Harap sertakan nama Anda dan deskripsi kejadian tersebut, dan kami akan menghubungi Anda secepatnya.
+Jika Anda yakin seseorang melanggar kode etik, kami meminta Anda melaporkannya melalui email mathsmcontact@gmail.com. Harap sertakan nama Anda dan deskripsi kejadian tersebut, dan kami akan menghubungi Anda secepatnya.
 
 Peserta yang diminta menghentikan perilaku melecehkan diharapkan segera patuh. Jika peserta terlibat dalam perilaku melecehkan, SurabayaJS dapat mengambil tindakan apa pun yang mereka anggap pantas, hingga dan termasuk pengusiran dari semua lingkup komunitas SurabayaJS dan identifikasi peserta sebagai pelecehan terhadap anggota SurabayaJS lainnya atau masyarakat umum.
 `.trim();

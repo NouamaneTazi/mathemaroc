@@ -1,10 +1,5 @@
 import * as React from "react";
 
-import { EmailTooltip } from "@/components/email-tooltip";
-import { VercelLogo } from "@/components/logo";
-import siteConfig from "@/config/site";
-import { useEmail } from "@/hooks/app";
-import routes from "@/routes";
 import {
   Box,
   Button,
@@ -17,13 +12,18 @@ import {
   useToken,
 } from "@chakra-ui/react";
 
+import { EmailTooltip } from "@/components/email-tooltip";
 import NextLink from "next/link";
+import { VercelLogo } from "@/components/logo";
+import routes from "@/routes";
+import siteConfig from "@/config/site";
+import { useEmail } from "@/hooks/app";
 import { useRouter } from "next/router";
 
 export const Footer: React.FC = () => {
   const [lightColor, darkColor] = useToken("colors", [
-    "gator.200",
-    "gator.800",
+    "brand.200",
+    "brand.800",
   ]) as [string, string];
 
   const bgColor = useColorModeValue(lightColor, darkColor);

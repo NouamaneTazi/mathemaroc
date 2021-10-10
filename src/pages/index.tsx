@@ -20,6 +20,8 @@ import {
 import {
   FaArrowRight,
   FaDiscord,
+  FaFacebook,
+  FaInstagram,
   FaTwitch,
   FaTwitter,
   FaYoutube,
@@ -37,9 +39,11 @@ import i18n from "@/i18n";
 import siteConfig from "@/config/site";
 
 const HOME_SOCIAL_BUTTONS: [string, string, IconType, string][] = [
-  ["Discord", siteConfig.socials.Discord, FaDiscord, "blue"],
-  ["Twitch", siteConfig.socials.Twitch, FaTwitch, "purple"],
-  ["Twitter", siteConfig.socials.Twitter, FaTwitter, "twitter"],
+  // ["Discord", siteConfig.socials.Discord, FaDiscord, "brand"],
+  // ["Twitch", siteConfig.socials.Twitch, FaTwitch, "purple"],
+  // ["Twitter", siteConfig.socials.Twitter, FaTwitter, "twitter"],
+  ["Facebook", siteConfig.socials.Facebook, FaFacebook, "facebook"],
+  ["Instagram", siteConfig.socials.Instagram, FaInstagram, "pink"],
   ["Youtube", siteConfig.socials.Youtube, FaYoutube, "red"],
 ];
 
@@ -72,8 +76,8 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
 
   const [lightColor, darkColor] = useToken("colors", [
-    "gator.200",
-    "gator.800",
+    "brand.200",
+    "brand.800",
   ]) as [string, string];
 
   const bgColor = useColorModeValue(lightColor, darkColor);
@@ -134,7 +138,7 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             <NextLink href="/events" passHref>
               <Button
                 as="a"
-                colorScheme="green"
+                colorScheme="brand"
                 rightIcon={<Icon as={FaArrowRight} />}
               >
                 {i18n["home-revents-more"][locale]}

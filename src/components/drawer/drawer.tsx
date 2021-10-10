@@ -2,11 +2,6 @@
 
 import * as React from "react";
 
-import { ColorModeButton } from "@/components/color-mode-button";
-import { LocaleButton } from "@/components/locale-button";
-import siteConfig from "@/config/site";
-import { useEmail } from "@/hooks/app";
-import routes from "@/routes";
 import {
   Button,
   Drawer as ChakraDrawer,
@@ -23,9 +18,14 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import NextLink from "next/link";
-import { useRouter } from "next/router";
+import { ColorModeButton } from "@/components/color-mode-button";
 import { FaBars } from "react-icons/fa";
+import { LocaleButton } from "@/components/locale-button";
+import NextLink from "next/link";
+import routes from "@/routes";
+import siteConfig from "@/config/site";
+import { useEmail } from "@/hooks/app";
+import { useRouter } from "next/router";
 
 export const Drawer: React.FC = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
@@ -88,7 +88,7 @@ export const Drawer: React.FC = () => {
         borderRadius="full"
         bottom={4}
         boxShadow="lg"
-        colorScheme="green"
+        colorScheme="brand"
         d={{ base: "flex", md: "none" }}
         icon={<Icon as={FaBars} />}
         onClick={onOpen}

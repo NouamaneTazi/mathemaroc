@@ -1,32 +1,40 @@
 {
-  "name": "next-auth-example",
+  "name": "next-auth-typescript-example",
   "version": "0.0.0",
   "private": true,
-  "description": "An example project for NextAuth.js",
-  "repository": "https://github.com/nextauthjs/next-auth-example.git",
+  "description": "An example project for NextAuth.js using Typescript",
+  "repository": "https://github.com/nextauthjs/next-auth-typescript-example.git",
   "bugs": {
     "url": "https://github.com/nextauthjs/next-auth/issues"
   },
-  "homepage": "http://next-auth-example.now.sh",
+  "homepage": "http://next-auth-typescript-example.now.sh",
   "main": "",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "types": "tsc --noEmit"
   },
-  "author": "Noauamane Tazi <nouamane98@gmail.com>",
-  "contributors": [],
+  "author": "Lluis Agusti <lluis@hey.com>",
+  "contributors": [
+    "Balázs Orbán <info@balazsorban.com>",
+    "Iain Collins <me@iaincollins.com>"
+  ],
   "license": "ISC",
+  "prettier": {
+    "semi": false
+  },
   "dependencies": {
-    "@chakra-ui/icons": "^1.0.15",
-    "@chakra-ui/react": "^1.6.9",
-    "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0",
-    "framer-motion": "^4.1.17",
     "next": "^11.0.0",
     "next-auth": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1"
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "typescript": "^4.3.4"
   }
 }

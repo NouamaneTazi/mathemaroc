@@ -16,8 +16,8 @@ export default NextAuth({
     }),
     Providers.LinkedIn({
       clientId: process.env.LINKEDIN_CLIENT_ID,
-      clientSecret: process.env.LINKEDIN_CLIENT_SECRET
-    })
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+    }),
   ],
   // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.
   // https://next-auth.js.org/configuration/databases
@@ -87,10 +87,6 @@ export default NextAuth({
   // Events are useful for logging
   // https://next-auth.js.org/configuration/events
   events: {},
-
-  // You can set the theme to 'light', 'dark' or use 'auto' to default to the
-  // whatever prefers-color-scheme is set to in the browser. Default is 'auto'
-  theme: 'light',
 
   // Enable debug messages in the console if you are having problems
   debug: false,

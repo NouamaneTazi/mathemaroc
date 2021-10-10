@@ -4,7 +4,7 @@ const routes = {
     "/events": { name: "Events" },
     "/about": { name: "Who are we?" },
   },
-  id: {
+  fr: {
     "/": { name: "Beranda" },
     "/events": { name: "Kegiatan" },
     "/coc": { name: "Kode Etika" },

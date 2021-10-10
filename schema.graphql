@@ -1,4 +1,6 @@
-"""Represents a binary file in a space. An asset can be any file type."""
+"""
+Represents a binary file in a space. An asset can be any file type.
+"""
 type Asset {
   sys: Sys!
   contentfulMetadata: ContentfulMetadata!
@@ -90,11 +92,36 @@ input AssetFilter {
 }
 
 type AssetLinkingCollections {
-  entryCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EntryCollection
-  eventCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EventCollection
-  externalResourceCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): ExternalResourceCollection
-  sponsorCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): SponsorCollection
-  speakerCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): SpeakerCollection
+  entryCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EntryCollection
+  eventCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EventCollection
+  externalResourceCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): ExternalResourceCollection
+  sponsorCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): SponsorCollection
+  speakerCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): SpeakerCollection
 }
 
 enum AssetOrder {
@@ -145,7 +172,7 @@ Represents a tag entity for finding and organizing content easily.
     Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
 """
 type ContentfulTag {
-  id: String
+  fr: String
   name: String
 }
 
@@ -205,7 +232,12 @@ type Event implements Entry {
   description(locale: String): String
   category(locale: String): String
   startingDate(locale: String): DateTime
-  sessionsCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EventSessionsCollection
+  sessionsCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EventSessionsCollection
   onlineEvent(locale: String): Boolean
   location(locale: String): String
   coordinates(locale: String): Location
@@ -317,7 +349,12 @@ input EventFilter {
 }
 
 type EventLinkingCollections {
-  entryCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EntryCollection
+  entryCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EntryCollection
 }
 
 enum EventOrder {
@@ -406,7 +443,12 @@ input ExternalResourceFilter {
 }
 
 type ExternalResourceLinkingCollections {
-  entryCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EntryCollection
+  entryCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EntryCollection
 }
 
 enum ExternalResourceOrder {
@@ -426,11 +468,15 @@ enum ExternalResourceOrder {
   sys_publishedVersion_DESC
 }
 
-"""The 'HexColor' type represents color in `rgb:ffffff` string format."""
+"""
+The 'HexColor' type represents color in `rgb:ffffff` string format.
+"""
 scalar HexColor
 
 enum ImageFormat {
-  """JPG image format."""
+  """
+  JPG image format.
+  """
   JPG
 
   """
@@ -441,7 +487,9 @@ enum ImageFormat {
   """
   JPG_PROGRESSIVE
 
-  """PNG image format"""
+  """
+  PNG image format
+  """
   PNG
 
   """
@@ -450,47 +498,73 @@ enum ImageFormat {
   """
   PNG8
 
-  """WebP image format."""
+  """
+  WebP image format.
+  """
   WEBP
 }
 
 enum ImageResizeFocus {
-  """Focus the resizing on the center."""
+  """
+  Focus the resizing on the center.
+  """
   CENTER
 
-  """Focus the resizing on the top."""
+  """
+  Focus the resizing on the top.
+  """
   TOP
 
-  """Focus the resizing on the top right."""
+  """
+  Focus the resizing on the top right.
+  """
   TOP_RIGHT
 
-  """Focus the resizing on the right."""
+  """
+  Focus the resizing on the right.
+  """
   RIGHT
 
-  """Focus the resizing on the bottom right."""
+  """
+  Focus the resizing on the bottom right.
+  """
   BOTTOM_RIGHT
 
-  """Focus the resizing on the bottom."""
+  """
+  Focus the resizing on the bottom.
+  """
   BOTTOM
 
-  """Focus the resizing on the bottom left."""
+  """
+  Focus the resizing on the bottom left.
+  """
   BOTTOM_LEFT
 
-  """Focus the resizing on the left."""
+  """
+  Focus the resizing on the left.
+  """
   LEFT
 
-  """Focus the resizing on the top left."""
+  """
+  Focus the resizing on the top left.
+  """
   TOP_LEFT
 
-  """Focus the resizing on the largest face."""
+  """
+  Focus the resizing on the largest face.
+  """
   FACE
 
-  """Focus the resizing on the area containing all the faces."""
+  """
+  Focus the resizing on the area containing all the faces.
+  """
   FACES
 }
 
 enum ImageResizeStrategy {
-  """Resizes the image to fit into the specified dimensions."""
+  """
+  Resizes the image to fit into the specified dimensions.
+  """
   FIT
 
   """
@@ -514,15 +588,21 @@ enum ImageResizeStrategy {
   """
   CROP
 
-  """Creates a thumbnail from the image."""
+  """
+  Creates a thumbnail from the image.
+  """
   THUMB
 }
 
 input ImageTransformOptions {
-  """Desired width in pixels. Defaults to the original image width."""
+  """
+  Desired width in pixels. Defaults to the original image width.
+  """
   width: Dimension
 
-  """Desired height in pixels. Defaults to the original image height."""
+  """
+  Desired height in pixels. Defaults to the original image height.
+  """
   height: Dimension
 
   """
@@ -539,10 +619,14 @@ input ImageTransformOptions {
   """
   cornerRadius: Int
 
-  """Desired resize strategy. Defaults to `FIT`."""
+  """
+  Desired resize strategy. Defaults to `FIT`.
+  """
   resizeStrategy: ImageResizeStrategy
 
-  """Desired resize focus area. Defaults to `CENTER`."""
+  """
+  Desired resize focus area. Defaults to `CENTER`.
+  """
   resizeFocus: ImageResizeFocus
 
   """
@@ -551,7 +635,9 @@ input ImageTransformOptions {
   """
   backgroundColor: HexColor
 
-  """Desired image format. Defaults to the original image format."""
+  """
+  Desired image format. Defaults to the original image format.
+  """
   format: ImageFormat
 }
 
@@ -616,7 +702,12 @@ input PostFilter {
 }
 
 type PostLinkingCollections {
-  entryCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EntryCollection
+  entryCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EntryCollection
 }
 
 enum PostOrder {
@@ -642,23 +733,90 @@ The 'Quality' type represents quality as whole numeric values between `1` and `1
 scalar Quality
 
 type Query {
-  asset(id: String!, preview: Boolean, locale: String): Asset
-  assetCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String, where: AssetFilter, order: [AssetOrder]): AssetCollection
-  event(id: String!, preview: Boolean, locale: String): Event
-  eventCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String, where: EventFilter, order: [EventOrder]): EventCollection
-  resources(id: String!, preview: Boolean, locale: String): Resources
-  resourcesCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String, where: ResourcesFilter, order: [ResourcesOrder]): ResourcesCollection
-  externalResource(id: String!, preview: Boolean, locale: String): ExternalResource
-  externalResourceCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String, where: ExternalResourceFilter, order: [ExternalResourceOrder]): ExternalResourceCollection
-  post(id: String!, preview: Boolean, locale: String): Post
-  postCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String, where: PostFilter, order: [PostOrder]): PostCollection
-  sponsor(id: String!, preview: Boolean, locale: String): Sponsor
-  sponsorCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String, where: SponsorFilter, order: [SponsorOrder]): SponsorCollection
-  session(id: String!, preview: Boolean, locale: String): Session
-  sessionCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String, where: SessionFilter, order: [SessionOrder]): SessionCollection
-  speaker(id: String!, preview: Boolean, locale: String): Speaker
-  speakerCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String, where: SpeakerFilter, order: [SpeakerOrder]): SpeakerCollection
-  entryCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String, where: EntryFilter, order: [EntryOrder]): EntryCollection
+  asset(fr: String!, preview: Boolean, locale: String): Asset
+  assetCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+    where: AssetFilter
+    order: [AssetOrder]
+  ): AssetCollection
+  event(fr: String!, preview: Boolean, locale: String): Event
+  eventCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+    where: EventFilter
+    order: [EventOrder]
+  ): EventCollection
+  resources(fr: String!, preview: Boolean, locale: String): Resources
+  resourcesCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+    where: ResourcesFilter
+    order: [ResourcesOrder]
+  ): ResourcesCollection
+  externalResource(
+    fr: String!
+    preview: Boolean
+    locale: String
+  ): ExternalResource
+  externalResourceCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+    where: ExternalResourceFilter
+    order: [ExternalResourceOrder]
+  ): ExternalResourceCollection
+  post(fr: String!, preview: Boolean, locale: String): Post
+  postCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+    where: PostFilter
+    order: [PostOrder]
+  ): PostCollection
+  sponsor(fr: String!, preview: Boolean, locale: String): Sponsor
+  sponsorCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+    where: SponsorFilter
+    order: [SponsorOrder]
+  ): SponsorCollection
+  session(fr: String!, preview: Boolean, locale: String): Session
+  sessionCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+    where: SessionFilter
+    order: [SessionOrder]
+  ): SessionCollection
+  speaker(fr: String!, preview: Boolean, locale: String): Speaker
+  speakerCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+    where: SpeakerFilter
+    order: [SpeakerOrder]
+  ): SpeakerCollection
+  entryCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+    where: EntryFilter
+    order: [EntryOrder]
+  ): EntryCollection
 }
 
 """
@@ -722,7 +880,12 @@ input ResourcesFilter {
 }
 
 type ResourcesLinkingCollections {
-  entryCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EntryCollection
+  entryCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EntryCollection
 }
 
 enum ResourcesOrder {
@@ -807,8 +970,18 @@ input SessionFilter {
 }
 
 type SessionLinkingCollections {
-  entryCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EntryCollection
-  eventCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EventCollection
+  entryCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EntryCollection
+  eventCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EventCollection
 }
 
 enum SessionOrder {
@@ -892,8 +1065,18 @@ input SpeakerFilter {
 }
 
 type SpeakerLinkingCollections {
-  entryCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EntryCollection
-  sessionCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): SessionCollection
+  entryCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EntryCollection
+  sessionCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): SessionCollection
 }
 
 enum SpeakerOrder {
@@ -975,7 +1158,12 @@ input SponsorFilter {
 }
 
 type SponsorLinkingCollections {
-  entryCollection(skip: Int = 0, limit: Int = 100, preview: Boolean, locale: String): EntryCollection
+  entryCollection(
+    skip: Int = 0
+    limit: Int = 100
+    preview: Boolean
+    locale: String
+  ): EntryCollection
 }
 
 enum SponsorOrder {
@@ -1000,7 +1188,7 @@ enum SponsorOrder {
 }
 
 type Sys {
-  id: String!
+  fr: String!
   spaceId: String!
   environmentId: String!
   publishedAt: DateTime
@@ -1010,7 +1198,7 @@ type Sys {
 
 input SysFilter {
   id_exists: Boolean
-  id: String
+  fr: String
   id_not: String
   id_in: [String]
   id_not_in: [String]

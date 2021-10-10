@@ -1,5 +1,5 @@
 import Head from "next/head"
-import stylesheet from 'styles/main.scss'
+// import stylesheet from 'styles/main.scss'
 
 import Header from './Header'
 import Menu from './Menu' 
@@ -58,7 +58,7 @@ class Layout extends React.Component {
                         rel="stylesheet" 
                     /> 
                 </Head>
-                <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+                {/* <style dangerouslySetInnerHTML={{ __html: stylesheet }} /> */}
 
                 <div id="wrapper">
                     <Header onToggleMenu={this.handleToggleMenu} />

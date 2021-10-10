@@ -10,7 +10,7 @@
   "homepage": "http://next-auth-example.now.sh",
   "main": "",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },

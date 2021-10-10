@@ -2,7 +2,7 @@ const routes = {
   en: {
     "/": { name: "Home" },
     "/events": { name: "Events" },
-    "/coc": { name: "Code of Conduct" },
+    "/about": { name: "Who are we?" },
   },
   id: {
     "/": { name: "Beranda" },

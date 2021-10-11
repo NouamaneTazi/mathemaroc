@@ -44,18 +44,8 @@ export default {
     fr: "Kegiatan Terakhir",
   },
   "home-revents-subtitle": {
-    en: (
-      <>
-        View more recent meetups and workshops on the events page. Public API is
-        available at <code>/api/events</code>.
-      </>
-    ),
-    fr: (
-      <>
-        Lihat meetup dan workshop selebihnya pada laman kegiatan. API publik
-        dapat diakses pada <code>/api/events</code>.
-      </>
-    ),
+    en: <>View more recent meetups and workshops on the events page.</>,
+    fr: <>Lihat meetup dan workshop selebihnya pada laman kegiatan.</>,
   },
   "home-revents-more": {
     en: "View more events",
@@ -74,18 +64,8 @@ export default {
     fr: "Meetup dan Workshop",
   },
   "events-subtitle": {
-    en: (
-      <>
-        Here are our recent events. Public API is available at{" "}
-        <code>/api/events</code>.
-      </>
-    ),
-    fr: (
-      <>
-        Berikut merupakan kegiatan kami sebelumnya. API publik dapat diakses
-        pada <code>/api/events</code>.
-      </>
-    ),
+    en: <>Here are our recent events.</>,
+    fr: <>Berikut merupakan kegiatan kami sebelumnya.</>,
   },
   "404-title": {
     en: "Four Oh Four!",

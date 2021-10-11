@@ -6,6 +6,7 @@ export const HorizontalLogo: React.FC<BoxProps> = (props) => {
   return (
     <Box
       as="svg"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 55.2 16.8"
       {...props}
@@ -13,7 +14,7 @@ export const HorizontalLogo: React.FC<BoxProps> = (props) => {
       <defs>
         <style>
           {
-            ".prefix__cls-1{fill:#fefefe}.prefix__cls-2{fill:#231f20}.prefix__cls-6{fill:#2b2728}.prefix__cls-7{fill:#292526}.prefix__cls-8{fill:#2a2627}.prefix__cls-17{fill:#3b3738}.prefix__cls-23{fill:#fbfbfb}.prefix__cls-26{fill:#302c2d}"
+            ".prefix__cls-1{fill:none}.prefix__cls-2{fill:#231f20}.prefix__cls-6{fill:#2b2728}.prefix__cls-7{fill:#292526}.prefix__cls-8{fill:#2a2627}.prefix__cls-17{fill:#3b3738}.prefix__cls-23{fill:#fbfbfb}.prefix__cls-26{fill:#302c2d}"
           }
         </style>
       </defs>

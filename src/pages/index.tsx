@@ -27,21 +27,18 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
+import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
 
 import { EventCard } from "@/components/event-card";
 import { HorizontalLogo } from "@/components/logo";
 import { IconType } from "react-icons/lib";
 import NextLink from "next/link";
 import { SponsorCard } from "@/components/sponsor-card";
-// import cms from "@/lib/cms";
-// import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
+import cms from "@/lib/cms";
 import i18n from "@/i18n";
 import siteConfig from "@/config/site";
 
 const HOME_SOCIAL_BUTTONS: [string, string, IconType, string][] = [
-  // ["Discord", siteConfig.socials.Discord, FaDiscord, "brand"],
-  // ["Twitch", siteConfig.socials.Twitch, FaTwitch, "purple"],
-  // ["Twitter", siteConfig.socials.Twitter, FaTwitter, "twitter"],
   ["Facebook", siteConfig.socials.Facebook, FaFacebook, "facebook"],
   ["Instagram", siteConfig.socials.Instagram, FaInstagram, "pink"],
   ["Youtube", siteConfig.socials.Youtube, FaYoutube, "red"],
@@ -50,18 +47,30 @@ const HOME_SOCIAL_BUTTONS: [string, string, IconType, string][] = [
 export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
 
-  const data = {};
+  const data = await cms().homePageQuery({
+    locale: i18n["i18n-code"][locale] as string,
+  });
 
-  const sponsors: Record<string, any[]> = {
+  const sponsors: Record<string, Maybe<SponsorMetadataFragment>[]> = {
     Sponsor: [],
     "Media Partner": [],
     "Community Partner": [],
   };
 
+  data.sponsorCollection?.items.forEach((sponsor) => {
+    const category = sponsor?.category as string;
+
+    if (sponsors[category]) {
+      sponsors[category].push(sponsor);
+    } else {
+      sponsors[category] = [sponsor];
+    }
+  });
+
   return {
     props: {
       locale,
-      recentEvents: [],
+      recentEvents: data.eventCollection?.items,
       sponsors,
     },
     revalidate: 86400,

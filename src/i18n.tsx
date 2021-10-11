@@ -1,12 +1,13 @@
 import * as React from "react";
 
-import { aboutEn } from "@/modules/about";
 import { COC, KodeEtika } from "@/modules/coc";
+
+import { aboutEn } from "@/modules/about";
 
 export default {
   "i18n-code": {
     en: "en-US",
-    fr: "fr-FR",
+    fr: "fr",
   },
   "coc-title": {
     en: "Code of Conduct",

@@ -1,5 +1,8 @@
 import * as React from "react";
 
+import siteConfig from "@/config/site";
+// import { useEmail } from "@/hooks/app";
+import routes from "@/routes";
 import {
   Box,
   Container,
@@ -12,9 +15,6 @@ import {
 } from "@chakra-ui/react";
 
 import NextLink from "next/link";
-// import { useEmail } from "@/hooks/app";
-import routes from "@/routes";
-import siteConfig from "@/config/site";
 import { useRouter } from "next/router";
 
 export const Footer: React.FC = () => {

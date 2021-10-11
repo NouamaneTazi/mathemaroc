@@ -2,7 +2,6 @@ import * as React from "react";
 
 import {
   Box,
-  Button,
   Container,
   HStack,
   Link,
@@ -12,12 +11,10 @@ import {
   useToken,
 } from "@chakra-ui/react";
 
-import { EmailTooltip } from "@/components/email-tooltip";
 import NextLink from "next/link";
-import { VercelLogo } from "@/components/logo";
+// import { useEmail } from "@/hooks/app";
 import routes from "@/routes";
 import siteConfig from "@/config/site";
-import { useEmail } from "@/hooks/app";
 import { useRouter } from "next/router";
 
 export const Footer: React.FC = () => {
@@ -28,7 +25,7 @@ export const Footer: React.FC = () => {
 
   const bgColor = useColorModeValue(lightColor, darkColor);
 
-  const copyEmail = useEmail();
+  // const copyEmail = useEmail();
   const { locale } = useRouter();
 
   return (

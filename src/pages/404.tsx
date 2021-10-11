@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import i18n from "@/i18n";
 import {
   Button,
   Container,
@@ -10,11 +11,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import { FaArrowRight } from "react-icons/fa";
-import NextLink from "next/link";
 import { NextPage } from "next";
-import i18n from "@/i18n";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
+import { FaArrowRight } from "react-icons/fa";
 
 const NotFoundPage: NextPage = () => {
   const router = useRouter();

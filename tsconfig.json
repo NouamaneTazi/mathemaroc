@@ -21,7 +21,7 @@
     "strictNullChecks": true,
     "target": "es5"
   },
-  "exclude": ["src/generated", "node_modules"],
+  "exclude": ["src/generated", "node_modules", "python"],
   "include": [
     "env.d.ts",
     "next-env.d.ts",

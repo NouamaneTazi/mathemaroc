@@ -7,8 +7,8 @@ export const HorizontalLogo: React.FC<BoxProps> = (props) => {
     <Box
       as="svg"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 55.2 16.8"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <defs>
@@ -18,8 +18,8 @@ export const HorizontalLogo: React.FC<BoxProps> = (props) => {
           }
         </style>
       </defs>
-      <g fr="prefix__Layer_2" data-name="Layer 2">
-        <g fr="prefix__Layer_1-2" data-name="Layer 1">
+      <g data-name="Layer 2">
+        <g data-name="Layer 1">
           <path
             className="prefix__cls-1"
             d="M.05 10V1.09c0-.8.17-1 1-1h51c1 0 2.46-.4 3 .11s.11 1.92.11 2.93V15.9c0 .7-.14.84-.85.84h-28a.28.28 0 01.08-.37A13.84 13.84 0 0029 15a6.18 6.18 0 002-3.18c.4-1.38.51-1.47 2-1.47h.38c-1.9 0-1.9 0-2.44-1.81a6.18 6.18 0 00-11.72-.07c-.64 1.87-.64 1.88-2.68 1.88H1.75A2.42 2.42 0 01.05 10z"

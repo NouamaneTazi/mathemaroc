@@ -1,8 +1,7 @@
 import * as React from "react";
 
-import { COC, KodeEtika } from "@/modules/coc";
-
 import { aboutEn } from "@/modules/about";
+import { COC, KodeEtika } from "@/modules/coc";
 
 export default {
   "i18n-code": {

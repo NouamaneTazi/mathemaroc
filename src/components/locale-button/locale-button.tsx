@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import i18n from "@/i18n";
 import {
   Button,
   Menu,
@@ -10,7 +11,6 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 
-import i18n from "@/i18n";
 import { useRouter } from "next/router";
 
 export const LocaleButton: React.FC = () => {

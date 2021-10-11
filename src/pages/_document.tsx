@@ -1,5 +1,8 @@
 import * as React from "react";
 
+import siteConfig from "@/config/site";
+import { ColorModeScript } from "@chakra-ui/react";
+
 import NextDocument, {
   DocumentContext,
   Head,
@@ -7,9 +10,6 @@ import NextDocument, {
   Main,
   NextScript,
 } from "next/document";
-
-import { ColorModeScript } from "@chakra-ui/react";
-import siteConfig from "@/config/site";
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {

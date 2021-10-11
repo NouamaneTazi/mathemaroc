@@ -1,93 +1,82 @@
 import * as React from "react";
 
-import { COC, KodeEtika } from "@/coc/";
+import { COC, KodeEtika } from "@/modules/coc";
 
-// import COC from "@/coc/code-of-conduct";
-// import KodeEtika from "@/coc/kode-etika";
+import { aboutEn } from "@/modules/about";
 
 export default {
   "i18n-code": {
     en: "en-US",
-    id: "id-ID",
+    fr: "fr",
   },
   "coc-title": {
     en: "Code of Conduct",
-    id: "Kode Etika",
+    fr: "Kode Etika",
   },
   "coc-page": {
     en: COC,
-    id: KodeEtika,
+    fr: KodeEtika,
+  },
+  about: {
+    title: {
+      en: "Who are we",
+      fr: "dfzdf",
+    },
+    page: {
+      en: aboutEn,
+      fr: " contsds",
+    },
   },
   flag: {
     en: "🇺🇸",
-    id: "🇮🇩",
+    fr: "🇮🇩",
   },
   "home-title": {
-    en: "User group based in Surabaya, Indonesia discussing everything JavaScript.",
-    id: "Komunitas berbasis di Surabaya, Indonesia membahas segala tentang JavaScript.",
+    en: "To promote mathematics in Morocco.",
+    fr: "Pour promouvoir les mathématiques au Maroc.",
   },
   "home-subtitle": {
-    en: "Come and meet other developers interested in JavaScript and its ecosystem in Surabaya. Join our community and stay tuned for future events.",
-    id: "Datang dan temui developer lain yang tertarik dengan JavaScript dan ekosistemnya di Surabaya. Bergabunglah dengan komunitas kami dan nantikan acara mendatang.",
+    en: "Moroccan association working for a better preparation of young Moroccans to the International Mathematics Olympiads.",
+    fr: "Association marocaine œuvrant pour une meilleure préparation des jeunes marocains aux Olympiades Internationales de Mathématiques.",
   },
   "home-revents-title": {
     en: "Recent Events",
-    id: "Kegiatan Terakhir",
+    fr: "Kegiatan Terakhir",
   },
   "home-revents-subtitle": {
-    en: (
-      <>
-        View more recent meetups and workshops on the events page. Public API is
-        available at <code>/api/events</code>.
-      </>
-    ),
-    id: (
-      <>
-        Lihat meetup dan workshop selebihnya pada laman kegiatan. API publik
-        dapat diakses pada <code>/api/events</code>.
-      </>
-    ),
+    en: <>View more recent meetups and workshops on the events page.</>,
+    fr: <>Lihat meetup dan workshop selebihnya pada laman kegiatan.</>,
   },
   "home-revents-more": {
     en: "View more events",
-    id: "Lihat kegiatan lainnya",
+    fr: "Lihat kegiatan lainnya",
   },
   "home-saps-title": {
     en: "Our Sponsors and Partners",
-    id: "Sponsor dan Partner Kami",
+    fr: "Sponsor dan Partner Kami",
   },
   "home-saps-subtitle": {
     en: "We are thankful for the support from our friends below.",
-    id: "Kami berterima kasih atas dukungan dari teman-teman kami di bawah ini.",
+    fr: "Kami berterima kasih atas dukungan dari teman-teman kami di bawah ini.",
   },
   "events-title": {
     en: "Meetups and Workshops",
-    id: "Meetup dan Workshop",
+    fr: "Meetup dan Workshop",
   },
   "events-subtitle": {
-    en: (
-      <>
-        Here are our recent events. Public API is available at{" "}
-        <code>/api/events</code>.
-      </>
-    ),
-    id: (
-      <>
-        Berikut merupakan kegiatan kami sebelumnya. API publik dapat diakses
-        pada <code>/api/events</code>.
-      </>
-    ),
+    en: <>Here are our recent events.</>,
+    fr: <>Berikut merupakan kegiatan kami sebelumnya.</>,
   },
   "404-title": {
     en: "Four Oh Four!",
-    id: "Empat Nol Empat!",
+    fr: "Empat Nol Empat!",
   },
   "404-subtitle": {
     en: "The page you requested does not exist or may have been moved.",
-    id: "Halaman yang Anda minta tidak ada atau mungkin telah dipindahkan.",
+    fr: "Halaman yang Anda minta tidak ada atau mungkin telah dipindahkan.",
   },
   "404-button": {
     en: "Back to home page",
-    id: "Kembali ke Beranda",
+    fr: "Kembali ke Beranda",
   },
 };

@@ -2,9 +2,9 @@ const routes = {
   en: {
     "/": { name: "Home" },
     "/events": { name: "Events" },
-    "/coc": { name: "Code of Conduct" },
+    "/about": { name: "Who are we?" },
   },
-  id: {
+  fr: {
     "/": { name: "Beranda" },
     "/events": { name: "Kegiatan" },
     "/coc": { name: "Kode Etika" },

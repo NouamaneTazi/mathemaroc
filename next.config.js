@@ -84,8 +84,8 @@ module.exports = {
 
   // https://nextjs.org/docs/advanced-features/i18n-routing
   i18n: {
-    defaultLocale: "id",
-    locales: ["en", "id"],
+    defaultLocale: "fr",
+    locales: ["en", "fr"],
   },
 
   // https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
@@ -96,7 +96,7 @@ module.exports = {
   //   return [
   //     {
   //       source: "/coc",
-  //       destination: coc.id,
+  //       destination: coc.fr,
   //       permanent: true,
   //     },
   //     {

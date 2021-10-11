@@ -14,7 +14,7 @@ This is a Code of Conduct for the SurabayaJS community. This is [largely based o
 - **Be considerate.** Think about how your contribution will affect others in the community.
 - **Be open minded**. Embrace new people and new ideas. Our community is continually evolving and we welcome positive change.
 
-If you believe someone is violating the code of conduct, we ask that you report it by emailing hello@surabayajs.org. Please include your name and a description of the incident, and we will get back to you ASAP.
+If you believe someone is violating the code of conduct, we ask that you report it by emailing mathsmcontact@gmail.com. Please include your name and a description of the incident, and we will get back to you ASAP.
 
 Participants asked to stop any harassing behavior are expected to comply immediately. If a participant engages in harassing behavior, the SurabayaJS may take any action they deem appropriate, up to and including expulsion from all SurabayaJS spaces and identification of the participant as a harasser to other SurabayaJS members or the general public.`.trim();
 

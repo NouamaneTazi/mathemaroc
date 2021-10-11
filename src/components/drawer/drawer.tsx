@@ -88,7 +88,7 @@ export const Drawer: React.FC = () => {
         borderRadius="full"
         bottom={4}
         boxShadow="lg"
-        colorScheme="green"
+        colorScheme="brand"
         d={{ base: "flex", md: "none" }}
         icon={<Icon as={FaBars} />}
         onClick={onOpen}

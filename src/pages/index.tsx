@@ -1,5 +1,12 @@
 import * as React from "react";
 
+import { EventCard } from "@/components/event-card";
+import { HorizontalLogo } from "@/components/logo";
+import { SponsorCard } from "@/components/sponsor-card";
+import siteConfig from "@/config/site";
+import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
+import i18n from "@/i18n";
+import cms from "@/lib/cms";
 import {
   Box,
   Button,
@@ -10,54 +17,57 @@ import {
   LightMode,
   Stack,
   Text,
-  VStack,
-  Wrap,
-  WrapItem,
   useBreakpointValue,
   useColorModeValue,
   useToken,
+  VStack,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
+
+import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
+import NextLink from "next/link";
 import {
   FaArrowRight,
-  FaDiscord,
-  FaTwitch,
-  FaTwitter,
+  FaFacebook,
+  FaInstagram,
   FaYoutube,
 } from "react-icons/fa";
-import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
-
-import { EventCard } from "@/components/event-card";
-import { HorizontalLogo } from "@/components/logo";
 import { IconType } from "react-icons/lib";
-import NextLink from "next/link";
-import { SponsorCard } from "@/components/sponsor-card";
-// import cms from "@/lib/cms";
-// import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
-import i18n from "@/i18n";
-import siteConfig from "@/config/site";
 
 const HOME_SOCIAL_BUTTONS: [string, string, IconType, string][] = [
-  ["Discord", siteConfig.socials.Discord, FaDiscord, "blue"],
-  ["Twitch", siteConfig.socials.Twitch, FaTwitch, "purple"],
-  ["Twitter", siteConfig.socials.Twitter, FaTwitter, "twitter"],
+  ["Facebook", siteConfig.socials.Facebook, FaFacebook, "facebook"],
+  ["Instagram", siteConfig.socials.Instagram, FaInstagram, "pink"],
   ["Youtube", siteConfig.socials.Youtube, FaYoutube, "red"],
 ];
 
 export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
 
-  const data = {};
+  const data = await cms().homePageQuery({
+    locale: i18n["i18n-code"][locale] as string,
+  });
 
-  const sponsors: Record<string, any[]> = {
+  const sponsors: Record<string, Maybe<SponsorMetadataFragment>[]> = {
     Sponsor: [],
     "Media Partner": [],
     "Community Partner": [],
   };
 
+  data.sponsorCollection?.items.forEach((sponsor) => {
+    const category = sponsor?.category as string;
+
+    if (sponsors[category]) {
+      sponsors[category].push(sponsor);
+    } else {
+      sponsors[category] = [sponsor];
+    }
+  });
+
   return {
     props: {
       locale,
-      recentEvents: [],
+      recentEvents: data.eventCollection?.items,
       sponsors,
     },
     revalidate: 86400,
@@ -72,8 +82,8 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
 
   const [lightColor, darkColor] = useToken("colors", [
-    "gator.200",
-    "gator.800",
+    "brand.200",
+    "brand.800",
   ]) as [string, string];
 
   const bgColor = useColorModeValue(lightColor, darkColor);
@@ -134,7 +144,7 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             <NextLink href="/events" passHref>
               <Button
                 as="a"
-                colorScheme="green"
+                colorScheme="brand"
                 rightIcon={<Icon as={FaArrowRight} />}
               >
                 {i18n["home-revents-more"][locale]}

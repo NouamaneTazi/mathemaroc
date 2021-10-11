@@ -31,9 +31,9 @@ export const LocaleButton: React.FC = () => {
       </Tooltip>
 
       <MenuList>
-        <MenuGroup title="Language/Bahasa">
+        <MenuGroup title="Language">
           <MenuItem onClick={() => change("en")}>English</MenuItem>
-          <MenuItem onClick={() => change("id")}>Bahasa Indonesia</MenuItem>
+          <MenuItem onClick={() => change("fr")}>French</MenuItem>
         </MenuGroup>
       </MenuList>
     </Menu>

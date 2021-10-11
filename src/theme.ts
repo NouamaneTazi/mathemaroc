@@ -6,17 +6,17 @@ import {
 
 export default extendTheme(<ThemeOverride>{
   colors: {
-    gator: {
-      "50": "#f3f8f7",
-      "100": "#e7f6ef",
-      "200": "#cbefda",
-      "300": "#a1e2bf",
-      "400": "#57cb93",
-      "500": "#28af67",
-      "600": "#1f8f4b",
-      "700": "#237242",
-      "800": "#22573a",
-      "900": "#1e4631",
+    brand: {
+      "50": "#EBF8FF",
+      "100": "#BEE3F8",
+      "200": "#90CDF4",
+      "300": "#63B3ED",
+      "400": "#4299E1",
+      "500": "#3182CE",
+      "600": "#2B6CB0",
+      "700": "#2C5282",
+      "800": "#2A4365",
+      "900": "#1A365D",
     },
   },
 
@@ -78,7 +78,7 @@ export default extendTheme(<ThemeOverride>{
         pointerEvents: "none",
       },
       "#nprogress .bar": {
-        bgGradient: "linear(to-r, whiteAlpha.400, green.200)",
+        bgGradient: "linear(to-r, whiteAlpha.400, brand.200)",
         h: "2px",
         left: 0,
         pos: "fixed",

@@ -44,5 +44,5 @@ export const contentRenderer: RendererRecord = {
   ),
 
   // eslint-disable-next-line react/display-name
-  a: (props) => <Link {...props} color="blue.400" isExternal />,
+  a: (props) => <Link {...props} color="brand" isExternal />,
 };

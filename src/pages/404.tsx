@@ -1,5 +1,6 @@
-import * as React from "react"
+import * as React from "react";
 
+import i18n from "@/i18n";
 import {
   Button,
   Container,
@@ -8,18 +9,17 @@ import {
   Image,
   Text,
   VStack,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 
-import { FaArrowRight } from "react-icons/fa"
-import NextLink from "next/link"
-import { NextPage } from "next"
-import i18n from "@/i18n"
-import { useRouter } from "next/router"
+import { NextPage } from "next";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { FaArrowRight } from "react-icons/fa";
 
 const NotFoundPage: NextPage = () => {
-  const router = useRouter()
+  const router = useRouter();
 
-  const locale = router.locale as string
+  const locale = router.locale as string;
 
   return (
     <Container as="section" maxW="6xl" p={[4, 8]}>
@@ -41,7 +41,7 @@ const NotFoundPage: NextPage = () => {
         <NextLink href="/" passHref>
           <Button
             as="a"
-            colorScheme="green"
+            colorScheme="brand"
             rightIcon={<Icon as={FaArrowRight} />}
           >
             {i18n["404-button"][locale]}
@@ -49,7 +49,7 @@ const NotFoundPage: NextPage = () => {
         </NextLink>
       </VStack>
     </Container>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

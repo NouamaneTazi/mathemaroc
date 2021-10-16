@@ -5,7 +5,7 @@ const generateFavicons = require("./generate-favicons");
 
 async function build() {
   await copyPublicAssets();
-  // await generateFavicons();
+  await generateFavicons();
 }
 
 build();

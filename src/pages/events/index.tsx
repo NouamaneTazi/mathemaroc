@@ -1,26 +1,26 @@
 import * as React from "react";
 
-import { EventCard } from "@/components/event-card";
-import i18n from "@/i18n";
-import cms from "@/lib/cms";
 import {
   Box,
   Container,
   Heading,
   Text,
+  VStack,
   useColorModeValue,
   useToken,
-  VStack,
 } from "@chakra-ui/react";
-
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
+
+import { EventCard } from "@/components/event-card";
 import { NextSeo } from "next-seo";
+import cms from "@/lib/cms";
+import i18n from "@/i18n";
 
 export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
 
   const data = await cms().eventsPageQuery({
-    locale: i18n["i18n-code"][locale] as string,
+    locale: i18n["i18n-code"].fr, //TODO: put back [locale]
   });
 
   return {

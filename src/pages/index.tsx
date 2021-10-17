@@ -162,7 +162,8 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
         />
       </Box>
 
-      <Container as="section" maxW="6xl" p={[4, 8]}>
+      {/* SPONSORS */}
+      {/* <Container as="section" maxW="6xl" p={[4, 8]}>
         <VStack spacing={[4, 8]}>
           <VStack spacing={[2, 4]} textAlign="center">
             <Heading as="h2">{i18n["home-saps-title"][locale]}</Heading>
@@ -186,7 +187,7 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             </React.Fragment>
           ))}
         </VStack>
-      </Container>
+      </Container> */}
     </>
   );
 };

@@ -11,8 +11,6 @@ import {
   Stack,
   Text,
   VStack,
-  Wrap,
-  WrapItem,
   useBreakpointValue,
   useColorModeValue,
   useToken,
@@ -30,7 +28,7 @@ import { EventCard } from "@/components/event-card";
 import { HorizontalLogo } from "@/components/logo";
 import { IconType } from "react-icons/lib";
 import NextLink from "next/link";
-import { SponsorCard } from "@/components/sponsor-card";
+// import { SponsorCard } from "@/components/sponsor-card";
 import cms from "@/lib/cms";
 import i18n from "@/i18n";
 import siteConfig from "@/config/site";
@@ -45,7 +43,7 @@ export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
 
   const data = await cms().homePageQuery({
-    locale: i18n["i18n-code"]["fr"] as string,
+    locale: i18n["i18n-code"].fr, // TODO: put this back [locale]
   });
 
   const sponsors: Record<string, Maybe<SponsorMetadataFragment>[]> = {
@@ -77,7 +75,7 @@ export async function getStaticProps(args: GetStaticPropsContext) {
 const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
   props,
 ) => {
-  const { locale, recentEvents, sponsors } = props;
+  const { locale, recentEvents } = props;
 
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
 

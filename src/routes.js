@@ -5,9 +5,14 @@ const routes = {
     "/about": { name: "Who are we?" },
   },
   fr: {
-    "/": { name: "Beranda" },
-    "/events": { name: "Kegiatan" },
-    "/coc": { name: "Kode Etika" },
+    "/": { name: "Page d'acceuil" },
+    "/events": { name: "Evènements" },
+    "/about": { name: "Who are we?" },
+  },
+  ar: {
+    "/": { name: "الصفحة الرئيسية" },
+    "/events": { name: "الأحداث" },
+    "/about": { name: "من نحن؟" },
   },
 };
 

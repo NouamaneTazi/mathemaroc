@@ -20,7 +20,7 @@ export const contentRenderer: RendererRecord = {
       borderLeftColor="gray.200"
       borderLeftWidth={2}
       color="gray.500"
-      pl={4}
+      ps={4}
       py={2}
       {...props}
     />

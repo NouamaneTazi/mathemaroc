@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import i18n from "@/i18n";
 import {
   Button,
   Menu,
@@ -11,6 +10,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 
+import i18n from "@/i18n";
 import { useRouter } from "next/router";
 
 export const LocaleButton: React.FC = () => {
@@ -34,6 +34,7 @@ export const LocaleButton: React.FC = () => {
         <MenuGroup title="Language">
           <MenuItem onClick={() => change("en")}>English</MenuItem>
           <MenuItem onClick={() => change("fr")}>French</MenuItem>
+          <MenuItem onClick={() => change("ar")}>Arabic</MenuItem>
         </MenuGroup>
       </MenuList>
     </Menu>

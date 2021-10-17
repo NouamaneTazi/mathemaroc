@@ -1,12 +1,5 @@
 import * as React from "react";
 
-import { EventCard } from "@/components/event-card";
-import { HorizontalLogo } from "@/components/logo";
-import { SponsorCard } from "@/components/sponsor-card";
-import siteConfig from "@/config/site";
-import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
-import i18n from "@/i18n";
-import cms from "@/lib/cms";
 import {
   Box,
   Button,
@@ -17,23 +10,30 @@ import {
   LightMode,
   Stack,
   Text,
-  useBreakpointValue,
-  useColorModeValue,
-  useToken,
   VStack,
   Wrap,
   WrapItem,
+  useBreakpointValue,
+  useColorModeValue,
+  useToken,
 } from "@chakra-ui/react";
-
-import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
-import NextLink from "next/link";
 import {
   FaArrowRight,
   FaFacebook,
   FaInstagram,
   FaYoutube,
 } from "react-icons/fa";
+import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
+import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
+
+import { EventCard } from "@/components/event-card";
+import { HorizontalLogo } from "@/components/logo";
 import { IconType } from "react-icons/lib";
+import NextLink from "next/link";
+import { SponsorCard } from "@/components/sponsor-card";
+import cms from "@/lib/cms";
+import i18n from "@/i18n";
+import siteConfig from "@/config/site";
 
 const HOME_SOCIAL_BUTTONS: [string, string, IconType, string][] = [
   ["Facebook", siteConfig.socials.Facebook, FaFacebook, "facebook"],
@@ -45,7 +45,7 @@ export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
 
   const data = await cms().homePageQuery({
-    locale: i18n["i18n-code"][locale] as string,
+    locale: i18n["i18n-code"]["fr"] as string,
   });
 
   const sponsors: Record<string, Maybe<SponsorMetadataFragment>[]> = {

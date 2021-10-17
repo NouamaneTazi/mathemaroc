@@ -85,7 +85,7 @@ module.exports = {
   // https://nextjs.org/docs/advanced-features/i18n-routing
   i18n: {
     defaultLocale: "fr",
-    locales: ["en", "fr"],
+    locales: ["en", "fr", "ar"],
   },
 
   // https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode

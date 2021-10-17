@@ -32,9 +32,9 @@ export const LocaleButton: React.FC = () => {
 
       <MenuList>
         <MenuGroup title="Language">
+          <MenuItem onClick={() => change("fr")}>Français</MenuItem>
+          <MenuItem onClick={() => change("ar")}>عربي</MenuItem>
           <MenuItem onClick={() => change("en")}>English</MenuItem>
-          <MenuItem onClick={() => change("fr")}>French</MenuItem>
-          <MenuItem onClick={() => change("ar")}>Arabic</MenuItem>
         </MenuGroup>
       </MenuList>
     </Menu>

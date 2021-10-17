@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import { COC, KodeEtika } from "@/modules/coc";
 import { aboutAr, aboutEn, aboutFr } from "@/modules/about";
 
 export default {
@@ -38,17 +37,22 @@ export default {
   },
   "home-revents-title": {
     en: "Recent Events",
-    fr: "Kegiatan Terakhir",
+    fr: "Événements récents",
     ar: "الأحداث الأخيرة",
   },
   "home-revents-subtitle": {
     en: <>View more recent meetups and workshops on the events page.</>,
-    fr: <>Lihat meetup dan workshop selebihnya pada laman kegiatan.</>,
+    fr: (
+      <>
+        Consultez les rencontres et les ateliers les plus récents sur la page
+        des événements.
+      </>
+    ),
     ar: <>عرض المزيد من اللقاءات وورش العمل الأخيرة على صفحة الأحداث</>,
   },
   "home-revents-more": {
     en: "View more events",
-    fr: "Lihat kegiatan lainnya",
+    fr: "Voir plus d'évènements",
     ar: "عرض المزيد من الأحداث",
   },
   "home-saps-title": {
@@ -61,11 +65,13 @@ export default {
   },
   "events-title": {
     en: "Meetups and Workshops",
-    fr: "Meetup dan Workshop",
+    fr: "Rencontres et ateliers",
+    ar: "الاجتماعات وورش العمل",
   },
   "events-subtitle": {
     en: <>Here are our recent events.</>,
-    fr: <>Berikut merupakan kegiatan kami sebelumnya.</>,
+    fr: <>Voici nos activités récentes.</>,
+    ar: <>هي أنشطتنا السابقة.</>,
   },
   "404-title": {
     en: "Four Oh Four!",

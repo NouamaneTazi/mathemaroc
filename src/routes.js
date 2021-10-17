@@ -7,7 +7,7 @@ const routes = {
   fr: {
     "/": { name: "Page d'acceuil" },
     "/events": { name: "Evènements" },
-    "/about": { name: "Who are we?" },
+    "/about": { name: "Qui sommes-nous ?" },
   },
   ar: {
     "/": { name: "الصفحة الرئيسية" },

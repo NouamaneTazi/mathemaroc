@@ -1,12 +1,5 @@
 import * as React from "react";
 
-import { EventCard } from "@/components/event-card";
-import { HorizontalLogo } from "@/components/logo";
-import { SponsorCard } from "@/components/sponsor-card";
-import siteConfig from "@/config/site";
-import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
-import i18n from "@/i18n";
-import cms from "@/lib/cms";
 import {
   Box,
   Button,
@@ -17,23 +10,28 @@ import {
   LightMode,
   Stack,
   Text,
+  VStack,
   useBreakpointValue,
   useColorModeValue,
   useToken,
-  VStack,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
-
-import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
-import NextLink from "next/link";
 import {
   FaArrowRight,
   FaFacebook,
   FaInstagram,
   FaYoutube,
 } from "react-icons/fa";
+import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
+import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
+
+import { EventCard } from "@/components/event-card";
+import { HorizontalLogo } from "@/components/logo";
 import { IconType } from "react-icons/lib";
+import NextLink from "next/link";
+// import { SponsorCard } from "@/components/sponsor-card";
+import cms from "@/lib/cms";
+import i18n from "@/i18n";
+import siteConfig from "@/config/site";
 
 const HOME_SOCIAL_BUTTONS: [string, string, IconType, string][] = [
   ["Facebook", siteConfig.socials.Facebook, FaFacebook, "facebook"],
@@ -45,7 +43,7 @@ export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
 
   const data = await cms().homePageQuery({
-    locale: i18n["i18n-code"][locale] as string,
+    locale: i18n["i18n-code"].fr, // TODO: put this back [locale]
   });
 
   const sponsors: Record<string, Maybe<SponsorMetadataFragment>[]> = {
@@ -77,7 +75,7 @@ export async function getStaticProps(args: GetStaticPropsContext) {
 const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
   props,
 ) => {
-  const { locale, recentEvents, sponsors } = props;
+  const { locale, recentEvents } = props;
 
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
 
@@ -162,7 +160,8 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
         />
       </Box>
 
-      <Container as="section" maxW="6xl" p={[4, 8]}>
+      {/* SPONSORS */}
+      {/* <Container as="section" maxW="6xl" p={[4, 8]}>
         <VStack spacing={[4, 8]}>
           <VStack spacing={[2, 4]} textAlign="center">
             <Heading as="h2">{i18n["home-saps-title"][locale]}</Heading>
@@ -186,7 +185,7 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             </React.Fragment>
           ))}
         </VStack>
-      </Container>
+      </Container> */}
     </>
   );
 };

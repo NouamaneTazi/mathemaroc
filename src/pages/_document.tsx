@@ -1,8 +1,5 @@
 import * as React from "react";
 
-import siteConfig from "@/config/site";
-import { ColorModeScript } from "@chakra-ui/react";
-
 import NextDocument, {
   DocumentContext,
   Head,
@@ -11,6 +8,9 @@ import NextDocument, {
   NextScript,
 } from "next/document";
 
+import { ColorModeScript } from "@chakra-ui/react";
+import siteConfig from "@/config/site";
+
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await NextDocument.getInitialProps(ctx);
@@ -18,8 +18,11 @@ export default class Document extends NextDocument {
   }
 
   render() {
+    // https://chakra-ui.com/docs/features/rtl-support
+    const { locale } = this.props.__NEXT_DATA__;
+    const dir = locale === "ar" ? "rtl" : "ltr";
     return (
-      <Html>
+      <Html dir={dir} lang={locale}>
         <Head>
           <meta charSet="UTF-8" />
           <meta content="ie=edge" httpEquiv="X-UA-Compatible" />

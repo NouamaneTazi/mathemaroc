@@ -23,6 +23,8 @@ export default class Document extends NextDocument {
     const dir = locale === "ar" ? "rtl" : "ltr";
     return (
       <Html dir={dir} lang={locale}>
+        {/* TODO: dir doesn't get updated in <html> */}
+        {/* <script>console.log(`dir: ${dir}`)</script> */}
         <Head>
           <meta charSet="UTF-8" />
           <meta content="ie=edge" httpEquiv="X-UA-Compatible" />

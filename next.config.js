@@ -84,7 +84,8 @@ module.exports = {
 
   // https://nextjs.org/docs/advanced-features/i18n-routing
   i18n: {
-    defaultLocale: "fr",
+    defaultLocale: "ar",
+    localeDetection: false, // INFO: remove this for automatic locale detection
     locales: ["en", "fr", "ar"],
   },
 

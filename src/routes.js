@@ -4,11 +4,11 @@ const routes = {
     "/events": { name: "Events" },
     "/about": { name: "Who are we?" },
   },
-  fr: {
-    "/": { name: "Page d'acceuil" },
-    "/events": { name: "Evènements" },
-    "/about": { name: "Qui sommes-nous ?" },
-  },
+  // fr: {
+  //   "/": { name: "Page d'acceuil" },
+  //   "/events": { name: "Evènements" },
+  //   "/about": { name: "Qui sommes-nous ?" },
+  // },
   ar: {
     "/": { name: "الصفحة الرئيسية" },
     "/events": { name: "الأحداث" },
@@ -20,4 +20,4 @@ const routes = {
  * @param {string} locale
  * @returns {Record<string,{name:string;ext?:boolean;}>}
  */
-module.exports = (locale = "fr") => routes[locale];
+module.exports = (locale) => routes[locale];

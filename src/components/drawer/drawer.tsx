@@ -32,7 +32,7 @@ export const Drawer: React.FC = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const copyEmail = useEmail();
 
-  const { locale } = useRouter();
+  const locale = useRouter().locale as string;
 
   if (isDesktop) {
     return null;

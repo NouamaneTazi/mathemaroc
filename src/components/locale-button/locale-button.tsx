@@ -18,13 +18,14 @@ export const LocaleButton: React.FC = () => {
 
   const locale = router.locale as string;
 
-  function change(_locale: string) {
-    void router.replace(router.route, router.asPath, { locale: _locale });
+  async function change(_locale: string) {
+    await router.replace(router.route, router.asPath, { locale: _locale });
+    router.reload();
   }
 
   return (
     <Menu>
-      <Tooltip hasArrow label="Select language ✨">
+      <Tooltip hasArrow label={i18n.tooltip.lang[locale]}>
         <MenuButton as={Button} variant="ghost">
           <span role="img">{i18n.flag[locale]}</span>
         </MenuButton>
@@ -32,7 +33,7 @@ export const LocaleButton: React.FC = () => {
 
       <MenuList>
         <MenuGroup title="Language">
-          <MenuItem onClick={() => change("fr")}>Français</MenuItem>
+          {/* <MenuItem onClick={() => change("fr")}>Français</MenuItem> */}
           <MenuItem onClick={() => change("ar")}>عربي</MenuItem>
           <MenuItem onClick={() => change("en")}>English</MenuItem>
         </MenuGroup>

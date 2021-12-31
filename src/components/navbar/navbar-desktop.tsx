@@ -22,7 +22,7 @@ export const NavbarDesktop: React.FC = () => {
   const copyEmail = useEmail();
 
   const router = useRouter();
-  const { locale } = router;
+  const locale = router.locale as string;
 
   return (
     <Container

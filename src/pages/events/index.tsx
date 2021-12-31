@@ -20,7 +20,7 @@ export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
 
   const data = await cms().eventsPageQuery({
-    locale: i18n["i18n-code"][locale] as string,
+    locale: i18n["i18n-code"][locale],
   });
 
   return {

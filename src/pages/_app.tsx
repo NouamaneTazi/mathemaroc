@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { Box, ChakraProvider, Stack, useColorMode } from "@chakra-ui/react";
+import { Box, Stack, useColorMode } from "@chakra-ui/react";
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
-
+import { ChakraRTLProvider } from "@/components/chakra-rtl-provider";
 import { Drawer } from "@/components/drawer";
 import { Footer } from "@/components/footer";
 import Head from "next/head";
@@ -11,7 +11,6 @@ import { Navbar } from "@/components/navbar";
 import { AppProps as NextAppProps } from "next/app";
 import Router from "next/router";
 import siteConfig from "@/config/site";
-import theme from "@/theme";
 import { useShortcut } from "litkey";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -99,9 +98,9 @@ function App(props: AppProps) {
         url={siteConfig.url}
       />
 
-      <ChakraProvider resetCSS theme={theme}>
+      <ChakraRTLProvider>
         <Inner {...props} />
-      </ChakraProvider>
+      </ChakraRTLProvider>
     </>
   );
 }

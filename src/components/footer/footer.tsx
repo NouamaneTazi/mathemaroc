@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
   const bgColor = useColorModeValue(lightColor, darkColor);
 
   // const copyEmail = useEmail();
-  const { locale } = useRouter();
+  const locale = useRouter().locale as string;
 
   return (
     <Box fontSize={["xs", "sm"]}>
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
           >
             <Stack>
               <Text variant="sitemap-title">
-                {i18n.footer.navigate[locale as string] ?? ""}
+                {i18n.footer.navigate[locale] ?? ""}
               </Text>
               {Object.entries(routes(locale)).map(([href, { name }]) => (
                 <NextLink key={name} href={href} passHref>
@@ -117,7 +117,7 @@ export const Footer: React.FC = () => {
             <Stack>
               <Text variant="sitemap-title">
                 {" "}
-                {i18n.footer.socials[locale as string] ?? ""}
+                {i18n.footer.socials[locale] ?? ""}
               </Text>
               {Object.entries(siteConfig.socials).map(([name, href]) => (
                 <Link key={name} href={href} isExternal variant="sitemap-link">

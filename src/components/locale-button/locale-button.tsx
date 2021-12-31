@@ -18,8 +18,9 @@ export const LocaleButton: React.FC = () => {
 
   const locale = router.locale as string;
 
-  function change(_locale: string) {
-    void router.replace(router.route, router.asPath, { locale: _locale });
+  async function change(_locale: string) {
+    await router.replace(router.route, router.asPath, { locale: _locale });
+    router.reload();
   }
 
   return (

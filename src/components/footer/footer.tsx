@@ -16,6 +16,7 @@ import NextLink from "next/link";
 import routes from "@/routes";
 import siteConfig from "@/config/site";
 import { useRouter } from "next/router";
+import i18n from "@/i18n";
 
 export const Footer: React.FC = () => {
   const [lightColor, darkColor] = useToken("colors", [
@@ -76,8 +77,8 @@ export const Footer: React.FC = () => {
               </EmailTooltip>
               .
             </HStack> */}
-            <Text>
-              &copy; {new Date().getFullYear()}-present{" "}
+            <Text dir="ltr">
+              &copy; {new Date().getFullYear()} - present{" "}
               <NextLink href="/" passHref>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <Link fontWeight="bold">{siteConfig.title}</Link>
@@ -104,7 +105,9 @@ export const Footer: React.FC = () => {
             spacing={16}
           >
             <Stack>
-              <Text variant="sitemap-title">Navigate</Text>
+              <Text variant="sitemap-title">
+                {i18n.footer.navigate[locale as string] ?? ""}
+              </Text>
               {Object.entries(routes(locale)).map(([href, { name }]) => (
                 <NextLink key={name} href={href} passHref>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -113,7 +116,10 @@ export const Footer: React.FC = () => {
               ))}
             </Stack>
             <Stack>
-              <Text variant="sitemap-title">Socials</Text>
+              <Text variant="sitemap-title">
+                {" "}
+                {i18n.footer.socials[locale as string] ?? ""}
+              </Text>
               {Object.entries(siteConfig.socials).map(([name, href]) => (
                 <Link key={name} href={href} isExternal variant="sitemap-link">
                   {name}

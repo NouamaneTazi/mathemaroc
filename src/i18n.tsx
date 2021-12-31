@@ -20,6 +20,18 @@ export default {
       ar: aboutAr,
     },
   },
+  footer: {
+    navigate: {
+      en: "Navigate",
+      fr: "Naviguer",
+      ar: "التنقل",
+    },
+    socials: {
+      en: "Socials",
+      fr: "Réseaux sociaux",
+      ar: "شبكات التواصل",
+    },
+  },
   flag: {
     en: "🇺🇸",
     fr: "fr",

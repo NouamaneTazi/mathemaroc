@@ -86,7 +86,11 @@ module.exports = {
   i18n: {
     defaultLocale: "ar",
     localeDetection: false, // INFO: remove this for automatic locale detection
-    locales: ["en", "fr", "ar"],
+    locales: [
+      "en",
+      // "fr",
+      "ar",
+    ],
   },
 
   // https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode

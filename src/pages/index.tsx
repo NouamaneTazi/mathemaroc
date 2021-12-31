@@ -43,7 +43,7 @@ export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
 
   const data = await cms().homePageQuery({
-    locale: i18n["i18n-code"][locale] as string,
+    locale: i18n["i18n-code"].fr, // TODO: put this back [locale]
   });
 
   const sponsors: Record<string, Maybe<SponsorMetadataFragment>[]> = {

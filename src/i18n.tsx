@@ -1,55 +1,59 @@
 import * as React from "react";
 
-import { COC, KodeEtika } from "@/modules/coc";
-
-import { aboutEn } from "@/modules/about";
+import { aboutAr, aboutEn, aboutFr } from "@/modules/about";
 
 export default {
   "i18n-code": {
     en: "en-US",
     fr: "fr",
-  },
-  "coc-title": {
-    en: "Code of Conduct",
-    fr: "Kode Etika",
-  },
-  "coc-page": {
-    en: COC,
-    fr: KodeEtika,
+    ar: "ar",
   },
   about: {
     title: {
       en: "Who are we",
-      fr: "dfzdf",
+      fr: "Qui sommes-nous",
+      ar: "من نحن؟",
     },
     page: {
       en: aboutEn,
-      fr: " contsds",
+      fr: aboutFr,
+      ar: aboutAr,
     },
   },
   flag: {
     en: "🇺🇸",
-    fr: "🇮🇩",
+    fr: "fr",
+    ar: "ar",
   },
   "home-title": {
     en: "To promote mathematics in Morocco.",
     fr: "Pour promouvoir les mathématiques au Maroc.",
+    ar: "لتعزيز الرياضيات في المغرب",
   },
   "home-subtitle": {
     en: "Moroccan association working for a better preparation of young Moroccans to the International Mathematics Olympiads.",
     fr: "Association marocaine œuvrant pour une meilleure préparation des jeunes marocains aux Olympiades Internationales de Mathématiques.",
+    ar: "جمعية مغربية تعمل من أجل إعداد أفضل للشباب المغربي للأولمبياد الدولي للرياضيات.",
   },
   "home-revents-title": {
     en: "Recent Events",
-    fr: "Kegiatan Terakhir",
+    fr: "Événements récents",
+    ar: "الأحداث الأخيرة",
   },
   "home-revents-subtitle": {
     en: <>View more recent meetups and workshops on the events page.</>,
-    fr: <>Lihat meetup dan workshop selebihnya pada laman kegiatan.</>,
+    fr: (
+      <>
+        Consultez les rencontres et les ateliers les plus récents sur la page
+        des événements.
+      </>
+    ),
+    ar: <>عرض المزيد من اللقاءات وورش العمل الأخيرة على صفحة الأحداث</>,
   },
   "home-revents-more": {
     en: "View more events",
-    fr: "Lihat kegiatan lainnya",
+    fr: "Voir plus d'évènements",
+    ar: "عرض المزيد من الأحداث",
   },
   "home-saps-title": {
     en: "Our Sponsors and Partners",
@@ -61,22 +65,27 @@ export default {
   },
   "events-title": {
     en: "Meetups and Workshops",
-    fr: "Meetup dan Workshop",
+    fr: "Rencontres et ateliers",
+    ar: "الاجتماعات وورش العمل",
   },
   "events-subtitle": {
     en: <>Here are our recent events.</>,
-    fr: <>Berikut merupakan kegiatan kami sebelumnya.</>,
+    fr: <>Voici nos activités récentes.</>,
+    ar: <>هي أنشطتنا السابقة.</>,
   },
   "404-title": {
     en: "Four Oh Four!",
     fr: "Empat Nol Empat!",
+    ar: "404",
   },
   "404-subtitle": {
     en: "The page you requested does not exist or may have been moved.",
     fr: "Halaman yang Anda minta tidak ada atau mungkin telah dipindahkan.",
+    ar: "The page you requested does not exist or may have been moved.",
   },
   "404-button": {
     en: "Back to home page",
-    fr: "Kembali ke Beranda",
+    fr: "Back to home page",
+    ar: "Back to home page",
   },
 };

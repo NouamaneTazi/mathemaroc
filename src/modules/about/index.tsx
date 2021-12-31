@@ -1,3 +1,5 @@
-import aboutEn from "./about";
+import aboutAr from "./aboutAr";
+import aboutEn from "./aboutEn";
+import aboutFr from "./aboutFr";
 
-export { aboutEn };
+export { aboutEn, aboutAr, aboutFr };

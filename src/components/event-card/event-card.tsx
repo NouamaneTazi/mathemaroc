@@ -8,8 +8,8 @@ import {
   Divider,
   Flex,
   FlexProps,
-  Heading,
   HStack,
+  Heading,
   Icon,
   Img,
   Stack,
@@ -18,8 +18,8 @@ import {
   useToken,
 } from "@chakra-ui/react";
 
-import format from "date-fns/format";
 import { FaArrowRight } from "react-icons/fa";
+import format from "date-fns/format";
 
 interface EventCardProps extends FlexProps {
   event: any;

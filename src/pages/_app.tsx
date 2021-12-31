@@ -1,18 +1,18 @@
 import * as React from "react";
 
+import { Box, ChakraProvider, Stack, useColorMode } from "@chakra-ui/react";
+import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
+
 import { Drawer } from "@/components/drawer";
 import { Footer } from "@/components/footer";
+import Head from "next/head";
+import NProgress from "nprogress";
 import { Navbar } from "@/components/navbar";
+import { AppProps as NextAppProps } from "next/app";
+import Router from "next/router";
 import siteConfig from "@/config/site";
 import theme from "@/theme";
-import { Box, ChakraProvider, Stack, useColorMode } from "@chakra-ui/react";
-
 import { useShortcut } from "litkey";
-import { AppProps as NextAppProps } from "next/app";
-import Head from "next/head";
-import Router from "next/router";
-import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
-import NProgress from "nprogress";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -83,8 +83,8 @@ function App(props: AppProps) {
             },
           ],
         }}
-        title="Welcome!"
-        titleTemplate={`%s · ${siteConfig.title}`}
+        title="Promouvoir les maths au Maroc"
+        titleTemplate={`${siteConfig.title} | %s`}
         twitter={{
           cardType: "summary_large_image",
           handle: siteConfig.twitterUsername,

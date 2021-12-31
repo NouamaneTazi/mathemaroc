@@ -5,7 +5,7 @@ const siteConfig = {
   twitterUsername: "",
   email: "mathsmcontact@gmail.com",
   socials: {
-    Youtube: "https://www.youtube.com/channel/UCHkB77QEg1w-1E9bmsGKDYg",
+    Youtube: "https://www.youtube.com/channel/UCorPf8TNWQb_YiYAkB7nQvA",
     Facebook: "https://www.facebook.com/MathsMaroc2",
     Instagram:
       "https://www.instagram.com/mathmaroc/?fbclid=IwAR343J4433fy9rVgCFLbDK_MnwCn7lIDnrd_a6ACIp9vkrt1F8DSN5ZJSIU",

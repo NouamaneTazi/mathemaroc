@@ -32,6 +32,23 @@ export default {
       ar: "شبكات التواصل",
     },
   },
+  tooltip: {
+    email: {
+      en: "Click to copy email address 📮",
+      fr: "Cliquez pour copier l'adresse email 📮",
+      ar: "انقر لنسخ عنوان البريد الإلكتروني 📮",
+    },
+    lightmode: {
+      en: "Toggle light mode 🌓",
+      fr: "Basculer le mode d'éclairage 🌓",
+      ar: "تبديل وضع الإضاءة 🌓",
+    },
+    lang: {
+      en: "Select language 🔡",
+      fr: "Sélectionnez la langue 🔡",
+      ar: "اختيار اللغة 🔡",
+    },
+  },
   flag: {
     en: "🇺🇸",
     fr: "fr",

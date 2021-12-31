@@ -78,12 +78,11 @@ export const Footer: React.FC = () => {
               .
             </HStack> */}
             <Text dir="ltr">
-              &copy; {new Date().getFullYear()} - present{" "}
               <NextLink href="/" passHref>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <Link fontWeight="bold">{siteConfig.title}</Link>
-              </NextLink>
-              .
+              </NextLink>{" "}
+              &copy; {new Date().getFullYear()} .
             </Text>
             {/* <br />
             <Text>

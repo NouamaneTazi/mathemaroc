@@ -63,7 +63,7 @@ export default {
     },
   },
   flag: {
-    en: "🇺🇸",
+    en: "en",
     fr: "fr",
     ar: "ar",
   },

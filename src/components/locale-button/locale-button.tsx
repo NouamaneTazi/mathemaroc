@@ -1,16 +1,8 @@
 import * as React from "react";
 
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuGroup,
-  MenuItem,
-  MenuList,
-  Tooltip,
-} from "@chakra-ui/react";
-
 import i18n from "@/i18n";
+
+import { Button, Menu, MenuButton, MenuGroup, MenuItem, MenuList } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 export const LocaleButton: React.FC = () => {
@@ -26,9 +18,9 @@ export const LocaleButton: React.FC = () => {
   return (
     <Menu>
       {/* <Tooltip hasArrow label={i18n.tooltip.lang[locale]}> */}
-        <MenuButton as={Button} variant="ghost">
-          <span role="img">{i18n.flag[locale]}</span>
-        </MenuButton>
+      <MenuButton as={Button} variant="ghost">
+        <span role="img">{i18n.flag[locale]}</span>
+      </MenuButton>
       {/* </Tooltip> */}
 
       <MenuList>

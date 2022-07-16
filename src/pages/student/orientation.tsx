@@ -1,20 +1,12 @@
 import * as React from "react";
 
-import {
-  Box,
-  Container,
-  Heading,
-  Text,
-  VStack,
-  useColorModeValue,
-  useToken,
-} from "@chakra-ui/react";
-import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
-
 import { EventCard } from "@/components/event-card";
-import { NextSeo } from "next-seo";
-import cms from "@/lib/cms";
 import i18n from "@/i18n";
+import cms from "@/lib/cms";
+
+import { Box, Container, Heading, Text, useColorModeValue, useToken, VStack } from "@chakra-ui/react";
+import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
+import { NextSeo } from "next-seo";
 
 export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
@@ -32,15 +24,10 @@ export async function getStaticProps(args: GetStaticPropsContext) {
   };
 }
 
-const OrientationsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
-  props,
-) => {
+const OrientationsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
   const { orientations, locale } = props;
 
-  const [lightColor, darkColor] = useToken("colors", [
-    "brand.200",
-    "brand.800",
-  ]) as [string, string];
+  const [lightColor, darkColor] = useToken("colors", ["brand.200", "brand.800"]) as [string, string];
 
   const bgColor = useColorModeValue(lightColor, darkColor);
 
@@ -56,10 +43,7 @@ const OrientationsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>>
 
       <Container as="section" maxW="6xl" px={[4, 8]}>
         <VStack spacing={[2, 4]}>
-          {orientations?.map(
-            (event) =>
-              event && <EventCard key={event.slug} event={event} withNotes />,
-          )}
+          {orientations?.map((event) => event && <EventCard key={event.slug} event={event} withNotes />)}
         </VStack>
       </Container>
 

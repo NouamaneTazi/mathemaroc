@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import { GetStaticPropsContext, NextPage } from "next";
+import i18n from "@/i18n";
+import { contentRenderer } from "@/utils/renderers";
 
 import { Container } from "@chakra-ui/react";
+import { GetStaticPropsContext, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import ReactMarkdown from "react-markdown";
-import { contentRenderer } from "@/utils/renderers";
-import i18n from "@/i18n";
 
 // const aboutUrl =
 //   "https://raw.githubusercontent.com/NouamaneTazi/mathemaroc/master/markdowns/about.mdx";

@@ -1,24 +1,24 @@
 import * as React from "react";
 
+import { Icon, IconButton, useColorMode } from "@chakra-ui/react";
+// import { useRouter } from "next/router";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { Icon, IconButton, Tooltip, useColorMode } from "@chakra-ui/react";
 
-import i18n from "@/i18n";
-import { useRouter } from "next/router";
+// import i18n from "@/i18n";
 
 export const ColorModeButton: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const ModeIcon = colorMode === "dark" ? FaSun : FaMoon;
-  const { locale } = useRouter();
+  // const { locale } = useRouter();
 
   return (
     // <Tooltip hasArrow label={i18n.tooltip.lightmode[locale as string]}>
-      <IconButton
-        aria-label={`Toggle ${colorMode} mode 🌓`}
-        icon={<Icon as={ModeIcon} />}
-        onClick={toggleColorMode}
-        variant="ghost"
-      />
+    <IconButton
+      aria-label={`Toggle ${colorMode} mode 🌓`}
+      icon={<Icon as={ModeIcon} />}
+      onClick={toggleColorMode}
+      variant="ghost"
+    />
     // </Tooltip>
   );
 };

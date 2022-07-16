@@ -1,28 +1,16 @@
 import * as React from "react";
 
-import {
-  Box,
-  Container,
-  HStack,
-  Link,
-  Stack,
-  Text,
-  useColorModeValue,
-  useToken,
-} from "@chakra-ui/react";
-
-import NextLink from "next/link";
+import siteConfig from "@/config/site";
+import i18n from "@/i18n";
 // import { useEmail } from "@/hooks/app";
 import routes from "@/routes";
-import siteConfig from "@/config/site";
+
+import { Box, Container, HStack, Link, Stack, Text, useColorModeValue, useToken } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
-import i18n from "@/i18n";
 
 export const Footer: React.FC = () => {
-  const [lightColor, darkColor] = useToken("colors", [
-    "brand.200",
-    "brand.800",
-  ]) as [string, string];
+  const [lightColor, darkColor] = useToken("colors", ["brand.200", "brand.800"]) as [string, string];
 
   const bgColor = useColorModeValue(lightColor, darkColor);
 
@@ -96,17 +84,9 @@ export const Footer: React.FC = () => {
             </Text> */}
           </Box>
 
-          <HStack
-            align="flex-start"
-            justify="center"
-            pb={12}
-            pt={{ base: 12, md: 0 }}
-            spacing={16}
-          >
+          <HStack align="flex-start" justify="center" pb={12} pt={{ base: 12, md: 0 }} spacing={16}>
             <Stack>
-              <Text variant="sitemap-title">
-                {i18n.footer.navigate[locale] ?? ""}
-              </Text>
+              <Text variant="sitemap-title">{i18n.footer.navigate[locale] ?? ""}</Text>
               {Object.entries(routes(locale)).map(([href, { name }]) => (
                 <NextLink key={name} href={href} passHref>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -115,10 +95,7 @@ export const Footer: React.FC = () => {
               ))}
             </Stack>
             <Stack>
-              <Text variant="sitemap-title">
-                {" "}
-                {i18n.footer.socials[locale] ?? ""}
-              </Text>
+              <Text variant="sitemap-title"> {i18n.footer.socials[locale] ?? ""}</Text>
               {Object.entries(siteConfig.socials).map(([name, href]) => (
                 <Link key={name} href={href} isExternal variant="sitemap-link">
                   {name}

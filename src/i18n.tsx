@@ -84,12 +84,7 @@ export default {
   },
   "home-revents-subtitle": {
     en: <>View more recent meetups and workshops on the events page.</>,
-    fr: (
-      <>
-        Consultez les rencontres et les ateliers les plus récents sur la page
-        des événements.
-      </>
-    ),
+    fr: <>Consultez les rencontres et les ateliers les plus récents sur la page des événements.</>,
     ar: <>عرض المزيد من اللقاءات وورش العمل الأخيرة على صفحة الأحداث</>,
   },
   "home-revents-more": {

@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { aboutAr, aboutEn, aboutFr } from "@/modules/about";
+import { contactAr, contactEn, contactFr } from "@/modules/contact";
 
 export default {
   "i18n-code": {
@@ -18,6 +19,18 @@ export default {
       en: aboutEn,
       fr: aboutFr,
       ar: aboutAr,
+    },
+  },
+  contact: {
+    title: {
+      en: "Contact",
+      fr: "Contact",
+      ar: "Contact",
+    },
+    page: {
+      en: contactEn,
+      fr: contactFr,
+      ar: contactAr,
     },
   },
   footer: {

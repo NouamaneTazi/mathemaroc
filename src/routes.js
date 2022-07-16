@@ -3,6 +3,7 @@ const routes = {
     "/": { name: "Home" },
     "/events": { name: "Events" },
     "/about": { name: "Who are we?" },
+    "/contact": { name: "Contact" },
   },
   // fr: {
   //   "/": { name: "Page d'acceuil" },
@@ -13,6 +14,7 @@ const routes = {
     "/": { name: "الصفحة الرئيسية" },
     "/events": { name: "الأحداث" },
     "/about": { name: "من نحن؟" },
+    "/contact": { name: "Contact" },
   },
 };
 

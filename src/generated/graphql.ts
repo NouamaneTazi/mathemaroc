@@ -1,7 +1,8 @@
+import * as Dom from "graphql-request/dist/types.dom";
+
 //@ts-nocheck
 /* eslint-disable */
 import { GraphQLClient } from "graphql-request";
-import * as Dom from "graphql-request/dist/types.dom";
 import gql from "graphql-tag";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -1199,6 +1200,29 @@ export const SponsorMetadataFragmentDoc = /*#__PURE__*/ gql`
     }
   }
 `;
+export const ConferencesPageQueryDocument = /*#__PURE__*/ gql`
+  query conferencesPageQuery($locale: String!) {
+    eventCollection(limit: 50, locale: $locale, order: startingDate_DESC, where: { category: "orientation" }) {
+      items {
+        ...EventMetadata
+        sessionsCollection(limit: 50) {
+          items {
+            sys {
+              id
+            }
+            speaker {
+              avatar {
+                url
+              }
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+  ${EventMetadataFragmentDoc}
+`;
 export const EventsPageQueryDocument = /*#__PURE__*/ gql`
   query eventsPageQuery($locale: String!) {
     eventCollection(limit: 50, locale: $locale, order: startingDate_DESC) {
@@ -1250,6 +1274,20 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    conferencesPageQuery(
+      variables: ConferencesPageQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"],
+    ): Promise<ConferencesPageQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ConferencesPageQuery>(ConferencesPageQueryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "conferencesPageQuery",
+        "query",
+      );
+    },
     eventsPageQuery(
       variables: EventsPageQueryVariables,
       requestHeaders?: Dom.RequestInit["headers"],
@@ -1281,6 +1319,34 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   };
 }
 export type Sdk = ReturnType<typeof getSdk>;
+export type ConferencesPageQueryVariables = Exact<{
+  locale: Scalars["String"];
+}>;
+
+export type ConferencesPageQuery = {
+  eventCollection: {
+    items: Array<{
+      title: string | null;
+      slug: string | null;
+      description: string | null;
+      category: string | null;
+      startingDate: any | null;
+      onlineEvent: boolean | null;
+      location: string | null;
+      url: string | null;
+      quota: number | null;
+      notes: string | null;
+      sessionsCollection: {
+        items: Array<{
+          sys: { id: string };
+          speaker: { name: string | null; avatar: { url: string | null } | null } | null;
+        } | null>;
+      } | null;
+      poster: { url: string | null } | null;
+    } | null>;
+  } | null;
+};
+
 export type EventsPageQueryVariables = Exact<{
   locale: Scalars["String"];
 }>;

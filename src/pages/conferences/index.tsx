@@ -19,7 +19,7 @@ import i18n from "@/i18n";
 export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
 
-  const data = await cms().eventsPageQuery({
+  const data = await cms().conferencesPageQuery({
     locale: i18n["i18n-code"][locale],
   });
 

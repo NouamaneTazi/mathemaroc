@@ -1,8 +1,7 @@
-import * as Dom from "graphql-request/dist/types.dom";
-
 //@ts-nocheck
 /* eslint-disable */
 import { GraphQLClient } from "graphql-request";
+import * as Dom from "graphql-request/dist/types.dom";
 import gql from "graphql-tag";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -1202,7 +1201,7 @@ export const SponsorMetadataFragmentDoc = /*#__PURE__*/ gql`
 `;
 export const ConferencesPageQueryDocument = /*#__PURE__*/ gql`
   query conferencesPageQuery($locale: String!) {
-    eventCollection(limit: 50, locale: $locale, order: startingDate_DESC, where: { category: "orientation" }) {
+    eventCollection(limit: 50, locale: $locale, order: startingDate_DESC, where: { category: "conference" }) {
       items {
         ...EventMetadata
         sessionsCollection(limit: 50) {
@@ -1263,6 +1262,29 @@ export const HomePageQueryDocument = /*#__PURE__*/ gql`
   ${EventMetadataFragmentDoc}
   ${SponsorMetadataFragmentDoc}
 `;
+export const OrientationsPageQueryDocument = /*#__PURE__*/ gql`
+  query orientationsPageQuery($locale: String!) {
+    eventCollection(limit: 50, locale: $locale, order: startingDate_DESC, where: { category: "orientation" }) {
+      items {
+        ...EventMetadata
+        sessionsCollection(limit: 50) {
+          items {
+            sys {
+              id
+            }
+            speaker {
+              avatar {
+                url
+              }
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+  ${EventMetadataFragmentDoc}
+`;
 
 export type SdkFunctionWrapper = <T>(
   action: (requestHeaders?: Record<string, string>) => Promise<T>,
@@ -1313,6 +1335,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         "homePageQuery",
+        "query",
+      );
+    },
+    orientationsPageQuery(
+      variables: OrientationsPageQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"],
+    ): Promise<OrientationsPageQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<OrientationsPageQuery>(OrientationsPageQueryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "orientationsPageQuery",
         "query",
       );
     },
@@ -1452,6 +1488,34 @@ export type HomePageQuery = {
       activeSponsor: boolean | null;
       logo: { url: string | null } | null;
       sys: { id: string };
+    } | null>;
+  } | null;
+};
+
+export type OrientationsPageQueryVariables = Exact<{
+  locale: Scalars["String"];
+}>;
+
+export type OrientationsPageQuery = {
+  eventCollection: {
+    items: Array<{
+      title: string | null;
+      slug: string | null;
+      description: string | null;
+      category: string | null;
+      startingDate: any | null;
+      onlineEvent: boolean | null;
+      location: string | null;
+      url: string | null;
+      quota: number | null;
+      notes: string | null;
+      sessionsCollection: {
+        items: Array<{
+          sys: { id: string };
+          speaker: { name: string | null; avatar: { url: string | null } | null } | null;
+        } | null>;
+      } | null;
+      poster: { url: string | null } | null;
     } | null>;
   } | null;
 };

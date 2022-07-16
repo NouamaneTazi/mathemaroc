@@ -1,0 +1,20 @@
+query orientationsPageQuery($locale: String!) {
+  eventCollection(limit: 50, locale: $locale, order: startingDate_DESC, where : {category: "orientation"}) {
+    items {
+      ...EventMetadata
+      sessionsCollection(limit: 50) {
+        items {
+          sys {
+            id
+          }
+          speaker {
+            avatar {
+              url
+            }
+            name
+          }
+        }
+      }
+    }
+  }
+}

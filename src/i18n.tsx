@@ -125,6 +125,16 @@ export default {
     fr: <>Voici nos activités récentes.</>,
     ar: <>هي أنشطتنا السابقة.</>,
   },
+  "orientations-title": {
+    en: "Meetups and Workshops",
+    fr: "Rencontres et ateliers",
+    ar: "الاجتماعات وورش العمل",
+  },
+  "orientations-subtitle": {
+    en: <>Here are our recent events.</>,
+    fr: <>Voici nos activités récentes.</>,
+    ar: <>هي أنشطتنا السابقة.</>,
+  },
   "404-title": {
     en: "Four Oh Four!",
     fr: "Empat Nol Empat!",

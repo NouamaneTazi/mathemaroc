@@ -8,6 +8,12 @@ For now we're using **Contentful** which provides 2 locales max for free (see [l
 
 We can use [**strapi**](https://strapi.io/starters/strapi-starter-next-js-blog) an open-source headless CMS, which we can host on Heroku for free, which would remove all limits
 
+### Installation
+
+* Install yarn from: <https://classic.yarnpkg.com/lang/en/docs/install/>
+* In your command shell, run `yarn` to install dependencies
+* Create a `.env` file in the root directory of the project by copying the `.env.local.example` file and filling the values
+
 ### Start the application
 
 To run your site locally, use:

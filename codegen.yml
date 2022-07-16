@@ -1,0 +1,34 @@
+overwrite: true
+
+documents:
+  - "src/graphql/client/**/*.graphql"
+
+schema:
+  "https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}":
+    headers:
+      Authorization: "Bearer ${CONTENTFUL_API_KEY}"
+
+hooks:
+  afterOneFileWrite:
+    - yarn prettier --write
+
+generates:
+  "./schema.graphql":
+    plugins:
+      - schema-ast
+    hooks:
+      afterAllFileWrite:
+        - prettier --write
+  "./src/generated/graphql.ts":
+    plugins:
+      - "typescript"
+      - "typescript-graphql-request"
+      - "typescript-operations"
+      - "add":
+          content: "//@ts-nocheck\n/* eslint-disable */"
+    config:
+      avoidOptionals: true
+      dedupeFragments: true
+      dedupeOperationSuffix: true
+      pureMagicComment: true
+      skipTypename: true

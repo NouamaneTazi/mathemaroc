@@ -1719,6 +1719,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     eventsPageQuery(variables: EventsPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<EventsPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<EventsPageQuery>(EventsPageQueryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'eventsPageQuery');
     },
+    conferencesPageQuery(variables: EventsPageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<EventsPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<EventsPageQuery>(ConferencesPageQueryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'conferencesPageQuery');
+    },
     homePageQuery(variables: HomePageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<HomePageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<HomePageQuery>(HomePageQueryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'homePageQuery');
     }

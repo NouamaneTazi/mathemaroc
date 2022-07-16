@@ -5,8 +5,13 @@ const routes = {
     "/about": { name: "Who are we?" },
     "/contact": { name: "Contact" },
     "/conferences": { name: "Conferences" },
-    "/student": { name: "For students" },
-    "/student/orientation": { name: "Orientation" },
+    "/student": {
+      name: "For students",
+      submenu: [
+        { sub_name: "Student's guide", sub_href: "/student/guide" },
+        { sub_name: "Orientation", sub_href: "/student/orientation" },
+      ],
+    },
     "/journal": { name: "Journal" },
     "/olympiads": { name: "Olympiads" },
   },
@@ -21,8 +26,13 @@ const routes = {
     "/about": { name: "من نحن؟" },
     "/contact": { name: "Contact" },
     "/conferences": { name: "Conferences" },
-    "/student": { name: "For students" },
-    "/student/orientation": { name: "Orientation" },
+    "/student": {
+      name: "For students",
+      submenu: [
+        { sub_name: "Student's guide", sub_href: "/student/guide" },
+        { sub_name: "Orientation", sub_href: "/student/orientation" },
+      ],
+    },
     "/journal": { name: "Journal" },
     "/olympiads": { name: "Olympiads" },
   },
@@ -30,6 +40,6 @@ const routes = {
 
 /**
  * @param {string} locale
- * @returns {Record<string,{name:string;ext?:boolean;}>}
+ * @returns {Record<string,{name:string;ext?:boolean;submenu?:{sub_name:string;sub_href:string}[]}>}
  */
 module.exports = (locale) => routes[locale];

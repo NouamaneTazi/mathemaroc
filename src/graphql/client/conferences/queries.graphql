@@ -1,5 +1,5 @@
 query conferencesPageQuery($locale: String!) {
-  eventCollection(limit: 50, locale: $locale, order: startingDate_DESC, where : {category: "orientation"}) {
+  eventCollection(limit: 50, locale: $locale, order: startingDate_DESC, where : {category: "conference"}) {
     items {
       ...EventMetadata
       sessionsCollection(limit: 50) {

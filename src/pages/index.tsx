@@ -1,5 +1,13 @@
 import * as React from "react";
 
+import { EventCard } from "@/components/event-card";
+import { HorizontalLogo } from "@/components/logo";
+import siteConfig from "@/config/site";
+import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
+import i18n from "@/i18n";
+// import { SponsorCard } from "@/components/sponsor-card";
+import cms from "@/lib/cms";
+
 import {
   Box,
   Button,
@@ -10,23 +18,15 @@ import {
   LightMode,
   Stack,
   Text,
-  VStack,
   useBreakpointValue,
   useColorModeValue,
   useToken,
+  VStack,
 } from "@chakra-ui/react";
-import { FaArrowRight, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
-import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
-
-import { EventCard } from "@/components/event-card";
-import { HorizontalLogo } from "@/components/logo";
-import { IconType } from "react-icons/lib";
 import NextLink from "next/link";
-// import { SponsorCard } from "@/components/sponsor-card";
-import cms from "@/lib/cms";
-import i18n from "@/i18n";
-import siteConfig from "@/config/site";
+import { FaArrowRight, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { IconType } from "react-icons/lib";
 
 const HOME_SOCIAL_BUTTONS: [string, string, IconType, string][] = [
   ["Facebook", siteConfig.socials.Facebook, FaFacebook, "facebook"],

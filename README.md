@@ -2,11 +2,14 @@
 
 Landing page for Math&Maroc, made using Next.js, Chakra UI, and Contentful
 
-### headless CMS
+### CMS (Content Management System)
 
-For now we're using **Contentful** which provides 2 locales max for free (see [link](https://www.contentful.com/pricing/))
+For now we're using **Contentful** which provides 2 locales max for free (see [link](https://www.contentful.com/pricing/)) and 5 users max
 
-We can use [**strapi**](https://strapi.io/starters/strapi-starter-next-js-blog) an open-source headless CMS, which we can host on Heroku for free, which would remove all limits
+Other alternatives can be found [here](https://nextjs.org/docs/basic-features/pages#static-generation-recommended).
+
+* [Prismic](https://prismic.io/pricing) seems like a very promising option, that we're planning to migrate to soon.
+* We can use [**strapi**](https://strapi.io/starters/strapi-starter-next-js-blog) an open-source headless CMS, which we can host on Heroku for free, which would remove all limits
 
 ### Installation
 

@@ -33,7 +33,7 @@ export const NavbarDesktop: React.FC = () => {
       <HStack>
         {Object.entries(routes(locale)).map(([href, { name, ext = false, submenu }]) =>
           submenu ? (
-            <Menu>
+            <Menu key={name}>
               <MenuButton as={Button} variant="ghost">
                 {name}
               </MenuButton>

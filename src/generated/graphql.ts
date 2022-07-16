@@ -282,7 +282,6 @@ export type Event = Entry & {
   poster: Maybe<Asset>;
   quota: Maybe<Scalars["Int"]>;
   sessionsCollection: Maybe<EventSessionsCollection>;
-  slug: Maybe<Scalars["String"]>;
   startingDate: Maybe<Scalars["DateTime"]>;
   sys: Sys;
   title: Maybe<Scalars["String"]>;
@@ -336,11 +335,6 @@ export type EventSessionsCollectionArgs = {
   locale: InputMaybe<Scalars["String"]>;
   preview: InputMaybe<Scalars["Boolean"]>;
   skip?: InputMaybe<Scalars["Int"]>;
-};
-
-/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/event) */
-export type EventSlugArgs = {
-  locale: InputMaybe<Scalars["String"]>;
 };
 
 /** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/event) */
@@ -411,13 +405,6 @@ export type EventFilter = {
   quota_not: InputMaybe<Scalars["Int"]>;
   quota_not_in: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
   sessionsCollection_exists: InputMaybe<Scalars["Boolean"]>;
-  slug: InputMaybe<Scalars["String"]>;
-  slug_contains: InputMaybe<Scalars["String"]>;
-  slug_exists: InputMaybe<Scalars["Boolean"]>;
-  slug_in: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-  slug_not: InputMaybe<Scalars["String"]>;
-  slug_not_contains: InputMaybe<Scalars["String"]>;
-  slug_not_in: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
   startingDate: InputMaybe<Scalars["DateTime"]>;
   startingDate_exists: InputMaybe<Scalars["Boolean"]>;
   startingDate_gt: InputMaybe<Scalars["DateTime"]>;
@@ -464,8 +451,6 @@ export enum EventOrder {
   OnlineEventDesc = "onlineEvent_DESC",
   QuotaAsc = "quota_ASC",
   QuotaDesc = "quota_DESC",
-  SlugAsc = "slug_ASC",
-  SlugDesc = "slug_DESC",
   StartingDateAsc = "startingDate_ASC",
   StartingDateDesc = "startingDate_DESC",
   SysFirstPublishedAtAsc = "sys_firstPublishedAt_ASC",
@@ -1156,7 +1141,6 @@ export const EventMetadataFragmentDoc = /*#__PURE__*/ gql`
       url
     }
     title
-    slug
     description
     category
     startingDate
@@ -1363,7 +1347,6 @@ export type ConferencesPageQuery = {
   eventCollection: {
     items: Array<{
       title: string | null;
-      slug: string | null;
       description: string | null;
       category: string | null;
       startingDate: any | null;
@@ -1391,7 +1374,6 @@ export type EventsPageQuery = {
   eventCollection: {
     items: Array<{
       title: string | null;
-      slug: string | null;
       description: string | null;
       category: string | null;
       startingDate: any | null;
@@ -1413,7 +1395,6 @@ export type EventsPageQuery = {
 
 export type EventMetadataFragment = {
   title: string | null;
-  slug: string | null;
   description: string | null;
   category: string | null;
   startingDate: any | null;
@@ -1427,7 +1408,6 @@ export type EventMetadataFragment = {
 
 export type RecentEventMetadataFragment = {
   title: string | null;
-  slug: string | null;
   description: string | null;
   category: string | null;
   startingDate: any | null;
@@ -1462,7 +1442,6 @@ export type HomePageQuery = {
   eventCollection: {
     items: Array<{
       title: string | null;
-      slug: string | null;
       description: string | null;
       category: string | null;
       startingDate: any | null;
@@ -1500,7 +1479,6 @@ export type OrientationsPageQuery = {
   eventCollection: {
     items: Array<{
       title: string | null;
-      slug: string | null;
       description: string | null;
       category: string | null;
       startingDate: any | null;

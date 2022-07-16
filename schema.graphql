@@ -202,7 +202,6 @@ type Event implements Entry {
   poster(locale: String, preview: Boolean): Asset
   quota(locale: String): Int
   sessionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventSessionsCollection
-  slug(locale: String): String
   startingDate(locale: String): DateTime
   sys: Sys!
   title(locale: String): String
@@ -262,13 +261,6 @@ input EventFilter {
   quota_not: Int
   quota_not_in: [Int]
   sessionsCollection_exists: Boolean
-  slug: String
-  slug_contains: String
-  slug_exists: Boolean
-  slug_in: [String]
-  slug_not: String
-  slug_not_contains: String
-  slug_not_in: [String]
   startingDate: DateTime
   startingDate_exists: Boolean
   startingDate_gt: DateTime
@@ -308,8 +300,6 @@ enum EventOrder {
   onlineEvent_DESC
   quota_ASC
   quota_DESC
-  slug_ASC
-  slug_DESC
   startingDate_ASC
   startingDate_DESC
   sys_firstPublishedAt_ASC

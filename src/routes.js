@@ -7,6 +7,7 @@ const routes = {
     "/conferences": { name: "Conferences" },
     "/student": { name: "For students" },
     "/student/orientation": { name: "Orientation" },
+    "/journal": { name: "Journal" },
   },
   // fr: {
   //   "/": { name: "Page d'acceuil" },
@@ -21,6 +22,7 @@ const routes = {
     "/conferences": { name: "Conferences" },
     "/student": { name: "For students" },
     "/student/orientation": { name: "Orientation" },
+    "/journal": { name: "Journal" },
   },
 };
 

@@ -140,9 +140,19 @@ export default {
     fr: "Halaman yang Anda minta tidak ada atau mungkin telah dipindahkan.",
     ar: "The page you requested does not exist or may have been moved.",
   },
+  "under-construction-title": {
+    en: "We're working on it!",
+    ar: "نحن نعمل على ذلك!",
+    fr: "Nous travaillons sur cela!",
+  },
+  "under-construction-subtitle": {
+    en: "Please come back later...",
+    fr: "Veuillez revenir plus tard...",
+    ar: "يرجى العودة لاحقًا..."
+  },
   "404-button": {
     en: "Back to home page",
-    fr: "Back to home page",
-    ar: "Back to home page",
+    fr: "Retour à la page d'accueil",
+    ar: "العودة إلى الصفحة الرئيسية"
   },
 };

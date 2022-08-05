@@ -1,44 +1,43 @@
 import * as React from "react";
 
+import { Button, Container, Heading, Icon, Image, Text, VStack } from "@chakra-ui/react";
+
+import { FaArrowRight } from "react-icons/fa";
+import NextLink from "next/link";
+import { NextPage } from "next";
 import i18n from "@/i18n";
-import { contentRenderer } from "@/utils/renderers";
+import { useRouter } from "next/router";
 
-import { Container } from "@chakra-ui/react";
-import { GetStaticPropsContext, NextPage } from "next";
-import { NextSeo } from "next-seo";
-import ReactMarkdown from "react-markdown";
+const NotFoundPage: NextPage = () => {
+  const router = useRouter();
 
-// const contactUrl =
-//   "https://raw.githubusercontent.com/NouamaneTazi/mathemaroc/master/markdowns/contact.mdx";
+  const locale = router.locale as string;
 
-export async function getStaticProps(args: GetStaticPropsContext) {
-  const locale = args.locale as string;
-  const content = i18n.contact.page[locale] as string;
-  // const content = await fetch(contactUrl).then((res) => res.text());
-
-  return {
-    props: {
-      locale,
-      content,
-    },
-  };
-}
-
-interface contactPageProps {
-  content: string;
-  locale: string;
-}
-
-const CodeOfConductPage: NextPage<contactPageProps> = (props) => {
-  const { locale, content } = props;
   return (
-    <>
-      <NextSeo title={i18n.contact.title[locale] as string} />
-      <Container as="section" maxW="6xl" pt={[4, 8]} px={[4, 8]}>
-        <ReactMarkdown children={content} components={contentRenderer} />
-      </Container>
-    </>
+    <Container as="section" maxW="6xl" p={[4, 8]}>
+      <VStack spacing={[2, 4]} textAlign="center">
+        <Image
+          alt="404"
+          borderRadius="md"
+          boxShadow="xl"
+          maxW="sm"
+          mb={[4, 8]}
+          src="https://giffiles.alphacoders.com/158/158667.gif"
+          w="full"
+        />
+
+        <Heading>{i18n["under-construction-title"][locale]}</Heading>
+
+        <Text>{i18n["under-construction-subtitle"][locale]}</Text>
+
+        <NextLink href="/" passHref>
+          <Button as="a" colorScheme="brand" rightIcon={<Icon as={FaArrowRight} />}>
+            {i18n["404-button"][locale]}
+          </Button>
+        </NextLink>
+      </VStack>
+    </Container>
   );
 };
 
-export default CodeOfConductPage;
+export default NotFoundPage;

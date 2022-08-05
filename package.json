@@ -35,6 +35,7 @@
     "next": "^12",
     "next-seo": "^5",
     "next-sitemap": "^2",
+    "nextjs-google-analytics": "^2.0.0",
     "nprogress": "^0",
     "react": "^17",
     "react-dom": "^17",

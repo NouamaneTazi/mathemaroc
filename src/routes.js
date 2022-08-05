@@ -24,17 +24,17 @@ const routes = {
     "/": { name: "الصفحة الرئيسية" },
     "/events": { name: "الأحداث" },
     "/about": { name: "من نحن؟" },
-    "/contact": { name: "Contact" },
-    "/conferences": { name: "Conferences" },
+    "/contact": { name: "اتصل بنا" },
+    "/conferences": { name: "محاضرات" },
     "/student": {
-      name: "For students",
+      name: "من أجل التلميذ",
       submenu: [
-        { sub_name: "Student's guide", sub_href: "/student/guide" },
-        { sub_name: "Orientation", sub_href: "/student/orientation" },
+        { sub_name: "دليل التلميذ", sub_href: "/student/guide" },
+        { sub_name: "توجيه", sub_href: "/student/orientation" },
       ],
     },
-    "/journal": { name: "Journal" },
-    "/olympiads": { name: "Olympiads" },
+    "/journal": { name: "جريدة" },
+    "/olympiads": { name: "الأولمبياد" },
   },
 };
 

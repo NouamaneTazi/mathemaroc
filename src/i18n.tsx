@@ -25,7 +25,7 @@ export default {
     title: {
       en: "Contact",
       fr: "Contact",
-      ar: "Contact",
+      ar: "اتصل بنا",
     },
     page: {
       en: contactEn,
@@ -111,24 +111,24 @@ export default {
     ar: <>هي أنشطتنا السابقة.</>,
   },
   "conferences-title": {
-    en: "Meetups and Workshops",
+    en: "Conferences",
     fr: "Rencontres et ateliers",
-    ar: "الاجتماعات وورش العمل",
+    ar: "محاضرات",
   },
   "conferences-subtitle": {
-    en: <>Here are our recent events.</>,
+    en: <>Here are our recent conferences.</>,
     fr: <>Voici nos activités récentes.</>,
-    ar: <>هي أنشطتنا السابقة.</>,
+    ar: "",
   },
   "orientations-title": {
-    en: "Meetups and Workshops",
+    en: "Orientation guides",
     fr: "Rencontres et ateliers",
-    ar: "الاجتماعات وورش العمل",
+    ar: "خاص بالتوجيه",
   },
   "orientations-subtitle": {
-    en: <>Here are our recent events.</>,
+    en: "",
     fr: <>Voici nos activités récentes.</>,
-    ar: <>هي أنشطتنا السابقة.</>,
+    ar: "",
   },
   "404-title": {
     en: "Four Oh Four!",
@@ -138,12 +138,12 @@ export default {
   "404-subtitle": {
     en: "The page you requested does not exist or may have been moved.",
     fr: "Halaman yang Anda minta tidak ada atau mungkin telah dipindahkan.",
-    ar: "The page you requested does not exist or may have been moved.",
+    ar: "الصفحة التي طلبتها غير موجودة أو ربما تم نقلها.",
   },
   "under-construction-title": {
     en: "We're working on it!",
-    ar: "نحن نعمل على ذلك!",
     fr: "Nous travaillons sur cela!",
+    ar: "نحن نعمل على ذلك!",
   },
   "under-construction-subtitle": {
     en: "Please come back later...",

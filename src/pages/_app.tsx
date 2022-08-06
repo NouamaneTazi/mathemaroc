@@ -1,19 +1,19 @@
 import * as React from "react";
 
-import { Box, Stack, useColorMode } from "@chakra-ui/react";
-import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
-
 import { ChakraRTLProvider } from "@/components/chakra-rtl-provider";
 import { Drawer } from "@/components/drawer";
 import { Footer } from "@/components/footer";
-import { GoogleAnalytics } from "nextjs-google-analytics";
-import Head from "next/head";
-import NProgress from "nprogress";
 import { Navbar } from "@/components/navbar";
-import { AppProps as NextAppProps } from "next/app";
-import Router from "next/router";
 import siteConfig from "@/config/site";
+
+import { Box, Stack, useColorMode } from "@chakra-ui/react";
 import { useShortcut } from "litkey";
+import { AppProps as NextAppProps } from "next/app";
+import Head from "next/head";
+import Router from "next/router";
+import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
+import { GoogleAnalytics } from "nextjs-google-analytics";
+import NProgress from "nprogress";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());

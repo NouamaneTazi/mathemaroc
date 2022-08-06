@@ -148,11 +148,11 @@ export default {
   "under-construction-subtitle": {
     en: "Please come back later...",
     fr: "Veuillez revenir plus tard...",
-    ar: "يرجى العودة لاحقًا..."
+    ar: "يرجى العودة لاحقًا...",
   },
   "404-button": {
     en: "Back to home page",
     fr: "Retour à la page d'accueil",
-    ar: "العودة إلى الصفحة الرئيسية"
+    ar: "العودة إلى الصفحة الرئيسية",
   },
 };

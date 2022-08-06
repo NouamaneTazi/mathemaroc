@@ -20,7 +20,7 @@ export async function getStaticProps(args: GetStaticPropsContext) {
       locale,
       orientations: data.eventCollection?.items,
     },
-    revalidate: 86400,
+    revalidate: 60,
   };
 }
 

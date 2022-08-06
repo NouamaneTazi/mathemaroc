@@ -63,7 +63,7 @@ export async function getStaticProps(args: GetStaticPropsContext) {
       recentEvents: data.eventCollection?.items,
       sponsors,
     },
-    revalidate: 86400,
+    revalidate: 60,
   };
 }
 

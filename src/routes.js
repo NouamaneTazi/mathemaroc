@@ -2,6 +2,7 @@ const routes = {
   en: {
     "/": { name: "Home" },
     "/events": { name: "Events" },
+    "/competition": { name: "Competitions" },
     "/about": { name: "Who are we?" },
     "/contact": { name: "Contact" },
     "/conferences": { name: "Conferences" },
@@ -23,6 +24,7 @@ const routes = {
   ar: {
     "/": { name: "الصفحة الرئيسية" },
     "/events": { name: "الأحداث" },
+    "/competition": { name: "مسابقات" },
     "/about": { name: "من نحن؟" },
     "/contact": { name: "اتصل بنا" },
     "/conferences": { name: "محاضرات" },

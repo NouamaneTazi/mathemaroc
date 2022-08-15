@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { aboutAr, aboutEn, aboutFr } from "@/modules/about";
+import { competitionAr, competitionEn, competitionFr } from "@/modules/competition";
 import { contactAr, contactEn, contactFr } from "@/modules/contact";
 
 export default {
@@ -19,6 +20,18 @@ export default {
       en: aboutEn,
       fr: aboutFr,
       ar: aboutAr,
+    },
+  },
+  competition: {
+    title: {
+      en: "Competition",
+      fr: "Competition",
+      ar: "من نحن؟",
+    },
+    page: {
+      en: competitionEn,
+      fr: competitionFr,
+      ar: competitionAr,
     },
   },
   contact: {
@@ -148,11 +161,11 @@ export default {
   "under-construction-subtitle": {
     en: "Please come back later...",
     fr: "Veuillez revenir plus tard...",
-    ar: "يرجى العودة لاحقًا..."
+    ar: "يرجى العودة لاحقًا...",
   },
   "404-button": {
     en: "Back to home page",
     fr: "Retour à la page d'accueil",
-    ar: "العودة إلى الصفحة الرئيسية"
+    ar: "العودة إلى الصفحة الرئيسية",
   },
 };

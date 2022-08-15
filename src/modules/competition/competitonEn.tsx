@@ -1,6 +1,5 @@
 const competitionEn = `
 # Competition
-# Competition
 ## INTRODUCTION:
  The **MATH&MAROC Contest** for first year university students is a math contest planned for students completing their first year students in university or CPGE. The first edition of this competition will be taking place online ***Saturday 6th of May 2023***. 
 ## PARTICIPATION:

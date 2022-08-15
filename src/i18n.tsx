@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { aboutAr, aboutEn, aboutFr } from "@/modules/about";
+import { competitionAr, competitionEn, competitionFr } from "@/modules/competition";
 import { contactAr, contactEn, contactFr } from "@/modules/contact";
 
 export default {
@@ -19,6 +20,18 @@ export default {
       en: aboutEn,
       fr: aboutFr,
       ar: aboutAr,
+    },
+  },
+  competition: {
+    title: {
+      en: "Competition",
+      fr: "Competition",
+      ar: "من نحن؟",
+    },
+    page: {
+      en: competitionEn,
+      fr: competitionFr,
+      ar: competitionAr,
     },
   },
   contact: {

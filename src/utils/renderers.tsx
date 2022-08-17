@@ -28,6 +28,25 @@ export const contentRenderer: RendererRecord = {
       <Divider mb="4" mt="2" />
     </Box>
   ),
+  // eslint-disable-next-line react/display-name
+  h2: (props) => (
+    <Box mb="1" mt="5">
+      <Heading {...props} as="h2" size="lg" marginBottom={1} marginTop={10}/>
+    </Box>
+  ),
+  // eslint-disable-next-line react/display-name
+  h3: (props) => (
+    <Box>
+      <Heading {...props} as="h3" size="md" marginBottom={1} marginTop={10}/>
+    </Box>
+  ),
+
+  // eslint-disable-next-line react/display-name
+  h4: (props) => (
+    <Box>
+      <Heading {...props} as="h4" size="sm" marginBottom={1} marginTop={10}/>
+    </Box>
+  ),
 
   // eslint-disable-next-line react/display-name
   a: (props) => <Link {...props} color="brand" isExternal />,

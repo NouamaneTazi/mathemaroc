@@ -31,20 +31,20 @@ export const contentRenderer: RendererRecord = {
   // eslint-disable-next-line react/display-name
   h2: (props) => (
     <Box mb="1" mt="5">
-      <Heading {...props} as="h2" size="lg" marginBottom={1} marginTop={10}/>
+      <Heading {...props} as="h2" marginBottom={1} marginTop={10} size="lg" />
     </Box>
   ),
   // eslint-disable-next-line react/display-name
   h3: (props) => (
     <Box>
-      <Heading {...props} as="h3" size="md" marginBottom={1} marginTop={10}/>
+      <Heading {...props} as="h3" marginBottom={1} marginTop={10} size="md" />
     </Box>
   ),
 
   // eslint-disable-next-line react/display-name
   h4: (props) => (
     <Box>
-      <Heading {...props} as="h4" size="sm" marginBottom={1} marginTop={10}/>
+      <Heading {...props} as="h4" marginBottom={1} marginTop={10} size="sm" />
     </Box>
   ),
 

@@ -1,8 +1,8 @@
 import * as React from "react";
 
+import { Box, Container, Image } from "@chakra-ui/react";
 import { GetStaticPropsContext, NextPage } from "next";
 
-import { Container } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 import ReactMarkdown from "react-markdown";
 import { contentRenderer } from "@/utils/renderers";
@@ -10,6 +10,12 @@ import i18n from "@/i18n";
 
 // const competitionUrl =
 //   "https://raw.githubusercontent.com/NouamaneTazi/mathemaroc/master/markdowns/competition.mdx";
+
+contentRenderer.img = (props) => (
+  <Box>
+  <Image {...props} margin="auto" />
+  </Box>
+)
 
 export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;

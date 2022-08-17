@@ -1,5 +1,6 @@
 const competitionEn = `
 # Math&Maroc Competition for First Year University Students
+![](https://i.ibb.co/MsdKFgm/LOGO-removebg-preview.png)
 ### Saturday 6th May 2023
 
 ## Introduction:

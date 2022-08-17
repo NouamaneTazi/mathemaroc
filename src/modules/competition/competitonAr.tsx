@@ -1,5 +1,6 @@
 const competitionAr = `
 # مسابقة Math&Maroc لطلاب السنة الأولى بالجامعة:
+![](https://i.ibb.co/MsdKFgm/LOGO-removebg-preview.png)
 ### السبت 6 مايو 2023
 
 ## تقديم:

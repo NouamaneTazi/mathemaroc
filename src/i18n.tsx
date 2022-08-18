@@ -24,9 +24,9 @@ export default {
   },
   competition: {
     title: {
-      en: "Competition",
-      fr: "Competition",
-      ar: "من نحن؟",
+      en: "Competitions",
+      fr: "Competitions",
+      ar: "مسابقات",
     },
     page: {
       en: competitionEn,

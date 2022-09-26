@@ -48,7 +48,7 @@ const JournalsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                 <Button
                   as="a"
                   colorScheme="brand"
-                  href="{journal.file?.url}"
+                  href={journal.file?.url as string}
                   rel="noopener noreferrer"
                   size="lg"
                   target="_blank"

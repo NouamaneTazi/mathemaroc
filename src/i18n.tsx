@@ -114,9 +114,9 @@ export default {
     fr: "Kami berterima kasih atas dukungan dari teman-teman kami di bawah ini.",
   },
   "events-title": {
-    en: "Meetups and Workshops",
-    fr: "Rencontres et ateliers",
-    ar: "الاجتماعات وورش العمل",
+    en: "Recent Events",
+    fr: "Activités récentes",
+    ar: "الأحداث الأخيرة",
   },
   "events-subtitle": {
     en: <>Here are our recent events.</>,

@@ -45,7 +45,7 @@ const JournalsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
       <Container as="section" maxW="6xl" px={[4, 8]}>
         <VStack spacing={[2, 4]}>
           {journals?.map((journal) => journal && 
-          <Button as="a" href={journal.file?.url} target="_blank" rel="noopener noreferrer" variant="outline" colorScheme="brand" size="lg" width="100%">
+          <Button as="a" href="{journal.file?.url}" target="_blank" rel="noopener noreferrer" variant="outline" colorScheme="brand" size="lg" width="100%">
             {journal.filename}
           </Button>
            )}

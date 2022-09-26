@@ -94,6 +94,7 @@ input AssetFilter {
 type AssetLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   eventCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventCollection
+  journalCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): JournalCollection
   speakerCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SpeakerCollection
   sponsorCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SponsorCollection
 }
@@ -495,6 +496,68 @@ input ImageTransformOptions {
 }
 
 """
+[See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/journal)
+"""
+type Journal implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  file(locale: String, preview: Boolean): Asset
+  filename(locale: String): String
+  linkedFrom(allowedLocales: [String]): JournalLinkingCollections
+  publishDate(locale: String): DateTime
+  sys: Sys!
+}
+
+type JournalCollection {
+  items: [Journal]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input JournalFilter {
+  AND: [JournalFilter]
+  OR: [JournalFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  file_exists: Boolean
+  filename: String
+  filename_contains: String
+  filename_exists: Boolean
+  filename_in: [String]
+  filename_not: String
+  filename_not_contains: String
+  filename_not_in: [String]
+  publishDate: DateTime
+  publishDate_exists: Boolean
+  publishDate_gt: DateTime
+  publishDate_gte: DateTime
+  publishDate_in: [DateTime]
+  publishDate_lt: DateTime
+  publishDate_lte: DateTime
+  publishDate_not: DateTime
+  publishDate_not_in: [DateTime]
+  sys: SysFilter
+}
+
+type JournalLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum JournalOrder {
+  filename_ASC
+  filename_DESC
+  publishDate_ASC
+  publishDate_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
 The 'Quality' type represents quality as whole numeric values between `1` and `100`.
 """
 scalar Quality
@@ -526,6 +589,15 @@ type Query {
     skip: Int = 0
     where: EventFilter
   ): EventCollection
+  journal(id: String!, locale: String, preview: Boolean): Journal
+  journalCollection(
+    limit: Int = 100
+    locale: String
+    order: [JournalOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: JournalFilter
+  ): JournalCollection
   session(id: String!, locale: String, preview: Boolean): Session
   sessionCollection(
     limit: Int = 100

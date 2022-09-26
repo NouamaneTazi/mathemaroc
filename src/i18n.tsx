@@ -143,6 +143,16 @@ export default {
     fr: <>Voici nos activités récentes.</>,
     ar: "",
   },
+  "journals-title": {
+    en: "Journals",
+    fr: "Rencontres et ateliers",
+    ar: "Journals",
+  },
+  "journals-subtitle": {
+    en: "",
+    fr: <>Voici nos activités récentes.</>,
+    ar: "",
+  },
   "404-title": {
     en: "Four Oh Four!",
     fr: "Empat Nol Empat!",

@@ -161,6 +161,7 @@ export type AssetFilter = {
 export type AssetLinkingCollections = {
   entryCollection: Maybe<EntryCollection>;
   eventCollection: Maybe<EventCollection>;
+  journalCollection: Maybe<JournalCollection>;
   speakerCollection: Maybe<SpeakerCollection>;
   sponsorCollection: Maybe<SponsorCollection>;
 };
@@ -173,6 +174,13 @@ export type AssetLinkingCollectionsEntryCollectionArgs = {
 };
 
 export type AssetLinkingCollectionsEventCollectionArgs = {
+  limit?: InputMaybe<Scalars["Int"]>;
+  locale: InputMaybe<Scalars["String"]>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+};
+
+export type AssetLinkingCollectionsJournalCollectionArgs = {
   limit?: InputMaybe<Scalars["Int"]>;
   locale: InputMaybe<Scalars["String"]>;
   preview: InputMaybe<Scalars["Boolean"]>;
@@ -565,12 +573,102 @@ export type ImageTransformOptions = {
   width: InputMaybe<Scalars["Dimension"]>;
 };
 
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/journal) */
+export type Journal = Entry & {
+  contentfulMetadata: ContentfulMetadata;
+  file: Maybe<Asset>;
+  filename: Maybe<Scalars["String"]>;
+  linkedFrom: Maybe<JournalLinkingCollections>;
+  publishDate: Maybe<Scalars["DateTime"]>;
+  sys: Sys;
+};
+
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/journal) */
+export type JournalFileArgs = {
+  locale: InputMaybe<Scalars["String"]>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+};
+
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/journal) */
+export type JournalFilenameArgs = {
+  locale: InputMaybe<Scalars["String"]>;
+};
+
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/journal) */
+export type JournalLinkedFromArgs = {
+  allowedLocales: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/journal) */
+export type JournalPublishDateArgs = {
+  locale: InputMaybe<Scalars["String"]>;
+};
+
+export type JournalCollection = {
+  items: Array<Maybe<Journal>>;
+  limit: Scalars["Int"];
+  skip: Scalars["Int"];
+  total: Scalars["Int"];
+};
+
+export type JournalFilter = {
+  AND: InputMaybe<Array<InputMaybe<JournalFilter>>>;
+  OR: InputMaybe<Array<InputMaybe<JournalFilter>>>;
+  contentfulMetadata: InputMaybe<ContentfulMetadataFilter>;
+  file_exists: InputMaybe<Scalars["Boolean"]>;
+  filename: InputMaybe<Scalars["String"]>;
+  filename_contains: InputMaybe<Scalars["String"]>;
+  filename_exists: InputMaybe<Scalars["Boolean"]>;
+  filename_in: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  filename_not: InputMaybe<Scalars["String"]>;
+  filename_not_contains: InputMaybe<Scalars["String"]>;
+  filename_not_in: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  publishDate: InputMaybe<Scalars["DateTime"]>;
+  publishDate_exists: InputMaybe<Scalars["Boolean"]>;
+  publishDate_gt: InputMaybe<Scalars["DateTime"]>;
+  publishDate_gte: InputMaybe<Scalars["DateTime"]>;
+  publishDate_in: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  publishDate_lt: InputMaybe<Scalars["DateTime"]>;
+  publishDate_lte: InputMaybe<Scalars["DateTime"]>;
+  publishDate_not: InputMaybe<Scalars["DateTime"]>;
+  publishDate_not_in: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
+  sys: InputMaybe<SysFilter>;
+};
+
+export type JournalLinkingCollections = {
+  entryCollection: Maybe<EntryCollection>;
+};
+
+export type JournalLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars["Int"]>;
+  locale: InputMaybe<Scalars["String"]>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+};
+
+export enum JournalOrder {
+  FilenameAsc = "filename_ASC",
+  FilenameDesc = "filename_DESC",
+  PublishDateAsc = "publishDate_ASC",
+  PublishDateDesc = "publishDate_DESC",
+  SysFirstPublishedAtAsc = "sys_firstPublishedAt_ASC",
+  SysFirstPublishedAtDesc = "sys_firstPublishedAt_DESC",
+  SysIdAsc = "sys_id_ASC",
+  SysIdDesc = "sys_id_DESC",
+  SysPublishedAtAsc = "sys_publishedAt_ASC",
+  SysPublishedAtDesc = "sys_publishedAt_DESC",
+  SysPublishedVersionAsc = "sys_publishedVersion_ASC",
+  SysPublishedVersionDesc = "sys_publishedVersion_DESC",
+}
+
 export type Query = {
   asset: Maybe<Asset>;
   assetCollection: Maybe<AssetCollection>;
   entryCollection: Maybe<EntryCollection>;
   event: Maybe<Event>;
   eventCollection: Maybe<EventCollection>;
+  journal: Maybe<Journal>;
+  journalCollection: Maybe<JournalCollection>;
   session: Maybe<Session>;
   sessionCollection: Maybe<SessionCollection>;
   speaker: Maybe<Speaker>;
@@ -616,6 +714,21 @@ export type QueryEventCollectionArgs = {
   preview: InputMaybe<Scalars["Boolean"]>;
   skip?: InputMaybe<Scalars["Int"]>;
   where: InputMaybe<EventFilter>;
+};
+
+export type QueryJournalArgs = {
+  id: Scalars["String"];
+  locale: InputMaybe<Scalars["String"]>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+};
+
+export type QueryJournalCollectionArgs = {
+  limit?: InputMaybe<Scalars["Int"]>;
+  locale: InputMaybe<Scalars["String"]>;
+  order: InputMaybe<Array<InputMaybe<JournalOrder>>>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where: InputMaybe<JournalFilter>;
 };
 
 export type QuerySessionArgs = {
@@ -1183,6 +1296,18 @@ export const SponsorMetadataFragmentDoc = /*#__PURE__*/ gql`
     }
   }
 `;
+export const JournalMetadataFragmentDoc = /*#__PURE__*/ gql`
+  fragment JournalMetadata on Journal {
+    filename
+    publishDate
+    file {
+      fileName
+      size
+      contentType
+      url
+    }
+  }
+`;
 export const ConferencesPageQueryDocument = /*#__PURE__*/ gql`
   query conferencesPageQuery($locale: String!) {
     eventCollection(limit: 50, locale: $locale, order: startingDate_DESC, where: { category: "conference" }) {
@@ -1245,6 +1370,16 @@ export const HomePageQueryDocument = /*#__PURE__*/ gql`
   ${RecentEventMetadataFragmentDoc}
   ${EventMetadataFragmentDoc}
   ${SponsorMetadataFragmentDoc}
+`;
+export const JournalsPageQueryDocument = /*#__PURE__*/ gql`
+  query journalsPageQuery($locale: String!) {
+    journalCollection(limit: 50, locale: $locale, order: publishDate_DESC) {
+      items {
+        ...JournalMetadata
+      }
+    }
+  }
+  ${JournalMetadataFragmentDoc}
 `;
 export const OrientationsPageQueryDocument = /*#__PURE__*/ gql`
   query orientationsPageQuery($locale: String!) {
@@ -1319,6 +1454,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         "homePageQuery",
+        "query",
+      );
+    },
+    journalsPageQuery(
+      variables: JournalsPageQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"],
+    ): Promise<JournalsPageQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<JournalsPageQuery>(JournalsPageQueryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "journalsPageQuery",
         "query",
       );
     },
@@ -1469,6 +1618,26 @@ export type HomePageQuery = {
       sys: { id: string };
     } | null>;
   } | null;
+};
+
+export type JournalsPageQueryVariables = Exact<{
+  locale: Scalars["String"];
+}>;
+
+export type JournalsPageQuery = {
+  journalCollection: {
+    items: Array<{
+      filename: string | null;
+      publishDate: any | null;
+      file: { fileName: string | null; size: number | null; contentType: string | null; url: string | null } | null;
+    } | null>;
+  } | null;
+};
+
+export type JournalMetadataFragment = {
+  filename: string | null;
+  publishDate: any | null;
+  file: { fileName: string | null; size: number | null; contentType: string | null; url: string | null } | null;
 };
 
 export type OrientationsPageQueryVariables = Exact<{

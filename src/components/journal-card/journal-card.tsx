@@ -3,22 +3,7 @@ import * as React from "react";
 import i18n from "@/i18n";
 
 // import { RecentJournalMetadataFragment } from "@/gener:ated/graphql";
-import {
-  Avatar,
-  AvatarGroup,
-  Button,
-  Divider,
-  Flex,
-  FlexProps,
-  Heading,
-  HStack,
-  Icon,
-  Img,
-  Stack,
-  Text,
-  useColorModeValue,
-  useToken,
-} from "@chakra-ui/react";
+import { Button, Flex, FlexProps, Heading, HStack, Icon, Img, Stack, Text } from "@chakra-ui/react";
 import format from "date-fns/format";
 import { useRouter } from "next/router";
 import { FaArrowRight } from "react-icons/fa";
@@ -37,9 +22,6 @@ export const JournalCard: React.FC<JournalCardProps> = (props) => {
     };
   }
 
-  const [bgColorLight, bgColorDark] = useToken("colors", ["white", "gray.700"]) as [string, string];
-
-  const bgColor = useColorModeValue(bgColorLight, bgColorDark);
   const router = useRouter();
   const locale = router.locale as string;
 

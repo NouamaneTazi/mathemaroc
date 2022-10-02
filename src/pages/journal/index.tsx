@@ -4,7 +4,7 @@ import { JournalCard } from "@/components/journal-card";
 import i18n from "@/i18n";
 import cms from "@/lib/cms";
 
-import { Box, Button, Container, Heading, Text, useColorModeValue, useToken, VStack } from "@chakra-ui/react";
+import { Box, Container, Heading, Text, useColorModeValue, useToken, VStack } from "@chakra-ui/react";
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
 import { NextSeo } from "next-seo";
 

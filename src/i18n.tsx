@@ -178,4 +178,9 @@ export default {
     fr: "Retour à la page d'accueil",
     ar: "العودة إلى الصفحة الرئيسية",
   },
+  "view-pdf": {
+    en: "View PDF",
+    fr: "Voir PDF",
+    ar: "عرض الملف"
+  },
 };

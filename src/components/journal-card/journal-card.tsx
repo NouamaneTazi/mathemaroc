@@ -20,6 +20,8 @@ import {
 
 import { FaArrowRight } from "react-icons/fa";
 import format from "date-fns/format";
+import i18n from "@/i18n";
+import { useRouter } from "next/router";
 
 interface JournalCardProps extends FlexProps {
   journal: any;
@@ -38,6 +40,8 @@ export const JournalCard: React.FC<JournalCardProps> = (props) => {
   const [bgColorLight, bgColorDark] = useToken("colors", ["white", "gray.700"]) as [string, string];
 
   const bgColor = useColorModeValue(bgColorLight, bgColorDark);
+  const router = useRouter();
+  const locale = router.locale as string;
 
   return (
     <Flex
@@ -93,7 +97,7 @@ export const JournalCard: React.FC<JournalCardProps> = (props) => {
             target="_blank"
             variant="outline"
           >
-            View PDF
+            {i18n["view-pdf"][locale]}
           </Button>
         </HStack>
     </Flex>

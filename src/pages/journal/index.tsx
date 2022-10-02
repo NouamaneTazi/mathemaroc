@@ -1,11 +1,12 @@
 import * as React from "react";
 
-import i18n from "@/i18n";
-import cms from "@/lib/cms";
-
-import { Box, Button, Container, Heading, Text, useColorModeValue, useToken, VStack } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, Text, VStack, useColorModeValue, useToken } from "@chakra-ui/react";
 import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
+
+import { JournalCard } from "@/components/journal-card";
 import { NextSeo } from "next-seo";
+import cms from "@/lib/cms";
+import i18n from "@/i18n";
 
 export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
@@ -45,18 +46,7 @@ const JournalsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
           {journals?.map(
             (journal) =>
               journal && (
-                <Button
-                  as="a"
-                  colorScheme="brand"
-                  href={journal.file?.url as string}
-                  rel="noopener noreferrer"
-                  size="lg"
-                  target="_blank"
-                  variant="outline"
-                  width="100%"
-                >
-                  {journal.filename}
-                </Button>
+                <JournalCard key={journal.filename} journal={journal} />
               ),
           )}
         </VStack>

@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import i18n from "@/i18n";
+
 // import { RecentJournalMetadataFragment } from "@/gener:ated/graphql";
 import {
   Avatar,
@@ -8,8 +10,8 @@ import {
   Divider,
   Flex,
   FlexProps,
-  HStack,
   Heading,
+  HStack,
   Icon,
   Img,
   Stack,
@@ -17,11 +19,9 @@ import {
   useColorModeValue,
   useToken,
 } from "@chakra-ui/react";
-
-import { FaArrowRight } from "react-icons/fa";
 import format from "date-fns/format";
-import i18n from "@/i18n";
 import { useRouter } from "next/router";
+import { FaArrowRight } from "react-icons/fa";
 
 interface JournalCardProps extends FlexProps {
   journal: any;
@@ -45,7 +45,7 @@ export const JournalCard: React.FC<JournalCardProps> = (props) => {
 
   return (
     <Flex
-      bgColor={"blue.100"}
+      bgColor="blue.100"
       borderRadius="md"
       boxShadow="base"
       flexDir={{ base: "column", md: "row" }}
@@ -56,15 +56,15 @@ export const JournalCard: React.FC<JournalCardProps> = (props) => {
     >
       <Img
         alt={journal.filename as string}
+        h="20"
         maxH="xs"
         maxW={{ md: "sm" }}
         objectFit="contain"
         objectPosition="center"
         src={journal.poster.url as string}
-        h="20"
       />
 
-      <Stack pt={3} pr={3} pl={3} w="full">
+      <Stack pl={3} pr={3} pt={3} w="full">
         <Heading as="h3" size="md">
           {journal.filename}
         </Heading>
@@ -84,22 +84,21 @@ export const JournalCard: React.FC<JournalCardProps> = (props) => {
         {/* <Text flexGrow={1} fontSize="sm">
           {journal.description}
         </Text> */}
-
       </Stack>
 
       <HStack justify="flex-end">
-          <Button
-            as="a"
-            href={journal.file.url as string}
-            isTruncated
-            rightIcon={<Icon as={FaArrowRight} />}
-            size="lg"
-            target="_blank"
-            variant="outline"
-          >
-            {i18n["view-pdf"][locale]}
-          </Button>
-        </HStack>
+        <Button
+          as="a"
+          href={journal.file.url as string}
+          isTruncated
+          rightIcon={<Icon as={FaArrowRight} />}
+          size="lg"
+          target="_blank"
+          variant="outline"
+        >
+          {i18n["view-pdf"][locale]}
+        </Button>
+      </HStack>
     </Flex>
   );
 };

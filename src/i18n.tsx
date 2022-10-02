@@ -181,6 +181,6 @@ export default {
   "view-pdf": {
     en: "View PDF",
     fr: "Voir PDF",
-    ar: "عرض الملف"
+    ar: "عرض الملف",
   },
 };

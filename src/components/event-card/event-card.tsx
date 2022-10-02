@@ -8,8 +8,8 @@ import {
   Divider,
   Flex,
   FlexProps,
-  Heading,
   HStack,
+  Heading,
   Icon,
   Img,
   Stack,
@@ -17,8 +17,9 @@ import {
   useColorModeValue,
   useToken,
 } from "@chakra-ui/react";
-import format from "date-fns/format";
+
 import { FaArrowRight } from "react-icons/fa";
+import format from "date-fns/format";
 
 interface EventCardProps extends FlexProps {
   event: any;
@@ -69,7 +70,7 @@ export const EventCard: React.FC<EventCardProps> = (props) => {
         </AvatarGroup>
 
         <Text fontSize="sm" fontWeight="bold">
-          {event.location}, {format(new Date(event.startingDate as string), "PPpp")}
+          {event.location? event.location + " , " : ""}{format(new Date(event.startingDate as string), "PP")}
         </Text>
 
         <Divider />

@@ -1,14 +1,12 @@
 import * as React from "react";
 
-import i18n from "@/i18n";
-
 // import { RecentJournalMetadataFragment } from "@/gener:ated/graphql";
 import {
   Button,
   Flex,
   FlexProps,
-  Heading,
   HStack,
+  Heading,
   Icon,
   Img,
   Stack,
@@ -16,9 +14,11 @@ import {
   useColorModeValue,
   useToken,
 } from "@chakra-ui/react";
-import format from "date-fns/format";
-import { useRouter } from "next/router";
+
 import { FaArrowRight } from "react-icons/fa";
+import format from "date-fns/format";
+import i18n from "@/i18n";
+import { useRouter } from "next/router";
 
 interface JournalCardProps extends FlexProps {
   journal: any;
@@ -84,16 +84,19 @@ export const JournalCard: React.FC<JournalCardProps> = (props) => {
         </Text> */}
       </Stack>
 
-      <HStack justify="flex-end">
+      <HStack justify="center">
         <Button
           as="a"
           h="full"
+          w="full"
           href={journal.file.url as string}
           isTruncated
           rightIcon={<Icon as={FaArrowRight} />}
           size="lg"
           target="_blank"
           variant="ghost"
+          // minH={{ base: "3", md: "full" }}
+          p={3}
         >
           {i18n["view-pdf"][locale]}
         </Button>

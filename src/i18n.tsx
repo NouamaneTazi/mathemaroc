@@ -146,7 +146,7 @@ export default {
   "journals-title": {
     en: "Journals",
     fr: "Rencontres et ateliers",
-    ar: "Journals",
+    ar: "جرائد",
   },
   "journals-subtitle": {
     en: "",

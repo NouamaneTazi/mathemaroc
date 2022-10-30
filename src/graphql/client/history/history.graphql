@@ -1,0 +1,18 @@
+query journalsPageQuery($locale: String!) {
+  journalCollection(limit: 50, locale: $locale, order: publishDate_DESC) {
+    items {
+      ...JournalMetadata
+    }
+  }
+}
+
+fragment JournalMetadata on Journal {
+  filename
+  publishDate
+  file {
+    fileName
+    size
+    contentType
+    url
+  }
+}

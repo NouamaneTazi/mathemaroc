@@ -12,7 +12,6 @@ The association is formed by young Moroccan talents who will certainly be great 
 In addition, the participation of Math&Morocco in international competitions and its power to attract foreign trainers even allow it to have visibility on the world stage.
 `.trim();
 
-
 export const formation_olympiqueEn = `
 For several years, Math&Maroc has been working in close collaboration with the Ministry of National Education with the aim of training Moroccan athletes taking part in major international competitions, in particular the IMO (International Olympiads).
 `.trim();

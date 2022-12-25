@@ -4,4 +4,5 @@ import contactFr from "./contactFr";
 import NouscontacterAr from "./NouscontacterAr";
 import NouscontacterEn from "./NouscontacterEn";
 import NouscontacterFr from "./NouscontacterFr";
-export { contactAr, contactEn, contactFr,  NouscontacterEn, NouscontacterFr, NouscontacterAr };
+
+export { contactAr, contactEn, contactFr, NouscontacterAr, NouscontacterEn, NouscontacterFr };

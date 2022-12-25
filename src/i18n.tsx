@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { NouscontacterAr, NouscontacterEn, NouscontacterFr, contactAr, contactEn, contactFr } from "@/modules/contact";
-import { aboutAr, aboutEn, aboutFr } from "@/modules/about";
-import { competitionAr, competitionEn, competitionFr } from "@/modules/competition";
 import {
+  aboutAr,
+  aboutEn,
+  aboutFr,
   formation_olympiqueAr,
   formation_olympiqueEn,
   formation_olympiqueFr,
@@ -15,8 +15,10 @@ import {
   journalFr,
   motPresidentAr,
   motPresidentEn,
-  motPresidentFr
+  motPresidentFr,
 } from "@/modules/about";
+import { competitionAr, competitionEn, competitionFr } from "@/modules/competition";
+import { contactAr, contactEn, contactFr, NouscontacterAr, NouscontacterEn, NouscontacterFr } from "@/modules/contact";
 
 export default {
   "i18n-code": {
@@ -50,32 +52,32 @@ export default {
       fr: aboutFr,
       ar: aboutAr,
     },
-    formation_olympique_title:{
+    formation_olympique_title: {
       en: "Olympic training",
       fr: "Formation Olympique",
       ar: "التدريب الاولمبي",
     },
-    initiative_covid_title:{
+    initiative_covid_title: {
       en: "Covid initiative",
       fr: "Initiative Covid",
       ar: "مبادرة كوفيد",
     },
-    journal_title:{
+    journal_title: {
       en: "Math&Morocco newspaper",
       fr: "Le journal de Math&Maroc",
       ar: "جريدة الرياضيات والمغرب",
     },
-    formation_olympique:{
+    formation_olympique: {
       en: formation_olympiqueEn,
       fr: formation_olympiqueFr,
       ar: formation_olympiqueAr,
     },
-    initiative_covid:{
+    initiative_covid: {
       en: initiative_covidEn,
       fr: initiative_covidFr,
       ar: initiative_covidAr,
     },
-    journal:{
+    journal: {
       en: journalEn,
       fr: journalFr,
       ar: journalAr,
@@ -85,7 +87,6 @@ export default {
       fr: motPresidentFr,
       ar: motPresidentAr,
     },
-    
   },
   competition: {
     title: {
@@ -120,7 +121,7 @@ export default {
       fr: "Ils nous ont fait confiance",
       ar: "وثقوا بنا",
     },
-    contact:{
+    contact: {
       en: NouscontacterEn,
       fr: NouscontacterFr,
       ar: NouscontacterAr,

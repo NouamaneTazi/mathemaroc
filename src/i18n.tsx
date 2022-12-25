@@ -1,10 +1,22 @@
 import * as React from "react";
 
+import { NouscontacterAr, NouscontacterEn, NouscontacterFr, contactAr, contactEn, contactFr } from "@/modules/contact";
 import { aboutAr, aboutEn, aboutFr } from "@/modules/about";
-import { motPresidentEn, motPresidentFr, motPresidentAr, formation_olympiqueEn, formation_olympiqueFr, formation_olympiqueAr,
-  initiative_covidEn, initiative_covidFr, initiative_covidAr, journalEn, journalFr, journalAr } from "@/modules/about";
 import { competitionAr, competitionEn, competitionFr } from "@/modules/competition";
-import { contactAr, contactEn, contactFr, NouscontacterEn, NouscontacterFr, NouscontacterAr } from "@/modules/contact";
+import {
+  formation_olympiqueAr,
+  formation_olympiqueEn,
+  formation_olympiqueFr,
+  initiative_covidAr,
+  initiative_covidEn,
+  initiative_covidFr,
+  journalAr,
+  journalEn,
+  journalFr,
+  motPresidentAr,
+  motPresidentEn,
+  motPresidentFr
+} from "@/modules/about";
 
 export default {
   "i18n-code": {
@@ -99,9 +111,9 @@ export default {
       ar: "عروض شراكتنا",
     },
     image: {
-      en: "http://127.0.0.1:8080/mathemaroc/src/public/partenariat_eng.png",
-      fr: "http://127.0.0.1:8080/mathemaroc/src/public/partenariat_fr.png",
-      ar: "http://127.0.0.1:8080/mathemaroc/src/public/partenariat_ar.png",
+      en: "https://i.imgur.com/5POe8po.png",
+      fr: "https://i.imgur.com/dTAsgiC.png",
+      ar: "https://i.imgur.com/mZ8E3WT.png",
     },
     confiance: {
       en: "They trusted us",

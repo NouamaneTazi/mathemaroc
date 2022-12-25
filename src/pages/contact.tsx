@@ -1,11 +1,14 @@
 import * as React from "react";
-import i18n from "@/i18n";
-import { Container, Wrap, Divider, Text, Heading, Image, Button, Grid, Icon, useBreakpointValue} from "@chakra-ui/react";
-import { GetStaticPropsContext, NextPage } from "next";
-import { NextSeo } from "next-seo";
+
+import { Button, Container, Divider, Grid, Heading, Icon, Image, Text, Wrap, useBreakpointValue } from "@chakra-ui/react";
 import { FaArrowRight, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { GetStaticPropsContext, NextPage } from "next";
+
 import { IconType } from "react-icons/lib";
+import { NextSeo } from "next-seo";
+import i18n from "@/i18n";
 import siteConfig from "@/config/site";
+
 const HOME_SOCIAL_BUTTONS: [string, string, IconType, string][] = [
   ["Facebook", siteConfig.socials.Facebook, FaFacebook, "facebook"],
   ["Instagram", siteConfig.socials.Instagram, FaInstagram, "pink"],
@@ -94,7 +97,7 @@ const CodeOfContactPage: NextPage<aboutPageProps> = (props) => {
                 alt="sponsoring"          
                 objectFit="contain"
                 objectPosition="center"
-                src="http://127.0.0.1:8080/mathemaroc/src/public/Vice-trésorier.png"
+                src="https://i.imgur.com/QmyTX3O.png"
               />           
             </div>
             <div style={style_}> Marouane IBN BRAHIM</div>
@@ -108,7 +111,7 @@ const CodeOfContactPage: NextPage<aboutPageProps> = (props) => {
                 alt="sponsoring"          
                 objectFit="contain"
                 objectPosition="center"
-                src="http://127.0.0.1:8080/mathemaroc/src/public/trésorier.png"
+                src="https://i.imgur.com/5QKKSOL.png"
               />           
             </div>
             <div style={style_}>Ayoub MIGUIL</div>

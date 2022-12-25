@@ -1,15 +1,15 @@
 import * as React from "react";
 
-import i18n from "@/i18n";
-import { contentRenderer } from "@/utils/renderers";
-
+import { Box, Divider, Heading, Image, Text } from '@chakra-ui/react'
 import { Container, Wrap } from "@chakra-ui/react";
 import { GetStaticPropsContext, NextPage } from "next";
+
+import { MemberCard } from "@/components/members";
 import { NextSeo } from "next-seo";
 import ReactMarkdown from "react-markdown";
-import { MemberCard } from "@/components/members";
+import { contentRenderer } from "@/utils/renderers";
 import { description } from "@/config/site";
-import { Divider, Text, Heading, Box, Image } from '@chakra-ui/react'
+import i18n from "@/i18n";
 
 // const aboutUrl =
 //   "https://raw.githubusercontent.com/NouamaneTazi/mathemaroc/master/markdowns/about.mdx";
@@ -58,10 +58,10 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
           
         <Wrap >
             <Image style={{ width: '18%' }}
-              alt="sponsoring"
+              alt="president"
               objectFit="contain"
               objectPosition="center"
-              src="http://127.0.0.1:8080/mathemaroc/src/public/président.png"
+              src="https://i.imgur.com/dGOsEva.png"
             />
             
             <div style={{ width: '10%' }}></div>
@@ -120,7 +120,7 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
                 alt="sponsoring"
                 objectFit="contain"
                 objectPosition="center"
-                src="http://127.0.0.1:8080/mathemaroc/src/public/carte_formation.png"
+                src="https://i.imgur.com/2tTKxYi.png"
               />
               
            </Wrap>
@@ -130,7 +130,7 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
                 alt="sponsoring"
                 objectFit="contain"
                 objectPosition="center"
-                src="http://127.0.0.1:8080/mathemaroc/src/public/logo_math_maroc_imo.png"
+                src="https://i.imgur.com/35JJZv9.png"
               />
               
               <div style={{ width: '10%' }}></div>

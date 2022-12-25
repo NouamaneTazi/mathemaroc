@@ -23,7 +23,6 @@ import { EventCard } from "@/components/event-card";
 import { HorizontalLogo } from "@/components/logo";
 import { IconType } from "react-icons/lib";
 import NextLink from "next/link";
-import { StatsCard } from "@/components/stats-card";
 // import { SponsorCard } from "@/components/sponsor-card";
 import cms from "@/lib/cms";
 import i18n from "@/i18n";

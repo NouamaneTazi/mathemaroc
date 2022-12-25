@@ -31,7 +31,6 @@
     "graphql": "^16",
     "graphql-request": "^4",
     "graphql-tag": "^2",
-    "http-server": "^14.1.1",
     "litkey": "^0",
     "next": "^12",
     "next-seo": "^5",

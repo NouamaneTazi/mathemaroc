@@ -95,6 +95,7 @@ type AssetLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   eventCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EventCollection
   journalCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): JournalCollection
+  memberCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): MemberCollection
   speakerCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SpeakerCollection
   sponsorCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SponsorCollection
 }
@@ -558,6 +559,78 @@ enum JournalOrder {
 }
 
 """
+[See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/member)
+"""
+type Member implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): MemberLinkingCollections
+  name(locale: String): String
+  role(locale: String): String
+  roleId(locale: String): Int
+  sys: Sys!
+}
+
+type MemberCollection {
+  items: [Member]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input MemberFilter {
+  AND: [MemberFilter]
+  OR: [MemberFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  image_exists: Boolean
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  role: String
+  roleId: Int
+  roleId_exists: Boolean
+  roleId_gt: Int
+  roleId_gte: Int
+  roleId_in: [Int]
+  roleId_lt: Int
+  roleId_lte: Int
+  roleId_not: Int
+  roleId_not_in: [Int]
+  role_contains: String
+  role_exists: Boolean
+  role_in: [String]
+  role_not: String
+  role_not_contains: String
+  role_not_in: [String]
+  sys: SysFilter
+}
+
+type MemberLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum MemberOrder {
+  name_ASC
+  name_DESC
+  roleId_ASC
+  roleId_DESC
+  role_ASC
+  role_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
 The 'Quality' type represents quality as whole numeric values between `1` and `100`.
 """
 scalar Quality
@@ -598,6 +671,15 @@ type Query {
     skip: Int = 0
     where: JournalFilter
   ): JournalCollection
+  member(id: String!, locale: String, preview: Boolean): Member
+  memberCollection(
+    limit: Int = 100
+    locale: String
+    order: [MemberOrder]
+    preview: Boolean
+    skip: Int = 0
+    where: MemberFilter
+  ): MemberCollection
   session(id: String!, locale: String, preview: Boolean): Session
   sessionCollection(
     limit: Int = 100

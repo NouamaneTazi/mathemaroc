@@ -2,7 +2,7 @@
 
 * You can test your graphql queryies using the [GraphQL Playground](https://app.contentful.com/spaces/8cgixl4nm4b7/apps/app_installations/graphql-playground/graphql) App on Contentful. (make sure to add query variable: `{"locale": "ar"}`)
 
-Example of a query:
+Example of a query: `src/client/events/queries.graphql`
 
 ```
 query eventsPageQuery($locale: String!) {

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Avatar, WrapItem, FlexProps, Text, Box , SkeletonCircle, SkeletonText, Skeleton } from '@chakra-ui/react'
 
+import { Avatar, Box, FlexProps, Skeleton, SkeletonCircle, SkeletonText, Text, WrapItem } from '@chakra-ui/react'
 
 interface MemberCardProps extends FlexProps {
   member: any;
@@ -13,15 +13,16 @@ export const MemberCard: React.FC<MemberCardProps> = (props) => {
     justifyContent: 'center',
   }
   if (!member.image) {
-    member.image = "https://bit.ly/broken-link"
-  }
+    member.image = {
+      url: "https://bit.ly/broken-link"
+  }}
   return (
     <>
 
       {/* <div padding='6' boxShadow='lg' bg='white' maxW='sm' borderRadius='lg' overflow='hidden' > */}
       <div>
         <div style={style_}>
-          <Avatar size='2xl' src={member.image} >
+          <Avatar size='2xl' src={member.image.url} >
           </Avatar>{' '}
         </div>
         <div style={style_}>
@@ -31,7 +32,7 @@ export const MemberCard: React.FC<MemberCardProps> = (props) => {
         </div>
         <div style={style_}>
           <Text fontSize="sm" fontWeight="bold" color='#90cdf4'>
-            {member.description}
+            {member.role}
           </Text>
         </div>
       </div>

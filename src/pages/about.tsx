@@ -18,41 +18,38 @@ import ReactMarkdown from "react-markdown";
 import { contentRenderer } from "@/utils/renderers";
 import { description } from "@/config/site";
 import i18n from "@/i18n";
-
+import { GetStaticPropsContext, InferGetStaticPropsType, NextPage } from "next";
+import cms from "@/lib/cms";
 // const aboutUrl =
 //   "https://raw.githubusercontent.com/NouamaneTazi/mathemaroc/master/markdowns/about.mdx";
+
 
 export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;
   const content = i18n.about.page[locale] as string;
-  // const content = await fetch(aboutUrl).then((res) => res.text());
+
+  const data = await cms().membersPageQuery({
+    locale: i18n["i18n-code"][locale],
+  });
 
   return {
     props: {
-      locale,
       content,
+      locale,
+      members: data.memberCollection?.items,
     },
+    revalidate: 60,
   };
 }
+
 
 interface aboutPageProps {
   content: string;
   locale: string;
 }
 
-const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
-  const { locale, content } = props;
-  const member_ = [{name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
-  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'}]
+const AboutPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
+  const { content, members, locale } = props;
   const style_ = {
     display: 'flex',
     alignItems: 'center',
@@ -174,8 +171,8 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
         <Divider />
         <br />
         <Wrap justify="center" spacing={[4, 4]}>
-          {member_.map((element)=>(
-            <MemberCard member={element}></MemberCard>
+          {members?.map((member)=>(
+            member && <MemberCard member={member}></MemberCard>
           ))}
           </Wrap>         
       </Container>
@@ -183,4 +180,4 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
   );
 };
 
-export default CodeOfConductPage;
+export default AboutPage;

@@ -1,0 +1,11 @@
+query membersPageQuery($locale: String!) {
+  memberCollection(limit: 50, locale: $locale, order: roleId_ASC) {
+    items {
+      name
+      role
+      image {
+        url
+      }
+    }
+  }
+}

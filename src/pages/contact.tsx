@@ -44,7 +44,7 @@ const CodeOfContactPage: NextPage<aboutPageProps> = (props) => {
   const buttonSize = useBreakpointValue(["sm", "md", "lg"]);
   return (
     <>
-      <NextSeo title={i18n.about.title[locale] as string} />   
+      <NextSeo title={i18n.contact.title[locale] as string} />   
       <Container as="section" maxW="6xl" pt={[4, 8]} px={[4, 8]}>        
         <Heading as='h2' size='xl'>
           {i18n.contact.sponsor[locale] as string} 

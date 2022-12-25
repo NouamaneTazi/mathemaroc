@@ -7,7 +7,7 @@ import {
   Image,
   Text,
   useColorModeValue,
-  useToken,
+  useToken
 } from '@chakra-ui/react'
 import { Container, Wrap } from "@chakra-ui/react";
 import { GetStaticPropsContext, NextPage } from "next";
@@ -43,6 +43,12 @@ interface aboutPageProps {
 const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
   const { locale, content } = props;
   const member_ = [{name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
+  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
+  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
+  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
+  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
+  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
+  {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
   {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
   {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
   {name: 'safaa khadim', description:'description description', image: 'https://bit.ly/broken-link'},
@@ -167,15 +173,12 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
         </Heading> 
         <Divider />
         <br />
-        <Wrap>
+        <Wrap justify="center" spacing={[4, 4]}>
           {member_.map((element)=>(
             <MemberCard member={element}></MemberCard>
           ))}
           </Wrap>         
       </Container>
-      
-      
-      
     </>
   );
 };

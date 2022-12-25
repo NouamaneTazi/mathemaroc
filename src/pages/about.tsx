@@ -1,6 +1,14 @@
 import * as React from "react";
 
-import { Box, Divider, Heading, Image, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Divider,
+  Heading,
+  Image,
+  Text,
+  useColorModeValue,
+  useToken,
+} from '@chakra-ui/react'
 import { Container, Wrap } from "@chakra-ui/react";
 import { GetStaticPropsContext, NextPage } from "next";
 
@@ -44,6 +52,11 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
     alignItems: 'center',
     justifyContent: 'center',
   }
+  const [bgColorLight, bgColorDark] = useToken("colors", ["white", "gray.700"]) as [string, string];
+
+  const bgColor = useColorModeValue(bgColorLight, bgColorDark);
+
+  
   return (
     <>
       <NextSeo title={i18n.about.title[locale] as string} />
@@ -54,11 +67,12 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
         </Heading> 
         <Divider />
         <br/>
-        <Box padding='6' boxShadow='lg' bg='white'  borderRadius='lg' overflow='hidden'>
+        <Box padding='6' boxShadow='lg'       bgColor={bgColor}
+  borderRadius='lg' overflow='hidden'>
           
         <Wrap >
             <Image style={{ width: '18%' }}
-              alt="president"
+              alt="sponsoring"
               objectFit="contain"
               objectPosition="center"
               src="https://i.imgur.com/dGOsEva.png"
@@ -67,7 +81,7 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
             <div style={{ width: '10%' }}></div>
             <div style={{ width: '66%' ,display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
               <br />
-              <Text  color='#161717' align="justify">
+              <Text align="justify">
               {i18n.about.motPresidentContent[locale] as string} 
               </Text>
             </div>
@@ -86,7 +100,8 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
         <Divider />
       <br />
 
-      <Box padding='6' boxShadow='lg' bg='white'  borderRadius='lg' overflow='hidden'>          
+      <Box padding='6' boxShadow='lg'       bgColor={bgColor}
+  borderRadius='lg' overflow='hidden'>          
           <Wrap >
               <Image style={{ width: '30%' }}
                 alt="sponsoring"
@@ -98,8 +113,8 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
               <div style={{ width: '10%' }}></div>
               <div style={{ width: '50%' ,display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <br />
-                <Text  color='#161717' align="justify">
-                <Text color='#a5cfd6' fontSize='2xl'>{i18n.about.formation_olympique_title[locale] as string} </Text>
+                <Text align="justify">
+                <Text fontSize='2xl'>{i18n.about.formation_olympique_title[locale] as string} </Text>
                   <br />
                 {i18n.about.formation_olympique[locale] as string} 
                 </Text>
@@ -109,8 +124,8 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
           <Wrap >         
               <div style={{ width: '50%' ,display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <br />
-                <Text  color='#161717' align="justify">
-                <Text color='#a5cfd6' fontSize='2xl'>{i18n.about.initiative_covid_title[locale] as string} </Text>
+                <Text align="justify">
+                <Text fontSize='2xl'>{i18n.about.initiative_covid_title[locale] as string} </Text>
                 <br />
                 {i18n.about.initiative_covid[locale] as string} 
                 </Text>
@@ -136,8 +151,8 @@ const CodeOfConductPage: NextPage<aboutPageProps> = (props) => {
               <div style={{ width: '10%' }}></div>
               <div style={{ width: '50%' ,display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 <br />
-                <Text  color='#161717' align="justify">
-                <Text color='#a5cfd6' fontSize='2xl'>{i18n.about.journal_title[locale] as string} </Text>
+                <Text align="justify">
+                <Text fontSize='2xl'>{i18n.about.journal_title[locale] as string} </Text>
                 <br/>
                 {i18n.about.journal[locale] as string} 
                 </Text>

@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { EventCard } from "@/components/event-card";
+import { StatsCard } from "@/components/stats-card";
 import { HorizontalLogo } from "@/components/logo";
 import siteConfig from "@/config/site";
 import { Maybe, SponsorMetadataFragment } from "@/generated/graphql";
@@ -84,7 +85,7 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (prop
 
           <Text variant="home-title">{i18n["home-title"][locale]}</Text>
           <Text variant="home-subtitle">{i18n["home-subtitle"][locale]}</Text>
-
+          
           <LightMode>
             <Grid
               gap={{ base: 3, lg: 6 }}

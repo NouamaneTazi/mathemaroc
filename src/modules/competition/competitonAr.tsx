@@ -1,4 +1,3 @@
-
 const competitionAr = `
 # مسابقة رياضيات المغرب (Math&Maroc Competition)
 ![](https://i.imgur.com/zuVAs3U.jpg)

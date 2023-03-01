@@ -5,7 +5,7 @@
   "repository": "https://github.com/NouamaneTazi/mathemaroc",
   "author": "Nouamane Tazi <nouamane98@gmail.com>",
   "scripts": {
-    "build": "node scripts/build.mjs && next build && yarn sitemap",
+    "build": "DISABLE_ESLINT_PLUGIN=true node scripts/build.mjs && next build && yarn sitemap",
     "clean": "rimraf \".next\" \"public/!(.gitkeep)\"",
     "codegen": "env-cmd yarn graphql-codegen",
     "deduplicate": "npx yarn-deduplicate && yarn install",

@@ -38,7 +38,6 @@ Du 01/03/2023 au 01/04/2023 (23:59 heure du Maroc).
 
 
 ![](https://i.imgur.com/miI83cm.jpg)
-<img src="https://i.imgur.com/miI83cm.jpg" width="100" height="100">
 
 `;
 

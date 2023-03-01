@@ -5,7 +5,7 @@
   "repository": "https://github.com/NouamaneTazi/mathemaroc",
   "author": "Nouamane Tazi <nouamane98@gmail.com>",
   "scripts": {
-    "build": "DISABLE_ESLINT_PLUGIN=true node scripts/build.mjs && next build && yarn sitemap",
+    "build": "node scripts/build.mjs && next build && yarn sitemap",
     "clean": "rimraf \".next\" \"public/!(.gitkeep)\"",
     "codegen": "env-cmd yarn graphql-codegen",
     "deduplicate": "npx yarn-deduplicate && yarn install",
@@ -41,7 +41,7 @@
     "react-dom": "^17",
     "react-icons": "^4",
     "react-markdown": "^8",
-    "typescript": "^4.9.5"
+    "typescript": "^4"
   },
   "devDependencies": {
     "@graphql-codegen/add": "^3",
@@ -51,9 +51,9 @@
     "@graphql-codegen/typescript-graphql-request": "^4",
     "@graphql-codegen/typescript-operations": "^2",
     "@next/eslint-plugin-next": "^12",
-    "@types/node": "^18.14.2",
+    "@types/node": "^14",
     "@types/nprogress": "^0",
-    "@types/react": "^18.0.28",
+    "@types/react": "^17",
     "@types/react-dom": "^17",
     "copy": "^0",
     "env-cmd": "^10",

@@ -1,8 +1,24 @@
 import * as React from "react";
 
-import { aboutAr, aboutEn, aboutFr } from "@/modules/about";
+import {
+  aboutAr,
+  aboutEn,
+  aboutFr,
+  formation_olympiqueAr,
+  formation_olympiqueEn,
+  formation_olympiqueFr,
+  initiative_covidAr,
+  initiative_covidEn,
+  initiative_covidFr,
+  journalAr,
+  journalEn,
+  journalFr,
+  motPresidentAr,
+  motPresidentEn,
+  motPresidentFr,
+} from "@/modules/about";
 import { competitionAr, competitionEn, competitionFr } from "@/modules/competition";
-import { contactAr, contactEn, contactFr } from "@/modules/contact";
+import { contactAr, contactEn, contactFr, NouscontacterAr, NouscontacterEn, NouscontacterFr } from "@/modules/contact";
 
 export default {
   "i18n-code": {
@@ -16,10 +32,60 @@ export default {
       fr: "Qui sommes-nous",
       ar: "من نحن؟",
     },
+    members: {
+      en: "Members",
+      fr: "Membres",
+      ar: "أعضاء",
+    },
+    activities: {
+      en: "Our main actions",
+      fr: "Nos principales actions",
+      ar: "أعمالنا الرئيسية",
+    },
+    motPresident: {
+      en: "the president speech",
+      fr: "Le mot du Président",
+      ar: "كلمةالرئيس",
+    },
     page: {
       en: aboutEn,
       fr: aboutFr,
       ar: aboutAr,
+    },
+    formation_olympique_title: {
+      en: "Olympic training",
+      fr: "Formation Olympique",
+      ar: "التدريب الاولمبي",
+    },
+    initiative_covid_title: {
+      en: "Covid initiative",
+      fr: "Initiative Covid",
+      ar: "مبادرة كوفيد",
+    },
+    journal_title: {
+      en: "Math&Morocco newspaper",
+      fr: "Le journal de Math&Maroc",
+      ar: "جريدة الرياضيات والمغرب",
+    },
+    formation_olympique: {
+      en: formation_olympiqueEn,
+      fr: formation_olympiqueFr,
+      ar: formation_olympiqueAr,
+    },
+    initiative_covid: {
+      en: initiative_covidEn,
+      fr: initiative_covidFr,
+      ar: initiative_covidAr,
+    },
+    journal: {
+      en: journalEn,
+      fr: journalFr,
+      ar: journalAr,
+    },
+    motPresidentContent: {
+      en: motPresidentEn,
+      fr: motPresidentFr,
+      ar: motPresidentAr,
     },
   },
   competition: {
@@ -39,6 +105,26 @@ export default {
       en: "Contact",
       fr: "Contact",
       ar: "اتصل بنا",
+    },
+    sponsor: {
+      en: "Our partnership offers",
+      fr: "Nos offres de partenariat",
+      ar: "عروض شراكتنا",
+    },
+    image: {
+      en: "https://i.imgur.com/5POe8po.png",
+      fr: "https://i.imgur.com/dTAsgiC.png",
+      ar: "https://i.imgur.com/mZ8E3WT.png",
+    },
+    confiance: {
+      en: "They trusted us",
+      fr: "Ils nous ont fait confiance",
+      ar: "وثقوا بنا",
+    },
+    contact: {
+      en: NouscontacterEn,
+      fr: NouscontacterFr,
+      ar: NouscontacterAr,
     },
     page: {
       en: contactEn,

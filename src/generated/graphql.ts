@@ -162,6 +162,7 @@ export type AssetLinkingCollections = {
   entryCollection: Maybe<EntryCollection>;
   eventCollection: Maybe<EventCollection>;
   journalCollection: Maybe<JournalCollection>;
+  memberCollection: Maybe<MemberCollection>;
   speakerCollection: Maybe<SpeakerCollection>;
   sponsorCollection: Maybe<SponsorCollection>;
 };
@@ -181,6 +182,13 @@ export type AssetLinkingCollectionsEventCollectionArgs = {
 };
 
 export type AssetLinkingCollectionsJournalCollectionArgs = {
+  limit?: InputMaybe<Scalars["Int"]>;
+  locale: InputMaybe<Scalars["String"]>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+};
+
+export type AssetLinkingCollectionsMemberCollectionArgs = {
   limit?: InputMaybe<Scalars["Int"]>;
   locale: InputMaybe<Scalars["String"]>;
   preview: InputMaybe<Scalars["Boolean"]>;
@@ -661,6 +669,109 @@ export enum JournalOrder {
   SysPublishedVersionDesc = "sys_publishedVersion_DESC",
 }
 
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/member) */
+export type Member = Entry & {
+  contentfulMetadata: ContentfulMetadata;
+  image: Maybe<Asset>;
+  linkedFrom: Maybe<MemberLinkingCollections>;
+  name: Maybe<Scalars["String"]>;
+  role: Maybe<Scalars["String"]>;
+  roleId: Maybe<Scalars["Int"]>;
+  sys: Sys;
+};
+
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/member) */
+export type MemberImageArgs = {
+  locale: InputMaybe<Scalars["String"]>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+};
+
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/member) */
+export type MemberLinkedFromArgs = {
+  allowedLocales: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/member) */
+export type MemberNameArgs = {
+  locale: InputMaybe<Scalars["String"]>;
+};
+
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/member) */
+export type MemberRoleArgs = {
+  locale: InputMaybe<Scalars["String"]>;
+};
+
+/** [See type definition](https://app.contentful.com/spaces/8cgixl4nm4b7/content_types/member) */
+export type MemberRoleIdArgs = {
+  locale: InputMaybe<Scalars["String"]>;
+};
+
+export type MemberCollection = {
+  items: Array<Maybe<Member>>;
+  limit: Scalars["Int"];
+  skip: Scalars["Int"];
+  total: Scalars["Int"];
+};
+
+export type MemberFilter = {
+  AND: InputMaybe<Array<InputMaybe<MemberFilter>>>;
+  OR: InputMaybe<Array<InputMaybe<MemberFilter>>>;
+  contentfulMetadata: InputMaybe<ContentfulMetadataFilter>;
+  image_exists: InputMaybe<Scalars["Boolean"]>;
+  name: InputMaybe<Scalars["String"]>;
+  name_contains: InputMaybe<Scalars["String"]>;
+  name_exists: InputMaybe<Scalars["Boolean"]>;
+  name_in: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  name_not: InputMaybe<Scalars["String"]>;
+  name_not_contains: InputMaybe<Scalars["String"]>;
+  name_not_in: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  role: InputMaybe<Scalars["String"]>;
+  roleId: InputMaybe<Scalars["Int"]>;
+  roleId_exists: InputMaybe<Scalars["Boolean"]>;
+  roleId_gt: InputMaybe<Scalars["Int"]>;
+  roleId_gte: InputMaybe<Scalars["Int"]>;
+  roleId_in: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  roleId_lt: InputMaybe<Scalars["Int"]>;
+  roleId_lte: InputMaybe<Scalars["Int"]>;
+  roleId_not: InputMaybe<Scalars["Int"]>;
+  roleId_not_in: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
+  role_contains: InputMaybe<Scalars["String"]>;
+  role_exists: InputMaybe<Scalars["Boolean"]>;
+  role_in: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  role_not: InputMaybe<Scalars["String"]>;
+  role_not_contains: InputMaybe<Scalars["String"]>;
+  role_not_in: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  sys: InputMaybe<SysFilter>;
+};
+
+export type MemberLinkingCollections = {
+  entryCollection: Maybe<EntryCollection>;
+};
+
+export type MemberLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars["Int"]>;
+  locale: InputMaybe<Scalars["String"]>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+};
+
+export enum MemberOrder {
+  NameAsc = "name_ASC",
+  NameDesc = "name_DESC",
+  RoleIdAsc = "roleId_ASC",
+  RoleIdDesc = "roleId_DESC",
+  RoleAsc = "role_ASC",
+  RoleDesc = "role_DESC",
+  SysFirstPublishedAtAsc = "sys_firstPublishedAt_ASC",
+  SysFirstPublishedAtDesc = "sys_firstPublishedAt_DESC",
+  SysIdAsc = "sys_id_ASC",
+  SysIdDesc = "sys_id_DESC",
+  SysPublishedAtAsc = "sys_publishedAt_ASC",
+  SysPublishedAtDesc = "sys_publishedAt_DESC",
+  SysPublishedVersionAsc = "sys_publishedVersion_ASC",
+  SysPublishedVersionDesc = "sys_publishedVersion_DESC",
+}
+
 export type Query = {
   asset: Maybe<Asset>;
   assetCollection: Maybe<AssetCollection>;
@@ -669,6 +780,8 @@ export type Query = {
   eventCollection: Maybe<EventCollection>;
   journal: Maybe<Journal>;
   journalCollection: Maybe<JournalCollection>;
+  member: Maybe<Member>;
+  memberCollection: Maybe<MemberCollection>;
   session: Maybe<Session>;
   sessionCollection: Maybe<SessionCollection>;
   speaker: Maybe<Speaker>;
@@ -729,6 +842,21 @@ export type QueryJournalCollectionArgs = {
   preview: InputMaybe<Scalars["Boolean"]>;
   skip?: InputMaybe<Scalars["Int"]>;
   where: InputMaybe<JournalFilter>;
+};
+
+export type QueryMemberArgs = {
+  id: Scalars["String"];
+  locale: InputMaybe<Scalars["String"]>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+};
+
+export type QueryMemberCollectionArgs = {
+  limit?: InputMaybe<Scalars["Int"]>;
+  locale: InputMaybe<Scalars["String"]>;
+  order: InputMaybe<Array<InputMaybe<MemberOrder>>>;
+  preview: InputMaybe<Scalars["Boolean"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  where: InputMaybe<MemberFilter>;
 };
 
 export type QuerySessionArgs = {
@@ -1248,6 +1376,18 @@ export type CfSpeakerNestedFilter = {
   url_not_in: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 };
 
+export const JournalMetadataFragmentDoc = /*#__PURE__*/ gql`
+  fragment JournalMetadata on Journal {
+    filename
+    publishDate
+    file {
+      fileName
+      size
+      contentType
+      url
+    }
+  }
+`;
 export const EventMetadataFragmentDoc = /*#__PURE__*/ gql`
   fragment EventMetadata on Event {
     poster {
@@ -1293,18 +1433,6 @@ export const SponsorMetadataFragmentDoc = /*#__PURE__*/ gql`
     }
     sys {
       id
-    }
-  }
-`;
-export const JournalMetadataFragmentDoc = /*#__PURE__*/ gql`
-  fragment JournalMetadata on Journal {
-    filename
-    publishDate
-    file {
-      fileName
-      size
-      contentType
-      url
     }
   }
 `;
@@ -1354,6 +1482,16 @@ export const EventsPageQueryDocument = /*#__PURE__*/ gql`
   }
   ${EventMetadataFragmentDoc}
 `;
+export const JournalsPageQueryDocument = /*#__PURE__*/ gql`
+  query journalsPageQuery($locale: String!) {
+    journalCollection(limit: 50, locale: $locale, order: publishDate_DESC) {
+      items {
+        ...JournalMetadata
+      }
+    }
+  }
+  ${JournalMetadataFragmentDoc}
+`;
 export const HomePageQueryDocument = /*#__PURE__*/ gql`
   query homePageQuery($locale: String!) {
     eventCollection(limit: 3, locale: $locale, order: startingDate_DESC) {
@@ -1371,15 +1509,18 @@ export const HomePageQueryDocument = /*#__PURE__*/ gql`
   ${EventMetadataFragmentDoc}
   ${SponsorMetadataFragmentDoc}
 `;
-export const JournalsPageQueryDocument = /*#__PURE__*/ gql`
-  query journalsPageQuery($locale: String!) {
-    journalCollection(limit: 50, locale: $locale, order: publishDate_DESC) {
+export const MembersPageQueryDocument = /*#__PURE__*/ gql`
+  query membersPageQuery($locale: String!) {
+    memberCollection(limit: 50, locale: $locale, order: roleId_ASC) {
       items {
-        ...JournalMetadata
+        name
+        role
+        image {
+          url
+        }
       }
     }
   }
-  ${JournalMetadataFragmentDoc}
 `;
 export const OrientationsPageQueryDocument = /*#__PURE__*/ gql`
   query orientationsPageQuery($locale: String!) {
@@ -1443,6 +1584,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         "query",
       );
     },
+    journalsPageQuery(
+      variables: JournalsPageQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"],
+    ): Promise<JournalsPageQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<JournalsPageQuery>(JournalsPageQueryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "journalsPageQuery",
+        "query",
+      );
+    },
     homePageQuery(
       variables: HomePageQueryVariables,
       requestHeaders?: Dom.RequestInit["headers"],
@@ -1457,17 +1612,17 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         "query",
       );
     },
-    journalsPageQuery(
-      variables: JournalsPageQueryVariables,
+    membersPageQuery(
+      variables: MembersPageQueryVariables,
       requestHeaders?: Dom.RequestInit["headers"],
-    ): Promise<JournalsPageQuery> {
+    ): Promise<MembersPageQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<JournalsPageQuery>(JournalsPageQueryDocument, variables, {
+          client.request<MembersPageQuery>(MembersPageQueryDocument, variables, {
             ...requestHeaders,
             ...wrappedRequestHeaders,
           }),
-        "journalsPageQuery",
+        "membersPageQuery",
         "query",
       );
     },
@@ -1555,6 +1710,26 @@ export type EventMetadataFragment = {
   poster: { url: string | null } | null;
 };
 
+export type JournalsPageQueryVariables = Exact<{
+  locale: Scalars["String"];
+}>;
+
+export type JournalsPageQuery = {
+  journalCollection: {
+    items: Array<{
+      filename: string | null;
+      publishDate: any | null;
+      file: { fileName: string | null; size: number | null; contentType: string | null; url: string | null } | null;
+    } | null>;
+  } | null;
+};
+
+export type JournalMetadataFragment = {
+  filename: string | null;
+  publishDate: any | null;
+  file: { fileName: string | null; size: number | null; contentType: string | null; url: string | null } | null;
+};
+
 export type RecentEventMetadataFragment = {
   title: string | null;
   description: string | null;
@@ -1620,24 +1795,14 @@ export type HomePageQuery = {
   } | null;
 };
 
-export type JournalsPageQueryVariables = Exact<{
+export type MembersPageQueryVariables = Exact<{
   locale: Scalars["String"];
 }>;
 
-export type JournalsPageQuery = {
-  journalCollection: {
-    items: Array<{
-      filename: string | null;
-      publishDate: any | null;
-      file: { fileName: string | null; size: number | null; contentType: string | null; url: string | null } | null;
-    } | null>;
+export type MembersPageQuery = {
+  memberCollection: {
+    items: Array<{ name: string | null; role: string | null; image: { url: string | null } | null } | null>;
   } | null;
-};
-
-export type JournalMetadataFragment = {
-  filename: string | null;
-  publishDate: any | null;
-  file: { fileName: string | null; size: number | null; contentType: string | null; url: string | null } | null;
 };
 
 export type OrientationsPageQueryVariables = Exact<{

@@ -23,7 +23,7 @@ Dans les locaux de l'UM6P à Benguérir. Le logement et la restauration des part
 Du 01/03/2023 au 01/04/2023 (23:59 heure du Maroc).
 
 ## Comment s'inscrire?
-* Lire attentivement le règlement de la compétition: Reglement de la competition MMC.pdf
+* Lire attentivement le règlement de la compétition: [**Reglement de la competition MMC.pdf**](https://drive.google.com/file/d/1V-rH1auINT_M4ceYV8bLYS2g6CJWdDYj/view)
 * Remplir le formulaire d'inscription: [**(lien du formulaire)**](https://forms.gle/oPCRhQuRXfoY282X7)
 * N.B.: Le formulaire demande de télécharger votre certificat de scolarité 2022-2023, votre CINE, votre bulletin de notes du 1er trimestre/semestre 2022-2023 (si disponible), ainsi que le règlement signé.
 * Merci de ne pas remplir le formulaire avant d'être sûr que vous pouvez être présent sur place.

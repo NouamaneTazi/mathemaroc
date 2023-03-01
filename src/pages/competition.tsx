@@ -13,7 +13,7 @@ import ReactMarkdown from "react-markdown";
 
 contentRenderer.img = (props) => (
   <Box>
-    <Image {...props} height="10em" margin="auto" />
+    <Image {...props} width="10em" height="10em" margin="auto" />
   </Box>
 );
 

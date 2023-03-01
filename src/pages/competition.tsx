@@ -11,11 +11,24 @@ import ReactMarkdown from "react-markdown";
 // const competitionUrl =
 //   "https://raw.githubusercontent.com/NouamaneTazi/mathemaroc/master/markdowns/competition.mdx";
 
-contentRenderer.img = (props) => (
-  <Box>
-    <Image {...props} width="10em" height="10em" margin="auto" />
-  </Box>
-);
+contentRenderer.img = (props) => {
+  const { src } = props;
+  if (src === "https://imgur.com/YGuegnk.png") {
+    return (
+      <Box>
+        <Image {...props} height="50px" width="auto" margin="auto" />
+      </Box>
+    );
+  } else if (src === "https://i.imgur.com/miI83cm.jpg") {
+    return (
+      <Box>
+        <Image {...props} height="700px" width="auto" margin="20px auto auto auto" />
+      </Box>
+    );
+  } else {
+    return <Image {...props} />;
+  }
+};
 
 export async function getStaticProps(args: GetStaticPropsContext) {
   const locale = args.locale as string;

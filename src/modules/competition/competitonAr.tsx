@@ -4,6 +4,7 @@ const competitionAr = `
 
 ## مستجدات:
 * التسجيل مفتوح!
+* تمارين للتحضير: [**(رابط)**](https://drive.google.com/file/d/1oCejbBinUACzqYRnTKhBNJqwmbluoGMw/view?usp=share_link)
 
 
 ## تقديم المسابقة:

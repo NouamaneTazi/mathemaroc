@@ -15,6 +15,7 @@ const routes = {
     },
     "/journal": { name: "Journal" },
     "/olympiads": { name: "Olympiads" },
+    "/results": {name: "Results"},
   },
   // fr: {
   //   "/": { name: "Page d'acceuil" },
@@ -37,6 +38,7 @@ const routes = {
     },
     "/journal": { name: "جريدة" },
     "/olympiads": { name: "الأولمبياد" },
+    "/results": {name: "Results"},
   },
 };
 

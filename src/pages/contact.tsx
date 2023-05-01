@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import { Button, Container, Divider, Heading, Icon, Image, Text, Wrap, useBreakpointValue } from "@chakra-ui/react";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
-import { GetStaticPropsContext, NextPage } from "next";
-
-import { IconType } from "react-icons/lib";
-import { NextSeo } from "next-seo";
-import i18n from "@/i18n";
 import siteConfig from "@/config/site";
+import i18n from "@/i18n";
+
+import { Button, Container, Divider, Heading, Icon, Image, Text, useBreakpointValue, Wrap } from "@chakra-ui/react";
+import { GetStaticPropsContext, NextPage } from "next";
+import { NextSeo } from "next-seo";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { IconType } from "react-icons/lib";
 
 const HOME_SOCIAL_BUTTONS: [string, string, IconType, string][] = [
   ["Facebook", siteConfig.socials.Facebook, FaFacebook, "facebook"],

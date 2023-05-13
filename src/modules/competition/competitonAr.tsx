@@ -6,7 +6,8 @@ const competitionAr = `
 * التسجيل مفتوح!
 * تمارين للتحضير: [**(رابط)**](https://drive.google.com/file/d/1oCejbBinUACzqYRnTKhBNJqwmbluoGMw/view?usp=share_link)
 * نتائج 🏆: [**(رابط)**](https://www.mathemaroc.com/results)
-
+* الموضوع 📜: [**(رابط)**](https://drive.google.com/file/d/1mGo-D44d7u3odnpkQVJcPZujWZQznTBI/view?usp=sharing)
+* التصحيح 📑: [**(رابط)**](https://drive.google.com/file/d/13ek3AjET72NA5BSAbEWqhbk-1rDq4_p3/view?usp=sharing)
 
 ## تقديم المسابقة:
 مسابقة رياضيات المغرب (Math&Maroc Competition) هي مسابقة في الرياضيات خاصة بطلبة السنة الأولى في الجامعات والأقسام التحضيرية، تنظمها جمعية رياضيات المغرب بشراكة مع مركز الخوارزمي بجامعة محمد السادس متعددة التخصصات التقنية (UM6P) وشركة Adria B&T.

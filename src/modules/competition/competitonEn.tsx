@@ -6,6 +6,8 @@ const competitionEn = `
 Les inscriptions sont ouvertes ! Voir les modalités ci-dessous.
 * Exercices pour s'entrainer: [**(Lien)**](https://drive.google.com/file/d/1oCejbBinUACzqYRnTKhBNJqwmbluoGMw/view?usp=share_link)
 * Résultats 🏆: [**(Lien)**](https://www.mathemaroc.com/en/results)
+* Sujet 📜 : [**(Lien)**](https://drive.google.com/file/d/1mGo-D44d7u3odnpkQVJcPZujWZQznTBI/view?usp=sharing)
+* Corrigé 📑: [**(Lien)**](https://drive.google.com/file/d/13ek3AjET72NA5BSAbEWqhbk-1rDq4_p3/view?usp=sharing)
 
 ## Qu'est-ce que Math&Maroc Competition?
 **Math&Maroc Competition (MMC)** est une compétition de mathématiques organisée par l'association Math&Maroc, en collaboration avec le département Al Khawarizmi (Université Mohammed VI Polytechnique UM6P) et notre sponsor officiel Adria B&T.

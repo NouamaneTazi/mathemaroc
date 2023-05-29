@@ -16,7 +16,7 @@ Other alternatives can be found [here](https://nextjs.org/docs/basic-features/pa
 * Install Node.js from: <https://nodejs.org/en/download/> (Tested with v16.16.0 - In case you want to have multiple versions of Node.js installed, use [nvm](https://github.com/nvm-sh/nvm))
 * Install yarn from: <https://classic.yarnpkg.com/lang/en/docs/install/>
 * In your command shell, run `yarn` to install dependencies
-* Create a `.env` file in the root directory of the project by copying the `.env.local.example` file and filling the values
+* Create a `.env` file in the root directory of the project by copying the `.env.local.example` file and filling the values.
 
 ### Start the application
 
